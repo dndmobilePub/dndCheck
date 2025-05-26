@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>popup</title>
+  <link rel="stylesheet" href="../asset/css/common.min.css">
+  <script src="../asset/js/jquery-3.7.1.min.js"></script>  
+  <script src="../asset/js/swiper/swiper-bundle.min.js"></script>
+</head>
+<body>
+    <button class="btn btn-size md bg _modalBtn" data-modal="modal1">Center Modal</button>
+    <div class="modalPop _center" modal-target="modal1">
+        <div class="modalWrap">
+            <div class="modal-header">
+                <h1 class="mp-title">
+                    근무지 정보
+                </h1>
+                <button class="btn-close-pop ico ico-pop-close">
+                    <span class="hide">창닫기</span>
+                </button>
+            </div>
+            <div class="modal-container">
+                <div class="table-wrap">
+                    <table class="table col">
+                        <colgroup>
+                            <col style="width: 23rem;">
+                            <col style="width: auto">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th scope="row">근무지</th>
+                                <td>우리은행 삼암지점</td>
+                            </tr>
+                            <tr>
+                                <th>주소</th>
+                                <td>
+                                    <p>03925</p>
+                                    <p>서울 마포구 월드컵북로 396</p>
+                                    <p>3층 301호</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>범위</th>
+                                <td>100M</td>
+                            </tr>
+                            <tr>
+                                <th>구분</th>
+                                <td>고객사</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-area lg btn2">
+                    <button class="btn lg bg secondary btn-close-pop">취소</button>
+                    <button class="btn lg bg secondary">삭제</button>
+                    <button class="btn lg bg">등록</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../asset/js/common.js"></script>
+</html>

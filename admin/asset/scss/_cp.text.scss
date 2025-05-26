@@ -1,0 +1,35 @@
+.h2{
+    &-tit{
+        @include font ('heading-sm-700');
+        margin-bottom: 1.4rem;
+    }
+}
+
+.text{
+    &-area{
+        @include font-all(1.6rem, 400, 2.2rem);
+        color: $color-text-secondary;
+        .info{
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            .tit{
+                color: $color-text-tertiary;
+                &::after{
+                    content: ':';
+                    display: inline-block;
+                }
+            }
+            .txt{
+                color: $color-neutural-900;
+            }
+        }
+    }
+    &-wrap{
+        .limit{
+            text-align: right;
+            margin-top: 0.6rem;
+            @include font('body-xs', $color-neutural-700);
+        }
+    }
+}

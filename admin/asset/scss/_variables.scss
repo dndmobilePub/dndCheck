@@ -1,0 +1,119 @@
+/* ################## 
+    Primitive Color
+##################### */
+
+/* base */
+$color-white:#ffffff;
+$color-black:#000000;
+
+/* blue */
+$color-blue-50: #e8f5ff;
+$color-blue-100: #c6e2ff;
+$color-blue-200: #96c3ff;
+$color-blue-300: #5694e8;
+$color-blue-400: #347eff;
+$color-blue-500: #2666f5;
+$color-blue-600: #0d47a1;
+$color-blue-700: #1f2b47;
+$color-blue-800: #121927;
+
+/* neutural */
+$color-neutural-50: #f5f7fa;
+$color-neutural-100: #f2f5f7;
+$color-neutural-200: #eceff4;
+$color-neutural-300: #e0e3e8;
+$color-neutural-400: #D2D6DB;
+$color-neutural-500: #a9b0b8;
+$color-neutural-600: #8c959f;
+$color-neutural-700: #6e7780;
+$color-neutural-800: #515961;
+$color-neutural-900: #212529;
+
+/* sky */
+$color-sky-100:#25deff;
+
+/* green */
+$color-green-50: #e4f5ef;
+$color-green-300: #4ff8b1;
+$color-green-500: #2d9d78;
+$color-green-600: #268e6c;
+
+/* red */
+$color-red-50: #fdeded;
+$color-red-500: #e34850;
+$color-red-600: #c9252d;
+
+/* color/transparent */
+$color-transparent-20: #c0c6cc;
+$color-transparent-60: #00000099;
+
+
+/* ################## 
+    Theme Color
+##################### */
+
+/* color/brand/primary */
+$color-brand-primary-400: $color-blue-400;
+$color-brand-primary-500: $color-blue-500;
+$color-brand-primary-600: $color-blue-600;
+
+/* color/brand/secondary */
+$color-brand-secondary-200: $color-neutural-200;
+$color-brand-secondary-300: $color-neutural-300;
+$color-brand-secondary-400: $color-neutural-400;
+
+
+/* ################## 
+    Semantic Color
+##################### */
+
+/* color/text */
+$color-text-primary: $color-neutural-900;
+$color-text-secondary: $color-neutural-800;
+$color-text-tertiary: $color-neutural-700;
+$color-text-placeholder: $color-neutural-500;
+$color-text-info: $color-brand-primary-400;
+$color-text-point-blue: $color-sky-100;
+$color-text-point-green: $color-green-300;
+$color-text-success: $color-green-600;
+$color-text-warning: $color-red-600;
+$color-text-disabled: $color-neutural-500;
+$color-text-inverse: $color-white;
+
+/* color/bg */
+$color-bg-primary: $color-white;
+$color-bg-secondary: $color-neutural-50;
+$color-bg-tertiary: $color-neutural-100;
+$color-bg-info-subtle: $color-blue-50;
+$color-bg-success-subtle: $color-green-50;
+$color-bg-warning: $color-red-50;
+$color-bg-disabled: $color-neutural-400;
+$color-bg-read-only: $color-neutural-100;
+
+/* color/bg/interactive */
+$color-bg-interactive-primary: $color-brand-primary-400;
+$color-bg-interactive-primary-hovered: $color-brand-primary-500;
+$color-bg-interactive-primary-pressed: $color-brand-primary-600;
+$color-bg-interactive-secondary: $color-brand-secondary-200;
+$color-bg-interactive-secondary-hovered: $color-brand-secondary-300;
+$color-bg-interactive-secondary-pressed: $color-brand-secondary-400;
+
+/* color/icon */
+$color-icon-primary: $color-neutural-900;
+$color-icon-secondary: $color-neutural-600;
+$color-icon-tertiary: $color-neutural-400;
+$color-icon-info: $color-brand-primary-400;
+$color-icon-success: $color-green-600;
+$color-icon-warning: $color-red-600;
+$color-icon-inverse: $color-white;
+$color-icon-cast: $color-transparent-60;
+
+/* color/border */
+$color-border-primary: $color-neutural-700;
+$color-border-secondary: $color-neutural-400;
+$color-border-tertiary: $color-neutural-300;
+$color-border-divider: $color-neutural-200;
+$color-border-focusring: $color-brand-primary-400;
+
+/* color/effect/shadow */
+$color-effect-shadow: $color-transparent-20;

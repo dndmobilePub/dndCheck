@@ -1,0 +1,135 @@
+.table{
+    width: 100%;
+    border-top: 0.1rem solid $color-border-primary;
+    border-collapse: collapse;
+    table-layout: fixed;
+    tr{
+        th{
+            background-color: $color-bg-tertiary;
+            @include font-all(1.6rem, 500, 2.4rem);
+        }
+        td{
+            @include font-all(1.6rem, 400, 2.4rem);
+        }
+        th, td{
+            padding: 1.2rem 2rem;
+            text-align: left;
+            border-bottom: 0.1rem solid $color-border-tertiary;
+            vertical-align: middle;
+        }
+        :last-child{
+            th, td{
+                border-bottom: 0.1rem solid $color-neutural-600;
+            }
+        }
+    }
+    &.row{
+        tr{
+            th, td{
+                text-align: center;
+                vertical-align: middle;
+            }
+            th{
+                padding: 1.5rem 0;
+            }
+            td{
+                padding: 1.8rem 0;
+            }
+            input[type=checkbox]{
+                vertical-align: middle;
+            }
+        }
+    }
+    &-wrap{
+        + .table-wrap{
+            margin-top: 3.6rem;
+        }
+        + .flex-wrap.btween{
+            margin-top: 6rem;
+        }
+    }
+    + .pagination{
+        margin: 3.6rem;
+    }
+    &-info{
+        border-radius: 1.2rem;
+        width: calc(100% / 3);
+        padding: 4rem 0;
+        text-align: center;
+        + .table-info{
+            margin-left: 2.4rem
+        }
+        .tit{
+            @include font('body-lg', $color-text-secondary);
+            + .txt{
+                margin-left: 2rem
+            }
+        }
+        .txt{
+            @include font('heading-lg');
+        }
+        &-box{
+            display: flex;
+            justify-content: space-between;
+            margin: 3.6rem 0;
+        }
+        &.vacation{
+            background-color: $color-neutural-50;
+            .txt{
+                color: $color-blue-800;
+            }
+        }
+        &.late{
+            background-color: $color-bg-warning;
+            .txt{
+                color: $color-text-warning;
+            }
+        }
+        &.correction{
+            background-color: $color-bg-info-subtle;
+            .txt{
+                color: $color-brand-primary-400;
+            }
+        }
+    }
+    .sub-txt{
+        display: block;
+        @include font('body-xs', $color-text-secondary);
+    }
+}
+
+.pagination{
+    &-wrap{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .page{
+        &-link{
+            display: inline-block;
+            @include el-size(2.4rem, 2.4rem);
+            @include font-all(1.4rem, 500, 2.4rem);
+            text-align: center;
+            &.active{
+                background-color: $color-bg-tertiary;
+                border-radius: 50%;
+            }
+            &.prev, &.next{
+                @include el-size(2rem, 2rem);
+            }
+            &.prev{
+                background: url(../img/icon-pagination-one.svg) no-repeat center / auto;
+                &.first{
+                    background: url(../img/icon-pagination-two.svg) no-repeat center / auto;
+                }
+            }
+            &.next{
+                background: url(../img/icon-pagination-one.svg) no-repeat center / auto;
+                transform: rotate(180deg);
+                &.last{
+                    background: url(../img/icon-pagination-two.svg) no-repeat center / auto;
+                }
+            }
+        }
+    }
+}

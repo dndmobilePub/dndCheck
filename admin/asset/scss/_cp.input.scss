@@ -1,0 +1,229 @@
+/* check box */
+.checkbox{
+    position: relative;
+    .icon{
+        display: inline-block;
+        @include el-size(2.4rem, 2.4rem);
+        vertical-align: middle;
+        border-radius: 0.5rem;
+        border: 0.2rem solid $color-border-secondary;
+    }
+    input[type="checkbox"]{
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        &:checked{
+            + .icon{
+                border-color: $color-brand-primary-400;
+                background: url(../img/icon-checkbox.svg) $color-brand-primary-400 no-repeat center / auto;
+            }
+        }
+        &:disabled{
+            + .icon{
+                border-color: transparent;
+                background: url(../img/icon-checkbox.svg) $color-brand-secondary-300 no-repeat center / auto;
+                + .label{
+                    color: $color-text-secondary;
+                }
+            }
+        }
+    }
+    .label{
+        @include font-all(1.6rem, 400, 2.4rem);
+        margin-left: 0.6rem;
+        vertical-align: middle
+    }
+}
+
+/* radio box */
+.radiobox{
+    position: relative;
+    .icon{
+        display: inline-block;
+        @include el-size(2.4rem, 2.4rem);
+        vertical-align: middle;
+        border-radius: 50%;
+        border: 0.2rem solid $color-border-secondary;
+    }
+    input[type="radio"]{
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        &:checked, &:disabled{
+            + .icon{
+                position: relative;
+                &::before{
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    @include el-size(0.8rem, 0.8rem);
+                    border-radius: 50%;
+                }
+            }
+        }
+        &:checked{
+            + .icon{
+                border-color: $color-border-focusring;
+                &::before{
+                    background-color: $color-icon-info;
+                }
+            }
+        }
+        &:disabled{
+            + .icon{
+                border-color: $color-border-tertiary;
+                &::before{
+                    background-color: $color-bg-disabled;
+                }
+            }
+        }
+    }
+    .label{
+        @include font-all(1.6rem, 400, 2.4rem);
+        margin-left: 0.6rem;
+        vertical-align: middle
+    }
+}
+
+/* radio, check wrap */ 
+.radio-wrap, .check-wrap{
+    display: flex;
+    align-items: center;
+    + .radio-wrap{
+        margin-left: 3.2rem;
+    }
+    + .check-wrap{
+        margin-left: 3.2rem;
+    }
+}
+
+
+/* date box */
+input[type="date"]{
+    position: relative;
+    background: url(../img/icon-date.svg) no-repeat right 2rem center / auto;
+    &::-webkit-calendar-picker-indicator {
+        position: absolute; 
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        color: transparent;
+        cursor: pointer;
+    }
+}
+/* 요일 선택 */
+.date{
+    appearance: none;
+    width: 100%;
+    height: 4.8rem;
+    padding: 1.4rem 2rem;
+    border: 0.1rem solid $color-icon-tertiary;
+    border-radius: 0.8rem;
+    @include font-all(1.6rem, 400, 1.9rem);
+    background: url(../img/icon-date.svg) no-repeat right 2rem center / auto;
+    &.select{
+        width: 15rem;
+    }
+    + .date-dash{
+        position: relative;
+        display: inline-block;
+        margin: auto 0.6rem;
+    }
+}
+
+/* 괄호 박스*/
+.parentheses{
+    position: relative;
+     display: flex;
+     margin-left: 3.8rem;
+     &::before{
+        content: '(';
+        position: absolute;
+        top: 50%;
+        left: -1.6rem;
+        transform: translateY(-50%);
+        color: $color-text-tertiary;
+     }
+     &:after{
+        content: ')';
+        position: absolute;
+        top: 50%;
+        right: -1.6rem;
+        transform: translateY(-50%);
+        color: $color-text-tertiary;
+     }
+}
+
+/* 인풋 박스 */
+input[type="text"], input[type="password"], textarea{
+    display: block;
+    width: 100%;
+    height: 4.8rem;
+    padding: 1.35rem 4.6rem 1.05rem 2rem;
+    border: 0.1rem solid $color-border-tertiary;
+    border-radius: 0.8rem;
+    font-family: "Go", "Pretendard";
+    @include font-all(1.6rem, 400, 2.4rem, $color-text-primary);
+    &::placeholder{
+        color: $color-neutural-500 
+    }
+    &:hover, &:focus, &:active, &:focus-visible{
+        border-color: $color-border-focusring !important;
+        outline: none;
+    }
+    &.error{
+        border-color: $color-icon-warning;
+    }
+    &:read-only:not(:disabled){
+        background-color: $color-bg-read-only;
+        color: $color-text-secondary;
+        pointer-events: none;
+        &::placeholder{
+            color: $color-text-secondary;
+        };
+    }
+    &:disabled{
+        background-color: $color-bg-disabled;
+        color: $color-text-disabled;
+        pointer-events: none;
+        &::placeholder{
+            color: $color-text-disabled;
+        }
+    }
+    + .clear-btn{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 2rem;
+        @include el-size(1.8rem, 1.8rem);
+        border-radius: 50%;
+        background: url(../img/icon-popup-close-btn.svg) no-repeat center / auto;
+    }
+}
+textarea{
+    min-height: 26rem;
+}
+/* 인풋 클리어 버튼 */
+.input-wrap{
+    position: relative;
+    &:focus-within{
+        .clear-btn.show{
+            display: block;
+        }
+    }
+}

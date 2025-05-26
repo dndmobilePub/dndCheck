@@ -1,0 +1,43 @@
+.wrap{
+    position: relative;
+}
+.container-wrap{
+    width: 100%;
+    min-width: 102.4rem;
+}
+.content-wrap{
+    padding: 3.1rem 6rem 3.1rem 33rem;
+    transition: .3s padding-left ease-in-out;
+}
+
+.flex-wrap, .title-wrap{
+    display: flex;
+    align-items: center;
+    &.btween{
+        justify-content: space-between;
+    }
+}
+
+.cont{
+    &-box{
+        width: 100%;
+        padding: 3rem;
+        border-radius: 1.2rem;
+        background-color: $color-white;
+        box-shadow: 0.4rem 1.6rem 1.6rem 0 #C4CBD333;
+        + .cont-box{
+            margin-top: 3rem;
+        }
+    }
+    &-group{
+        + .cont-group{
+            margin-top: 6rem;
+        }
+    }
+}
+
+.table-wrap{
+    + .h2-tit{
+        margin-top: 5.7rem;
+    }
+}

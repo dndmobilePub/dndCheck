@@ -1,0 +1,150 @@
+.item-group{
+    display: flex;
+    justify-content: flex-start;
+    .item-box{
+        border-radius: 1.2rem;
+        padding: 3rem;
+        background-color: $color-neutural-50;
+        &.blue{
+            background: linear-gradient(0deg, #347EFF, #347EFF), linear-gradient(94.51deg, #3493FF 1.11%, #0054DB 99.67%);
+        }
+        &.green{
+            background: linear-gradient(0deg, #06FFAD, #06FFAD), linear-gradient(92.09deg, #00B277 0.98%, #00B69E 98.86%);
+
+        }
+    }
+    &.attendance{
+        justify-content: space-between;
+        gap: 1.35%;
+        .item-box{
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            .flex-wrap{
+                width: 100%;
+                justify-content: space-between;
+                align-items: center;
+                .item{
+                    position: relative;
+                    .tit{
+                        @include font ('body-md', $color-white);
+                        margin-bottom:0.6rem;
+                    }
+                    .txt{
+                        @include font ('heading-xl', $color-white);
+                        &.blue{
+                            @include font ('body-md');
+                            color: $color-text-point-blue;
+                            b{
+                                @include font ('heading-2xl');
+                                margin-right: 0.2rem;
+                            }
+                            ::after{
+                                content: '명';
+                                display: inline-block;
+                                color: $color-text-point-blue;
+                                font-size: 1.6rem;
+                            }
+                        }
+                        &.green{
+                            color: $color-text-point-green;
+                        }
+                    }
+                    &.total{
+                        width: 15.5rem;
+                    }
+                    &:first-child{
+                        margin-right: auto;
+                        .tit{
+                            margin-bottom: 0.8rem;
+                        }
+                    }
+                    &:not(:first-child){
+                        width: 10rem;
+                        gap: 6rem;
+                        & + .item{
+                            margin-left: 3rem;
+                            padding-left: 3rem;
+                            &::before{
+                                content: '';
+                                display: inline-block;
+                                position: absolute;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                left: 0;
+                                @include el-size(0.1rem, 6rem);
+                                background-color: $color-icon-inverse;
+                            }
+                        }
+                    }
+                }
+                &::before{
+                    content: '';
+                    position: relative;
+                    display: inline-block;
+                    width: 7rem;
+                    min-width: 7rem;
+                    height: 7rem;
+                    margin-right: 2rem;
+                }
+                &.people{
+                    &::before{
+                        background: url(../img/img-people.png) no-repeat center / cover;
+                    }
+                }
+                &.vacation{
+                    &::before{
+                        background: url(../img/img-vacation.png) no-repeat center / cover;
+                    }
+                }
+            }
+            &:first-child{
+                width: 38.12%;
+            }
+            &:last-child{
+                width: 60.52%;
+            }
+        }
+        @media (max-width: 1490px) {
+            flex-wrap: wrap;
+            gap: 2rem;
+            .item-box{
+                width: 100% !important;
+            }
+        }
+    }
+    &.late{
+        position: relative;
+        display: block;
+        .swiper-slide {
+            width: 35.5rem;
+            flex-shrink: 0;
+        }
+        .flex-wrap{
+            justify-content: space-between;
+        }
+        .text-area{
+            margin: 1.6rem 0 0 0;
+            + .btn-area{
+                margin-top: 2rem;
+            }
+        }
+    }
+    &.vacationer{
+        position: relative;
+        .swiper-slide {
+            width: 18.6rem;
+            flex-shrink: 0;
+        }
+        .name-tag{
+            + .text-area{
+                margin-top: 2rem;
+            }
+        }
+        .item-box{
+            width: 18.6rem;
+        }
+    }
+}
+
+
