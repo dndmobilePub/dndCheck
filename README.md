@@ -4,7 +4,9 @@
 ---
 ## 폴더구조
 1. admin : 관리자
+    - assets : css, font, img, js, scss
+    - html
 2. users : 사용자
-    - assets : css, fonts, img, js
+    - assets : css, fonts, img, js, scss
     - guide
     - html : main. sub
