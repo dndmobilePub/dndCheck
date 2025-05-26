@@ -34,7 +34,7 @@ textarea,
 select {background-color: transparent;}
 input[type='checkbox']:checked {
     -webkit-appearance: checkbox;    
-    @extend %body-md;
+    @extend %body-md-regular;
     color:$color-text-primary;
 
 }
@@ -49,7 +49,7 @@ input[type='search']::-webkit-search-cancel-button {-webkit-appearance:none;}
 select::-ms-expand {display:none;} /* IE9 이상 select 화살표 삭제 */
 
 body,th,td,input,select,textarea,button {
-    @extend %body-md;
+    @extend %body-md-regular;
 }
 input[type='text']:read-only, input[type='password']:read-only,
 input[type='text']:disabled, input[type='password']:disabled {

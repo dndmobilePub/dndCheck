@@ -32,7 +32,7 @@
   
     .txt {
       @include obj-offset-align;
-      @extend %body-md;
+      @extend %body-md-medium;
       color:$color-text-primary;
       width:calc(100vw - 4rem); margin-top:6rem;
       text-align:center;

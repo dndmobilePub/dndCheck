@@ -3,10 +3,10 @@ $fmsg: '#{$field}-msg';
 #{$field} {
     &.grow, .grow {flex:1 0 0;}
     &-btn {@include dflex($j-content:center, $al-items:center); flex-shrink:0;}
-    &-label {display:block; margin-bottom: 1rem;}
+    &-label:not(.field-chkrdo .field-label) {display:block; margin-bottom: 1rem;}
     &-txt {@include dflex($al-items:center); flex-shrink:0;}
     &-msg {
-        display:none; margin-top:.5rem; color:$color-text-tertiary; @extend %body-xs; @extend %weight-regular;
+        display:none; margin-top:.5rem; color:$color-text-tertiary; @extend %body-xs-regular;
         &.info {display:block;}
     }
 
@@ -145,8 +145,8 @@ $fmsg: '#{$field}-msg';
     }
     input {
         &._password {
-            @extend %body-md; @extend %weight-medium;
-            &::placeholder {@extend %body-md; @extend %weight-medium; }
+            @extend %body-md-medium;
+            &::placeholder {@extend %body-md-medium; }
             // &:read-only, &:disabled { padding-top:1.3rem;}
         }
     }

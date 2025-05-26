@@ -7,7 +7,7 @@ $fieldLabel:'#{$field}-label';
 
     &._readonly, ._readonly, ._readonly #{$fieldIcon} {cursor:default;}
     &._disabled, ._disabled, ._disabled #{$fieldIcon} {cursor:default;}
-    ._disabled #{$fieldLabel} {opacity: .5;}
+    ._disabled:not(.box-opt.gap .field-chkrdo) #{$fieldLabel} {opacity: .5;}
     [class*='field'] {
         .chk, .rdo {
             @include pos-offset;
@@ -114,8 +114,8 @@ $fieldLabel:'#{$field}-label';
             &-label {
                 display: inline-block;
                 margin-left:1rem;
-                @extend %body-md;
-                color:$color-text-primary;
+                @extend %body-md-regular;
+                color:$color-text-tertiary;
             }
         }
     }
@@ -175,6 +175,9 @@ $fieldLabel:'#{$field}-label';
 
     // 박스형
     &.box-opt {
+        &.full {
+            .field-chkrdo {width:100%;}
+        }
         @include dflex;
         #{$fieldIcon} {display:none;}
         &.gap {
@@ -182,8 +185,48 @@ $fieldLabel:'#{$field}-label';
             #{$field} {
                 &-chkrdo {
                     #{$fieldLabel} {
+                        @extend %body-md-regular;
                         @extend %radius-8;
-                        border:.2rem solid $color-border-secondary;
+                        @include line(inset, $color-border-tertiary, .1rem);
+                    }
+                    &._disabled {
+                        .chk:not(:checked), .rdo:not(:checked) {
+                            & ~ #{$fieldLabel} {
+                                color:$color-text-disabled;
+                                @include line(inset, $color-border-tertiary, .1rem);
+                            }
+                        }
+                        .chk:checked, .rdo:checked {
+                            & ~ #{$fieldLabel} {
+                                color:$color-text-disabled;
+                                @include line(inset, $color-border-tertiary, .1rem);
+                                background-color:$color-bg-tertiary;
+                            }
+                        }
+                    }
+                    &._readonly {
+                        .chk, .rdo {
+                            & ~ #{$fieldLabel} {
+                                opacity:.5;
+                            }
+                            &:checked {
+                                & ~ #{$fieldLabel} {
+                                    opacity:.5;
+                                    @extend %body-md-bold;
+                                    color:$color-text-info;                        
+                                    @include line(inset, $color-border-focusring, .2rem);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .chk, .rdo {
+                &:checked {
+                    & ~ #{$fieldLabel} {
+                        @extend %body-md-bold;
+                        color:$color-text-info;                        
+                        @include line(inset, $color-border-focusring, .2rem);
                     }
                 }
             }
@@ -191,6 +234,7 @@ $fieldLabel:'#{$field}-label';
         &.nogap {
             #{$field} {
                 &-chkrdo {
+                    width:100%;
                     &:first-child {   
                         #{$fieldLabel} {
                             border-top-left-radius: $radius-8;
@@ -207,7 +251,19 @@ $fieldLabel:'#{$field}-label';
                         margin-left:0;
                         #{$fieldLabel} {margin-left: -.1rem;}
                     }
-                    
+                }
+            }
+            .chk, .rdo {
+                & ~ #{$fieldLabel} {
+                    @include line(border, .1rem solid $color-border-tertiary);
+                }
+                &:checked {
+                    & ~ #{$fieldLabel} {
+                        color:$color-base-white;
+                        background-color:$color-bg-interactive-primary;
+                        border-color:$color-border-focusring;
+                        z-index:1;
+                    }
                 }
             }
         }
@@ -249,26 +305,14 @@ $fieldLabel:'#{$field}-label';
         #{$field} {
             &-chkrdo {
                 @include dflex;
-                width:100%;
                 
                 #{$fieldLabel} {
                     @include dflex($direction:column, $j-content:center);
                     width:100%; height:100%;
-                    padding:1rem;                    
+                    padding:1rem 1.6rem;
+                    margin-left:0;
+                    color:$color-text-secondary;
                     text-align: center;
-                    border: 1px #ddd solid;
-                    
-                }
-
-                .chk, .rdo {
-                    &:checked {
-                        & ~ #{$fieldLabel} {
-                            color:$color-base-white;
-                            background-color:$color-bg-interactive-primary;
-                            border-color:$color-border-focusring;
-                            z-index:1;
-                        }
-                    }
                 }
             }
         }

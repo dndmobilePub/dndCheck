@@ -42,7 +42,8 @@ $color-border-none:none;
 $color-border-primary:$color-neutral-700;
 $color-border-secondary:$color-neutral-400;
 $color-border-tertiary:$color-neutral-300;
-$color-border-divider:$color-neutral-200;
+$color-border-divider-01:$color-neutral-200;
+$color-border-divider-02:$color-neutral-100;
 $color-border-focusring:$color-brand-primary-400;
 $color-border-success:$color-green-600;
 $color-border-warning:$color-red-600;
@@ -65,52 +66,145 @@ $heading:(
         letter-spacing:$letter-spacing-tight,
     ),
     lg:(
-        font-family:$typo-family,
-        font-weight:$typo-weight-bold,
-        font-size:$typo-size-28,
-        line-height:$typo-lheight-36,
-        letter-spacing:$letter-spacing-tight,
+        bold:(
+            font-family:$typo-family,
+            font-weight:$typo-weight-bold,
+            font-size:$typo-size-28,
+            line-height:$typo-lheight-36,
+            letter-spacing:$letter-spacing-tight,
+        ),
+        medium:(
+            font-family:$typo-family,
+            font-weight:$typo-weight-bold,
+            font-size:$typo-size-28,
+            line-height:$typo-lheight-36,
+            letter-spacing:$letter-spacing-tight,
+        ),
     ),
     md:(
-        font-family:$typo-family,
-        font-weight:$typo-weight-bold,
-        font-size:$typo-size-24,
-        line-height:$typo-lheight-32,
-        letter-spacing:$letter-spacing-tight,
-    ),
-    sm:(
         font-family:$typo-family,
         font-weight:$typo-weight-bold,
         font-size:$typo-size-20,
         line-height:$typo-lheight-28,
         letter-spacing:$letter-spacing-tight,
     ),
+    sm:(
+        bold:(
+            font-family:$typo-family,
+            font-weight:$typo-weight-bold,
+            font-size:$typo-size-20,
+            line-height:$typo-lheight-28,
+            letter-spacing:$letter-spacing-tight,
+        ),
+        medium:(
+            font-family:$typo-family,
+            font-weight:$typo-weight-medium,
+            font-size:$typo-size-20,
+            line-height:$typo-lheight-28,
+            letter-spacing:$letter-spacing-tight,
+        ),
+        regular:(
+            font-family:$typo-family,
+            font-weight:$typo-weight-regular,
+            font-size:$typo-size-20,
+            line-height:$typo-lheight-28,
+            letter-spacing:$letter-spacing-tight,
+        ),
+    ),
 );
 
 $body:(
     lg:(
-        font-family:$typo-family,
-        font-size:$typo-size-18,
-        line-height:$typo-lheight-24,
-        letter-spacing:$letter-spacing-tight,
+        bold:(
+            font-family:$typo-family,
+            font-size:$typo-size-18,
+            line-height:$typo-lheight-24,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-bold,
+        ),
+        medium:(
+            font-family:$typo-family,
+            font-size:$typo-size-18,
+            line-height:$typo-lheight-24,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-medium,
+        ),
+        regular:(
+            font-family:$typo-family,
+            font-size:$typo-size-18,
+            line-height:$typo-lheight-24,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-regular,
+        ),
     ),
     md:(
-        font-family:$typo-family,
-        font-size:$typo-size-16,
-        line-height:$typo-lheight-24,
-        letter-spacing:$letter-spacing-tight,
+        bold:(
+            font-family:$typo-family,
+            font-size:$typo-size-16,
+            line-height:$typo-lheight-24,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-bold,
+        ),
+        medium:(
+            font-family:$typo-family,
+            font-size:$typo-size-16,
+            line-height:$typo-lheight-24,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-medium,
+        ),
+        regular:(
+            font-family:$typo-family,
+            font-size:$typo-size-16,
+            line-height:$typo-lheight-24,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-regular,
+        ),
     ),
     sm:(
-        font-family:$typo-family,
-        font-size:$typo-size-14,
-        line-height:$typo-lheight-20,
-        letter-spacing:$letter-spacing-tight,
+        bold:(
+            font-family:$typo-family,
+            font-size:$typo-size-14,
+            line-height:$typo-lheight-20,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-bold,
+        ),
+        medium:(
+            font-family:$typo-family,
+            font-size:$typo-size-14,
+            line-height:$typo-lheight-20,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-medium,
+        ),
+        regular:(
+            font-family:$typo-family,
+            font-size:$typo-size-14,
+            line-height:$typo-lheight-20,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-regular,
+        ),
     ),
     xs:(
-        font-family:$typo-family,
-        font-size:$typo-size-13,
-        line-height:$typo-lheight-18,
-        letter-spacing:$letter-spacing-tight,
+        bold:(
+            font-family:$typo-family,
+            font-size:$typo-size-13,
+            line-height:$typo-lheight-18,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-bold,
+        ),
+        medium:(
+            font-family:$typo-family,
+            font-size:$typo-size-13,
+            line-height:$typo-lheight-18,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-medium,
+        ),
+        regular:(
+            font-family:$typo-family,
+            font-size:$typo-size-13,
+            line-height:$typo-lheight-18,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-regular,
+        ),
     ),
 );
 $fontWeight:(
@@ -122,14 +216,25 @@ $fontWeight:(
 /* Typography */
 %heading-2xl {@include dndCP($heading, 2xl);}
 %heading-xl {@include dndCP($heading, xl);}
-%heading-lg {@include dndCP($heading, lg);}
+%heading-lg-bold {@include dndCP($heading, (lg, bold));}
+%heading-lg-medium {@include dndCP($heading, (lg, medium));}
 %heading-md {@include dndCP($heading, md);}
-%heading-sm {@include dndCP($heading, sm);}
+%heading-sm-bold {@include dndCP($heading, (sm, bold));}
+%heading-sm-medium {@include dndCP($heading, (sm, medium));}
+%heading-sm-regular {@include dndCP($heading, (sm, regular));}
 
-%body-lg {@include dndCP($body, lg);}
-%body-md {@include dndCP($body, md);}
-%body-sm {@include dndCP($body, sm);}
-%body-xs {@include dndCP($body, xs);}
+%body-lg-bold {@include dndCP($body, (lg, bold));}
+%body-lg-medium {@include dndCP($body, (lg, medium));}
+%body-lg-regular {@include dndCP($body, (lg, regular));}
+%body-md-bold {@include dndCP($body, (md, bold));}
+%body-md-medium {@include dndCP($body, (md, medium));}
+%body-md-regular {@include dndCP($body, (md, regular));}
+%body-sm-bold {@include dndCP($body, (sm, bold));}
+%body-sm-medium {@include dndCP($body, (sm, medium));}
+%body-sm-regular {@include dndCP($body, (sm, regular));}
+%body-xs-bold {@include dndCP($body, (xs, bold));}
+%body-xs-medium {@include dndCP($body, (xs, medium));}
+%body-xs-regular {@include dndCP($body, (xs, regular));}
 
 %weight-regular {@include dndCP($fontWeight, regular);}
 %weight-medium {@include dndCP($fontWeight, medium);}
@@ -143,16 +248,41 @@ $radius: (
     6:(border-radius:$radius-6),
     8:(border-radius:$radius-8),
     10:(border-radius:$radius-10),
+    12:(border-radius:$radius-12),
     16:(border-radius:$radius-16),
+    round:(border-radius:$radius-round),
     full:(border-radius:$radius-full),
 );
 %radius-0 {@include dndCP($radius, 0);}
 %radius-5 {@include dndCP($radius, 5);}
 %radius-8 {@include dndCP($radius, 8);}
+%radius-12 {@include dndCP($radius, 12);}
 %radius-16 {@include dndCP($radius, 16);}
+%radius-round {@include dndCP($radius, round);}
 %radius-full {@include dndCP($radius, full);}
 
 %disabled {opacity:.6;}
+$btn: (
+    disabled:(
+        primary:(
+            background-color:$color-bg-info,
+            color:$color-text-info,
+            opacity:.5,
+        ),
+        secondary:(
+            background-color:$color-bg-disabled,
+            color:$color-text-disabled,
+        ),
+        tertiary:(
+            background-color:$color-bg-tertiary,
+            color:$color-text-disabled,
+            box-shadow: 0 0 0 .1rem $color-border-tertiary inset,
+        ),
+    ),
+);
+%btn-disabled-primary {@include dndCP($btn, (disabled, primary));}
+%btn-disabled-secondary {@include dndCP($btn, (disabled, secondary));}
+%btn-disabled-tertiary {@include dndCP($btn, (disabled, tertiary));}
 
 $shadow: (
     sm:(box-shadow:0 .1rem .2rem rgba(0, 0, 0, 0.05)),
