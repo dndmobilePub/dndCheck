@@ -1,0 +1,134 @@
+[
+    {
+        "path":"folder1",
+        "id": "PG_GUIDE0001",
+        "type": "템플릿", 
+        "depth1": "1뎁스명작성 - 1",
+        "depth2": "2뎁스명-1",
+        "depth3": "3뎁스명",
+        "depth4": "4뎁스명",
+        "name": "메뉴명/화면명1",
+        "worker": "홍길동",
+        "schedule": [
+            {
+              "schedule_s": "10-13",
+              "schedule_e": "10-14"
+            }
+        ],
+        "workdate": "10-14",
+        "change": "10-15",
+        "complete": "",
+        "state": "done",
+        "etc": ["기획확인"]
+    },
+    {
+        "path":"folder1",
+        "id": "PG_GUIDE0002",
+        "type": "PAGE", 
+        "depth1": "1뎁스명작성 - 1",
+        "depth2": "2뎁스명-1",
+        "depth3": "3뎁스명",
+        "depth4": "4뎁스명",
+        "name": "메뉴명/화면명2",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "10-15",
+        "change": "",
+        "complete": "",
+        "state": "del",
+        "etc": ["디자인확인"]
+    },
+    {
+        "path":"folder2",
+        "id": "PG_GUIDE0003",
+        "type": "Bottom", 
+        "depth1": "1뎁스명작성 - 2",
+        "depth2": "2뎁스명-2",
+        "depth3": "3뎁스명",
+        "depth4": "4뎁스명",
+        "name": "메뉴명/화면명3",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "10-15",
+        "change": "",
+        "complete": "",
+        "state": "hold",
+        "etc": ["이슈"]
+    },
+    {
+        "path":"folder2",
+        "id": "PG_GUIDE0004",
+        "type": "lPop", 
+        "depth1": "1뎁스명작성 - 2",
+        "depth2": "2뎁스명-2",
+        "depth3": "3뎁스명",
+        "depth4": "4뎁스명",
+        "name": "메뉴명/화면명4",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "10-15",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": ["지연"]
+    },
+    {
+        "path":"folder2",
+        "id": "PG_GUIDE0005",
+        "type": "PAGE", 
+        "depth1": "1뎁스명작성 - 2",
+        "depth2": "2뎁스명-2",
+        "depth3": "3뎁스명",
+        "depth4": "4뎁스명",
+        "name": "메뉴명/화면명4",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": ["접근성"]
+    },
+    {
+        "path":"folder2",
+        "id": "PG_GUIDE0006",
+        "type": "lPop", 
+        "depth1": "1뎁스명작성 - 3",
+        "depth2": "2뎁스명-3",
+        "depth3": "3뎁스명",
+        "depth4": "4뎁스명",
+        "name": "메뉴명/화면명4",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "",
+        "etc": ["기타"]
+    }
+]

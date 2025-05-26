@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover, user-scalable=no">
+    <title>버튼</title>
+    
+    <!-- [S] PUBLISH COMMON STYLE -->
+    <link rel="stylesheet" href="../../assets/css/cp.style.css">
+    <!-- [E] PUBLISH COMMON STYLE -->
+
+    <!-- [S] PAGES - STYLE -->
+    <link rel="stylesheet" href="">
+    <!-- [E] PAGES - STYLE -->
+
+    <!-- [S] LIBRARY - SCRIPT -->     
+    <script src="../../assets/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../assets/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <!-- [E] LIBRARY - SCRIPT -->
+
+    <!-- [S] @TEMP - GUIDE STYLE -->
+    <link rel="stylesheet" href="../assets/css/pb.guide.css">
+    <!-- [E] @TEMP - GUIDE STYLE -->
+</head>
+<body pb-component>
+    <div class="pbgWrap">
+        <div class="pbgContainer">
+            <div class="pbg-titWrap dep1">
+                <h1>BUTTON</h1>
+            </div>
+            <section class="pbg-content">
+                <div class="pbg-titWrap dep2">
+                    <h2>텍스트 버튼/링크</h2>
+                </div>
+
+                <article class="pbg-component">
+                    <div class="btnWrap">
+                        <a href="#" class="btn btn-size md txt" aria-role="button">기본링크</a>
+                        <a href="#" class="btn btn-size md txt uline" aria-role="button">라인링크</a>
+                        <a href="#" class="btn btn-size md ico arrow" aria-role="button">링크+화살표</a>
+                    </div>
+                </article>
+            </section>
+
+            <section class="pbg-content">
+                <div class="pbg-titWrap dep2">
+                    <h2>기본형</h2>
+                </div>
+
+                <article class="pbg-component">
+                    <div class="pbg-titWrap dep3">
+                        <h3>a.btn TYPE</h3>                        
+                    </div>
+                    <div class="btnWrap">
+                        <a href="javascript:void(0);" class="btn primary size-lg">primary</a>
+                        <a href="javascript:void(0);" class="btn secondary size-lg">secondary</a>
+                        <a href="javascript:void(0);" class="btn tertiary size-lg">tertiary</a>
+                        <a href="javascript:void(0);" test-btn="true" class="btn primary size-lg" btn-active="loading">primary</a>
+                        <a href="javascript:void(0);" test-btn="true" class="btn secondary size-lg" btn-active="loading">secondary</a>
+                        <a href="javascript:void(0);" test-btn="true" class="btn tertiary size-lg" btn-active="loading">tertiary</a>
+                    </div>
+                    <hr class="divider m" />
+                    <div class="pbg-titWrap dep3">
+                        <h3>button.btn TYPE</h3>
+                    </div>
+                    <div class="btnWrap">
+                        <button class="btn primary size-lg">primary</button>
+                        <button class="btn secondary size-lg">secondary</button>
+                        <button class="btn tertiary size-lg">tertiary</button>
+                        <button test-btn="true" class="btn primary size-lg" btn-active="loading">primary</button>
+                        <button test-btn="true" class="btn secondary size-lg" btn-active="loading">secondary</button>
+                        <button test-btn="true" class="btn tertiary size-lg" btn-active="loading">tertiary</button>
+                    </div>
+                    
+                </article>
+            </section>
+            
+            <section class="pbg-content">
+                <div class="pbg-titWrap dep2">
+                    <h2>사이즈</h2>
+                </div>
+
+                <article class="pbg-component">
+                    <div class="pbg-titWrap dep3">
+                        <h3>BUTTON:size-lg</h3>                        
+                    </div>
+                    <div class="btnWrap">
+                        <a href="javascript:void(0);" class="btn primary size-lg">primary</a>
+                        <a href="javascript:void(0);" class="btn secondary size-lg">secondary</a>
+                        <a href="javascript:void(0);" class="btn tertiary size-lg">tertiary</a>
+                        <button class="btn primary size-lg">primary</button>
+                        <button class="btn secondary size-lg">secondary</button>
+                        <button class="btn tertiary size-lg">tertiary</button>
+                    </div>
+                    <hr class="divider m" />
+                    <div class="pbg-titWrap dep3">
+                        <h3>BUTTON:size-md</h3>
+                    </div>
+                    <div class="btnWrap">
+                        <a href="javascript:void(0);" class="btn primary size-md">primary</a>
+                        <a href="javascript:void(0);" class="btn secondary size-md">secondary</a>
+                        <a href="javascript:void(0);" class="btn tertiary size-md">tertiary</a>
+                        <button class="btn primary size-md">primary</button>
+                        <button class="btn secondary size-md">secondary</button>
+                        <button class="btn tertiary size-md">tertiary</button>
+                    </div>
+                    <hr class="divider m" />
+                    <div class="pbg-titWrap dep3">
+                        <h3>BUTTON:size-sm</h3>
+                    </div>
+                    <div class="btnWrap">
+                        <a href="javascript:void(0);" class="btn primary size-sm">primary</a>
+                        <a href="javascript:void(0);" class="btn secondary size-sm">secondary</a>
+                        <a href="javascript:void(0);" class="btn tertiary size-sm">tertiary</a>
+                        <button class="btn primary size-sm">primary</button>
+                        <button class="btn secondary size-sm">secondary</button>
+                        <button class="btn tertiary size-sm">tertiary</button>
+                    </div>
+                    
+                </article>
+            </section>
+
+            <section class="pbg-content">
+                <div class="pbg-titWrap dep2">
+                    <h2>MIX</h2>
+                </div>
+
+                <article class="pbg-component">
+                    <div class="pbg-titWrap dep3">
+                        <h3>BTN split / grow</h3>                        
+                    </div>
+                    <div class="btnWrap grow">
+                        <a href="javascript:void(0);" class="btn primary size-lg">primary</a>
+                        <a href="javascript:void(0);" class="btn secondary size-lg">secondary</a>
+                        <a href="javascript:void(0);" class="btn tertiary size-lg">tertiary</a>
+                        <a href="javascript:void(0);" class="btn primary size-lg full">primary</a>
+                        
+                    </div>
+                    <hr class="divider m" />
+                    <div class="pbg-titWrap dep3">
+                        <h3>BTN full / 2분할</h3>
+                    </div>
+                    <div class="btnWrap grow full">
+                        <button class="btn primary size-lg">primary</button>
+                        <button class="btn secondary size-lg">secondary</button>
+                    </div>
+                    
+                </article>
+            </section>
+        </div>
+    </div>
+    
+</body>
+<script src="../../assets/js/ui.component.js"></script>
+<script>
+    // callback을 통한 버튼 상태 변경 예시
+    function changeBtnActiveState(newState) {
+        $('[test-btn="true"]').attr("btn-active", newState);
+        COMPONENT_UI.btnFn.btnStatus();
+    }
+
+    // 상태를 계속 변경하는 함수
+    function toggleBtnActiveState() {
+        const currentState = $('[test-btn="true"]').attr("btn-active");
+
+        // 현재 상태에 따라 다음 상태 결정
+        let nextState;
+        if (currentState === "true") {
+            nextState = "false"; // true일 때는 false로
+        } else if (currentState === "false") {
+            nextState = "loading"; // false일 때는 loading으로
+        } else {
+            nextState = "true"; // loading일 때는 true로
+        }
+
+        changeBtnActiveState(nextState);
+    }
+
+    // 5초마다 btn-active 상태를 변경
+    setInterval(toggleBtnActiveState, 3000);
+
+    // 초기 상태 설정 (optional)
+    changeBtnActiveState("false"); // 시작할 때 상태를 true로 설정
+
+
+</script>
+</html>

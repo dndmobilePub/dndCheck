@@ -1,0 +1,68 @@
+@charset "utf-8";
+@import '../../../assets/scss/mix.token';
+@import '../../../assets/scss/primitive';
+@import '../../../assets/scss/semantic';
+@import '../../../assets/scss/mixin';
+@import '../../../assets/scss/reset';
+@import 'font';
+@import 'pg.variables';
+
+body[pb-component] {
+    
+}
+.pbg {
+    &Wrap{padding:2rem 2rem 5rem;}
+    &Container {}
+    &-content {
+        margin-top:1.5rem;
+        & + .pbg-content {            
+            @include el-content(before) {
+                margin:5rem 0;
+                width:100%;
+                height:.5rem;
+                background:$color-border-divider;
+                border-radius:.5rem;
+            }
+        }
+    }
+    &-tit {
+        &Wrap {
+            margin-bottom:1.5rem;
+            & > h1 {
+                @extend %heading-xl;
+                color:$color-text-primary;
+            }
+            & > h2 {
+                @extend %heading-md;
+                color:$color-text-secondary;
+                padding:.5rem 1rem;
+            }
+            & > h3 {
+                @extend %heading-sm;
+                color:$color-text-tertiary;
+                display:inline-block; padding:0 .5rem;
+                @include pos-offset(relative);
+                @include el-content(after) {
+                    @include pos-offset($bottom:0, $left:0, $z-index:-1);
+                    background: linear-gradient(to top, #ffff99 40%, transparent 40%);
+                    width:100%; height:2.5rem;
+                }
+            }
+            &.dep1 {}
+            &.dep2 {background:#a9b5ca;}
+            &.dep3 {}
+        }
+    }
+    &-component {
+        & + .pbg-component {            
+            @include el-content(before) {
+                margin:1.5rem 0;
+                width:100%; border-top:1px dashed #a9b5ca;
+            }
+        }
+    }
+    &-divider {
+        width:100%; height:.1rem; padding:0; margin:1.5rem 0;
+        &.primary {background:$color-border-primary;}
+    }
+}

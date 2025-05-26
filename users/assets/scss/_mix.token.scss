@@ -1,0 +1,36 @@
+/// 범용 디자인 토큰 적용 믹스인
+/// @param {Map} $map - 전체 스타일 맵
+/// @param {String | List} $keys - 단일 키 or 키 경로 리스트
+@mixin dndCP($map, $keys) {
+    $target: $map;
+
+    // 경로 리스트 형태인 경우: 예) ('heading', '2xl')
+    @if type-of($keys)=='list' {
+        @each $key in $keys {
+            @if map-has-key($target, $key) {
+                $target: map-get($target, $key);
+            } @else {
+                @warn 'dndCP: 경로 #{inspect($keys)}에서 "#{$key}" 키를 찾을 수 없습니다.';
+                // @return;
+            }
+        }
+    } @else if type-of($keys)=='string' or type-of($keys)=='number' {
+        // 단일 키인 경우
+        @if map-has-key($target, $keys) {
+            $target: map-get($target, $keys);
+        } @else {
+            @warn 'dndCP: "#{$keys}" 키를 찾을 수 없습니다.';
+        }
+    } @else {
+        @warn 'dndCP: $keys 인자가 유효한 키 또는 리스트가 아닙니다.';
+    }
+
+    // 최종 스타일 적용
+    @if type-of($target)=='map' {
+        @each $prop, $value in $target {
+            #{$prop}: #{$value};
+        }
+    } @else {
+        @warn 'dndCP: 선택된 값은 map이 아닙니다.';
+    }
+}

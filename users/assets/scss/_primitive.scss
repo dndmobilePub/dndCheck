@@ -1,0 +1,103 @@
+/**************************/
+/*** Primitive Variables ***/
+/**************************/
+/* Color */
+$color-base-white:#fff;
+$color-base-black:#000;
+
+$color-blue-50:#E8F5FF;
+$color-blue-100:#C6E2FF;
+$color-blue-200: #96C3FF;
+$color-blue-300: #5694E8;
+$color-blue-400: #347EFF;
+$color-blue-500: #2666F5;
+$color-blue-600: #0D47A1;
+$color-blue-700: #1F2B47;
+$color-blue-800: #121927;
+
+$color-sky-100:#25DEFF;
+
+$color-neutral-50: #F5F7FA;
+$color-neutral-100: #F2F5F7;
+$color-neutral-200: #ECEFF4;
+$color-neutral-300: #E0E3E8;
+$color-neutral-400: #C0C6CC;
+$color-neutral-500: #A9B0B8;
+$color-neutral-600: #8C959F;
+$color-neutral-700: #6E7780;
+$color-neutral-800: #515961;
+$color-neutral-900: #212529;
+
+$color-green-50: #E4F5EF;
+$color-green-300: #4FF8B1;
+$color-green-500: #2D9D78;
+$color-green-600: #268E6C;
+
+$color-red-50: #FDEDED;
+$color-red-500: #E34850;
+$color-red-600: #C9252D;
+
+$color-transparent-20: #c0c6cc33;
+$color-transparent-60: #00000099;
+
+$color-brand-primary-400:$color-blue-400;
+$color-brand-primary-500:$color-blue-500;
+$color-brand-primary-600:$color-blue-600;
+
+$color-brand-secondary-200:$color-neutral-200;
+$color-brand-secondary-300:$color-neutral-300;
+$color-brand-secondary-400:$color-neutral-400;
+//--color
+
+/* typography */
+$typo-family:"'Pretendard', 'sans-serif'";
+
+$typo-weight-regular:400;
+$typo-weight-medium:500;
+$typo-weight-bold:600;
+
+$typo-size-12:1.2rem;
+$typo-size-13:1.3rem;
+$typo-size-14:1.4rem;
+$typo-size-15:1.5rem;
+$typo-size-16:1.6rem;
+$typo-size-18:1.8rem;
+$typo-size-20:2rem;
+$typo-size-24:2.4rem;
+$typo-size-28:2.8rem;
+$typo-size-32:3.2rem;
+$typo-size-40:4rem;
+
+$typo-lheight-16:1.6rem;
+$typo-lheight-18:1.8rem;
+$typo-lheight-20:2rem;
+$typo-lheight-22:2.2rem;
+$typo-lheight-24:2.4rem;
+$typo-lheight-26:2.6rem;
+$typo-lheight-28:2.8rem;
+$typo-lheight-32:3.2rem;
+$typo-lheight-36:3.6rem;
+$typo-lheight-38:3.8rem;
+$typo-lheight-40:4rem;
+$typo-lheight-48:4.8rem;
+
+$letter-spacing-0:0;
+$letter-spacing-tight :-.02rem;
+//-typography
+/* box */
+$radius-0:0;
+$radius-2:.2rem;
+$radius-4:.4rem;
+$radius-5:.5rem;
+$radius-6:.6rem;
+$radius-8:.8rem;
+$radius-10:1rem;
+$radius-16:1.6rem;
+$radius-full:100%;
+
+$shadow-sm:0 .1rem .2rem rgba(0, 0, 0, 0.05);
+$shadow-md:0 .4rem .6rem rgba(0, 0, 0, 0.1);
+$shadow-lg:0 1rem 1.5rem rgba(0, 0, 0, 0.15);
+//-box 
+
+

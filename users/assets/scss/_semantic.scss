@@ -1,0 +1,155 @@
+/**************************/
+/*** Semantic Variables ***/
+/**************************/
+/* Color */
+$color-text-primary:$color-neutral-900;
+$color-text-interactive-primary:$color-base-white;
+$color-text-secondary:$color-neutral-800;
+$color-text-interactive-secondary:$color-neutral-800;
+$color-text-tertiary:$color-neutral-700;
+$color-text-interactive-tertiary:$color-neutral-700;
+$color-text-placeholder:$color-neutral-500;
+$color-text-info:$color-brand-primary-400;
+$color-text-point-blue:$color-sky-100;
+$color-text-point-green:$color-green-300;
+$color-text-success:$color-green-600;
+$color-text-warning:$color-red-600;
+$color-text-disabled:$color-neutral-500;
+$color-text-readonly:$color-neutral-900;
+$color-text-inverse:$color-base-white;
+
+$color-bg-primary:$color-base-white;
+$color-bg-secondary:$color-neutral-50;
+$color-bg-tertiary:$color-neutral-100;
+$color-bg-info:$color-blue-50;
+$color-bg-success:$color-green-50;
+$color-bg-warning:$color-red-50;
+$color-bg-disabled:$color-neutral-200;
+$color-bg-readonly:$color-neutral-300;
+
+$color-bg-interactive-primary:$color-brand-primary-400;
+$color-bg-interactive-primary-hover:$color-brand-primary-500;
+$color-bg-interactive-primary-pressed:$color-brand-primary-600;
+$color-bg-interactive-secondary:$color-brand-secondary-200;
+$color-bg-interactive-secondary-hover:$color-brand-secondary-300;
+$color-bg-interactive-secondary-pressed:$color-brand-secondary-400;
+
+$color-bg-interactive-tertiary:$color-base-white;
+$color-bg-interactive-tertiary-hover:$color-neutral-300;
+$color-bg-interactive-tertiary-pressed:$color-neutral-500;
+
+$color-border-none:none;
+$color-border-primary:$color-neutral-700;
+$color-border-secondary:$color-neutral-400;
+$color-border-tertiary:$color-neutral-300;
+$color-border-divider:$color-neutral-200;
+$color-border-focusring:$color-brand-primary-400;
+$color-border-warning:$color-red-600;
+
+$color-effect-shadow:$color-transparent-20;
+
+$heading:(
+    2xl:(
+        font-family:$typo-family,
+        font-weight:$typo-weight-bold,
+        font-size:$typo-size-40,
+        line-height:$typo-lheight-48,
+        letter-spacing:$letter-spacing-tight,
+    ),
+    xl:(
+        font-family:$typo-family,
+        font-weight:$typo-weight-bold,
+        font-size:$typo-size-32,
+        line-height:$typo-lheight-40,
+        letter-spacing:$letter-spacing-tight,
+    ),
+    lg:(
+        font-family:$typo-family,
+        font-weight:$typo-weight-bold,
+        font-size:$typo-size-28,
+        line-height:$typo-lheight-36,
+        letter-spacing:$letter-spacing-tight,
+    ),
+    md:(
+        font-family:$typo-family,
+        font-weight:$typo-weight-bold,
+        font-size:$typo-size-24,
+        line-height:$typo-lheight-32,
+        letter-spacing:$letter-spacing-tight,
+    ),
+    sm:(
+        font-family:$typo-family,
+        font-weight:$typo-weight-bold,
+        font-size:$typo-size-20,
+        line-height:$typo-lheight-28,
+        letter-spacing:$letter-spacing-tight,
+    ),
+);
+
+$body:(
+    lg:(
+        font-family:$typo-family,
+        font-size:$typo-size-18,
+        line-height:$typo-lheight-24,
+        letter-spacing:$letter-spacing-tight,
+    ),
+    md:(
+        font-family:$typo-family,
+        font-size:$typo-size-16,
+        line-height:$typo-lheight-24,
+        letter-spacing:$letter-spacing-tight,
+    ),
+    sm:(
+        font-family:$typo-family,
+        font-size:$typo-size-14,
+        line-height:$typo-lheight-20,
+        letter-spacing:$letter-spacing-tight,
+    ),
+    xs:(
+        font-family:$typo-family,
+        font-size:$typo-size-13,
+        line-height:$typo-lheight-18,
+        letter-spacing:$letter-spacing-tight,
+    ),
+);
+$fontWeight:(
+    regular:(font-weight:$typo-weight-regular),
+    medium:(font-weight:$typo-weight-medium),
+    bold:(font-weight:$typo-weight-bold),
+);
+
+/* Typography */
+%heading-2xl {@include dndCP($heading, 2xl);}
+%heading-xl {@include dndCP($heading, xl);}
+%heading-lg {@include dndCP($heading, lg);}
+%heading-md {@include dndCP($heading, md);}
+%heading-sm {@include dndCP($heading, sm);}
+
+%body-lg {@include dndCP($body, lg);}
+%body-md {@include dndCP($body, md);}
+%body-sm {@include dndCP($body, sm);}
+%body-xs {@include dndCP($body, xs);}
+
+%weight-regular {@include dndCP($fontWeight, regular);}
+%weight-medium {@include dndCP($fontWeight, medium);}
+%weight-bold {@include dndCP($fontWeight, bold);}
+
+/* Radius */
+$radius: (
+    0:(border-radius:$radius-0),
+    2:(border-radius:$radius-2),
+    5:(border-radius:$radius-5),
+    6:(border-radius:$radius-6),
+    8:(border-radius:$radius-8),
+    10:(border-radius:$radius-10),
+    16:(border-radius:$radius-16),
+    full:(border-radius:$radius-full),
+);
+%radius-0 {@include dndCP($radius, 0);}
+%radius-5 {@include dndCP($radius, 5);}
+%radius-8 {@include dndCP($radius, 8);}
+%radius-16 {@include dndCP($radius, 16);}
+%radius-full {@include dndCP($radius, full);}
+
+%disabled {opacity:.6;}
+

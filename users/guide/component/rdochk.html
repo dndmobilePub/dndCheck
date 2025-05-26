@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover, user-scalable=no">
+    <title>폼요소 : Radio / Checkbox</title>
+    
+    <!-- [S] PUBLISH COMMON STYLE -->
+    <link rel="stylesheet" href="../../assets/css/cp.style.css">
+    <!-- [E] PUBLISH COMMON STYLE -->
+
+    <!-- [S] PAGES - STYLE -->
+    <link rel="stylesheet" href="">
+    <!-- [E] PAGES - STYLE -->
+
+    <!-- [S] LIBRARY - SCRIPT -->     
+    <script src="../../assets/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../assets/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <!-- [E] LIBRARY - SCRIPT -->
+
+    <!-- [S] @TEMP - GUIDE STYLE -->
+    <link rel="stylesheet" href="../assets/css/pb.guide.css">
+    <!-- [E] @TEMP - GUIDE STYLE -->
+</head>
+<body pb-component>
+    <div class="pbgWrap">
+        <div class="pbgContainer">
+            <div class="pbg-titWrap dep1">
+                <h1>라디오/체크박스</h1>
+            </div>
+            <section class="pbg-content">
+                <div class="pbg-titWrap dep2">
+                    <h2>Checkbox</h2>
+                </div>
+
+                <article class="pbg-component">
+                    <div class="pbg-titWrap dep3">
+                        <h3>single</h3>
+                    </div>
+
+                    <div class="field">        
+                        <label for="chk-1" class="field-chkrdo">
+                            <input type="checkbox" name="single" id="chk-1" class="chk" title="체크-기본">
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                        </label>
+                        <label for="chk-2" class="field-chkrdo">
+                            <input type="checkbox" name="single" id="chk-2" class="chk" title="체크-checked" checked="checked">
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                        </label>
+                        <label for="chk-3" class="field-chkrdo">
+                            <input type="checkbox" name="single" id="chk-3" class="chk" title="체크-disabled" disabled="disabled">
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                        </label>
+                        <label for="chk-4" class="field-chkrdo">
+                            <input type="checkbox" name="single" id="chk-4" class="chk"  title="체크-checked+disabled" checked="checked" disabled="disabled">
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                        </label>
+                        <label for="chk-5" class="field-chkrdo">
+                            <input type="checkbox" name="single" id="chk-5" class="chk" title="체크-readonly" checked="checked" readonly>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                        </label>
+                    </div>
+                </article>
+
+                <article class="pbg-component">
+                    <div class="pbg-titWrap dep3">
+                        <h3>checkbox + label</h3>
+                    </div>
+
+                    <div class="field">        
+                        <label for="chk1-1" class="field-chkrdo">
+                            <input type="checkbox" name="chkGroup" id="chk1-1" class="chk">
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">체크-기본</span>
+                        </label>
+                        <label for="chk1-2" class="field-chkrdo">
+                            <input type="checkbox" name="chkGroup" id="chk1-2" class="chk" checked>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">체크-checked</span>
+                        </label>
+                        <label for="chk1-3" class="field-chkrdo">
+                            <input type="checkbox" name="chkGroup" id="chk1-3" class="chk" disabled>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">체크-disabled</span>
+                        </label>
+                        <label for="chk1-4" class="field-chkrdo">
+                            <input type="checkbox" name="chkGroup" id="chk1-4" class="chk"checked disabled>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">체크-checked+disabled</span>
+                        </label>
+                        <label for="chk1-5" class="field-chkrdo">
+                            <input type="checkbox" name="chkGroup" id="chk1-5" class="chk" readonly>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">체크-readonly</span>
+                        </label>
+                    </div>
+                </article>
+
+                <article class="pbg-component">
+                    <div class="pbg-titWrap dep3">
+                        <h3>Switch</h3>
+                    </div>
+
+                    <div class="field">        
+                        <label for="chk-s1" class="field-switch">
+                            <input type="checkbox" name="switch" id="chk-s1" class="chk" title="Switch-기본">
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                        </label>
+                        <label for="chk-s2" class="field-switch">
+                            <input type="checkbox" name="switch" id="chk-s2" class="chk" title="Switch-checked" checked>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                        </label>
+                        <label for="chk-s3" class="field-switch">
+                            <input type="checkbox" name="switch" id="chk-s3" class="chk" title="Switch-disabled" disabled>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                        </label>
+                        <label for="chk-s4" class="field-switch">
+                            <input type="checkbox" name="switch" id="chk-s4" class="chk"  title="Switch-checked+disabled" checked disabled>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                        </label>
+                        <label for="chk-s5" class="field-switch">
+                            <input type="checkbox" name="switch" id="chk-s5" class="chk" title="Switch-readonly" readonly>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                        </label>
+                    </div>
+                </article>
+
+                <article class="pbg-component">
+                    <div class="pbg-titWrap dep3">
+                        <h3>BOX</h3>
+                    </div>
+
+                    <div class="field box-opt gap">        
+                        <label for="chk-b1" class="field-chkrdo">
+                            <input type="checkbox" name="box" id="chk-b1" class="chk">
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">box<br>기본</span>
+                        </label>
+                        <label for="chk-b2" class="field-chkrdo">
+                            <input type="checkbox" name="box" id="chk-b2" class="chk" checked>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">box<br>checked</span>
+                        </label>
+                        <label for="chk-b3" class="field-chkrdo">
+                            <input type="checkbox" name="box" id="chk-b3" class="chk" title="box-disabled" disabled>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">box<br>checked</span>
+                        </label>
+                        <label for="chk-b4" class="field-chkrdo">
+                            <input type="checkbox" name="box" id="chk-b4" class="chk" checked disabled>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">box<br>checked<br>+disabled</span>
+                        </label>
+                        <label for="chk-b5" class="field-chkrdo">
+                            <input type="checkbox" name="box" id="chk-b5" class="chk" readonly>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">box<br>readonly</span>
+                        </label>
+                    </div>
+
+                    <hr class="divider m" />
+
+                    <div class="field box-opt ico nogap">        
+                        <label for="chkIco-b1" class="field-chkrdo">
+                            <input type="checkbox" name="rdoIco" id="chkIco-b1" class="chk">
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">box<br>기본</span>
+                        </label>
+                        <label for="chkIco-b2" class="field-chkrdo">
+                            <input type="checkbox" name="rdoIco" id="chkIco-b2" class="chk" checked>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">box<br>checked</span>
+                        </label>
+                        <label for="chkIco-b3" class="field-chkrdo">
+                            <input type="checkbox" name="rdoIco-3" id="chkIco-b3" class="chk" disabled>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">box<br>checked</span>
+                        </label>
+                        <label for="chkIco-b4" class="field-chkrdo">
+                            <input type="checkbox" name="rdoIco-4" id="chkIco-b4" class="chk" checked disabled>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">box<br>checked<br>+disabled</span>
+                        </label>
+                        <label for="chkIco-b5" class="field-chkrdo">
+                            <input type="checkbox" name="rdoIco-5" id="chkIco-b5" class="chk" readonly>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">box<br>readonly</span>
+                        </label>
+                    </div>
+                </article>
+                
+            </section>
+
+            <section class="pbg-content">
+                <div class="pbg-titWrap dep2">
+                    <h2>Radio</h2>
+                </div>
+
+                <article class="pbg-component">
+                    <div class="pbg-titWrap dep3">
+                        <h3>single</h3>
+                    </div>
+
+                    <div class="field">
+                        <label for="rdo-1" class="field-chkrdo">
+                            <input type="radio" name="single-rdo" id="rdo-1" class="rdo" title="체크-기본">
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                        </label>
+                        <label for="rdo-2" class="field-chkrdo">
+                            <input type="radio" name="single-rdo" id="rdo-2" class="rdo" title="체크-checked" checked="checked">
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                        </label>
+                        <label for="rdo-3" class="field-chkrdo">
+                            <input type="radio" name="single-3" id="rdo-3" class="rdo" title="체크-disabled" disabled="disabled">
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                        </label>
+                        <label for="rdo-4" class="field-chkrdo">
+                            <input type="radio" name="single-4" id="rdo-4" class="rdo"  title="체크-checked+disabled" checked="checked" disabled="disabled">
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                        </label>
+                        <label for="rdo-5" class="field-chkrdo">
+                            <input type="radio" name="single-r5" id="rdo-5" class="rdo" title="체크-readonly" checked="checked" readonly>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                        </label>
+                    </div>
+                </article>
+
+                <article class="pbg-component">
+                    <div class="pbg-titWrap dep3">
+                        <h3>radio + label</h3>
+                    </div>
+
+                    <div class="field">
+                        <label for="rdo2-1" class="field-chkrdo">
+                            <input type="radio" name="rdoLabel-0" id="rdo2-1" class="rdo">
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">체크-기본</span>
+                        </label>
+                        <label for="rdo2-2" class="field-chkrdo">
+                            <input type="radio" name="rdoLabel-0" id="rdo2-2" class="rdo" checked="checked">
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">체크-checked</span>
+                        </label>
+                        <label for="rdo2-3" class="field-chkrdo">
+                            <input type="radio" name="rdoLabel-1" id="rdo2-3" class="rdo" disabled="disabled">
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">체크-disabled</span>
+                        </label>
+                        <label for="rdo2-4" class="field-chkrdo">
+                            <input type="radio" name="rdoLabel-2" id="rdo2-4" class="rdo" checked="checked" disabled="disabled">
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">체크-checked+disabled</span>
+                        </label>
+                        <label for="" class="field-chkrdo">
+                            <input type="radio" name="rdoLabel-3" id="" class="rdo" checked="checked" readonly>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">체크-readonly</span>
+                        </label>
+                    </div>
+                </article>
+
+                <article class="pbg-component">
+                    <div class="pbg-titWrap dep3">
+                        <h3>BOX</h3>
+                    </div>
+
+                    <div class="field box-opt gap">        
+                        <label for="rdo-b1" class="field-chkrdo">
+                            <input type="radio" name="boxRdo" id="rdo-b1" class="rdo">
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">box<br>기본</span>
+                        </label>
+                        <label for="rdo-b2" class="field-chkrdo">
+                            <input type="radio" name="boxRdo" id="rdo-b2" class="rdo" checked>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">box<br>checked</span>
+                        </label>
+                        <label for="rdo-b3" class="field-chkrdo">
+                            <input type="radio" name="boxRdo-3" id="rdo-b3" class="rdo" title="box-disabled" disabled>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">box<br>checked</span>
+                        </label>
+                        <label for="rdo-b4" class="field-chkrdo">
+                            <input type="radio" name="boxRdo-4" id="rdo-b4" class="rdo" checked disabled>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">box<br>checked<br>+disabled</span>
+                        </label>
+                        <label for="rdo-b5" class="field-chkrdo">
+                            <input type="radio" name="boxRdo-5" id="rdo-b5" class="rdo" readonly>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">box<br>readonly</span>
+                        </label>
+                    </div>
+
+                    <hr class="divider m" />
+
+                    <div class="field box-opt ico nogap">        
+                        <label for="rdoIco-b1" class="field-chkrdo">
+                            <input type="radio" name="rdoIco" id="rdoIco-b1" class="rdo">
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">box<br>기본</span>
+                        </label>
+                        <label for="rdoIco-b2" class="field-chkrdo">
+                            <input type="radio" name="rdoIco" id="rdoIco-b2" class="rdo" checked>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">box<br>checked</span>
+                        </label>
+                        <label for="rdoIco-b3" class="field-chkrdo">
+                            <input type="radio" name="rdoIco-3" id="rdoIco-b3" class="rdo" title="box-disabled" disabled>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">box<br>checked</span>
+                        </label>
+                        <label for="rdoIco-b4" class="field-chkrdo">
+                            <input type="radio" name="rdoIco-4" id="rdoIco-b4" class="rdo" checked disabled>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">box<br>checked<br>+disabled</span>
+                        </label>
+                        <label for="rdoIco-b5" class="field-chkrdo">
+                            <input type="radio" name="rdoIco-5" id="rdoIco-b5" class="rdo" readonly>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">box<br>readonly</span>
+                        </label>
+                    </div>
+                </article>
+
+            </section>            
+        </div>
+    </div>
+    
+</body>
+<script src="../../assets/js/ui.component.js"></script>
+</html>

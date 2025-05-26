@@ -1,0 +1,276 @@
+
+$field:'.field';
+$fieldIcon:'#{$field}-icon';
+$fieldLabel:'#{$field}-label';
+//--** checkbox, radio
+#{$field} {
+
+    &._readonly, ._readonly, ._readonly #{$fieldIcon} {cursor:default;}
+    &._disabled, ._disabled, ._disabled #{$fieldIcon} {cursor:default;}
+    ._disabled #{$fieldLabel} {opacity: .5;}
+    [class*='field'] {
+        .chk, .rdo {
+            @include pos-offset;
+            opacity: 0; width: 0; height: 0;
+        }
+    }
+
+    // 체크&라디오
+    &-chkrdo {
+        @include dflex(inline-flex, $al-items: center);
+        position:relative;
+        cursor: pointer;
+
+        & + .field-chkrdo {margin-left:2rem;}
+
+        // 체크
+        .chk {
+            &:checked {
+                & + #{$fieldIcon} {
+                    background-color:$color-bg-interactive-primary;
+                    border-color:$color-bg-interactive-primary;
+                    @include el-content(before) {
+                        @include pos-offset($top:45%, $left:50%){
+                            transform:translate(-50%, -50%) rotate(45deg);
+                        }
+                        width: 0.5rem; height: 1rem;
+                        border: solid $color-base-white;
+                        border-width: 0 2px 2px 0;
+                    }
+                }
+                &:disabled + #{$fieldIcon} {
+                    background-color: $color-bg-disabled;
+                    border-color: $color-bg-disabled;                        
+                    @include el-content(before) {
+                        border-color:$color-base-white;
+                    }
+                }
+            }
+            &.readonly {
+                border-color: $color-bg-readonly;
+                pointer-events: none;
+            }
+            &:disabled:not(:checked) {
+                & + #{$fieldIcon} {
+                    border-color: $color-bg-disabled;
+                    @include el-content(before, none);
+                }
+            }
+            & ~ #{$fieldIcon} {
+                width: 2.4rem; height: 2.4rem;
+                background-color: $color-base-white;
+                border: 0.2rem solid $color-border-secondary;
+                @extend %radius-5;
+            }
+        }
+
+        // 라디오
+        .rdo {
+            &:checked {
+                & + #{$fieldIcon} {
+                    border-color:$color-bg-interactive-primary;
+                    @include el-content(before) {
+                        transform:translate(calc(50% + .05rem), calc(50% + .05rem));
+                        width:.8rem;
+                        height:.8rem;
+                        background-color:$color-bg-interactive-primary;
+                        @extend %radius-full;
+                    }
+                }
+                &:disabled + #{$fieldIcon} {
+                    background-color: $color-base-white;
+                    border-color: $color-bg-disabled;                        
+                    @include el-content(before) {
+                        background-color:$color-bg-disabled;
+                    }
+                }
+            }
+            &:disabled:not(:checked) {
+                & + #{$fieldIcon} {
+                    border-color: $color-bg-disabled;
+                    @include el-content(before, none);
+                }
+            }
+            &.readonly {
+                border-color: $color-bg-readonly;
+                pointer-events: none;
+            }
+
+            & ~ #{$fieldIcon} {
+                width: 2rem;
+                height: 2rem;
+                background-color: $color-base-white;
+                border: 0.2rem solid $color-border-secondary;
+                @extend %radius-full;
+            }
+        }
+
+        // 공통 아이콘
+        .field {
+            &-icon:not(.field-switch) {
+                position: relative;                
+                transition: background-color 0.3s, border-color 0.3s;
+            }
+            &-label {
+                display: inline-block;
+                margin-left:1rem;
+                @extend %body-md;
+                color:$color-text-primary;
+            }
+        }
+    }
+
+    // 스위치        
+    &-switch {
+        $switch-w:5rem; $switch-h:2rem;
+        
+        & ~ .field-switch {margin-left:1rem;}
+        @include pos-offset(relative); display:inline-block;
+        width:$switch-w; height:calc($switch-h + .4rem);
+        
+        .chk {
+            &:checked {
+            & ~  #{$fieldIcon} {
+                background:$color-bg-interactive-primary !important;
+                border-color:$color-bg-interactive-primary;
+                @include el-content(before) {
+                    background-color:$color-base-white; 
+                    @include pos-offset($top:50%, $left:calc(100% - 1.4rem)); transform: translate(0, -50%);
+                }
+                @include el-content(after) {
+                    content:'ON';
+                    color:$color-base-white;
+                    left:.6rem;
+                }
+            }
+            &:disabled ~  #{$fieldIcon},
+            &.disabled ~  #{$fieldIcon} {opacity:.8;}
+        }
+        &.readonly ~  #{$fieldIcon}, .readonly ~  #{$fieldIcon} {opacity:.8;}
+        }
+        
+        #{$fieldIcon} {
+            display:inline-block;
+            @include pos-offset($right:0, $bottom:0);
+            width:$switch-w; height:$switch-h; cursor: pointer;
+            background-color:$color-bg-readonly;
+            border-radius:$switch-h;
+            transition: .4s;
+
+            @include el-content(before) {
+                @include pos-offset($top:50%, $left:.4rem); transform: translate(0, -50%);
+                width:1rem; height:1rem;
+                background-color:$color-base-white;
+                @extend %radius-full;
+                transition: .4s;
+            }
+            @include el-content(after) {
+                content:'OFF';
+                color:$color-text-secondary; font-size:$typo-size-12;
+                @include pos-offset($top:45%, $right:.6rem); transform: translate(0, -50%);
+                transition: 1s;
+            }
+        }
+    }
+
+    // 박스형
+    &.box-opt {
+        @include dflex;
+        #{$fieldIcon} {display:none;}
+        &.gap {
+            border:none;
+            #{$field} {
+                &-chkrdo {
+                    #{$fieldLabel} {
+                        @extend %radius-8;
+                        border:.2rem solid $color-border-secondary;
+                    }
+                }
+            }
+        }
+        &.nogap {
+            #{$field} {
+                &-chkrdo {
+                    &:first-child {   
+                        #{$fieldLabel} {
+                            border-top-left-radius: $radius-8;
+                            border-bottom-left-radius: $radius-8;
+                        }
+                    }
+                    &:last-child {
+                        #{$fieldLabel} {
+                            border-top-right-radius: $radius-8;
+                            border-bottom-right-radius: $radius-8;
+                        }
+                    }
+                    & ~ #{$field}-chkrdo {
+                        margin-left:0;
+                        #{$fieldLabel} {margin-left: -.1rem;}
+                    }
+                    
+                }
+            }
+        }
+        &.ico {
+            .rdo, .chk {
+                &:checked {
+                    & + #{$fieldIcon} {
+                        background-color:$color-base-white;
+                        border-color:$color-base-white;
+                        @include el-content(before) {
+                            background:transparent;
+                            border-color:$color-bg-interactive-primary;
+                        }
+                    }
+                }
+            }
+            #{$fieldIcon} {
+                display:block;
+                @include pos-offset($top:1.5rem,$left:50%, $z-index:2);
+                transform:translateX(-50%);
+                width:2.4rem; height:2.4rem;
+                border-color:$color-border-secondary;
+                @extend %radius-full;
+                @include el-content(before) {
+                    @include pos-offset($top:45%, $left:50%){
+                        transform:translate(-50%, -50%) rotate(45deg);
+                    }
+                    width: 0.3rem; height:.8rem;
+                    border: solid $color-border-secondary;
+                    border-width: 0 2px 2px 0;
+                    @extend %radius-0;
+                }
+            }
+            #{$fieldLabel} {
+                padding-top:4rem !important;
+            }
+        }
+
+        #{$field} {
+            &-chkrdo {
+                @include dflex;
+                width:100%;
+                
+                #{$fieldLabel} {
+                    @include dflex($direction:column, $j-content:center);
+                    width:100%; height:100%;
+                    padding:1rem;                    
+                    text-align: center;
+                    border: 1px #ddd solid;
+                    
+                }
+
+                .chk, .rdo {
+                    &:checked {
+                        & ~ #{$fieldLabel} {
+                            color:$color-base-white;
+                            background-color:$color-bg-interactive-primary;
+                            border-color:$color-border-focusring;
+                            z-index:1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

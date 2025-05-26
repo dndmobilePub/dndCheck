@@ -1,0 +1,12 @@
+@import 'mix.token';
+@import 'primitive';
+@import 'semantic';
+@import 'mixin';
+@import 'reset';
+@import 'cp.loading'; // 로딩, scrollTop
+@import 'cp.button'; // 버튼
+@import 'cp.rdochk'; // 라디오+체크
+
+.tit {
+    @extend %heading-2xl;
+}
