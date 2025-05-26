@@ -15,6 +15,7 @@ body, th, td, input, select, textarea, button, input[type=checkbox]:checked {
   font-size: 1.6rem;
   line-height: 2.4rem;
   letter-spacing: -0.02rem;
+  font-weight: 400;
 }
 
 /* Radius */
@@ -644,8 +645,6 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   left: 0;
   width: 2.5rem;
   height: 4rem;
-  border: 0.1rem solid #fff;
-  border-radius: 0.4rem;
   background: none;
   overflow: hidden;
 }
@@ -3086,8 +3085,6 @@ html[light-mode=dark] .frame_device .device .btn_size_set button {
     content: "";
     display: block;
     background: #999;
-    border: 0;
-    border-radius: 4.4rem;
   }
   #pgHeader .switch > .bar, #pgHeader .switch > ul > li > a {
     height: 3.6rem;

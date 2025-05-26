@@ -18,25 +18,36 @@
   letter-spacing: -0.02rem;
 }
 
-.btn.size-lg {
+.btn.size-md, .btn.size-lg {
   font-family: 'Pretendard', 'sans-serif';
   font-size: 1.8rem;
   line-height: 2.4rem;
   letter-spacing: -0.02rem;
+  font-weight: 600;
 }
 
-._input input._password::placeholder, ._input input._password, .field-chkrdo .field-label, .btn.size-md, .loadingWrap .txt, body, th, td, input, select, textarea, button, input[type=checkbox]:checked {
+.field.box-opt.gap .chk:checked ~ .field-label, .field.box-opt.gap .rdo:checked ~ .field-label, .field.box-opt.gap .field-chkrdo._readonly .chk:checked ~ .field-label, .field.box-opt.gap .field-chkrdo._readonly .rdo:checked ~ .field-label {
   font-family: 'Pretendard', 'sans-serif';
   font-size: 1.6rem;
   line-height: 2.4rem;
   letter-spacing: -0.02rem;
+  font-weight: 600;
 }
 
-.btn.size-sm {
+._input input._password::placeholder, ._input input._password, .loadingWrap .txt {
   font-family: 'Pretendard', 'sans-serif';
-  font-size: 1.4rem;
-  line-height: 2rem;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
   letter-spacing: -0.02rem;
+  font-weight: 500;
+}
+
+.field.box-opt.gap .field-chkrdo .field-label, .field-chkrdo .field-label, .btn.size-xs, .btn.size-sm, body, th, td, input, select, textarea, button, input[type=checkbox]:checked {
+  font-family: 'Pretendard', 'sans-serif';
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  letter-spacing: -0.02rem;
+  font-weight: 400;
 }
 
 .field-msg {
@@ -44,14 +55,7 @@
   font-size: 1.3rem;
   line-height: 1.8rem;
   letter-spacing: -0.02rem;
-}
-
-.field-msg {
   font-weight: 400;
-}
-
-._input input._password::placeholder, ._input input._password, .btn.size-sm, .btn.size-md, .btn.size-lg {
-  font-weight: 500;
 }
 
 /* Radius */
@@ -59,24 +63,41 @@
   border-radius: 0;
 }
 
-.field-chkrdo .chk ~ .field-icon, .btn.size-md {
+.field-chkrdo .chk ~ .field-icon {
   border-radius: 0.5rem;
 }
 
-.field.box-opt.gap .field-chkrdo .field-label, .btn.size-lg {
+.field.box-opt.gap .field-chkrdo .field-label, .btn.size-sm {
   border-radius: 0.8rem;
 }
 
-.btn.size-sm {
-  border-radius: 1.6rem;
+.btn.size-md, .btn.size-lg {
+  border-radius: 1rem;
+}
+
+.btn.size-xs {
+  border-radius: 99.9rem;
 }
 
 ._input ._secureTxt > i, .field.box-opt.ico .field-icon, .field-switch .field-icon::before, .field-chkrdo .rdo ~ .field-icon, .field-chkrdo .rdo:checked + .field-icon::before {
   border-radius: 100%;
 }
 
-.btn.disabled {
-  opacity: 0.6;
+.btn.primary.disabled {
+  background-color: #E8F5FF;
+  color: #347EFF;
+  opacity: 0.5;
+}
+
+.btn.secondary.disabled {
+  background-color: #ECEFF4;
+  color: #A9B0B8;
+}
+
+.btn.tertiary.disabled {
+  background-color: #F2F5F7;
+  color: #A9B0B8;
+  box-shadow: 0 0 0 0.1rem #E0E3E8 inset;
 }
 
 /** FONT **/
@@ -666,7 +687,10 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   padding: 1.2rem 2rem;
 }
 .btn.size-sm {
-  padding: 0.6rem 2rem;
+  padding: 0.6rem 1.2rem;
+}
+.btn.size-xs {
+  padding: 0.6rem 1.2rem;
 }
 .btn.loading {
   position: relative;
@@ -901,7 +925,7 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 .field._disabled, .field ._disabled, .field ._disabled .field-icon {
   cursor: default;
 }
-.field ._disabled .field-label {
+.field ._disabled:not(.box-opt.gap .field-chkrdo) .field-label {
   opacity: 0.5;
 }
 .field [class*=field] .chk, .field [class*=field] .rdo {
@@ -1006,7 +1030,7 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 .field-chkrdo .field-label {
   display: inline-block;
   margin-left: 1rem;
-  color: #212529;
+  color: #6E7780;
 }
 .field-switch {
   position: relative;
@@ -1083,6 +1107,9 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   display: flex;
   flex-direction: row;
 }
+.field.box-opt.full .field-chkrdo {
+  width: 100%;
+}
 .field.box-opt .field-icon {
   display: none;
 }
@@ -1090,7 +1117,31 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   border: none;
 }
 .field.box-opt.gap .field-chkrdo .field-label {
-  border: 0.2rem solid #C0C6CC;
+  box-shadow: 0 0 0 0.1rem #E0E3E8 inset;
+}
+.field.box-opt.gap .field-chkrdo._disabled .chk:not(:checked) ~ .field-label, .field.box-opt.gap .field-chkrdo._disabled .rdo:not(:checked) ~ .field-label {
+  color: #A9B0B8;
+  box-shadow: 0 0 0 0.1rem #E0E3E8 inset;
+}
+.field.box-opt.gap .field-chkrdo._disabled .chk:checked ~ .field-label, .field.box-opt.gap .field-chkrdo._disabled .rdo:checked ~ .field-label {
+  color: #A9B0B8;
+  box-shadow: 0 0 0 0.1rem #E0E3E8 inset;
+  background-color: #F2F5F7;
+}
+.field.box-opt.gap .field-chkrdo._readonly .chk ~ .field-label, .field.box-opt.gap .field-chkrdo._readonly .rdo ~ .field-label {
+  opacity: 0.5;
+}
+.field.box-opt.gap .field-chkrdo._readonly .chk:checked ~ .field-label, .field.box-opt.gap .field-chkrdo._readonly .rdo:checked ~ .field-label {
+  opacity: 0.5;
+  color: #347EFF;
+  box-shadow: 0 0 0 0.2rem #347EFF inset;
+}
+.field.box-opt.gap .chk:checked ~ .field-label, .field.box-opt.gap .rdo:checked ~ .field-label {
+  color: #347EFF;
+  box-shadow: 0 0 0 0.2rem #347EFF inset;
+}
+.field.box-opt.nogap .field-chkrdo {
+  width: 100%;
 }
 .field.box-opt.nogap .field-chkrdo:first-child .field-label {
   border-top-left-radius: 0.8rem;
@@ -1105,6 +1156,15 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 }
 .field.box-opt.nogap .field-chkrdo ~ .field-chkrdo .field-label {
   margin-left: -0.1rem;
+}
+.field.box-opt.nogap .chk ~ .field-label, .field.box-opt.nogap .rdo ~ .field-label {
+  border: 0.1rem solid #E0E3E8;
+}
+.field.box-opt.nogap .chk:checked ~ .field-label, .field.box-opt.nogap .rdo:checked ~ .field-label {
+  color: #fff;
+  background-color: #347EFF;
+  border-color: #347EFF;
+  z-index: 1;
 }
 .field.box-opt.ico .rdo:checked + .field-icon, .field.box-opt.ico .chk:checked + .field-icon {
   background-color: #fff;
@@ -1145,7 +1205,6 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 .field.box-opt .field-chkrdo {
   display: flex;
   flex-direction: row;
-  width: 100%;
 }
 .field.box-opt .field-chkrdo .field-label {
   display: flex;
@@ -1153,15 +1212,10 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 1rem;
+  padding: 1rem 1.6rem;
+  margin-left: 0;
+  color: #515961;
   text-align: center;
-  border: 1px #ddd solid;
-}
-.field.box-opt .field-chkrdo .chk:checked ~ .field-label, .field.box-opt .field-chkrdo .rdo:checked ~ .field-label {
-  color: #fff;
-  background-color: #347EFF;
-  border-color: #347EFF;
-  z-index: 1;
 }
 
 .field {
@@ -1177,7 +1231,7 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   align-items: center;
   flex-shrink: 0;
 }
-.field-label {
+.field-label:not(.field-chkrdo .field-label) {
   display: block;
   margin-bottom: 1rem;
 }
