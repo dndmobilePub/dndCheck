@@ -40,15 +40,17 @@
 }
 
 // gradient
-@mixin bg-gradient($type, $angle, $color1, $color2){
-    @if ($type == line) {
-        background:linear-gradient($angle, $color1, $color2);
-        @content;
-    } @else if ($type == circle) {
-        background:radial-gradient(circle, $color1, $color2);
+@mixin bg-gradient($type, $angle, $color1, $color2) {
+    @if ($type ==line) {
+        background: linear-gradient($angle, $color1, $color2);
         @content;
     }
-    
+
+    @else if ($type ==circle) {
+        background: radial-gradient(circle, $color1, $color2);
+        @content;
+    }
+
 }
 
 @mixin eff-direction($direction) {
@@ -325,56 +327,58 @@
 // /* Typography Mixin */
 // /* 문자열 % 포함 수치 변환 */
 @function str-to-number($string) {
-  @if type-of($string) == 'string' and str-index($string, '%') != null {
-    $num-str: str-slice($string, 1, str-index($string, '%') - 1);
-    @return $num-str * 1 / 100;
-  } @else if type-of($string) == 'number' {
-    @return $string;
-  } @else {
-    @error "⚠️ [str-to-number] Unexpected value: #{$string}";
-  }
+    @if type-of($string)=='string' and str-index($string, '%') !=null {
+        $num-str: str-slice($string, 1, str-index($string, '%') - 1);
+        @return $num-str * 1 / 100;
+    }
+
+    @else if type-of($string)=='number' {
+        @return $string;
+    }
+
+    @else {
+        @error "⚠️ [str-to-number] Unexpected value: #{$string}";
+    }
 }
 
 // /* 사이즈 토큰 + 숫자/퍼센트 안전 처리 함수 */
 @function safe-size($size-token, $fallback-token-map, $category) {
-  @if type-of($size-token) == 'number' or (type-of($size-token) == 'string' and str-index($size-token, '%') != null) {
-    @return $size-token;
-  } @else {
-    @return dndToken($fallback-token-map, $category, $size-token);
-  }
+    @if type-of($size-token)=='number' or (type-of($size-token)=='string' and str-index($size-token, '%') !=null) {
+        @return $size-token;
+    }
+
+    @else {
+        @return dndToken($fallback-token-map, $category, $size-token);
+    }
 }
 
-@mixin typography(
-  $font-family: default,
-  $weight: regular,
-  $size: 16,
-  $line-height-value: null,
-  $letter-spacing-value: null
-) {
-  // 폰트 패밀리와 웨이트는 항상 토큰 기반으로 처리
-  $font-family: dndToken($typography-primitive, font-family, $font-family);
-  $font-weight: dndToken($typography-primitive, weight, $weight);
+@mixin typography($font-family: default,
+    $weight: regular,
+    $size: 16,
+    $line-height-value: null,
+    $letter-spacing-value: null) {
+    // 폰트 패밀리와 웨이트는 항상 토큰 기반으로 처리
+    $font-family: dndToken($typography-primitive, font-family, $font-family);
+    $font-weight: dndToken($typography-primitive, weight, $weight);
 
-  // 사이즈 안전 처리
-  $font-size: safe-size($size, $typography-primitive, size);
+    // 사이즈 안전 처리
+    $font-size: safe-size($size, $typography-primitive, size);
 
-  // 라인하이트 안전 처리 (넘버, %, 토큰 모두 허용)
-  $line-height: if($line-height-value != null,
-    safe-size($line-height-value, $typography-primitive, line-height),
-    safe-size(130, $typography-primitive, line-height)
-  );
+    // 라인하이트 안전 처리 (넘버, %, 토큰 모두 허용)
+    $line-height: if($line-height-value !=null,
+            safe-size($line-height-value, $typography-primitive, line-height),
+            safe-size(130, $typography-primitive, line-height));
 
-  // 레터 스페이싱 안전 처리 (넘버, %, 토큰 모두 허용)
-  $letter-spacing: if($letter-spacing-value != null,
-    safe-size($letter-spacing-value, $typography-primitive, letter-spacing),
-    safe-size(normal, $typography-primitive, letter-spacing)
-  );
+    // 레터 스페이싱 안전 처리 (넘버, %, 토큰 모두 허용)
+    $letter-spacing: if($letter-spacing-value !=null,
+            safe-size($letter-spacing-value, $typography-primitive, letter-spacing),
+            safe-size(normal, $typography-primitive, letter-spacing));
 
-  font-family: $font-family;
-  font-weight: $font-weight;
-  font-size: $font-size;
-  line-height: $line-height;
-  letter-spacing: $letter-spacing;
+    font-family: $font-family;
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $line-height;
+    letter-spacing: $letter-spacing;
 }
 
 
@@ -392,57 +396,49 @@
     }
 }
 
-@mixin line($attribute, $argument, $direction: all, $radius: null, $offset: null) {
-    @if($attribute =="border") {
-        @if($direction =="all") {
-            border: $argument;
-        }
+@mixin line($attribute, $args...) {
+    @if $attribute =="border" {
+        $argument: nth($args, 1);
+        $direction: if(length($args) >=2, nth($args, 2), all);
+        $radius: if(length($args) >=3, nth($args, 3), null);
 
-        @else if ($direction =="top") {
-            border-top: $argument;
-        }
+        @if $direction =="all" {border: $argument;}
+        @else if $direction =="top" {border-top: $argument;}
+        @else if $direction =="left" {border-left: $argument;}
+        @else if $direction =="bottom" {border-bottom: $argument;}
+        @else if $direction =="right" {border-right: $argument;}
 
-        @else if($direction =="left") {
-            border-left: $argument;
+        @if $radius !=null {
+            border-radius: $radius;
         }
-
-        @else if($direction =="bottom") {
-            border-bottom: $argument;
-        }
-
-        @else if($direction =="right") {
-            border-right: $argument;
-        }
-
-        border-radius:$radius;
     }
 
-    @else if($attribute =="outline") {
-        @if($direction =="all") {
-            outline: $argument;
-        }
+    @else if $attribute =="outline" {
+        $argument: nth($args, 1);
+        $direction: if(length($args) >=2, nth($args, 2), all);
+        $offset: if(length($args) >=3, nth($args, 3), null);
 
-        @else if ($direction =="top") {
-            outline-top: $argument;
-        }
+        @if $direction =="all" {outline: $argument;}
+        @else if $direction =="top" {outline-top: $argument;}
+        @else if $direction =="left" {outline-left: $argument;}
+        @else if $direction =="bottom" {outline-bottom: $argument;}
+        @else if $direction =="right" {outline-right: $argument;}
 
-        @else if($direction =="left") {
-            outline-left: $argument;
+        @if $offset !=null {
+            outline-offset: $offset;
         }
+    }
 
-        @else if($direction =="bottom") {
-            outline-bottom: $argument;
-        }
+    @else if $attribute =="inset" {
+        $color: if(length($args) >=1, nth($args, 1), black);
+        $thickness: if(length($args) >=2, nth($args, 2), .1rem);
 
-        @else if($direction =="right") {
-            outline-right: $argument;
-        }
-
-        outline-offset:$offset;
+        box-shadow: 0 0 0 $thickness $color inset;
     }
 
     @content;
 }
+
 
 $svgIcoURL: '../img/';
 

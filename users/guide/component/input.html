@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover, user-scalable=no">
+    <title>폼요소 : input</title>
+
+    <!-- [S] PUBLISH COMMON STYLE -->
+    <link rel="stylesheet" href="../../assets/css/cp.style.css">
+    <!-- [E] PUBLISH COMMON STYLE -->
+
+    <!-- [S] PAGES - STYLE -->
+    <link rel="stylesheet" href="">
+    <!-- [E] PAGES - STYLE -->
+
+    <!-- [S] LIBRARY - SCRIPT -->
+    <script src="../../assets/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../assets/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <!-- [E] LIBRARY - SCRIPT -->
+
+    <!-- [S] @TEMP - GUIDE STYLE -->
+    <link rel="stylesheet" href="../assets/css/pb.guide.css">
+    <!-- [E] @TEMP - GUIDE STYLE -->
+</head>
+
+<body pb-component>
+    <div class="pbgWrap">
+        <div class="pbgContainer">
+            <div class="pbg-titWrap dep1">
+                <h1>INPUT</h1>
+            </div>
+            <section class="pbg-content">
+                <div class="pbg-titWrap dep2">
+                    <h2>기본형</h2>
+                </div>
+
+                <article class="pbg-component" temp-btn-gap>
+                    <div class="pbg-titWrap dep3">
+                        <h3>TEXT : default</h3>
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label">text : default</label>
+                        <div class="field-outline">
+                            <div class="field-input grow _input">
+                                <input type="text" placeholder="기본동작 INPUT" title="">
+                                <button type="button" class="field-btn _input-clear"><span
+                                        class="hide">입력값삭제</span></button>
+                            </div>
+                        </div>
+                        <div class="field-outline">
+                            <div class="field-input grow _input">
+                                <input type="text" placeholder="예외 : clear btn 없음" title="">
+                            </div>
+                        </div>
+                        <div class="field-outline readonly">
+                            <div class="field-input grow _input">
+                                <input type="text" value="readonly" readonly="readonly">
+                                <button type="button" class="field-btn _input-clear"><span
+                                        class="hide">입력값삭제</span></button>
+                            </div>
+                        </div>
+                        <div class="field-outline disabled">
+                            <div class="field-input grow _input">
+                                <input type="text" placeholder="disabled" disabled="disabled">
+                                <button type="button" class="field-btn _input-clear"><span
+                                        class="hide">입력값삭제</span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="divider m" />
+                    <div class="pbg-titWrap dep3">
+                        <h3>TEXT : 상태별</h3>
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label">text : 안내</label>
+                        <div class="field-outline">
+                            <div class="field-input grow _input">
+                                <input type="text" placeholder="width 안내메세지" title="">
+                                <button type="button" class="field-btn _input-clear"><span
+                                        class="hide">입력값삭제</span></button>
+                            </div>
+                        </div>
+                        <p class="field-msg info">
+                            <span class="ico ico-info txt-r">안내성 메세지</span>
+                        </p>
+                    </div>
+
+                    <div class="field valid">
+                        <label class="field-label">text : valid</label>
+                        <div class="field-outline">
+                            <div class="field-input grow _input">
+                                <input type="text" placeholder="width valid 입력값 유효성 정상" title="">
+                                <button type="button" class="field-btn _input-clear"><span
+                                        class="hide">입력값삭제</span></button>
+                            </div>
+                        </div>
+                        <p class="field-msg">
+                            <span class="ico ico-info txt-r">입력값의 유효성이 정상입니다.</span>
+                        </p>
+                    </div>
+
+                    <div class="field invalid">
+                        <label class="field-label">text : invalid</label>
+                        <div class="field-outline">
+                            <div class="field-input grow _input">
+                                <input type="text" placeholder="width invalid 입력값 오류발생" title="">
+                                <button type="button" class="field-btn _input-clear"><span
+                                        class="hide">입력값삭제</span></button>
+                            </div>
+                        </div>
+                        <p class="field-msg">
+                            <span class="ico ico-info txt-r">오류메세지 출력</span>
+                        </p>
+                    </div>
+
+                    <hr class="divider m" />
+                    <div class="pbg-titWrap dep3">
+                        <h3>TEXT : 숫자, 가격, 비밀번호 CASE</h3>
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label">INPUT TYPE : number</label>
+                        <div class="field-outline">
+                            <div class="field-input grow _input">
+                                <input type="tel" class="_format _number" placeholder="0">
+                                <button type="button" class="field-btn _input-clear"><span
+                                        class="hide">입력값삭제</span></button>
+                            </div>
+                        </div>
+                        <p class="field-msg">
+                            <span class="ico ico-info txt-r">오류메세지 출력</span>
+                        </p>
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label">price</label>
+                        <div class="field-outline">
+                            <div class="field-input grow _input">
+                                <input type="tel" class="_format _price alR" placeholder="₩0">
+                            </div>
+                            <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
+                        <span class="hide">입력값삭제</span>
+                      </button> -->
+                        </div>
+                        <p class="field-msg">
+                            <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                        </p>
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label">기본형 : password</label>
+                        <div class="field-outline">
+                            <div class="field-input grow _input">
+                                <input type="password" class="_format _password" placeholder="●●●●" maxlength="4">
+                            </div>
+                        </div>
+                        <p class="field-msg">
+                            <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                        </p>
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label" for="passType">특문 커스텀 : password 부분입력</label>
+                        <div class="field-outline pw-group">
+                            <div class="field-input grow _input">
+                                <div class="_secureTxt" data-length="4" data-secureLine="2">
+                                    <input type="password" id="passType" class="_format _password" placeholder=""
+                                        maxlength="2">
+                                </div>
+                            </div>
+                        </div>
+                        <p class="field-msg">
+                            <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                        </p>
+                    </div>
+                </article>
+
+            </section>
+        </div>
+    </div>
+
+</body>
+<script src="../../assets/js/ui.component.js"></script>
+
+</html>

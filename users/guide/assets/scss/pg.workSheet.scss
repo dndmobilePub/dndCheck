@@ -138,7 +138,7 @@
                 &_responsive {
                     @include pos-offset(relative, $left:0);
                     @include el-size(2.5rem, 4rem);
-                    @include line(border, .1rem solid $color-white, $radius:.4rem);
+                    @include line(border, .1rem solid $color-white, .4rem);
                     background:none; @include overflow(both, hidden);
                     @extend %transition3s;
 
@@ -293,7 +293,7 @@
             
 
             li {
-                @include line(border, .1rem solid $color-light-gray1, $direction:bottom);
+                @include line(border, .1rem solid $color-light-gray1, bottom);
                 %lstActive-aColor {
                     background-color:$color-light-gray2;color:$color-black;
                     @include el-content(before) {
@@ -350,7 +350,7 @@ html.util_show {
 #{$pgNav} {
     @include pos-offset(fixed, $top:6.1rem, $left:0, $bottom:0, $z-index:10);
     width:20rem;
-    @include line(border, .1rem solid $color-light-gray1, $direction:right);
+    @include line(border, .1rem solid $color-light-gray1, right);
     background-color:$color-white;
     @include overflow(y, auto);
 

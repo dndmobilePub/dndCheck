@@ -7,11 +7,14 @@
 @import 'font';
 @import 'pg.variables';
 
-body[pb-component] {
-    
+[temp-btn-gap] {
+    a, button:not(._input-clear) {margin-bottom:.5rem;}
+    .field-outline ~ .field-outline {margin-top:1rem;}
+    .field ~ .field {margin-top:2rem;}
 }
+// body[pb-component] {}
 .pbg {
-    &Wrap{padding:2rem 2rem 5rem;}
+    &Wrap{padding:2rem 2rem 10rem;}
     &Container {}
     &-content {
         margin-top:1.5rem;

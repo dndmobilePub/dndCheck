@@ -61,7 +61,7 @@
         @include el-size(100%, 4.4rem); margin-top:50px !important;
         @include el-content(after) {
             background:$color-gray4;
-            @include line(border, 0, $radius:4.4rem);
+            @include line(border, 0, 4.4rem);
         }
 
         %switchBar {height:3.6rem; border-radius:3.6rem;}

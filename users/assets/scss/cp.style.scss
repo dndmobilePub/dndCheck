@@ -6,6 +6,7 @@
 @import 'cp.loading'; // 로딩, scrollTop
 @import 'cp.button'; // 버튼
 @import 'cp.rdochk'; // 라디오+체크
+@import 'cp.input'; // input:text
 
 .tit {
     @extend %heading-2xl;

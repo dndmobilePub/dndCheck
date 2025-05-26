@@ -240,7 +240,7 @@ var COMPONENT_UI = (function (cp, $) {
             labelChkrdo: $("label.field-chkrdo"),
             inputDiv: $("._input"),
             inputSelector: "._input > input:not([type='radio']):not([type='checkbox']):not(.exp input)",
-            inputExpSelector: ".exp input",
+            // inputExpSelector: ".exp input",
             clearSelector: "._input-clear",
             labelDiv: $("._label")
         },
@@ -504,29 +504,17 @@ var COMPONENT_UI = (function (cp, $) {
 
         input: function (callback) {
             const inputSelector = this.constEl.inputSelector,
-                inputExpSelector = this.constEl.inputExpSelector,
+                // inputExpSelector = this.constEl.inputExpSelector,
                 clearSelector = this.constEl.clearSelector;
 
-            $(inputExpSelector).each(function () {
-                const $inputTxt = $(this);
-                $inputTxt
-                    .on("keyup focus input", function () {
-                        $inputTxt.parent().parent().addClass("_is-active");
-                    })
-                    .on("blur focusout", function () {
-                        setTimeout(function () {
-                            $inputTxt.parent().removeClass('_hasClear');
-                            $inputTxt.removeClass('_is-active').parents(".field-outline").removeClass("_is-active");
-                        }, 100);
-                    });
-            });
-
+            // 라디오, 체크박스, .exp 를 제외한 모든 input case
             $(inputSelector).each(function () {
                 const $inputTxt = $(this);
                 if ($inputTxt.prop("readonly") || $inputTxt.prop("disabled")) {
                     return;
                 }
-                $(this).parent().append('<button type="button" class="field-btn _input-clear"><span class="hide">입력값삭제</span></button>');
+                // 페이지 직접 적용으로 변경 하고 _input-clear 예외 삭제
+                // $(this).parent().append('<button type="button" class="field-btn _input-clear"><span class="hide">입력값삭제</span></button>');
                 function activateClearBtn() {
                     const $clearBtn = $inputTxt.parent().find(clearSelector);
 

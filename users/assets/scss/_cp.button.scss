@@ -67,7 +67,8 @@ $tertiary:'.tertiary';
     &#{$tertiary} {
         color:$color-text-interactive-tertiary;
         background-color:$color-bg-interactive-tertiary;
-        box-shadow: 0 0 0 .1rem $color-border-tertiary inset; // 라인 안쪽으로 적용
+        @include line(inset, $color-border-secondary);
+        // @extend %border-tertiary; // 라인 안쪽으로 적용
         &:hover, &:focus {
             background-color:$color-bg-interactive-tertiary-hover;
         }
