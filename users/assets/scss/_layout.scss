@@ -1,0 +1,405 @@
+body{
+    &[screen-type="login"], &[screen-type="main"]{
+        background-color: $color-bg-tertiary;
+    }
+    &[screen-type="main"]{
+        .headerWrap{
+            padding: 1.2rem 1.2rem 1.2rem 2rem;
+            + .contentWrap{
+                margin-top: 1.6rem;
+            }
+        }
+    }
+    &[screen-type="sub"]{
+        .headerWrap{
+            padding: 1.6rem 2rem;
+            + .contentWrap{
+                margin-top: 2.4rem;
+            }
+        }
+    }
+}
+
+.login{
+    &Wrap{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @include el-size(100%, auto);
+        padding: 0 2rem
+    }
+    &-title{
+        .tit{
+            @extend %heading-lg;
+            @extend %weight-bold;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+    }
+    &-content{
+        padding: 2.4rem 2rem;
+        background-color: $color-bg-primary;
+        border-radius: 1.2rem;
+        .tit{
+            @extend %heading-sm;
+            @extend %weight-bold;
+        }
+    }
+}
+
+.header{
+    &Wrap{
+        position: relative;
+        height: 5.6rem;
+        .left{
+            position: relative;
+            .tit{
+                @include pos-offset(absolute, $top:0, $left:0);
+                @extend %heading-lg;
+                @extend %weight-regular;
+                &::after{
+                    content: '';
+                    position: relative;
+                    display: inline-block;
+                    background: url(../img/common/icon_arrow_right.svg) no-repeat center / auto;
+                    @include el-size(2rem, 2rem);
+                    vertical-align: baseline;
+                    margin-left: 0.4rem;
+                }
+            }
+            .back{
+                @include pos-offset(absolute, $top:0, $left:0);
+                display: inline-block;
+                @include el-size(2.4rem, 2.4rem);
+                background: url(../img/common/icon_arrow_right.svg) no-repeat center / 2.4rem 2.4rem;
+                transform: rotate(180deg);
+            }
+        }
+        .center{
+            @include pos-offset(absolute, $top:50%, $right:50%);
+            transform: translate(50%, -50%);
+            .title{
+                @extend %body-lg;
+                @extend %weight-bold;
+            }
+        }
+        .right{
+            @include pos-offset(absolute, $top:1.2rem, $right:1.2rem);
+            .alarm{
+                position: relative;
+                display: inline-block;
+                @include el-size(3.2rem, 3.2rem);
+                background: url(../img/common/icon_bell.svg) no-repeat center / auto;
+                &.new{
+                    &::after{
+                    content: '';
+                    display: block;
+                    @include pos-offset(absolute, $top:0.4rem, $right:0.3rem);
+                    @include el-size(0.6rem, 0.6rem);
+                    border: 0.2rem solid $color-bg-tertiary;
+                    border-radius: 50%;
+                    background-color: red;
+                }
+                }
+            }
+            .total{
+                display: inline-block;
+                @include el-size(3.2rem, 3.2rem);
+                background: url(../img/common/icon_menu.svg) no-repeat center / auto;
+            }
+            .close{
+                @include pos-offset(absolute, $top:0.4rem, $right:1.2rem);
+                display: inline-block;
+                @include el-size(2.4rem, 2.4rem);
+                background: url(../img/common/icon_close.svg) no-repeat center / 2.4rem 2.4rem;
+            }
+        }
+        .content-wrap{
+            margin-top: 1.6rem;
+        }
+    }
+}
+
+.content{
+    &Wrap{
+        padding: 0 2rem;
+    }
+}
+
+.cont{
+    &-box{
+        position: relative;
+        display: block;
+        width: 100%;
+        padding: 2rem 2.4rem;
+        @extend %radius-16;
+        background-color: $color-bg-primary;
+        &.big{
+            padding: 2.4rem;
+        }
+        &.stage{
+            margin-top: 1.2rem;
+            .tit{
+                @extend %heading-sm;
+                @extend %weight-bold;
+            }
+            .txt{
+                @extend %heading-sm;
+                @extend %weight-regular;
+                margin-left: 1.2rem;
+            }
+        }
+    }
+    &-menu{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        .item{
+            .link{
+                position: relative;
+                padding-top: 6.4rem;
+                &::after{
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    @include el-size(5.6rem, 5.6rem);
+                    background-color: #F2F5F7;
+                    @extend %radius-full;
+                }
+            }
+            + .item{
+                margin-left: 4.2rem
+            }
+        }
+    }
+}
+
+.commute{
+    &-group{
+        .cont-item{
+            &.title{
+                .tit{
+                    @extend %body-lg;
+                }
+                .txt{
+                    @extend %body-md;
+                    color: $color-text-secondary;
+                    padding-left: 0.8rem;
+                }
+                &::after{
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    @include el-size(calc(100% - 3.5rem), 0.1rem);
+                    bottom: 0;
+                    left: 1.75rem;
+                    border-bottom: 0.1rem dashed $color-border-secondary
+                }
+            }
+            &.state{
+                .area{
+                    &-state{
+                        .icon{
+                            position: relative;
+                            display: inline-block;
+                            @include el-size(1.8rem, 1.8rem);
+                            border: 0.15rem solid $color-neutral-600;
+                            @extend %radius-full;
+                            &::after{
+                                content: '';
+                                display: block;
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                @include el-size(0.6rem, 0.6rem);
+                                @extend %radius-full;
+                                background-color: $color-neutral-600;
+                            }
+                        }
+                        .txt{
+                            @extend %body-sm;
+                            @extend %weight-medium;
+                            color: $color-text-secondary;
+                            vertical-align: text-top
+                        }
+                    }
+                    &-time{
+                        display: flex;
+                        align-items: center;
+                        @extend %heading-xl;
+                        color: $color-text-tertiary;
+                        margin: 1.6rem 0 3.2rem;
+                    }
+                }
+            }
+            .badge{
+                display: inline-block;
+                @include el-size(auto, 2.4rem);
+                padding: 0.3rem 1rem;
+                @extend %body-sm;
+                @extend %weight-medium;
+                @extend %radius-full;
+                vertical-align: middle;
+                margin-left: 0.4rem;
+            }
+        }
+        &.holiday{
+            .cont-item{
+                &.title{
+                    .tit{
+                        color: $color-text-warning;
+                    }
+                    .txt{
+                        color: $color-text-disabled;
+                    }
+                }
+            }
+        }
+        &.annual{
+            .cont-item{
+                &.title{
+                    .txt{
+                        position: relative;
+                        padding-left: 0.9rem;
+                        @extend %body-lg;
+                        @extend %weight-bold;
+                        color: $color-text-primary;
+                        &::after{
+                            content: '';
+                            position: absolute;
+                            display: block;
+                            top: 50%;
+                            left: 0.2rem;
+                            transform: translateY(-50%);
+                            @include el-size(0.4rem, 0.4rem);
+                            @extend %radius-full;
+                            background-color: $color-neutral-600;
+                        }
+                    }
+                }
+            }
+        }
+        &.afterwork{
+            .cont-item{
+                &.title{
+                    .txt{
+                        position: relative;
+                        padding-left: 0.9rem;
+                        @extend %body-lg;
+                        @extend %weight-bold;
+                        color: $color-text-primary;
+                        &::after{
+                            content: '';
+                            position: absolute;
+                            display: block;
+                            top: 50%;
+                            left: 0.2rem;
+                            transform: translateY(-50%);
+                            @include el-size(0.4rem, 0.4rem);
+                            @extend %radius-full;
+                            background-color: $color-neutral-600;
+                        }
+                        + .txt{
+                            padding-left: 0.8rem;
+                            @extend %weight-regular;
+                            color: $color-text-secondary;
+                            &::after{
+                                content: none;
+                            }
+                        }
+                    }
+                }
+                &.state{
+                    .area{
+                        &-state{
+                            .icon{
+                                border-color: $color-border-focusring;
+                                &::after{
+                                    background-color: $color-border-focusring;
+                                }
+                            }
+                            .txt{
+                                color: $color-text-info;
+                            }
+                        }
+                        &-time{
+                            .tit{
+                                color: $color-text-primary;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.late{
+            .cont-item{
+                &.state{
+                    .area{
+                        &-state{
+                            position: relative;
+                            .icon{
+                                border-color: $color-border-warning;
+                                &::after{
+                                    background-color: $color-border-warning;
+                                }
+                            }
+                            .txt{
+                                color: $color-text-warning;
+                            }
+                            .btnWrap{
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                            }
+                        }
+                        &-time{
+                            .tit{
+                                color: $color-text-primary;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.overtime{
+            .cont-item{
+                &.state{
+                    .area{
+                        &-time{
+                            .tit{
+                                color: $color-text-primary;
+                            }
+                            .badge{
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.leave{
+            .cont-item{
+                &.state{
+                    .area{
+                        &-time{
+                            .tit{
+                                color: $color-text-primary;
+                            }
+                            .badge{
+                                background-color: $color-bg-success;
+                                color: $color-text-success;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        + .cont-box{
+            margin-top: 2.4rem;
+        }
+    }
+}

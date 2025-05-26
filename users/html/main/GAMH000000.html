@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckCheck</title>
+    <link rel="stylesheet" href="../../assets/css/cp.style.css">
+    <script src="../../assets/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../assets/js/lib/lib.jquery-ui-1.13.2.js"></script>
+</head>
+<body screen-type="main">
+    <div class="wrap">
+        <div class="containerWrap">
+            <div class="headerWrap">
+                <div class="left">
+                    <a href="#" class="tit"><strong>홍길동</strong>님</a>
+                </div>
+                <div class="right">
+                    <button class="alarm new"><span class="blind">알림</span></button>
+                    <button class="total"><span class="blind">전체메뉴</span></button>
+                </div>
+            </div>
+            <div class="contentWrap">
+                <!-- holiday(공휴일), annual(휴무일), afterwork(출근버튼 누른 후), late(지각), overtime(야근), leave(조퇴) -->
+                <div class="commute-group leave">
+                    <div class="cont-box">
+                        <div class="cont-item title">
+                            <strong class="tit">05.20(화)</strong>
+                            <!-- <span class="txt">오후반차</span> -->
+                            <span class="txt">09:00 ~ 18:00</span>
+                        </div>
+                    </div>
+                    <div class="cont-box big">
+                        <div class="cont-item state">
+                            <div class="area-state">
+                                <i class="icon"></i>
+                                <span class="txt">출근 전</span>
+                                <!-- <div class="btnWrap">
+                                    <button test-btn="true" class="btn tertiary size-lg" btn-active="loading">보정신청</button>
+                                </div> -->
+                            </div>
+                            <div class="area-time">
+                                <span class="tit">07:58:13</span>
+                                <span class="badge">조퇴</span>
+                            </div>
+                            <div class="btnWrap">
+                                <button class="btn primary size-lg full">출근하기</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cont-box stage">
+                        <div class="cont-item">
+                            <strong class="tit">근무지</strong>
+                            <span class="txt">디앤디모바일(본사)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cont-box big">
+                    <div class="cont-menu">
+                        <div class="item">
+                            <a href="#" class="link attendance">출근내역</a>
+                        </div>
+                        <div class="item">
+                            <a href="#" class="link vacation">휴가신청</a>
+                        </div>
+                        <div class="item">
+                            <a href="#" class="link notice">공지/설문</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../assets/js/ui.component.js"></script>
+</body>
+</html>
