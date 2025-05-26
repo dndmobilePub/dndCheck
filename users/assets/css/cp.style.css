@@ -25,7 +25,7 @@
   letter-spacing: -0.02rem;
 }
 
-.field-chkrdo .field-label, .btn.size-md, .loadingWrap .txt, body, th, td, input, select, textarea, button, input[type=checkbox]:checked {
+._input input._password::placeholder, ._input input._password, .field-chkrdo .field-label, .btn.size-md, .loadingWrap .txt, body, th, td, input, select, textarea, button, input[type=checkbox]:checked {
   font-family: 'Pretendard', 'sans-serif';
   font-size: 1.6rem;
   line-height: 2.4rem;
@@ -39,7 +39,18 @@
   letter-spacing: -0.02rem;
 }
 
-.btn.size-sm, .btn.size-md, .btn.size-lg {
+.field-msg {
+  font-family: 'Pretendard', 'sans-serif';
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  letter-spacing: -0.02rem;
+}
+
+.field-msg {
+  font-weight: 400;
+}
+
+._input input._password::placeholder, ._input input._password, .btn.size-sm, .btn.size-md, .btn.size-lg {
   font-weight: 500;
 }
 
@@ -60,7 +71,7 @@
   border-radius: 1.6rem;
 }
 
-.field.box-opt.ico .field-icon, .field-switch .field-icon::before, .field-chkrdo .rdo ~ .field-icon, .field-chkrdo .rdo:checked + .field-icon::before {
+._input ._secureTxt > i, .field.box-opt.ico .field-icon, .field-switch .field-icon::before, .field-chkrdo .rdo ~ .field-icon, .field-chkrdo .rdo:checked + .field-icon::before {
   border-radius: 100%;
 }
 
@@ -552,8 +563,6 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 .quick.topVisible .quickTopBtn {
   display: table;
   height: 4.5rem;
-  border: 1px solid rgba(224, 224, 224, 0.78);
-  border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.78);
   opacity: 1;
   transform: translate(0, 0);
@@ -641,7 +650,7 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 .btn.tertiary {
   color: #6E7780;
   background-color: #fff;
-  box-shadow: 0 0 0 0.1rem #E0E3E8 inset;
+  box-shadow: 0 0 0 0.1rem #C0C6CC inset;
 }
 .btn.tertiary:hover, .btn.tertiary:focus {
   background-color: #E0E3E8;
@@ -937,7 +946,7 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   border-color: #fff;
 }
 .field-chkrdo .chk.readonly {
-  border-color: #E0E3E8;
+  border-color: #F2F5F7;
   pointer-events: none;
 }
 .field-chkrdo .chk:disabled:not(:checked) + .field-icon {
@@ -981,7 +990,7 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   display: none;
 }
 .field-chkrdo .rdo.readonly {
-  border-color: #E0E3E8;
+  border-color: #F2F5F7;
   pointer-events: none;
 }
 .field-chkrdo .rdo ~ .field-icon {
@@ -1042,7 +1051,7 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   width: 5rem;
   height: 2rem;
   cursor: pointer;
-  background-color: #E0E3E8;
+  background-color: #F2F5F7;
   border-radius: 2rem;
   transition: 0.4s;
 }
@@ -1153,4 +1162,265 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   background-color: #347EFF;
   border-color: #347EFF;
   z-index: 1;
+}
+
+.field {
+  /* FIELD - VALID */
+}
+.field.grow, .field .grow {
+  flex: 1 0 0;
+}
+.field-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+.field-label {
+  display: block;
+  margin-bottom: 1rem;
+}
+.field-txt {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: 0;
+}
+.field-msg {
+  display: none;
+  margin-top: 0.5rem;
+  color: #6E7780;
+}
+.field-msg.info {
+  display: block;
+}
+.field-input {
+  height: 4rem;
+}
+.field-input input:not([type=checkbox]):not([type=radio]) {
+  padding: 1rem 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background-color: transparent;
+}
+.field-input input:not([type=checkbox]):not([type=radio]):focus {
+  outline: none;
+}
+.field-input input:not([type=checkbox]):not([type=radio])::placeholder {
+  color: #A9B0B8;
+}
+.field-input.right input {
+  text-align: right;
+}
+.field-input.center input {
+  text-align: center;
+}
+.field-input.mid_num {
+  position: relative;
+  max-width: 1.1rem;
+  padding-right: 0;
+}
+.field-input.mid_num input::placeholder {
+  font-size: 0.4rem;
+}
+.field-outline {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 4rem;
+  border-radius: 0.5rem;
+  box-shadow: inset 0 0 0 0.1rem #C0C6CC;
+  background: #fff;
+}
+.field-outline:focus-within {
+  box-shadow: 0 0 0 0.2rem #347EFF inset;
+}
+.field-outline.auth {
+  display: inline-flex;
+  width: 100%;
+}
+.field-outline.auth .field-input {
+  display: flex;
+  flex-direction: row;
+}
+.field-outline.auth .field ._input-clear {
+  order: 2;
+}
+.field-outline.auth .auth-time {
+  margin-left: 1rem;
+  align-self: center;
+  order: 3;
+}
+.field-outline.auth .btn-auth {
+  align-self: center;
+  margin-right: 1rem;
+}
+.field-outline.pw-group.type2 > ._input {
+  max-width: 3rem;
+}
+.field-outline.pw-group.type2 > ._input:first-child {
+  padding-right: 0;
+}
+.field-outline.grow {
+  flex: 1 0 0;
+}
+.field-outline > * {
+  padding: 0 1rem;
+}
+.field-outline > * + * {
+  padding-left: 0;
+}
+.field-outline.column {
+  flex-direction: column;
+}
+.field-outline.column > * {
+  padding: 1rem;
+}
+.field-outline.column > * + * {
+  padding-top: 0;
+}
+.field-outline.column .right {
+  place-self: flex-end;
+}
+.field-outline.readonly {
+  color: #515961;
+  cursor: default;
+  pointer-events: none;
+}
+.field-outline.disabled {
+  opacity: 0.8;
+  cursor: default;
+  pointer-events: none;
+  background: #ECEFF4;
+}
+.field-outline .center {
+  place-self: center;
+}
+.field-outline .bottom {
+  place-self: flex-end;
+}
+.field.valid .field-msg, .field.invalid .field-msg {
+  display: block;
+}
+.field.valid .field-outline {
+  box-shadow: 0 0 0 0.1rem #268E6C inset;
+}
+.field.valid .field-outline:focus-within {
+  box-shadow: 0 0 0 0.2rem #268E6C inset;
+}
+.field.valid .field-outline:focus-within input::placeholder {
+  color: #268E6C;
+}
+.field.valid + .field-msg, .field.valid .field-msg {
+  color: #268E6C;
+}
+.field.invalid .field-outline {
+  box-shadow: 0 0 0 0.1rem #C9252D inset;
+}
+.field.invalid .field-outline input {
+  color: #C9252D;
+}
+.field.invalid .field-outline:focus-within {
+  box-shadow: 0 0 0 0.2rem #C9252D inset;
+}
+.field.invalid .field-outline:focus-within input::placeholder {
+  color: #C9252D;
+}
+.field.invalid + .field-msg, .field.invalid .field-msg {
+  color: #C9252D;
+}
+
+/* FIELD - INPUT SCRIPT */
+._input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+._input._clear {
+  width: calc(100% - 2.2rem);
+}
+._input-clear {
+  display: none;
+  pointer-events: none;
+  touch-action: none;
+  width: 1.4rem;
+  height: 1.4rem;
+  background: #C0C6CC;
+  border-radius: 100%;
+  position: relative;
+}
+._input-clear::before {
+  content: "";
+  display: block;
+  width: 0.8rem;
+  height: 0.1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #fff;
+}
+._input-clear::after {
+  content: "";
+  display: block;
+  width: 0.8rem;
+  height: 0.1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #fff;
+}
+._input-clear::before {
+  content: "";
+  display: block;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+._input-clear::after {
+  content: "";
+  display: block;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+._input-clear._active {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-self: center;
+  pointer-events: all;
+  margin-left: 0.5rem;
+}
+._input ._secureTxt {
+  position: relative;
+  display: block;
+  height: 4rem;
+}
+._input ._secureTxt > input[type=password] {
+  position: relative;
+  z-index: 2;
+  color: transparent;
+}
+._input ._secureTxt > input[type=password]::placeholder {
+  color: transparent;
+}
+._input ._secureTxt > i {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transform: translate(0, -50%);
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  background: #ECEFF4;
+}
+._input ._secureTxt > i + i {
+  margin-left: 0.3rem;
+}
+._input ._secureTxt > i._line {
+  box-shadow: 0 0 0 0.1rem #C0C6CC inset;
+  background: #fff;
+}
+._input ._secureTxt > i._line._is-active {
+  background: #2666F5;
+  box-shadow: none;
 }/*# sourceMappingURL=cp.style.css.map */

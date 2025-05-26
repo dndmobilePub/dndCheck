@@ -441,8 +441,18 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   justify-content: space-between;
 }
 
+[temp-btn-gap] a, [temp-btn-gap] button:not(._input-clear) {
+  margin-bottom: 0.5rem;
+}
+[temp-btn-gap] .field-outline ~ .field-outline {
+  margin-top: 1rem;
+}
+[temp-btn-gap] .field ~ .field {
+  margin-top: 2rem;
+}
+
 .pbgWrap {
-  padding: 2rem 2rem 5rem;
+  padding: 2rem 2rem 10rem;
 }
 .pbg-content {
   margin-top: 1.5rem;
