@@ -31,7 +31,7 @@ body{
     }
     &-title{
         .tit{
-            @extend %heading-lg;
+            @extend %heading-lg-bold;
             @extend %weight-bold;
             text-align: center;
             margin-bottom: 2rem;
@@ -42,7 +42,7 @@ body{
         background-color: $color-bg-primary;
         border-radius: 1.2rem;
         .tit{
-            @extend %heading-sm;
+            @extend %heading-sm-bold;
             @extend %weight-bold;
         }
     }
@@ -56,7 +56,7 @@ body{
             position: relative;
             .tit{
                 @include pos-offset(absolute, $top:0, $left:0);
-                @extend %heading-lg;
+                @extend %heading-lg-medium;
                 @extend %weight-regular;
                 &::after{
                     content: '';
@@ -80,7 +80,7 @@ body{
             @include pos-offset(absolute, $top:50%, $right:50%);
             transform: translate(50%, -50%);
             .title{
-                @extend %body-lg;
+                @extend %body-lg-bold;
                 @extend %weight-bold;
             }
         }
@@ -141,11 +141,11 @@ body{
         &.stage{
             margin-top: 1.2rem;
             .tit{
-                @extend %heading-sm;
+                @extend %heading-sm-bold;
                 @extend %weight-bold;
             }
             .txt{
-                @extend %heading-sm;
+                @extend %heading-sm-regular;
                 @extend %weight-regular;
                 margin-left: 1.2rem;
             }
@@ -182,10 +182,10 @@ body{
         .cont-item{
             &.title{
                 .tit{
-                    @extend %body-lg;
+                    @extend %body-lg-regular;
                 }
                 .txt{
-                    @extend %body-md;
+                    @extend %body-md-regular;
                     color: $color-text-secondary;
                     padding-left: 0.8rem;
                 }
@@ -221,7 +221,7 @@ body{
                             }
                         }
                         .txt{
-                            @extend %body-sm;
+                            @extend %body-sm-medium;
                             @extend %weight-medium;
                             color: $color-text-secondary;
                             vertical-align: text-top
@@ -240,7 +240,7 @@ body{
                 display: inline-block;
                 @include el-size(auto, 2.4rem);
                 padding: 0.3rem 1rem;
-                @extend %body-sm;
+                @extend %body-sm-medium;
                 @extend %weight-medium;
                 @extend %radius-full;
                 vertical-align: middle;
@@ -265,7 +265,7 @@ body{
                     .txt{
                         position: relative;
                         padding-left: 0.9rem;
-                        @extend %body-lg;
+                        @extend %body-lg-bold;
                         @extend %weight-bold;
                         color: $color-text-primary;
                         &::after{
@@ -289,7 +289,7 @@ body{
                     .txt{
                         position: relative;
                         padding-left: 0.9rem;
-                        @extend %body-lg;
+                        @extend %body-lg-bold;
                         @extend %weight-bold;
                         color: $color-text-primary;
                         &::after{

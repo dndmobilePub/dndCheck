@@ -18,12 +18,60 @@
   letter-spacing: -0.02rem;
 }
 
-.btn.size-md, .btn.size-lg {
+.commute-group .cont-item.state .area-time {
+  font-family: 'Pretendard', 'sans-serif';
+  font-weight: 600;
+  font-size: 3.2rem;
+  line-height: 4rem;
+  letter-spacing: -0.02rem;
+}
+
+.login-title .tit {
+  font-family: 'Pretendard', 'sans-serif';
+  font-weight: 600;
+  font-size: 2.8rem;
+  line-height: 3.6rem;
+  letter-spacing: -0.02rem;
+}
+
+.headerWrap .left .tit {
+  font-family: 'Pretendard', 'sans-serif';
+  font-weight: 600;
+  font-size: 2.8rem;
+  line-height: 3.6rem;
+  letter-spacing: -0.02rem;
+}
+
+.cont-box.stage .tit, .login-content .tit {
+  font-family: 'Pretendard', 'sans-serif';
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 2.8rem;
+  letter-spacing: -0.02rem;
+}
+
+.cont-box.stage .txt {
+  font-family: 'Pretendard', 'sans-serif';
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 2.8rem;
+  letter-spacing: -0.02rem;
+}
+
+.commute-group.afterwork .cont-item.title .txt, .commute-group.annual .cont-item.title .txt, .headerWrap .center .title, .btn.size-md, .btn.size-lg {
   font-family: 'Pretendard', 'sans-serif';
   font-size: 1.8rem;
   line-height: 2.4rem;
   letter-spacing: -0.02rem;
   font-weight: 600;
+}
+
+.commute-group .cont-item.title .tit {
+  font-family: 'Pretendard', 'sans-serif';
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  letter-spacing: -0.02rem;
+  font-weight: 400;
 }
 
 .field.box-opt.gap .chk:checked ~ .field-label, .field.box-opt.gap .rdo:checked ~ .field-label, .field.box-opt.gap .field-chkrdo._readonly .chk:checked ~ .field-label, .field.box-opt.gap .field-chkrdo._readonly .rdo:checked ~ .field-label {
@@ -42,12 +90,20 @@
   font-weight: 500;
 }
 
-.field.box-opt.gap .field-chkrdo .field-label, .field-chkrdo .field-label, .btn.size-xs, .btn.size-sm, body, th, td, input, select, textarea, button, input[type=checkbox]:checked {
+.commute-group .cont-item.title .txt, .field.box-opt.gap .field-chkrdo .field-label, .field-chkrdo .field-label, .btn.size-xs, .btn.size-sm, body, th, td, input, select, textarea, button, input[type=checkbox]:checked {
   font-family: 'Pretendard', 'sans-serif';
   font-size: 1.6rem;
   line-height: 2.4rem;
   letter-spacing: -0.02rem;
   font-weight: 400;
+}
+
+.commute-group .cont-item .badge, .commute-group .cont-item.state .area-state .txt {
+  font-family: 'Pretendard', 'sans-serif';
+  font-size: 1.4rem;
+  line-height: 2rem;
+  letter-spacing: -0.02rem;
+  font-weight: 500;
 }
 
 .field-msg {
@@ -56,6 +112,18 @@
   line-height: 1.8rem;
   letter-spacing: -0.02rem;
   font-weight: 400;
+}
+
+.commute-group.afterwork .cont-item.title .txt + .txt, .cont-box.stage .txt, .headerWrap .left .tit {
+  font-weight: 400;
+}
+
+.commute-group .cont-item .badge, .commute-group .cont-item.state .area-state .txt {
+  font-weight: 500;
+}
+
+.commute-group.afterwork .cont-item.title .txt, .commute-group.annual .cont-item.title .txt, .cont-box.stage .tit, .headerWrap .center .title, .login-content .tit, .login-title .tit {
+  font-weight: 600;
 }
 
 /* Radius */
@@ -75,11 +143,15 @@
   border-radius: 1rem;
 }
 
+.cont-box {
+  border-radius: 1.6rem;
+}
+
 .btn.size-xs {
   border-radius: 99.9rem;
 }
 
-._input ._secureTxt > i, .field.box-opt.ico .field-icon, .field-switch .field-icon::before, .field-chkrdo .rdo ~ .field-icon, .field-chkrdo .rdo:checked + .field-icon::before {
+.commute-group.afterwork .cont-item.title .txt::after, .commute-group.annual .cont-item.title .txt::after, .commute-group .cont-item .badge, .commute-group .cont-item.state .area-state .icon::after, .commute-group .cont-item.state .area-state .icon, .cont-menu .item .link::after, ._input ._secureTxt > i, .field.box-opt.ico .field-icon, .field-switch .field-icon::before, .field-chkrdo .rdo ~ .field-icon, .field-chkrdo .rdo:checked + .field-icon::before {
   border-radius: 100%;
 }
 
@@ -1477,4 +1549,303 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 ._input ._secureTxt > i._line._is-active {
   background: #2666F5;
   box-shadow: none;
+}
+
+body[screen-type=login], body[screen-type=main] {
+  background-color: #F2F5F7;
+}
+body[screen-type=main] .headerWrap {
+  padding: 1.2rem 1.2rem 1.2rem 2rem;
+}
+body[screen-type=main] .headerWrap + .contentWrap {
+  margin-top: 1.6rem;
+}
+body[screen-type=sub] .headerWrap {
+  padding: 1.6rem 2rem;
+}
+body[screen-type=sub] .headerWrap + .contentWrap {
+  margin-top: 2.4rem;
+}
+
+.loginWrap {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: auto;
+  padding: 0 2rem;
+}
+.login-title .tit {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.login-content {
+  padding: 2.4rem 2rem;
+  background-color: #fff;
+  border-radius: 1.2rem;
+}
+.headerWrap {
+  position: relative;
+  height: 5.6rem;
+}
+.headerWrap .left {
+  position: relative;
+}
+.headerWrap .left .tit {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.headerWrap .left .tit::after {
+  content: "";
+  position: relative;
+  display: inline-block;
+  background: url(../img/common/icon_arrow_right.svg) no-repeat center/auto;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: baseline;
+  margin-left: 0.4rem;
+}
+.headerWrap .left .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: url(../img/common/icon_arrow_right.svg) no-repeat center/2.4rem 2.4rem;
+  transform: rotate(180deg);
+}
+.headerWrap .center {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+.headerWrap .right {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+}
+.headerWrap .right .alarm {
+  position: relative;
+  display: inline-block;
+  width: 3.2rem;
+  height: 3.2rem;
+  background: url(../img/common/icon_bell.svg) no-repeat center/auto;
+}
+.headerWrap .right .alarm.new::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0.4rem;
+  right: 0.3rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  border: 0.2rem solid #F2F5F7;
+  border-radius: 50%;
+  background-color: red;
+}
+.headerWrap .right .total {
+  display: inline-block;
+  width: 3.2rem;
+  height: 3.2rem;
+  background: url(../img/common/icon_menu.svg) no-repeat center/auto;
+}
+.headerWrap .right .close {
+  position: absolute;
+  top: 0.4rem;
+  right: 1.2rem;
+  display: inline-block;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: url(../img/common/icon_close.svg) no-repeat center/2.4rem 2.4rem;
+}
+.headerWrap .content-wrap {
+  margin-top: 1.6rem;
+}
+
+.contentWrap {
+  padding: 0 2rem;
+}
+
+.cont-box {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 2rem 2.4rem;
+  background-color: #fff;
+}
+.cont-box.big {
+  padding: 2.4rem;
+}
+.cont-box.stage {
+  margin-top: 1.2rem;
+}
+.cont-box.stage .txt {
+  margin-left: 1.2rem;
+}
+.cont-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.cont-menu .item .link {
+  position: relative;
+  padding-top: 6.4rem;
+}
+.cont-menu .item .link::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5.6rem;
+  height: 5.6rem;
+  background-color: #F2F5F7;
+}
+.cont-menu .item + .item {
+  margin-left: 4.2rem;
+}
+
+.commute-group .cont-item.title .txt {
+  color: #515961;
+  padding-left: 0.8rem;
+}
+.commute-group .cont-item.title::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: calc(100% - 3.5rem);
+  height: 0.1rem;
+  bottom: 0;
+  left: 1.75rem;
+  border-bottom: 0.1rem dashed #C0C6CC;
+}
+.commute-group .cont-item.state .area-state .icon {
+  position: relative;
+  display: inline-block;
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 0.15rem solid #8C959F;
+}
+.commute-group .cont-item.state .area-state .icon::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.6rem;
+  height: 0.6rem;
+  background-color: #8C959F;
+}
+.commute-group .cont-item.state .area-state .txt {
+  color: #515961;
+  vertical-align: text-top;
+}
+.commute-group .cont-item.state .area-time {
+  display: flex;
+  align-items: center;
+  color: #6E7780;
+  margin: 1.6rem 0 3.2rem;
+}
+.commute-group .cont-item .badge {
+  display: inline-block;
+  width: auto;
+  height: 2.4rem;
+  padding: 0.3rem 1rem;
+  vertical-align: middle;
+  margin-left: 0.4rem;
+}
+.commute-group.holiday .cont-item.title .tit {
+  color: #C9252D;
+}
+.commute-group.holiday .cont-item.title .txt {
+  color: #A9B0B8;
+}
+.commute-group.annual .cont-item.title .txt {
+  position: relative;
+  padding-left: 0.9rem;
+  color: #212529;
+}
+.commute-group.annual .cont-item.title .txt::after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 0.2rem;
+  transform: translateY(-50%);
+  width: 0.4rem;
+  height: 0.4rem;
+  background-color: #8C959F;
+}
+.commute-group.afterwork .cont-item.title .txt {
+  position: relative;
+  padding-left: 0.9rem;
+  color: #212529;
+}
+.commute-group.afterwork .cont-item.title .txt::after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 0.2rem;
+  transform: translateY(-50%);
+  width: 0.4rem;
+  height: 0.4rem;
+  background-color: #8C959F;
+}
+.commute-group.afterwork .cont-item.title .txt + .txt {
+  padding-left: 0.8rem;
+  color: #515961;
+}
+.commute-group.afterwork .cont-item.title .txt + .txt::after {
+  content: none;
+}
+.commute-group.afterwork .cont-item.state .area-state .icon {
+  border-color: #347EFF;
+}
+.commute-group.afterwork .cont-item.state .area-state .icon::after {
+  background-color: #347EFF;
+}
+.commute-group.afterwork .cont-item.state .area-state .txt {
+  color: #347EFF;
+}
+.commute-group.afterwork .cont-item.state .area-time .tit {
+  color: #212529;
+}
+.commute-group.late .cont-item.state .area-state {
+  position: relative;
+}
+.commute-group.late .cont-item.state .area-state .icon {
+  border-color: #C9252D;
+}
+.commute-group.late .cont-item.state .area-state .icon::after {
+  background-color: #C9252D;
+}
+.commute-group.late .cont-item.state .area-state .txt {
+  color: #C9252D;
+}
+.commute-group.late .cont-item.state .area-state .btnWrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.commute-group.late .cont-item.state .area-time .tit {
+  color: #212529;
+}
+.commute-group.overtime .cont-item.state .area-time .tit {
+  color: #212529;
+}
+.commute-group.leave .cont-item.state .area-time .tit {
+  color: #212529;
+}
+.commute-group.leave .cont-item.state .area-time .badge {
+  background-color: #E4F5EF;
+  color: #268E6C;
+}
+.commute-group + .cont-box {
+  margin-top: 2.4rem;
 }/*# sourceMappingURL=cp.style.css.map */

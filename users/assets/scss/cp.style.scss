@@ -7,6 +7,7 @@
 @import 'cp.button'; // 버튼
 @import 'cp.rdochk'; // 라디오+체크
 @import 'cp.input'; // input:text
+@import 'layout'; // 페이지 작업 - BHY
 
 .tit {
     @extend %heading-2xl;
