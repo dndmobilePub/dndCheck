@@ -56,7 +56,7 @@ $tertiary:'.tertiary';
         &.disabled {@extend %btn-disabled-primary;}
     }
     &#{$secondary} {
-        color:$color-text-interactive-secondary;
+        color:$color-text-secondary;
         background-color:$color-bg-interactive-secondary;
         &:hover, &:focus {
             background-color:$color-bg-interactive-secondary-hover;
@@ -67,7 +67,7 @@ $tertiary:'.tertiary';
         &.disabled {@extend %btn-disabled-secondary;}
     }
     &#{$tertiary} {
-        color:$color-text-interactive-tertiary;
+        color:$color-text-primary;
         background-color:$color-bg-interactive-tertiary;
         @include line(inset, $color-border-secondary);
         // @extend %border-tertiary; // 라인 안쪽으로 적용
@@ -76,7 +76,7 @@ $tertiary:'.tertiary';
         }
         &:active, &.loading {
             background-color:$color-bg-interactive-tertiary-pressed;
-            color:$color-text-interactive-primary;
+            color:$color-text-primary;
         }
         &.disabled {@extend %btn-disabled-tertiary;}
     }
@@ -96,7 +96,7 @@ $tertiary:'.tertiary';
             @extend %body-md-regular; @extend %radius-8;
         }
         &-xs {
-            padding:.6rem 1.2rem;
+            padding:.2rem 1.2rem;
             @extend %body-md-regular; @extend %radius-round;
         }
     }

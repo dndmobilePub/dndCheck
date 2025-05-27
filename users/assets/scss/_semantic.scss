@@ -36,7 +36,7 @@ $color-bg-interactive-secondary-pressed:$color-brand-secondary-400;
 
 $color-bg-interactive-tertiary:$color-base-white;
 $color-bg-interactive-tertiary-hover:$color-neutral-300;
-$color-bg-interactive-tertiary-pressed:$color-neutral-500;
+$color-bg-interactive-tertiary-pressed:$color-neutral-50;
 
 $color-border-none:none;
 $color-border-primary:$color-neutral-700;
@@ -244,6 +244,7 @@ $fontWeight:(
 $radius: (
     0:(border-radius:$radius-0),
     2:(border-radius:$radius-2),
+    4:(border-radius:$radius-4),
     5:(border-radius:$radius-5),
     6:(border-radius:$radius-6),
     8:(border-radius:$radius-8),
@@ -254,6 +255,7 @@ $radius: (
     full:(border-radius:$radius-full),
 );
 %radius-0 {@include dndCP($radius, 0);}
+%radius-4 {@include dndCP($radius, 5);}
 %radius-5 {@include dndCP($radius, 5);}
 %radius-8 {@include dndCP($radius, 8);}
 %radius-12 {@include dndCP($radius, 12);}
@@ -293,4 +295,3 @@ $shadow: (
 %shadow-sm {@include dndCP($shadow, sm);}
 %shadow-md {@include dndCP($shadow, md);}
 %shadow-lg {@include dndCP($shadow, lg);}
-

@@ -1,5 +1,6 @@
 $field:'.field';
 $fmsg: '#{$field}-msg';
+$fieldLabel: '#{$field}-label';
 #{$field} {
     &.grow, .grow {flex:1 0 0;}
     &-btn {@include dflex($j-content:center, $al-items:center); flex-shrink:0;}
@@ -12,10 +13,13 @@ $fmsg: '#{$field}-msg';
 
     // FIELD - INPUT
     &-input {
-        height: 4.0rem;
-        input:not([type=checkbox]):not([type=radio]) {padding: 1.0rem 0; width: 100%; height: 100%; border: 0; background-color: transparent;}
+        // height: 4.0rem;
+        input:not([type=checkbox]):not([type=radio]) {
+            padding: 1.2rem 1rem; width: 100%; height: 100%; border: 0; background-color: transparent;
+            @extend %body-md-regular;
+        }
         input:not([type=checkbox]):not([type=radio]):focus {outline: none;}
-        input:not([type=checkbox]):not([type=radio])::placeholder {color:$color-text-placeholder;}
+        input:not([type=checkbox]):not([type=radio])::placeholder {color:$color-text-placeholder; @extend %body-md-regular;}
 
         &.right {input {text-align:right;}}
         &.center {input {text-align:center;}}
@@ -29,9 +33,9 @@ $fmsg: '#{$field}-msg';
     }
     &-outline {
         @include dflex($al-items: stretch);
-        min-height: 4.0rem;
-        border-radius: .5rem;
-        box-shadow: inset 0 0 0 .1rem $color-border-secondary;
+        min-height: 4.8rem;
+        @extend %radius-5;
+        @include line(inset, $color-border-secondary, .1rem);
         background:$color-bg-primary;
         &:focus-within {@include line(inset, $color-border-focusring, .2rem);}
 
@@ -43,11 +47,11 @@ $fmsg: '#{$field}-msg';
 
             #{$field} {
                 &-input {@include dflex;}
-                ._input-clear {order:2;}
+                ._input-clear {order:2; margin-right:0 !important;}
             }
         
             .auth-time {
-                margin-left:1rem;
+                margin:0 1rem;
                 align-self:center; order:3;
             }
             .btn-auth {align-self: center; margin-right:1rem;}
@@ -75,15 +79,37 @@ $fmsg: '#{$field}-msg';
             .right {place-self: flex-end;}
         }
 
-        &.readonly {color:$color-text-secondary; cursor: default; pointer-events: none;}
+        &.readonly {color:$color-text-secondary; cursor: default;}
         &.disabled {
-            opacity:.8; cursor:default; pointer-events:none;
+            opacity:.8; cursor:default;
             background:$color-bg-disabled;}
 
         .center {place-self: center;}
         .bottom {place-self: flex-end;}
     }
-
+    // 인증번호 [필드 + 인증시간] + [인증번호]
+    &.auth {
+        #{$field} {
+            &-outline {
+                display:inline-flex; width:calc(100% - 11.7rem);
+                &~ .btn-auth {
+                    display:inline-flex; 
+                    margin-left:1rem;
+                }
+            }
+            &-input {
+                @include dflex;
+                .auth-time {
+                    display:block;
+                    margin:0 1rem;
+                    align-self:center; order:3;
+                }
+            }
+            ._input-clear {order:2;}
+            
+        }
+        
+    }
     /* FIELD - VALID */
     &.valid, &.invalid {
         #{$fmsg} {display:block;}
@@ -100,7 +126,6 @@ $fmsg: '#{$field}-msg';
         }
         & + #{$fmsg}, #{$fmsg} {color:$color-text-success;}
     }
-
     &.invalid {
         #{$field} {
             &-outline {
@@ -114,22 +139,63 @@ $fmsg: '#{$field}-msg';
         }
         & + #{$fmsg}, #{$fmsg} {color:$color-text-warning;}
     }
+    /* FIELD - PLACEHOLDER TYPE */
+    &._label {
+        #{$field} {
+            &-outline {
+                @include pos-offset(relative, $z-index:1);
+                padding:0 1rem;
+                @include dflex($al-items:center, $al-content: center, $wrap:wrap);
+                // flex-wrap: wrap;
+
+                & > *:not(.field-label) {display:none; @extend %transition3s;}
+                &._hasValue {
+                    & > *:not(.field-label) {display:flex; @extend %transition3s;}
+                }
+                
+                #{$field} {
+                    &-label {
+                        width:100%; height:100%; margin-bottom:0;
+                        @extend %body-sm-regular; color:$color-text-primary;
+                        @extend %transition3s;
+                        &._is-active {
+                            padding:1rem 0;
+                            @extend %body-xs-bold; @extend %transition3s;
+                        }
+                    }
+                }
+                &._is-active {
+                    & > *:not(.field-label) {display:flex; @extend %transition3s;}
+                }
+            }            
+        }
+    }
 }
 
-
 /* FIELD - INPUT SCRIPT */
+._hasClear {
+    ._input-clear {
+        @include dflex(inline-flex, $j-content:flex-end) { align-self:center;}
+        // pointer-events:all; 
+        margin:0 1rem;
+        &:focus {
+            background-color:$color-bg-interactive-primary;
+            @include line(inset, $color-bg-interactive-primary-hover, .1rem);
+        }
+    }
+}
 ._input {
     @include dflex($al-items:center);
     &._clear {width:calc(100% - 2.2rem);}
     &-clear {
         display:none;
-        pointer-events:none; touch-action: none;
-        @include el-size(1.4rem, 1.4rem);
-        background:$color-bg-interactive-secondary-pressed;
+        // pointer-events:none; touch-action: none;
+        @include el-size(2.1rem, 2.1rem);
+        background:$color-neutral-600;
         border-radius:100%;
         @include pos-offset(relative);
         @include el-content(both) {
-            @include el-size(.8rem,.1rem);
+            @include el-size(1rem, .15rem);
             @include pos-offset($top:calc(50%), $left:calc(50%));
             background:$color-bg-primary;
         }
@@ -137,11 +203,13 @@ $fmsg: '#{$field}-msg';
         @include el-content(before) {transform:translate(-50%, -50%) rotate(45deg);}
         @include el-content(after) {transform:translate(-50%, -50%) rotate(-45deg);}
 
+        /* 
         &._active {
             @include dflex(inline-flex, $j-content:flex-end) { align-self:center;}
             pointer-events:all; 
             margin-left:.5rem;
         }
+        */
     }
     input {
         &._password {
@@ -157,6 +225,7 @@ $fmsg: '#{$field}-msg';
             @include pos-offset(relative, $z-index:2); color:transparent;
             &::placeholder {color:transparent;}
         }
+        ._password {padding:0 !important;}
 
         & > i {
             @include pos-offset($top:50%, $left:0, $z-index:1);
@@ -169,6 +238,107 @@ $fmsg: '#{$field}-msg';
                 @include line(inset, $color-border-secondary);
                 background:$color-bg-primary;
                 &._is-active {background:$color-bg-interactive-primary-hover; box-shadow: none;}
+            }
+        }
+    }
+}
+
+// input range
+#{$field} {
+    input[type=range] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: .6rem !important;
+        padding: 0 !important;
+        cursor: pointer;
+        outline: none;
+        border-radius: 1.5rem;
+        &::-webkit-slider-thumb { 
+            -webkit-appearance: none;
+            background:$color-bg-primary;
+            width: 1.6rem;
+            height: 1.6rem;
+            border: 0.25rem solid $color-border-primary;
+            border-radius: 50%;
+            cursor: pointer;
+            transform: translateY(calc(-50% + 8px));
+        }
+    }
+
+    &.range-slider {
+        @include pos-offset(relative);
+        .field-input {height:4rem;}
+        &.double {
+            .slider-container {
+                background:$color-bg-tertiary;
+                @include pos-offset(relative);
+                height: .6rem;
+                border-radius: .5rem;
+                margin-top: 2rem;
+                .double-slider {
+                    @include pos-offset;
+                    background-color:$color-bg-interactive-primary;
+                    height: 100%;
+                }
+            }
+            .field-input {
+                @include pos-offset(relative);
+                height: 100%;
+                input[type=range] {
+                    @include pos-offset($top: -5px);
+                    pointer-events: none;
+                    &::-webkit-slider-thumb {
+                        pointer-events: auto;
+                    }
+                }
+            }
+        }
+        .range-info, .doublerange-info {
+            @include pos-offset($bottom:4.8rem);
+            padding: .6rem 1rem;
+            background-color:$color-bg-primary;
+            @include line(border, .1rem solid $color-border-primary);
+            text-align: center; text-wrap:nowrap;
+            &:after {
+                content:'';
+                display:block;
+                @include pos-offset($left:50%, $bottom:-.4rem, $right:auto);
+                width: 1rem;
+                height: 1rem;
+                background:$color-bg-primary;
+                box-shadow: 1px 1px 0 0 $color-border-primary;
+                transform: translateX(-50%) rotate(45deg);
+            }
+            &.left {
+                left: calc(0% + 20px) !important;
+                margin-left: -22px !important;
+                &:after {
+                    left: .4rem !important;
+                    transform: rotate(45deg);
+                }
+                &.gap {
+                    @include el-content(after) {left:3.4rem;}
+                }
+            }
+            &.right {
+                left: auto !important;
+                right: 0 !important;
+                &:after {
+                    left: auto;
+                    right: .4rem !important;
+                    transform: rotate(45deg);
+                }
+                &.gap {
+                    @include el-content(after) {right:3.0rem;}
+                }
+            }
+        }
+        .doublerange-info {
+            bottom: 2.4rem;
+            &.right {
+                right: 0;
+                margin-right: 0 !important;
             }
         }
     }

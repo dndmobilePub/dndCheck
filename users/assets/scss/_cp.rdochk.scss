@@ -176,11 +176,50 @@ $fieldLabel:'#{$field}-label';
     // 박스형
     &.box-opt {
         &.full {
-            .field-chkrdo {width:100%;}
+            flex-wrap: wrap;
+            #{$field} {
+                &-chkrdo {
+                    text-align: left;
+                    & ~ #{$field}-chkrdo {
+                        margin-left:0; margin-top:.8rem
+                    }
+                    width:100%;
+                    #{$fieldLabel} {
+                        text-align: left;
+                        color:$color-text-primary;
+                        padding:1.4rem 4.8rem 1.4rem 2rem !important;
+                    }
+                }
+            }
+            &.ico {
+                .rdo, .chk {
+                    &:checked {
+                        & + #{$fieldIcon} {
+                            background-color:transparent;
+                            border-color:transparent;
+                        }
+                    }
+                }
+                #{$fieldIcon} {
+                    @include obj-offset-align($direction:"all", $top:50%, $left:98%);
+                    border-color:transparent;
+                    @include el-content(before) {
+                        border-color:transparent;
+                    }
+                }
+
+            }
         }
         @include dflex;
         #{$fieldIcon} {display:none;}
         &.gap {
+            &.full {
+                flex-wrap:nowrap;
+                width:100%;
+            }
+        }
+        &.gap, &.full {
+            
             border:none;
             #{$field} {
                 &-chkrdo {
@@ -276,6 +315,7 @@ $fieldLabel:'#{$field}-label';
                         @include el-content(before) {
                             background:transparent;
                             border-color:$color-bg-interactive-primary;
+                            @extend %radius-0;
                         }
                     }
                 }

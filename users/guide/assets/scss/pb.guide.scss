@@ -7,8 +7,8 @@
 @import 'font';
 @import 'pg.variables';
 
-[temp-btn-gap] {
-    a, button:not(._input-clear) {margin-bottom:.5rem;}
+[temp-cp-gap] {
+    a:not(._input-clear):not(.btn-auth), button:not(._input-clear):not(.btn-auth) {margin-bottom:.5rem;}
     .field-outline ~ .field-outline {margin-top:1rem;}
     .field ~ .field {margin-top:2rem;}
 }

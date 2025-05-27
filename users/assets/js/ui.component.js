@@ -102,7 +102,6 @@ var COMPONENT_UI = (function (cp, $) {
             $('html').addClass(browser).addClass(device);
         },
     },
-
     /* COMMON UI */
     cp.btnFn = {
         init: function () {
@@ -233,14 +232,81 @@ var COMPONENT_UI = (function (cp, $) {
             return '<caption class="processedCaption"><strong>' + title + '</strong><p>' + text + ' 로 구성된 표' + '</p></caption>';
         },
     },
-    
+    cp.formStatus = {
+        init: function() {
+            // 초기 상태 업데이트만 수행
+            $('.field input').each(function() {
+                cp.formStatus.updateFieldStatus($(this));
+            });
+
+            // label 클릭 차단 (readonly or disabled 상태)
+            $(document).on('click', 'label', function(e) {
+                var $label = $(this);
+                if ($label.hasClass('_readonly') || $label.hasClass('_disabled')) {
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    return false;
+                }
+            });
+        },
+
+        updateFieldStatus: function($input) {
+            var $label = $input.closest('label');
+            if (!$label.length) return;
+
+            // 기존 상태 클래스 제거 (field-status, _disabled, _readonly, _status-*)
+            $label.removeClass(function(index, className) {
+                return (className.match(/(^|\s)(field-status-\S+|_disabled|_readonly|_status-\S+)/g) || []).join(' ');
+            });
+
+            if ($input.is(':disabled')) {
+                $label.addClass('_disabled');
+            }
+            if ($input.is('[readonly]')) {
+                $label.addClass('_readonly');
+            }
+
+            var status = $input.attr('field-status');
+            if (status) {
+                $label.addClass('_status-' + status);
+            }
+        },
+
+        setDisabled: function($input, disabled) {
+            if (disabled) {
+                $input.attr('disabled', 'disabled');
+            } else {
+                $input.removeAttr('disabled');
+            }
+            cp.formStatus.updateFieldStatus($input);
+        },
+        // 콜백실행ex : COMPONENT_UI.formStatus.setDisabled($('#변경될INPUT'), false);
+
+        setReadonly: function($input, readonly) {
+            if (readonly) {
+                $input.attr('readonly', 'readonly');
+            } else {
+                $input.removeAttr('readonly');
+            }
+            cp.formStatus.updateFieldStatus($input);
+        },
+        // 콜백실행ex : COMPONENT_UI.formStatus.setReadonly($('#변경될INPUT'), false);
+
+        setFieldStatus: function($input, status) {
+            if (status) {
+                $input.attr('field-status', status);
+            } else {
+                $input.removeAttr('field-status');
+            }
+            cp.formStatus.updateFieldStatus($input);
+        }
+        // 콜백실행ex : COMPONENT_UI.formStatus.setFieldStatus($('#변경될INPUT'), false);
+    },    
     cp.form = {
         constEl: {
-            field: $(".field"),
-            labelChkrdo: $("label.field-chkrdo"),
             inputDiv: $("._input"),
             inputSelector: "._input > input:not([type='radio']):not([type='checkbox']):not(.exp input)",
-            // inputExpSelector: ".exp input",
+            inputExpSelector: ".exp input",
             clearSelector: "._input-clear",
             labelDiv: $("._label")
         },
@@ -249,14 +315,12 @@ var COMPONENT_UI = (function (cp, $) {
             this.input(this.inputSetting.bind(this));
             this.inpClearBtn(this.clearBtnCallback);
             this.secureTxt();
-            //this.inpReadonly();
+            this.inpReadonly();
             this.lbPlaceHolder();
             this.inputRange(this.inputRangeCallback);
             this.inputRangeDouble(this.inputRangeDoubleCallback);
         },
 
-        
-        /* 전체 input에 반영하기 위해 수정
         inputSetting: function () {
             const inputSelector = this.constEl.inputSelector;
 
@@ -302,122 +366,56 @@ var COMPONENT_UI = (function (cp, $) {
                 this.inputSettingCallback();
             }
         },
-        */
-        inputSetting: function () {
-            const self = this,
-                field = this.constEl.field;
-                labelChkrdo = this.constEl.labelChkrdo;
-
-            // ✅ 일반 input 처리 (.field 기준)
-            $(field).each(function () {
-                const $field = $(this);
-                const $inputs = $field.find('._input input');
-
-                $inputs.each(function (index) {
-                    const $input = $(this);
-
-                    // placeholder → title
-                    const placeholder = $input.attr('placeholder');
-                    if (placeholder) {
-                        $input.attr('title', placeholder);
-                    }
-
-                    if (index === 0) {
-                        // 첫 번째 input에만 id 부여
-                        let inputId = $input.attr('id');
-                        if (!inputId) {
-                            inputId = 'input_' + Math.random().toString(36).substr(2, 9);
-                            $input.attr('id', inputId);
-                        }
-
-                        // 해당 field 내 label 연결
-                        const $label = $field.find('label.field-label').first();
-                        if ($label.length) {
-                            $label.attr('for', inputId);
-                        }
-                    } else {
-                        // 나머지 input은 id 제거
-                        $input.removeAttr('id');
-                    }
-                });
-            });
-
-            // ✅ 체크박스/라디오 처리 (label.field-chkrdo 기준)
-            $(labelChkrdo).each(function () {
-                const $label = $(this);
-                const $inputs = $label.find('input');
-
-                $inputs.each(function (index) {
-                    const $input = $(this);
-
-                    // placeholder → title
-                    const placeholder = $input.attr('placeholder');
-                    if (placeholder) {
-                        $input.attr('title', placeholder);
-                    }
-
-                    if (index === 0) {
-                        // 첫 번째 input에만 id 부여
-                        let inputId = $input.attr('id');
-                        if (!inputId) {
-                            inputId = 'input_' + Math.random().toString(36).substr(2, 9);
-                            $input.attr('id', inputId);
-                        }
-
-                        // 해당 label에 for 연결
-                        $label.attr('for', inputId);
-                    } else {
-                        $input.removeAttr('id');
-                    }
-                });
-            });
-
-            // 콜백 실행
-            if (typeof this.inputSettingCallback === "function") {
-                this.inputSettingCallback();
-            }
-        },
 
         // _label 붙은 input타입 스크립트
         lbPlaceHolder: function (callback) {
             const labelDiv = this.constEl.labelDiv.find(".field-label:not(._address)");
 
-            $(labelDiv).each(function () {
+            // 문서 클릭 핸들러 (한 번만 등록)
+            $(document).off("click.lbPlaceHolder").on("click.lbPlaceHolder", function (e) {
+                labelDiv.each(function () {
+                    const $fieldLabel = $(this),
+                        $fieldBox = $fieldLabel.parents(".field"),
+                        $fieldOutline = $fieldLabel.parents(".field-outline"),
+                        $fieldInputs = $fieldBox.find("input");
+
+                    if (!$(e.target).closest($fieldBox).length && $fieldInputs.val().trim() === "") {
+                        $fieldLabel.removeClass('_is-active');
+                        $fieldOutline.removeClass('_hasValue _is-active');
+                        $fieldLabel.attr("aria-pressed", "false");
+                    }
+                });
+            });
+
+            labelDiv.each(function () {
                 const $fieldLabel = $(this),
                     $fieldBox = $fieldLabel.parents(".field"),
                     $fieldOutline = $fieldLabel.parents(".field-outline"),
-                    $fieldInputs = $fieldBox.find("input"),
-                    self = this;
+                    $fieldInputs = $fieldBox.find("input");
 
                 $fieldLabel.attr({
-                    "tabindex": "0", // 키보드 접근을 위한 tabindex 설정
-                    "role": "button", // 라벨을 버튼으로 인식하도록 설정
-                    "aria-pressed": "false", // 버튼 상태 초기화
-                    "aria-label": $fieldLabel.text() // 라벨의 텍스트를 aria-label로 설정
+                    "tabindex": "0",
+                    "role": "button",
+                    "aria-pressed": "false",
+                    "aria-label": $fieldLabel.text()
                 });
 
-                // '_is-active' 클래스에 따라 '_hasValue' 클래스를 토글하는 함수
                 function hasValue() {
                     if ($fieldLabel.hasClass('_is-active')) {
                         $fieldOutline.addClass('_hasValue');
-                        $fieldLabel.attr("aria-pressed", "true"); // 라벨이 활성화되면 aria-pressed를 true로 변경
+                        $fieldLabel.attr("aria-pressed", "true");
                     } else {
                         $fieldOutline.removeClass('_hasValue');
-                        $fieldLabel.attr("aria-pressed", "false"); // 비활성화되면 false로 변경
+                        $fieldLabel.attr("aria-pressed", "false");
                     }
                 }
 
-                // 라벨 클릭 시 실행되는 함수 (콜백 포함)
                 function handleLabelClick() {
-                    $(this).addClass('_is-active');
+                    $fieldLabel.addClass('_is-active');
                     $fieldOutline.addClass('_is-active');
-
-                    // '_is-active' 상태에 따라 '_has-value' 클래스를 토글하는 함수 호출
                     hasValue();
 
-                    // input 포커스 시 화면 스크롤 이동
-                    const target = $(this),
-                        targetOffset = target.offset().top - 120,
+                    const targetOffset = $fieldLabel.offset().top - 120,
                         docH = $(document).height(),
                         winH = $(window).height();
 
@@ -426,105 +424,54 @@ var COMPONENT_UI = (function (cp, $) {
                     }
                     $("html, body").animate({ scrollTop: targetOffset }, 500);
 
-                    // 콜백 함수가 전달되었을 때 실행
                     if (typeof callback === 'function') {
-                        callback(); // 라벨 클릭 시에만 콜백이 실행됨
+                        callback();
                     }
                 }
 
-                // 포커스 아웃 시 실행되는 함수
                 function handleFocusOut() {
-                    // 입력값이 없고 포커스가 $fieldOutline 밖으로 나갈 때
                     if ($fieldInputs.val().trim() === "") {
                         $fieldLabel.removeClass('_is-active');
                         hasValue();
                     }
                 }
 
-                // 포커스 인 시 실행되는 함수
                 function handleFocusIn() {
-                    // 입력 필드 간에 포커스 이동 시 _hasValue 유지
                     $fieldLabel.addClass('_is-active');
                     $fieldOutline.addClass('_is-active');
                     hasValue();
                 }
 
-                // 문서 클릭 시 실행되는 함수
-                function handleDocumentClick(e) {
-                    if (!$(e.target).closest($fieldBox).length) {
-                        // 입력값이 없을 때 '_is-active' 클래스를 제거
-                        if ($fieldInputs.val().trim() === "") {
-                            $fieldLabel.removeClass('_is-active');
-                            hasValue();
-                        }
-                    }
-                }
-
-                // 키보드 이벤트 핸들러 추가
                 function handleKeydown(e) {
-                    if (e.key === "Enter" || e.key === " ") { // Enter 또는 Space 키 확인
-                        e.preventDefault(); // 기본 동작 방지
-                        handleLabelClick.call($fieldLabel); // 클릭 핸들러 호출
+                    if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        handleLabelClick();
                     }
                 }
 
-                // 기존 이벤트 핸들러 제거 (중복 방지)
-                $fieldLabel.off("click", handleLabelClick);
-                $fieldLabel.off("keydown", handleKeydown);
-                $(document).off("click", handleDocumentClick);
-                $fieldInputs.off("focusout", handleFocusOut);
-                $fieldInputs.off("focusin", handleFocusIn);
+                // 기존 핸들러 제거 후 재등록
+                $fieldLabel.off(".lbPlaceHolder")
+                        .on("click.lbPlaceHolder", handleLabelClick)
+                        .on("keydown.lbPlaceHolder", handleKeydown);
 
-                // 라벨 클릭 시 이벤트 핸들러 등록
-                $fieldLabel.on("click", handleLabelClick);
-
-                // 키보드 이벤트 핸들러 등록
-                $fieldLabel.on("keydown", handleKeydown);
-
-                // 문서 클릭 시 이벤트 핸들러 등록
-                $(document).on("click", handleDocumentClick);
-
-                // 입력 필드 포커스 아웃 시 이벤트 핸들러 등록
-                $fieldInputs.on("focusout", handleFocusOut);
-
-                // 입력 필드 포커스 인 시 이벤트 핸들러 등록
-                $fieldInputs.on("focusin", handleFocusIn);
+                $fieldInputs.off(".lbPlaceHolder")
+                            .on("focusout.lbPlaceHolder", handleFocusOut)
+                            .on("focusin.lbPlaceHolder", handleFocusIn);
             });
-
-            /*
-            // 예시: lbPlaceHolder 호출 및 콜백 함수 정의
-            $('.your-selector').lbPlaceHolder(function() {
-                // 이곳에 콜백 함수의 내용을 작성합니다.
-                console.log('라벨이 클릭되었습니다!');
-                // 추가적인 동작을 여기에 구현할 수 있습니다.
-                alert('라벨 클릭 콜백 실행');
-            });
-            */
         },
-
+        
         input: function (callback) {
             const inputSelector = this.constEl.inputSelector,
-                // inputExpSelector = this.constEl.inputExpSelector,
                 clearSelector = this.constEl.clearSelector;
 
-            // 라디오, 체크박스, .exp 를 제외한 모든 input case
             $(inputSelector).each(function () {
                 const $inputTxt = $(this);
                 if ($inputTxt.prop("readonly") || $inputTxt.prop("disabled")) {
                     return;
                 }
-                // 페이지 직접 적용으로 변경 하고 _input-clear 예외 삭제
-                // $(this).parent().append('<button type="button" class="field-btn _input-clear"><span class="hide">입력값삭제</span></button>');
+
                 function activateClearBtn() {
                     const $clearBtn = $inputTxt.parent().find(clearSelector);
-
-                    if ($(".field-outline").hasClass('_is-active')) {
-                        $(this).addClass("_is-active");
-                    }
-
-                    if ($('html').hasClass("ios") || $('html').hasClass("ios_old")) {
-                        $inputTxt.parent().attr({ "contenteditable": "false" });
-                    }
 
                     if ($inputTxt.val()) {
                         $inputTxt.parent().addClass("_hasClear");
@@ -538,26 +485,36 @@ var COMPONENT_UI = (function (cp, $) {
                         $inputTxt.removeClass('_is-active');
                     }
                 }
+
                 $inputTxt
-                    .on("keyup focus-in focus input", function () {
-                        setTimeout(function () {
-                            $inputTxt.parent().parent().addClass("_is-active");
-                            activateClearBtn();
-                        }, 100);
+                    .on("keyup input", function () {
+                        activateClearBtn();
+                    })
+                    .on("focusin", function () {
+                        // 다른 input에서 _hasClear 모두 제거
+                        $("._input").removeClass("_hasClear");
+
+                        // 현재 input 값 있으면 _hasClear 추가
+                        if ($inputTxt.val()) {
+                            $inputTxt.parent().addClass("_hasClear");
+                            $inputTxt.parent().find(clearSelector).addClass("_active");
+                        }
+
+                        // 상위에 _is-active 클래스 토글(원본 유지)
+                        $inputTxt.parent().parent().addClass("_is-active");
                     })
                     .on("blur focusout", function () {
-                        setTimeout(function () {
-                            $inputTxt.parent().removeClass('_hasClear');
+                        // 포커스 이동시 버튼 포커스 확인 후 _hasClear 유지 또는 제거
+                        const $inputParent = $inputTxt.parent();
+                        setTimeout(() => {
+                            const focusedElem = document.activeElement;
+                            if (!$(focusedElem).closest($inputParent).length) {
+                                $inputParent.removeClass('_hasClear');
+                                $inputParent.find(clearSelector).removeClass('_active');
 
-                            if ($inputTxt.hasClass('_money')) {
-                                $inputTxt.parents(".field-outline").removeClass("_is-active");
-                                $inputTxt.addClass('_is-active');
-                            }
-
-                            if (!$inputTxt.val()) {
-                                $inputTxt.removeClass('_is-active').parents(".field-outline").removeClass("_is-active");
-                                $inputTxt.parent(".field-label").removeClass("_is-active");
-                                // $inputTxt.removeClass('_is-active');
+                                if (!$inputTxt.val()) {
+                                    $inputTxt.removeClass('_is-active').parents(".field-outline").removeClass("_is-active");
+                                }
                             }
                         }, 100);
                     });
@@ -573,47 +530,46 @@ var COMPONENT_UI = (function (cp, $) {
             const inputSelector = this.constEl.inputSelector,
                 clearSelector = this.constEl.clearSelector;
 
-            $('body, html').on("mousedown touchstart keydown", clearSelector, function (e) {
+            $('body').on("mousedown touchstart keydown", clearSelector, function (e) {
                 if (e.type === "keydown" && e.which !== 13) return;
                 e.preventDefault();
-                var clearBtn = $(this),
-                    inputTxt = clearBtn.siblings(inputSelector);
+                const clearBtn = $(this),
+                        inputTxt = clearBtn.siblings(inputSelector);
 
-                setTimeout(function () {
+                setTimeout(() => {
                     if ($('html').hasClass("ios") || $('html').hasClass("ios_old")) {
                         inputTxt.val('').trigger('input').focus();
                         inputTxt.parent().attr({ "contenteditable": "true" }).focus();
 
-                        setTimeout(function () {
-                            inputTxt.focus();
-                        }, 100);
+                        setTimeout(() => inputTxt.focus(), 100);
 
                         inputTxt.parent().removeClass('_hasClear').removeAttr('contenteditable');
                     } else {
-                        // inputTxt.css({ width: "calc(100% - 3.2rem)" }).val('').focus();
                         inputTxt.val('').focus();
 
-                        setTimeout(function () {
-                            inputTxt.focus();
-                        }, 100);
+                        setTimeout(() => inputTxt.focus(), 100);
 
                         inputTxt.parent().removeClass('_hasClear');
                     }
                 }, 100);
             });
 
+            /* 
             $(clearSelector).on("focus", function () {
                 $(this).addClass("_active");
             }).on("blur", function () {
                 $(this).removeClass("_active");
             });
+            */
 
-            $("input").on("compositionstart compositionupdate compositioned input", function (event) {
+            // IME 입력 완료시 input 이벤트 강제 트리거 - IOS 한글버그 대응
+            $("input").on("compositionstart compositionupdate compositionend input", function (event) {
                 var $input = $(this);
-                if (event.type === 'compositioned') {
+                if (event.type === 'compositionend') {
                     $input.trigger("input");
                 }
             });
+
 
             // 콜백 실행
             if (typeof callback === "function") {
@@ -624,61 +580,10 @@ var COMPONENT_UI = (function (cp, $) {
         // 비밀번호 특수문자 모양
         secureTxt: function (callbacks = {}) {
             $('._secureTxt').each(function () {
-                function handleInputFocus(event) {
-                    var secureField = $(event.target).closest("._secureTxt");
-                    var inputField = secureField.find("input");
-                    secureField.find("i._line").css({ opacity: ".5" }).removeClass("_is-active");
-                    var value = inputField.val();
-                    var activeLines = secureField
-                        .find("i._line")
-                        .removeClass("_is-active")
-                        .css({ opacity: ".5" });
-
-                    for (var i = 0; i < value.length && i < secureLine; i++) {
-                        activeLines.eq(i).addClass("_is-active").css({ opacity: "" });
-                    }
-
-                    // Call the focus callback if provided
-                    if (callbacks.onFocus) {
-                        callbacks.onFocus(secureField);
-                    }
-                }
-
-                function handleInputChange(event) {
-                    var secureField = $(event.target).closest("._secureTxt");
-                    var inputField = secureField.find("input");
-                    var value = inputField.val();
-                    var activeLines = secureField.find("i._line").removeClass("_is-active").css({ opacity: ".5" });
-
-                    for (var i = 0; i < value.length && i < secureLine; i++) {
-                        activeLines.eq(i).addClass("_is-active").css({ opacity: "" });
-                    }
-
-                    if (secureField.hasClass("_num")) {
-                        secureField.find("i._is-active, i._line")[value ? "hide" : "show"]();
-                    }
-
-                    // Call the change callback if provided
-                    if (callbacks.onChange) {
-                        callbacks.onChange(secureField, value);
-                    }
-                }
-
-                function handleInputKeyUp(event) {
-                    if (event.keyCode === 8) {
-                        var secureField = $(event.target).closest("._secureTxt");
-                        secureField.find("i._line").eq(event.target.value.length).removeClass("_is-active");
-                    }
-
-                    // Call the keyup callback if provided
-                    if (callbacks.onKeyUp) {
-                        callbacks.onKeyUp(secureField, event);
-                    }
-                }
-
-                var secureLine = parseInt($(this).attr("data-secureLine"));
-                var length = parseInt($(this).attr("data-length"));
+                var secureLine = parseInt($(this).attr("data-secureLine")) || 0;
+                var length = parseInt($(this).attr("data-length")) || 0;
                 var secureField = $(this);
+                var inputField = secureField.find("input");
                 var iTag = "";
 
                 for (var i = 0; i < length; i++) {
@@ -688,7 +593,6 @@ var COMPONENT_UI = (function (cp, $) {
 
                 var left = 0;
                 var space = 13;
-                var inputField = secureField.find("input");
 
                 secureField.find("i").each(function (index) {
                     var $this = $(this);
@@ -707,6 +611,55 @@ var COMPONENT_UI = (function (cp, $) {
                     inputField.attr("type", "tel");
                 }
 
+                function handleInputFocus(event) {
+                    var secureField = $(event.target).closest("._secureTxt");
+                    var inputField = secureField.find("input");
+                    var value = inputField.val();
+                    var activeLines = secureField.find("i._line").removeClass("_is-active").css({ opacity: ".5" });
+
+                    for (var i = 0; i < value.length && i < secureLine; i++) {
+                        activeLines.eq(i).addClass("_is-active").css({ opacity: "" });
+                    }
+
+                    if (callbacks.onFocus) {
+                        callbacks.onFocus(secureField);
+                    }
+                }
+
+                function handleInputChange(event) {
+                    var secureField = $(event.target).closest("._secureTxt");
+                    var inputField = secureField.find("input");
+                    var value = inputField.val();
+                    var activeLines = secureField.find("i._line").removeClass("_is-active").css({ opacity: ".5" });
+
+                    for (var i = 0; i < value.length && i < secureLine; i++) {
+                        activeLines.eq(i).addClass("_is-active").css({ opacity: "" });
+                    }
+
+                    if (secureField.hasClass("_num")) {
+                        if (value) {
+                            secureField.find("i._is-active, i._line").hide();
+                        } else {
+                            secureField.find("i._is-active, i._line").show();
+                        }
+                    }
+
+                    if (callbacks.onChange) {
+                        callbacks.onChange(secureField, value);
+                    }
+                }
+
+                function handleInputKeyUp(event) {
+                    var secureField = $(event.target).closest("._secureTxt");
+                    if (event.keyCode === 8) {
+                        secureField.find("i._line").eq(event.target.value.length).removeClass("_is-active");
+                    }
+
+                    if (callbacks.onKeyUp) {
+                        callbacks.onKeyUp(secureField, event);
+                    }
+                }
+
                 // 보안키패드 연동시 아래 키 이벤트 부분 막아야 함
                 inputField.on("focus", handleInputFocus)
                     .on("input", handleInputChange)
@@ -716,39 +669,41 @@ var COMPONENT_UI = (function (cp, $) {
                             secureField.find("i._line").css({ opacity: "" }).removeClass("_is-active");
                         }
                     });
+                //--* 여기까지 보안키패드 연동시 막아야 함
             });
-            /* 페이지내 콜백호출 예시
-            $('.your-selector').secureTxt({
+
+            /* 페이지에서 호출예시
+            COMPONENT_UI.form.secureTxt({
                 onFocus: function(secureField) {
-                    console.log('Input focused:', secureField);
+                    // focus 시 동작
                 },
                 onChange: function(secureField, value) {
-                    console.log('Input changed:', value);
+                    // 입력값 변경 시 동작
                 },
                 onKeyUp: function(secureField, event) {
-                    console.log('Key up event:', event);
+                    // 키 업 이벤트 시 동작
                 }
             });
+            
             */
         },
 
         // readonly일 경우
-        // cp.formStatus에서 처리
-        // inpReadonly: function () {
-        //     $("input").each(function () {
-        //         var $input = $(this);
-        //         /*
-        //         if ($input.prop("readonly") || $input.prop("disabled")) {
-        //             $input.parent().addClass("_readonly");
-        //         }
-        //         */
-        //         if ($input.prop("readonly")) {
-        //             $input.parent().addClass("_readonly");
-        //         } else if ($input.prop("disabled")) {
-        //             $input.parent().addClass("_disabled");
-        //         }
-        //     });
-        // },
+        inpReadonly: function () {
+            $("input").each(function () {
+                var $input = $(this);
+                /*
+                if ($input.prop("readonly") || $input.prop("disabled")) {
+                    $input.parent().addClass("_readonly");
+                }
+                */
+                if ($input.prop("readonly")) {
+                    $input.parent().addClass("_readonly");
+                } else if ($input.prop("disabled")) {
+                    $input.parent().addClass("_disabled");
+                }
+            });
+        },
 
         // input:range
         inputRange: function (callback) {
@@ -837,53 +792,84 @@ var COMPONENT_UI = (function (cp, $) {
             const maxInfo = $('.doublerange-info.max');
             const maxInfoValue = $('.doublerange-info ._value-max');
 
-            let doubleGap = 500; // 최소 gap(간격)
+            let doubleGap = 500; // 최소 간격
 
-            // 슬라이더와 정보를 업데이트하는 함수
             function updateRangeInfo(value, infoElement, infoValueElement, isMin) {
                 const rangeMessage = infoValueElement.attr('range-value');
-                if (rangeMessage && infoValueElement.attr('inner-value') === 'true') {
+                const innerValue = infoValueElement.attr('inner-value') === 'true';
+                const arrowMin = infoValueElement.attr('arrow-min');
+                const arrowMax = infoValueElement.attr('arrow-max');
+
+                if (rangeMessage && innerValue) {
                     infoValueElement.text(`${rangeMessage}(${value})`);
+                } else if (rangeMessage) {
+                    infoValueElement.text(rangeMessage);
                 } else {
                     infoValueElement.text(value);
                 }
 
-                // 슬라이더의 최대값을 기준으로 백분율 계산
-                let sliderMaxValue = doubleInputRange.eq(0).attr('max');
-                let percentage = (value / sliderMaxValue) * 100;  // 현재 값의 백분율
-                let pixelPercentage = (percentage / 100) * window.innerWidth;  // 백분율을 픽셀로 변환
-                let elementWidth = infoElement.outerWidth() / 2;  // 요소의 너비를 절반으로 나눈 값
-                let parentWidth = infoElement.parent(".field-input").width();  // 부모 요소의 너비
+                const sliderMaxValue = Number(doubleInputRange.eq(0).attr('max'));
+                const percentage = (value / sliderMaxValue) * 100;
+                const pixelPercentage = (percentage / 100) * window.innerWidth;
+                const elementWidth = infoElement.outerWidth() / 2;
+                const parentWidth = infoElement.parent(".field-input").width();
 
                 if (isMin) {
                     infoElement.css({
                         'left': pixelPercentage < elementWidth ? `${percentage * 0}%` : `${percentage}%`,
-                        // 만약 백분율에 해당하는 픽셀 값이 요소 너비의 절반보다 작은 경우
                         'margin-left': pixelPercentage < elementWidth ? `0` : `-${elementWidth}px`
                     });
+
+                    if (arrowMin !== undefined) {
+                        const arrowMinNum = Number(arrowMin);
+                        if (percentage <= arrowMinNum) {
+                            infoElement.addClass("left gap").removeClass("right");
+                        } else {
+                            infoElement.removeClass("left right gap");
+                        }
+                    } else {
+                        // arrow-min 없으면 기존 최소값 기준
+                        if (value === Number(doubleInputRange.eq(0).attr("min"))) {
+                            infoElement.addClass("left").removeClass("right gap");
+                        } else {
+                            infoElement.removeClass("left right gap");
+                        }
+                    }
                 } else {
                     infoElement.css({
                         'right': (parentWidth - (elementWidth / 2)) < pixelPercentage ? `${elementWidth}px` : `${100 - percentage}%`,
-                        // margin-right를 0 또는 elementWidth에 따라 설정
                         'margin-right': (parentWidth + infoElement.outerWidth()) < pixelPercentage ? `0` : `-${elementWidth}px`
                     });
-                    // console.log(parentWidth, pixelPercentage, elementWidth);
-                }
 
+                    if (arrowMax !== undefined) {
+                        const arrowMaxNum = Number(arrowMax);
+                        if (percentage >= arrowMaxNum) {
+                            infoElement.addClass("right gap").removeClass("left");
+                        } else {
+                            infoElement.removeClass("left right gap");
+                        }
+                    } else {
+                        // arrow-max 없으면 기존 최대값 기준
+                        if (value === Number(doubleInputRange.eq(1).attr("max"))) {
+                            infoElement.addClass("right").removeClass("left gap");
+                        } else {
+                            infoElement.removeClass("left right gap");
+                        }
+                    }
+                }
             }
 
-            // 슬라이더 및 배경 범위를 설정하는 함수
+
             function rangeInputWidth() {
                 let minVal = parseInt(doubleInputRange.eq(0).val());
                 let maxVal = parseInt(doubleInputRange.eq(1).val());
                 let diff = maxVal - minVal;
 
-                // 최소, 최대값이 설정된 간격(doubleGap)보다 좁을 경우 값 고정
                 if (diff < doubleGap) {
                     if ($(this).hasClass("min-range")) {
-                        doubleInputRange.eq(0).val(maxVal - doubleGap); // 최소값 슬라이더가 최대값을 넘지 않도록 설정
+                        doubleInputRange.eq(0).val(maxVal - doubleGap);
                     } else {
-                        doubleInputRange.eq(1).val(minVal + doubleGap); // 최대값 슬라이더가 최소값 이하로 내려가지 않도록 설정
+                        doubleInputRange.eq(1).val(minVal + doubleGap);
                     }
                 } else {
                     dobuleInputNum.eq(0).val(minVal);
@@ -896,21 +882,18 @@ var COMPONENT_UI = (function (cp, $) {
                     doubRangeBg.css("right", `${100 - (maxVal / doubleInputRange.eq(1).attr("max")) * 100}%`);
                 }
 
-                // 콜백 함수 호출
                 if (typeof callback === "function") {
                     callback(minVal, maxVal);
                 }
             }
 
-            rangeInputWidth(); // 초기화 시 실행
+            rangeInputWidth();
 
-            // 숫자 입력 이벤트 처리 (사용자가 숫자를 직접 입력할 때)
             dobuleInputNum.on("input", function () {
                 let minp = parseInt(dobuleInputNum.eq(0).val());
                 let maxp = parseInt(dobuleInputNum.eq(1).val());
                 let diff = maxp - minp;
 
-                // 최소, 최대값이 doubleGap보다 크고 최대값이 max를 초과하지 않는 경우
                 if (diff >= doubleGap && maxp <= doubleInputRange.eq(1).attr("max")) {
                     if ($(this).hasClass("min-input")) {
                         doubleInputRange.eq(0).val(minp);
@@ -926,12 +909,10 @@ var COMPONENT_UI = (function (cp, $) {
                 }
             });
 
-            // 슬라이더 드래그 이벤트 처리
             doubleInputRange.on("input", function () {
                 let minVal = parseInt(doubleInputRange.eq(0).val());
                 let maxVal = parseInt(doubleInputRange.eq(1).val());
 
-                // 최소값 슬라이더가 최대값을 넘지 않도록 제한
                 if (minVal >= maxVal - doubleGap) {
                     if ($(this).hasClass("min-range")) {
                         doubleInputRange.eq(0).val(maxVal - doubleGap);
@@ -942,6 +923,7 @@ var COMPONENT_UI = (function (cp, $) {
                 rangeInputWidth();
             });
         }
+
 
     },
     cp.selectPop = {
@@ -2643,76 +2625,6 @@ var COMPONENT_UI = (function (cp, $) {
                 self.quickShowHide();
             });
         }
-    };
-    cp.formStatus = {
-        init: function() {
-            // 초기 상태 업데이트만 수행
-            $('.field input').each(function() {
-                cp.formStatus.updateFieldStatus($(this));
-            });
-
-            // label 클릭 차단 (readonly or disabled 상태)
-            $(document).on('click', 'label', function(e) {
-                var $label = $(this);
-                if ($label.hasClass('_readonly') || $label.hasClass('_disabled')) {
-                    e.preventDefault();
-                    e.stopImmediatePropagation();
-                    return false;
-                }
-            });
-        },
-
-        updateFieldStatus: function($input) {
-            var $label = $input.closest('label');
-            if (!$label.length) return;
-
-            // 기존 상태 클래스 제거 (field-status, _disabled, _readonly, _status-*)
-            $label.removeClass(function(index, className) {
-                return (className.match(/(^|\s)(field-status-\S+|_disabled|_readonly|_status-\S+)/g) || []).join(' ');
-            });
-
-            if ($input.is(':disabled')) {
-                $label.addClass('_disabled');
-            }
-            if ($input.is('[readonly]')) {
-                $label.addClass('_readonly');
-            }
-
-            var status = $input.attr('field-status');
-            if (status) {
-                $label.addClass('_status-' + status);
-            }
-        },
-
-        setDisabled: function($input, disabled) {
-            if (disabled) {
-                $input.attr('disabled', 'disabled');
-            } else {
-                $input.removeAttr('disabled');
-            }
-            cp.formStatus.updateFieldStatus($input);
-        },
-        // 콜백실행ex : COMPONENT_UI.formStatus.setDisabled($('#변경될INPUT'), false);
-
-        setReadonly: function($input, readonly) {
-            if (readonly) {
-                $input.attr('readonly', 'readonly');
-            } else {
-                $input.removeAttr('readonly');
-            }
-            cp.formStatus.updateFieldStatus($input);
-        },
-        // 콜백실행ex : COMPONENT_UI.formStatus.setReadonly($('#변경될INPUT'), false);
-
-        setFieldStatus: function($input, status) {
-            if (status) {
-                $input.attr('field-status', status);
-            } else {
-                $input.removeAttr('field-status');
-            }
-            cp.formStatus.updateFieldStatus($input);
-        }
-        // 콜백실행ex : COMPONENT_UI.formStatus.setFieldStatus($('#변경될INPUT'), false);
     };
 
 
