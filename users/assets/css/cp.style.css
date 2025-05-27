@@ -26,7 +26,7 @@
   letter-spacing: -0.02rem;
 }
 
-.login-title .tit {
+.commute-date, .login-title .tit {
   font-family: 'Pretendard', 'sans-serif';
   font-weight: 600;
   font-size: 2.8rem;
@@ -42,9 +42,17 @@
   letter-spacing: -0.02rem;
 }
 
-.cont-box.stage .tit, .login-content .tit {
+.commute-wrap .date-tit .tit, .cont-box.stage .tit, .login-content .tit {
   font-family: 'Pretendard', 'sans-serif';
   font-weight: 600;
+  font-size: 2rem;
+  line-height: 2.8rem;
+  letter-spacing: -0.02rem;
+}
+
+.commute-list .item .txt {
+  font-family: 'Pretendard', 'sans-serif';
+  font-weight: 500;
   font-size: 2rem;
   line-height: 2.8rem;
   letter-spacing: -0.02rem;
@@ -58,7 +66,7 @@
   letter-spacing: -0.02rem;
 }
 
-.commute-group.afterwork .cont-item.title .txt, .commute-group.annual .cont-item.title .txt, .headerWrap .center .title, .btn.size-md, .btn.size-lg {
+.current-box .item.day .tit, .commute-group.afterwork .cont-item.title .txt, .commute-group.annual .cont-item.title .txt, .headerWrap .center .title, .btn.size-md, .btn.size-lg {
   font-family: 'Pretendard', 'sans-serif';
   font-size: 1.8rem;
   line-height: 2.4rem;
@@ -66,7 +74,15 @@
   font-weight: 600;
 }
 
-.commute-group .cont-item.title .tit {
+.current-box .item.day .txt {
+  font-family: 'Pretendard', 'sans-serif';
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  letter-spacing: -0.02rem;
+  font-weight: 500;
+}
+
+.commute-wrap .commute-list .item .txt, .commute-wrap .commute-list .item .tit, .commute-group .cont-item.title .tit {
   font-family: 'Pretendard', 'sans-serif';
   font-size: 1.8rem;
   line-height: 2.4rem;
@@ -98,7 +114,7 @@
   font-weight: 400;
 }
 
-.commute-group .cont-item .badge, .commute-group .cont-item.state .area-state .txt {
+.badge, .commute-group .cont-item.state .area-state .txt {
   font-family: 'Pretendard', 'sans-serif';
   font-size: 1.4rem;
   line-height: 2rem;
@@ -106,7 +122,7 @@
   font-weight: 500;
 }
 
-.field._label .field-outline .field-label {
+.commute-list .item .tit, .field._label .field-outline .field-label {
   font-family: 'Pretendard', 'sans-serif';
   font-size: 1.4rem;
   line-height: 2rem;
@@ -122,6 +138,14 @@
   font-weight: 600;
 }
 
+.badge.rectangle {
+  font-family: 'Pretendard', 'sans-serif';
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  letter-spacing: -0.02rem;
+  font-weight: 500;
+}
+
 .field-msg {
   font-family: 'Pretendard', 'sans-serif';
   font-size: 1.3rem;
@@ -130,15 +154,15 @@
   font-weight: 400;
 }
 
-.commute-group.afterwork .cont-item.title .txt + .txt, .cont-box.stage .txt, .headerWrap .left .tit {
+.commute-group.afterwork .cont-item.title .txt + .txt, .headerWrap .left .tit {
   font-weight: 400;
 }
 
-.commute-group .cont-item .badge, .commute-group .cont-item.state .area-state .txt {
+.commute-group .cont-item.state .area-state .txt {
   font-weight: 500;
 }
 
-.commute-group.afterwork .cont-item.title .txt, .commute-group.annual .cont-item.title .txt, .cont-box.stage .tit, .headerWrap .center .title, .login-content .tit, .login-title .tit {
+.commute-group.afterwork .cont-item.title .txt, .commute-group.annual .cont-item.title .txt {
   font-weight: 600;
 }
 
@@ -155,7 +179,7 @@
   border-radius: 0.8rem;
 }
 
-.btn.size-md, .btn.size-lg {
+.current-box, .commute-list, .btn.size-md, .btn.size-lg {
   border-radius: 1rem;
 }
 
@@ -163,11 +187,11 @@
   border-radius: 1.6rem;
 }
 
-.btn.size-xs {
+.badge, .btn.size-xs {
   border-radius: 99.9rem;
 }
 
-.commute-group.afterwork .cont-item.title .txt::after, .commute-group.annual .cont-item.title .txt::after, .commute-group .cont-item .badge, .commute-group .cont-item.state .area-state .icon::after, .commute-group .cont-item.state .area-state .icon, .cont-menu .item .link::after, ._input ._secureTxt > i, .field.box-opt.ico .field-icon, .field-switch .field-icon::before, .field-chkrdo .rdo ~ .field-icon, .field-chkrdo .rdo:checked + .field-icon::before {
+.commute-wrap.roundline .commute-list .item:first-child::before, .commute-group.afterwork .cont-item.title .txt::after, .commute-group.annual .cont-item.title .txt::after, .commute-group .cont-item.state .area-state .icon::after, .commute-group .cont-item.state .area-state .icon, .cont-menu .item .link::after, ._input ._secureTxt > i, .field.box-opt.ico .field-icon, .field-switch .field-icon::before, .field-chkrdo .rdo ~ .field-icon, .field-chkrdo .rdo:checked + .field-icon::before {
   border-radius: 100%;
 }
 
@@ -1782,6 +1806,7 @@ body[screen-type=sub] .headerWrap {
 }
 body[screen-type=sub] .headerWrap + .contentWrap {
   margin-top: 2.4rem;
+  padding-bottom: 6.5rem;
 }
 
 .loginWrap {
@@ -1968,14 +1993,6 @@ body[screen-type=sub] .headerWrap + .contentWrap {
   color: #6E7780;
   margin: 1.6rem 0 3.2rem;
 }
-.commute-group .cont-item .badge {
-  display: inline-block;
-  width: auto;
-  height: 2.4rem;
-  padding: 0.3rem 1rem;
-  vertical-align: middle;
-  margin-left: 0.4rem;
-}
 .commute-group.holiday .cont-item.title .tit {
   color: #C9252D;
 }
@@ -2065,4 +2082,183 @@ body[screen-type=sub] .headerWrap + .contentWrap {
 }
 .commute-group + .cont-box {
   margin-top: 2.4rem;
+}
+.commute-current {
+  position: relative;
+}
+.commute-current::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -2rem;
+  width: calc(100% + 4rem);
+  height: 19.6rem;
+  background-color: #fff;
+  box-shadow: 4px 16px 16px 0px rgba(192, 198, 204, 0.2);
+  border-radius: 0 0 2.4rem 2.4rem;
+  z-index: -1;
+}
+.commute-current + .commute-details {
+  margin-top: 6.4rem;
+}
+.commute-current .commute-list > .item {
+  text-align: center;
+}
+.commute-date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-bottom: 2.4rem;
+  text-align: center;
+}
+.commute-date .btn.date-arrow {
+  width: 1.3rem;
+  height: 1.3rem;
+  background: url(../img/common/icon_date_arrow.svg) no-repeat center/auto;
+}
+.commute-date .btn.date-arrow.right {
+  transform: rotate(180deg);
+}
+.commute-list {
+  display: flex;
+  padding: 0.4rem 0.8rem;
+  justify-content: center;
+  background-color: #F5F7FA;
+}
+.commute-list .item {
+  padding: 1.6rem 2.04rem;
+  text-align: left;
+  flex: 1;
+}
+.commute-list .item .tit {
+  color: #515961;
+}
+.commute-wrap .date-tit {
+  display: flex;
+  align-items: center;
+}
+.commute-wrap .date-tit + .commute-list {
+  margin-top: 1.2rem;
+}
+.commute-wrap .commute-list {
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 0;
+  background-color: #fff;
+}
+.commute-wrap .commute-list .item {
+  padding: 0;
+}
+.commute-wrap .commute-list .item .tit {
+  display: inline-block;
+  color: #6E7780;
+}
+.commute-wrap .commute-list .item .txt {
+  margin-left: 0.4rem;
+}
+.commute-wrap .commute-list .item + .item {
+  margin-top: 0.2rem;
+}
+.commute-wrap .item {
+  position: relative;
+}
+.commute-wrap .item .btnWrap {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+.commute-wrap > .item + .item {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 0.1rem solid #F2F5F7;
+}
+.commute-wrap.roundline > .item {
+  position: relative;
+  margin-left: 2rem;
+}
+.commute-wrap.roundline > .item::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0.8rem;
+  left: -1.6rem;
+  width: auto;
+  height: calc(100% + 4rem);
+  border-left: 0.1rem dashed #E0E3E8;
+}
+.commute-wrap.roundline > .item:last-child::before {
+  content: none;
+}
+.commute-wrap.roundline .commute-list .item {
+  text-align: left;
+}
+.commute-wrap.roundline .commute-list .item:first-child {
+  position: relative;
+}
+.commute-wrap.roundline .commute-list .item:first-child::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: -2rem;
+  transform: translateY(-50%);
+  width: 0.4rem;
+  height: 0.4rem;
+  border: 0.3rem solid #347EFF;
+}
+
+.badge {
+  display: inline-block;
+  width: auto;
+  height: 2.4rem;
+  padding: 0.2rem 1rem 0.4rem;
+  vertical-align: middle;
+}
+.badge.warning {
+  background-color: #FDEDED;
+  color: #C9252D;
+}
+.badge.info {
+  background-color: #E8F5FF;
+  color: #347EFF;
+}
+.badge.disabled {
+  background-color: #ECEFF4;
+  color: #515961;
+}
+.badge.ing {
+  background-color: #FFF7E6;
+  color: #D46B08;
+}
+.badge.success {
+  background-color: #E4F5EF;
+  color: #268E6C;
+}
+.badge.rectangle {
+  width: auto;
+  height: 2rem;
+  padding: 0.1rem 0.8rem 0.3rem;
+  border-radius: 0.4rem;
+}
+
+.current-box {
+  padding: 2rem;
+  border: 0.1rem solid #ECEFF4;
+}
+.current-box .item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.current-box .item.day {
+  margin: 1rem 0 0.4rem;
+}
+.current-box .item.day .txt .blue {
+  color: #347EFF;
+}
+.current-box + .current-box {
+  margin-top: 1.2rem;
 }/*# sourceMappingURL=cp.style.css.map */
