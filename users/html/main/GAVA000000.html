@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckCheck</title>
+    <link rel="stylesheet" href="../../assets/css/cp.style.css">
+    <script src="../../assets/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../assets/js/lib/lib.jquery-ui-1.13.2.js"></script>
+</head>
+<body screen-type="sub">
+    <div class="wrap">
+        <div class="containerWrap">
+            <div class="headerWrap">
+                <div class="left">
+                    <button class="ico back"><span class="blind">뒤로가기</span></button>
+                </div>
+                <div class="center">
+                    <h2 class="title">휴가 현황</h2>
+                </div>
+            </div>
+            <div class="contentWrap">
+                <div class="commute-current">
+                    <div class="commute-date">
+                        <button class="btn date-arrow left"></button>
+                        <span>2025년</span>
+                        <button class="btn date-arrow right"></button>
+                    </div>
+                    <ul class="commute-list">
+                        <li class="item">
+                            <p class="tit">사용연차</p>
+                            <span class="txt">4.5</span>
+                        </li>
+                        <li class="item">
+                            <p class="tit">잔여연차</p>
+                            <span class="txt">10.5</span>
+                        </li>
+                        <li class="item">
+                            <p class="tit">총연차</p>
+                            <span class="txt">15</span>
+                        </li>
+                    </ul>
+                    <p class="list dot">근태 수정 신청은 해당 월에만 가능합니다.</p>
+                </div>
+                <div class="commute-details">
+                    <div class="current-group">
+                        <div class="current-box">
+                            <div class="item">
+                                <span class="badge info">신청중</span>
+                                <button class="btn tertiary size-sm">신청취소</button>
+                            </div>
+                            <div class="item day">
+                                <strong class="tit">2025.05.02(금) +5</strong>
+                                <span class="txt"><strong class="blue">6</strong>일</span>
+                            </div>
+                            <div class="item">
+                                <span class="txt">연차</span>
+                            </div>
+                        </div>
+                        <div class="current-box">
+                            <div class="item">
+                                <span class="badge disabled">승인완료</span>
+                                <button class="btn tertiary size-sm">신청취소</button>
+                            </div>
+                            <div class="item day">
+                                <strong class="tit">2025.05.02(금) +5</strong>
+                                <span class="txt"><strong class="blue">6</strong>일</span>
+                            </div>
+                            <div class="item">
+                                <span class="txt">연차</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <script src="../../assets/js/ui.component.js"></script>
+</body>
+</html>

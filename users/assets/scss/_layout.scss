@@ -15,6 +15,7 @@ body{
             padding: 1.6rem 2rem;
             + .contentWrap{
                 margin-top: 2.4rem;
+                padding-bottom: 6.5rem;
             }
         }
     }
@@ -27,12 +28,11 @@ body{
         left: 50%;
         transform: translate(-50%, -50%);
         @include el-size(100%, auto);
-        padding: 0 2rem
+        padding: 0 2rem;
     }
     &-title{
         .tit{
             @extend %heading-lg-bold;
-            @extend %weight-bold;
             text-align: center;
             margin-bottom: 2rem;
         }
@@ -43,7 +43,6 @@ body{
         border-radius: 1.2rem;
         .tit{
             @extend %heading-sm-bold;
-            @extend %weight-bold;
         }
     }
 }
@@ -81,7 +80,6 @@ body{
             transform: translate(50%, -50%);
             .title{
                 @extend %body-lg-bold;
-                @extend %weight-bold;
             }
         }
         .right{
@@ -122,7 +120,7 @@ body{
 }
 
 .content{
-    &Wrap{
+    &Wrap{ 
         padding: 0 2rem;
     }
 }
@@ -142,11 +140,9 @@ body{
             margin-top: 1.2rem;
             .tit{
                 @extend %heading-sm-bold;
-                @extend %weight-bold;
             }
             .txt{
                 @extend %heading-sm-regular;
-                @extend %weight-regular;
                 margin-left: 1.2rem;
             }
         }
@@ -224,7 +220,7 @@ body{
                             @extend %body-sm-medium;
                             @extend %weight-medium;
                             color: $color-text-secondary;
-                            vertical-align: text-top
+                            vertical-align: text-top;
                         }
                     }
                     &-time{
@@ -235,16 +231,6 @@ body{
                         margin: 1.6rem 0 3.2rem;
                     }
                 }
-            }
-            .badge{
-                display: inline-block;
-                @include el-size(auto, 2.4rem);
-                padding: 0.3rem 1rem;
-                @extend %body-sm-medium;
-                @extend %weight-medium;
-                @extend %radius-full;
-                vertical-align: middle;
-                margin-left: 0.4rem;
             }
         }
         &.holiday{
@@ -400,6 +386,219 @@ body{
         }
         + .cont-box{
             margin-top: 2.4rem;
+        }
+    }
+
+    &-current{
+        position: relative;
+        &::after{
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: -2rem;
+            width: calc(100% + 4rem);
+            height: 19.6rem;
+            background-color: $color-base-white;
+            box-shadow: 4px 16px 16px 0px $color-effect-shadow;
+            border-radius: 0 0 2.4rem 2.4rem;
+            z-index: -1;
+        }
+        + .commute-details{
+             margin-top: 6.4rem;
+        }
+        .commute-list{
+            > .item{
+                text-align: center;
+            }
+        }
+    }
+    &-date{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.2rem;
+        margin-bottom: 2.4rem;
+        text-align: center;
+        @extend %heading-lg-bold;
+        .btn{
+            &.date-arrow{
+                @include el-size(1.3rem, 1.3rem);
+                background: url(../img/common/icon_date_arrow.svg) no-repeat center / auto;
+                &.right{
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+    &-list{
+        display: flex;
+        padding: 0.4rem 0.8rem;
+        justify-content: center;
+        background-color: $color-bg-secondary;
+        @extend %radius-12;
+        .item{
+            padding: 1.6rem 2.04rem;
+            text-align: left;
+            flex: 1;
+            .tit{
+                @extend %body-sm-regular;
+                color: $color-text-secondary;
+            }
+            .txt{
+                @extend %heading-sm-medium;
+            }
+        }
+    }
+    &-wrap{
+        .date-tit{
+            display: flex;
+            align-items: center;
+            .tit{
+                @extend %heading-sm-bold;
+            }
+            + .commute-list{
+                margin-top: 1.2rem;
+            }
+        }
+        .commute-list{
+            justify-content: flex-start;
+            flex-direction: column;
+            padding: 0;
+            background-color: $color-base-white;
+            .item{
+                padding: 0;
+                .tit{
+                    display: inline-block;
+                    @extend %body-lg-regular;
+                    color: $color-text-tertiary;
+                }
+                .txt{
+                    @extend %body-lg-regular;
+                    margin-left: 0.4rem;
+                }
+                + .item{
+                    margin-top: 0.2rem;
+                }
+            }
+            
+        }
+        .item{
+            position: relative;
+            .btnWrap{
+                position: absolute;
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%);
+            }
+        }
+        > .item + .item{
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 0.1rem solid $color-border-divider-02;
+        }
+        &.roundline{
+            > .item{
+                position: relative;
+                margin-left: 2rem;
+                &::before{
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 0.8rem;
+                    left: -1.6rem;
+                    width: auto;
+                    height: calc(100% + 4rem);
+                    border-left: 0.1rem dashed $color-border-tertiary;
+                }
+                &:last-child{
+                    &::before{
+                        content: none;
+                    }
+                }
+            }
+            .commute-list{
+                .item{
+                    text-align: left;
+                    &:first-child{
+                        position: relative;
+                        &::before{
+                            content: '';
+                            display: block;
+                            position: absolute;
+                            top: 50%;
+                            left: -2rem;
+                            transform: translateY(-50%);
+                            @include el-size(0.4rem, 0.4rem);
+                            border: 0.3rem solid $color-brand-primary-400;
+                            @extend %radius-full;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.badge{
+    display: inline-block;
+    @include el-size(auto, 2.4rem);
+    padding: 0.2rem 1rem 0.4rem;
+    @extend %body-sm-medium;
+    @extend %radius-round;
+    vertical-align: middle;
+    &.warning{
+        background-color: $color-bg-warning;
+        color: $color-text-warning;
+    }
+    &.info{
+        background-color: $color-bg-info;
+        color: $color-text-info;
+    }
+    &.disabled{
+        background-color: $color-bg-disabled;
+        color: $color-text-secondary;
+    }
+    &.ing{
+        background-color: #FFF7E6;
+        color: #D46B08;
+    }
+    &.success{
+        background-color: $color-bg-success;
+        color: $color-text-success;
+    }
+    &.rectangle{
+        @include el-size(auto, 2rem);
+        padding: 0.1rem 0.8rem 0.3rem;
+        @extend %body-xs-medium;
+        border-radius: 0.4rem;
+    }
+}
+
+.current{
+    &-box{
+        padding: 2rem;
+        border: 0.1rem solid $color-border-divider-01;
+        @extend %radius-12;
+        .item{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            &.day{
+                margin: 1rem 0 0.4rem;
+                .tit{
+                    @extend %body-lg-bold;
+                }
+                .txt{
+                    @extend %body-lg-medium;
+                    .blue{
+                        color: $color-text-info;
+                    }
+                }
+            }
+        }
+        + .current-box{
+            margin-top: 1.2rem;
         }
     }
 }
