@@ -442,13 +442,13 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   justify-content: space-between;
 }
 
-[temp-btn-gap] a, [temp-btn-gap] button:not(._input-clear) {
+[temp-cp-gap] a:not(._input-clear):not(.btn-auth), [temp-cp-gap] button:not(._input-clear):not(.btn-auth) {
   margin-bottom: 0.5rem;
 }
-[temp-btn-gap] .field-outline ~ .field-outline {
+[temp-cp-gap] .field-outline ~ .field-outline {
   margin-top: 1rem;
 }
-[temp-btn-gap] .field ~ .field {
+[temp-cp-gap] .field ~ .field {
   margin-top: 2rem;
 }
 

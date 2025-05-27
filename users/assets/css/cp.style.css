@@ -74,7 +74,7 @@
   font-weight: 400;
 }
 
-.field.box-opt.gap .chk:checked ~ .field-label, .field.box-opt.gap .rdo:checked ~ .field-label, .field.box-opt.gap .field-chkrdo._readonly .chk:checked ~ .field-label, .field.box-opt.gap .field-chkrdo._readonly .rdo:checked ~ .field-label {
+.field.box-opt.gap .chk:checked ~ .field-label, .field.box-opt.gap .rdo:checked ~ .field-label, .field.box-opt.full .chk:checked ~ .field-label, .field.box-opt.full .rdo:checked ~ .field-label, .field.box-opt.gap .field-chkrdo._readonly .chk:checked ~ .field-label, .field.box-opt.gap .field-chkrdo._readonly .rdo:checked ~ .field-label, .field.box-opt.full .field-chkrdo._readonly .chk:checked ~ .field-label, .field.box-opt.full .field-chkrdo._readonly .rdo:checked ~ .field-label {
   font-family: 'Pretendard', 'sans-serif';
   font-size: 1.6rem;
   line-height: 2.4rem;
@@ -90,7 +90,7 @@
   font-weight: 500;
 }
 
-.commute-group .cont-item.title .txt, .field.box-opt.gap .field-chkrdo .field-label, .field-chkrdo .field-label, .btn.size-xs, .btn.size-sm, body, th, td, input, select, textarea, button, input[type=checkbox]:checked {
+.commute-group .cont-item.title .txt, .field-input input:not([type=checkbox]):not([type=radio])::placeholder, .field-input input:not([type=checkbox]):not([type=radio]), .field.box-opt.gap .field-chkrdo .field-label, .field.box-opt.full .field-chkrdo .field-label, .field-chkrdo .field-label, .btn.size-xs, .btn.size-sm, body, th, td, input, select, textarea, button, input[type=checkbox]:checked {
   font-family: 'Pretendard', 'sans-serif';
   font-size: 1.6rem;
   line-height: 2.4rem;
@@ -104,6 +104,22 @@
   line-height: 2rem;
   letter-spacing: -0.02rem;
   font-weight: 500;
+}
+
+.field._label .field-outline .field-label {
+  font-family: 'Pretendard', 'sans-serif';
+  font-size: 1.4rem;
+  line-height: 2rem;
+  letter-spacing: -0.02rem;
+  font-weight: 400;
+}
+
+.field._label .field-outline .field-label._is-active {
+  font-family: 'Pretendard', 'sans-serif';
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  letter-spacing: -0.02rem;
+  font-weight: 600;
 }
 
 .field-msg {
@@ -127,15 +143,15 @@
 }
 
 /* Radius */
-.field.box-opt.ico .field-icon::before {
+.field.box-opt.ico .field-icon::before, .field.box-opt.ico .rdo:checked + .field-icon::before, .field.box-opt.ico .chk:checked + .field-icon::before {
   border-radius: 0;
 }
 
-.field-chkrdo .chk ~ .field-icon {
+.field-outline, .field-chkrdo .chk ~ .field-icon {
   border-radius: 0.5rem;
 }
 
-.field.box-opt.gap .field-chkrdo .field-label, .btn.size-sm {
+.field.box-opt.gap .field-chkrdo .field-label, .field.box-opt.full .field-chkrdo .field-label, .btn.size-sm {
   border-radius: 0.8rem;
 }
 
@@ -183,6 +199,10 @@
 .txt-small {@include font-clamp(0.9rem, 1.2rem, 1.6rem);}
 .txt-default {@include font-clamp(최소값, 선호값, 최대값);} // 최소값은 $min, 최대값은 $max를 벗어날수 없음
  */
+.field._label .field-outline._is-active > *:not(.field-label), .field._label .field-outline .field-label._is-active, .field._label .field-outline .field-label, .field._label .field-outline._hasValue > *:not(.field-label), .field._label .field-outline > *:not(.field-label) {
+  transition: 0.3s all ease-in-out;
+}
+
 /* */
 /****************************************/
 /*	PART: RESET CSS
@@ -741,7 +761,7 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   background-color: #C0C6CC;
 }
 .btn.tertiary {
-  color: #6E7780;
+  color: #212529;
   background-color: #fff;
   box-shadow: 0 0 0 0.1rem #C0C6CC inset;
 }
@@ -749,8 +769,8 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   background-color: #E0E3E8;
 }
 .btn.tertiary:active, .btn.tertiary.loading {
-  background-color: #A9B0B8;
-  color: #fff;
+  background-color: #F5F7FA;
+  color: #212529;
 }
 .btn.size-lg {
   padding: 1.6rem 2rem;
@@ -762,7 +782,7 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   padding: 0.6rem 1.2rem;
 }
 .btn.size-xs {
-  padding: 0.6rem 1.2rem;
+  padding: 0.2rem 1.2rem;
 }
 .btn.loading {
   position: relative;
@@ -1179,36 +1199,69 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   display: flex;
   flex-direction: row;
 }
+.field.box-opt.full {
+  flex-wrap: wrap;
+}
 .field.box-opt.full .field-chkrdo {
+  text-align: left;
   width: 100%;
+}
+.field.box-opt.full .field-chkrdo ~ .field-chkrdo {
+  margin-left: 0;
+  margin-top: 0.8rem;
+}
+.field.box-opt.full .field-chkrdo .field-label {
+  text-align: left;
+  color: #212529;
+  padding: 1.4rem 4.8rem 1.4rem 2rem !important;
+}
+.field.box-opt.full.ico .rdo:checked + .field-icon, .field.box-opt.full.ico .chk:checked + .field-icon {
+  background-color: transparent;
+  border-color: transparent;
+}
+.field.box-opt.full.ico .field-icon {
+  position: absolute;
+  top: 50%;
+  left: 98%;
+  transform: translate(-98%, -50%);
+  border-color: transparent;
+}
+.field.box-opt.full.ico .field-icon::before {
+  content: "";
+  display: block;
+  border-color: transparent;
 }
 .field.box-opt .field-icon {
   display: none;
 }
-.field.box-opt.gap {
+.field.box-opt.gap.full {
+  flex-wrap: nowrap;
+  width: 100%;
+}
+.field.box-opt.gap, .field.box-opt.full {
   border: none;
 }
-.field.box-opt.gap .field-chkrdo .field-label {
+.field.box-opt.gap .field-chkrdo .field-label, .field.box-opt.full .field-chkrdo .field-label {
   box-shadow: 0 0 0 0.1rem #E0E3E8 inset;
 }
-.field.box-opt.gap .field-chkrdo._disabled .chk:not(:checked) ~ .field-label, .field.box-opt.gap .field-chkrdo._disabled .rdo:not(:checked) ~ .field-label {
+.field.box-opt.gap .field-chkrdo._disabled .chk:not(:checked) ~ .field-label, .field.box-opt.gap .field-chkrdo._disabled .rdo:not(:checked) ~ .field-label, .field.box-opt.full .field-chkrdo._disabled .chk:not(:checked) ~ .field-label, .field.box-opt.full .field-chkrdo._disabled .rdo:not(:checked) ~ .field-label {
   color: #A9B0B8;
   box-shadow: 0 0 0 0.1rem #E0E3E8 inset;
 }
-.field.box-opt.gap .field-chkrdo._disabled .chk:checked ~ .field-label, .field.box-opt.gap .field-chkrdo._disabled .rdo:checked ~ .field-label {
+.field.box-opt.gap .field-chkrdo._disabled .chk:checked ~ .field-label, .field.box-opt.gap .field-chkrdo._disabled .rdo:checked ~ .field-label, .field.box-opt.full .field-chkrdo._disabled .chk:checked ~ .field-label, .field.box-opt.full .field-chkrdo._disabled .rdo:checked ~ .field-label {
   color: #A9B0B8;
   box-shadow: 0 0 0 0.1rem #E0E3E8 inset;
   background-color: #F2F5F7;
 }
-.field.box-opt.gap .field-chkrdo._readonly .chk ~ .field-label, .field.box-opt.gap .field-chkrdo._readonly .rdo ~ .field-label {
+.field.box-opt.gap .field-chkrdo._readonly .chk ~ .field-label, .field.box-opt.gap .field-chkrdo._readonly .rdo ~ .field-label, .field.box-opt.full .field-chkrdo._readonly .chk ~ .field-label, .field.box-opt.full .field-chkrdo._readonly .rdo ~ .field-label {
   opacity: 0.5;
 }
-.field.box-opt.gap .field-chkrdo._readonly .chk:checked ~ .field-label, .field.box-opt.gap .field-chkrdo._readonly .rdo:checked ~ .field-label {
+.field.box-opt.gap .field-chkrdo._readonly .chk:checked ~ .field-label, .field.box-opt.gap .field-chkrdo._readonly .rdo:checked ~ .field-label, .field.box-opt.full .field-chkrdo._readonly .chk:checked ~ .field-label, .field.box-opt.full .field-chkrdo._readonly .rdo:checked ~ .field-label {
   opacity: 0.5;
   color: #347EFF;
   box-shadow: 0 0 0 0.2rem #347EFF inset;
 }
-.field.box-opt.gap .chk:checked ~ .field-label, .field.box-opt.gap .rdo:checked ~ .field-label {
+.field.box-opt.gap .chk:checked ~ .field-label, .field.box-opt.gap .rdo:checked ~ .field-label, .field.box-opt.full .chk:checked ~ .field-label, .field.box-opt.full .rdo:checked ~ .field-label {
   color: #347EFF;
   box-shadow: 0 0 0 0.2rem #347EFF inset;
 }
@@ -1292,6 +1345,7 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 
 .field {
   /* FIELD - VALID */
+  /* FIELD - PLACEHOLDER TYPE */
 }
 .field.grow, .field .grow {
   flex: 1 0 0;
@@ -1321,11 +1375,8 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 .field-msg.info {
   display: block;
 }
-.field-input {
-  height: 4rem;
-}
 .field-input input:not([type=checkbox]):not([type=radio]) {
-  padding: 1rem 0;
+  padding: 1.2rem 1rem;
   width: 100%;
   height: 100%;
   border: 0;
@@ -1355,9 +1406,8 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  min-height: 4rem;
-  border-radius: 0.5rem;
-  box-shadow: inset 0 0 0 0.1rem #C0C6CC;
+  min-height: 4.8rem;
+  box-shadow: 0 0 0 0.1rem #C0C6CC inset;
   background: #fff;
 }
 .field-outline:focus-within {
@@ -1373,9 +1423,10 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 }
 .field-outline.auth .field ._input-clear {
   order: 2;
+  margin-right: 0 !important;
 }
 .field-outline.auth .auth-time {
-  margin-left: 1rem;
+  margin: 0 1rem;
   align-self: center;
   order: 3;
 }
@@ -1413,12 +1464,10 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 .field-outline.readonly {
   color: #515961;
   cursor: default;
-  pointer-events: none;
 }
 .field-outline.disabled {
   opacity: 0.8;
   cursor: default;
-  pointer-events: none;
   background: #ECEFF4;
 }
 .field-outline .center {
@@ -1426,6 +1475,27 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 }
 .field-outline .bottom {
   place-self: flex-end;
+}
+.field.auth .field-outline {
+  display: inline-flex;
+  width: calc(100% - 11.7rem);
+}
+.field.auth .field-outline ~ .btn-auth {
+  display: inline-flex;
+  margin-left: 1rem;
+}
+.field.auth .field-input {
+  display: flex;
+  flex-direction: row;
+}
+.field.auth .field-input .auth-time {
+  display: block;
+  margin: 0 1rem;
+  align-self: center;
+  order: 3;
+}
+.field.auth .field ._input-clear {
+  order: 2;
 }
 .field.valid .field-msg, .field.invalid .field-msg {
   display: block;
@@ -1457,8 +1527,48 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 .field.invalid + .field-msg, .field.invalid .field-msg {
   color: #C9252D;
 }
+.field._label .field-outline {
+  position: relative;
+  z-index: 1;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+}
+.field._label .field-outline > *:not(.field-label) {
+  display: none;
+}
+.field._label .field-outline._hasValue > *:not(.field-label) {
+  display: flex;
+}
+.field._label .field-outline .field-label {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 0;
+  color: #212529;
+}
+.field._label .field-outline .field-label._is-active {
+  padding: 1rem 0;
+}
+.field._label .field-outline._is-active > *:not(.field-label) {
+  display: flex;
+}
 
 /* FIELD - INPUT SCRIPT */
+._hasClear ._input-clear {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-self: center;
+  margin: 0 1rem;
+}
+._hasClear ._input-clear:focus {
+  background-color: #347EFF;
+  box-shadow: 0 0 0 0.1rem #2666F5 inset;
+}
+
 ._input {
   display: flex;
   flex-direction: row;
@@ -1469,19 +1579,24 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 }
 ._input-clear {
   display: none;
-  pointer-events: none;
-  touch-action: none;
-  width: 1.4rem;
-  height: 1.4rem;
-  background: #C0C6CC;
+  width: 2.1rem;
+  height: 2.1rem;
+  background: #8C959F;
   border-radius: 100%;
   position: relative;
+  /* 
+  &._active {
+      @include dflex(inline-flex, $j-content:flex-end) { align-self:center;}
+      pointer-events:all; 
+      margin-left:.5rem;
+  }
+  */
 }
 ._input-clear::before {
   content: "";
   display: block;
-  width: 0.8rem;
-  height: 0.1rem;
+  width: 1rem;
+  height: 0.15rem;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1490,8 +1605,8 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 ._input-clear::after {
   content: "";
   display: block;
-  width: 0.8rem;
-  height: 0.1rem;
+  width: 1rem;
+  height: 0.15rem;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1507,14 +1622,6 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   display: block;
   transform: translate(-50%, -50%) rotate(-45deg);
 }
-._input-clear._active {
-  display: inline-flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-self: center;
-  pointer-events: all;
-  margin-left: 0.5rem;
-}
 ._input ._secureTxt {
   position: relative;
   display: block;
@@ -1527,6 +1634,9 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 }
 ._input ._secureTxt > input[type=password]::placeholder {
   color: transparent;
+}
+._input ._secureTxt ._password {
+  padding: 0 !important;
 }
 ._input ._secureTxt > i {
   position: absolute;
@@ -1549,6 +1659,113 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 ._input ._secureTxt > i._line._is-active {
   background: #2666F5;
   box-shadow: none;
+}
+
+.field input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 0.6rem !important;
+  padding: 0 !important;
+  cursor: pointer;
+  outline: none;
+  border-radius: 1.5rem;
+}
+.field input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: #fff;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 0.25rem solid #6E7780;
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translateY(calc(-50% + 8px));
+}
+.field.range-slider {
+  position: relative;
+}
+.field.range-slider .field-input {
+  height: 4rem;
+}
+.field.range-slider.double .slider-container {
+  background: #F2F5F7;
+  position: relative;
+  height: 0.6rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+}
+.field.range-slider.double .slider-container .double-slider {
+  position: absolute;
+  background-color: #347EFF;
+  height: 100%;
+}
+.field.range-slider.double .field-input {
+  position: relative;
+  height: 100%;
+}
+.field.range-slider.double .field-input input[type=range] {
+  position: absolute;
+  top: -5px;
+  pointer-events: none;
+}
+.field.range-slider.double .field-input input[type=range]::-webkit-slider-thumb {
+  pointer-events: auto;
+}
+.field.range-slider .range-info, .field.range-slider .doublerange-info {
+  position: absolute;
+  bottom: 4.8rem;
+  padding: 0.6rem 1rem;
+  background-color: #fff;
+  border: 0.1rem solid #6E7780;
+  text-align: center;
+  text-wrap: nowrap;
+}
+.field.range-slider .range-info:after, .field.range-slider .doublerange-info:after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: -0.4rem;
+  right: auto;
+  width: 1rem;
+  height: 1rem;
+  background: #fff;
+  box-shadow: 1px 1px 0 0 #6E7780;
+  transform: translateX(-50%) rotate(45deg);
+}
+.field.range-slider .range-info.left, .field.range-slider .doublerange-info.left {
+  left: calc(0% + 20px) !important;
+  margin-left: -22px !important;
+}
+.field.range-slider .range-info.left:after, .field.range-slider .doublerange-info.left:after {
+  left: 0.4rem !important;
+  transform: rotate(45deg);
+}
+.field.range-slider .range-info.left.gap::after, .field.range-slider .doublerange-info.left.gap::after {
+  content: "";
+  display: block;
+  left: 3.4rem;
+}
+.field.range-slider .range-info.right, .field.range-slider .doublerange-info.right {
+  left: auto !important;
+  right: 0 !important;
+}
+.field.range-slider .range-info.right:after, .field.range-slider .doublerange-info.right:after {
+  left: auto;
+  right: 0.4rem !important;
+  transform: rotate(45deg);
+}
+.field.range-slider .range-info.right.gap::after, .field.range-slider .doublerange-info.right.gap::after {
+  content: "";
+  display: block;
+  right: 3rem;
+}
+.field.range-slider .doublerange-info {
+  bottom: 2.4rem;
+}
+.field.range-slider .doublerange-info.right {
+  right: 0;
+  margin-right: 0 !important;
 }
 
 body[screen-type=login], body[screen-type=main] {
