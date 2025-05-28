@@ -12,8 +12,8 @@
 /* Typography */
 body, th, td, input, select, textarea, button, input[type=checkbox]:checked {
   font-family: 'Pretendard', 'sans-serif';
-  font-size: 1.6rem;
-  line-height: 2.4rem;
+  font-size: 1.4rem;
+  line-height: 2rem;
   letter-spacing: -0.02rem;
   font-weight: 400;
 }

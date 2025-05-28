@@ -36,8 +36,8 @@
 
 body, th, td, input, select, textarea, button, input[type=checkbox]:checked {
   font-family: 'Pretendard', 'sans-serif';
-  font-size: 1.6rem;
-  line-height: 2.4rem;
+  font-size: 1.4rem;
+  line-height: 2rem;
   letter-spacing: -0.02rem;
   font-weight: 400;
 }
@@ -442,13 +442,13 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   justify-content: space-between;
 }
 
-[temp-cp-gap] a:not(._input-clear):not(.btn-auth), [temp-cp-gap] button:not(._input-clear):not(.btn-auth) {
+[temp-cp-gap] a:not(._input-clear):not(.btn-auth):not(.titWrap .btn), [temp-cp-gap] button:not(._input-clear):not(.btn-auth) {
   margin-bottom: 0.5rem;
 }
 [temp-cp-gap] .field-outline ~ .field-outline {
   margin-top: 1rem;
 }
-[temp-cp-gap] .field ~ .field {
+[temp-cp-gap] .field ~ .field, [temp-cp-gap] .titWrap ~ .titWrap {
   margin-top: 2rem;
 }
 
