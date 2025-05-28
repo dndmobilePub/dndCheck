@@ -295,3 +295,18 @@ $shadow: (
 %shadow-sm {@include dndCP($shadow, sm);}
 %shadow-md {@include dndCP($shadow, md);}
 %shadow-lg {@include dndCP($shadow, lg);}
+
+//---* ICON
+@function svgIco($iconName, $color: 666, $backgroundRepeat: no-repeat) {
+    $iconList: (
+        ico-add:"%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 10.5V1.5M10.5 6H1.5' stroke='%23#{$color}' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A",
+        btn-add:"%3Csvg width='14' height='15' viewBox='0 0 14 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.99998 13.2856V1.28564M13 7.28564H0.999985' stroke='%23#{$color}' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A",
+    );
+$svgIcon: map-get($iconList, $iconName);
+$backgroundImage: url("data:image/svg+xml;charset=utf8,#{$svgIcon}");
+@return $backgroundImage $backgroundRepeat;
+//background: svgIco(ico-add, fff);
+}
+
+%ico-add {background: svgIco(ico-add, fff) center center;}
+%btn-add {background: svgIco(btn-add, 8C959F) 50% 50%;}

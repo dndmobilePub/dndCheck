@@ -177,12 +177,18 @@ $fieldLabel:'#{$field}-label';
     &.box-opt {
         &.full {
             flex-wrap: wrap;
+            &:not(.gap) {
+                #{$field} {
+                    &-chkrdo {
+                        & ~ #{$field}-chkrdo {
+                            margin-left:0; margin-top:.8rem
+                        }
+                    }
+                }
+            }
             #{$field} {
                 &-chkrdo {
                     text-align: left;
-                    & ~ #{$field}-chkrdo {
-                        margin-left:0; margin-top:.8rem
-                    }
                     width:100%;
                     #{$fieldLabel} {
                         text-align: left;
@@ -207,7 +213,6 @@ $fieldLabel:'#{$field}-label';
                         border-color:transparent;
                     }
                 }
-
             }
         }
         @include dflex;
@@ -216,13 +221,23 @@ $fieldLabel:'#{$field}-label';
             &.full {
                 flex-wrap:nowrap;
                 width:100%;
+                #{$field} {
+                    &-chkrdo {
+                        text-align: left;
+                        & ~ #{$field}-chkrdo {
+                            margin-left:.8rem; margin-top:0;
+                        }
+                    }
+                }
             }
         }
-        &.gap, &.full {
-            
+        &.gap, &.full {            
             border:none;
             #{$field} {
                 &-chkrdo {
+                    & ~ #{$field}-chkrdo {
+                        margin-left:.8rem;
+                    }
                     #{$fieldLabel} {
                         @extend %body-md-regular;
                         @extend %radius-8;
@@ -320,6 +335,7 @@ $fieldLabel:'#{$field}-label';
                     }
                 }
             }
+            
             #{$fieldIcon} {
                 display:block;
                 @include pos-offset($top:1.5rem,$left:50%, $z-index:2);

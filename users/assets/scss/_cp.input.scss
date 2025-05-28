@@ -79,8 +79,8 @@ $fieldLabel: '#{$field}-label';
             .right {place-self: flex-end;}
         }
 
-        &.readonly {color:$color-text-secondary; cursor: default;}
-        &.disabled {
+        &._readonly {color:$color-text-secondary; cursor: default;}
+        &._disabled {
             opacity:.8; cursor:default;
             background:$color-bg-disabled;}
 
@@ -194,14 +194,22 @@ $fieldLabel: '#{$field}-label';
         background:$color-neutral-600;
         border-radius:100%;
         @include pos-offset(relative);
-        @include el-content(both) {
-            @include el-size(1rem, .15rem);
-            @include pos-offset($top:calc(50%), $left:calc(50%));
-            background:$color-bg-primary;
+        @include el-content(before) {
+            width:1.2rem;
+            height:1.2rem;
+            @include pos-offset($top:50%,$left:50%);
+            transform: translate(-50%, -50%) rotate(45deg);
+            @extend %ico-add;
         }
+        //---* before/after로 그리기
+        // @include el-content(both) {
+        //     @include el-size(1rem, .15rem);
+        //     @include pos-offset($top:calc(50%), $left:calc(50%));
+        //     background:$color-bg-primary;
+        // }
         
-        @include el-content(before) {transform:translate(-50%, -50%) rotate(45deg);}
-        @include el-content(after) {transform:translate(-50%, -50%) rotate(-45deg);}
+        // @include el-content(before) {transform:translate(-50%, -50%) rotate(45deg);}
+        // @include el-content(after) {transform:translate(-50%, -50%) rotate(-45deg);}
 
         /* 
         &._active {

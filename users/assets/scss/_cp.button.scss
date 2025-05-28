@@ -43,7 +43,10 @@ $tertiary:'.tertiary';
 
 #{$btn} { 
     padding:.5rem 1rem;
-    vertical-align:middle;    
+    vertical-align:middle;
+    @extend %transition3s;
+    &:hover, &:focus {@extend %transition3s;}
+
     &#{$primary} {
         color:$color-text-interactive-primary;
         background-color:$color-bg-interactive-primary;
@@ -254,29 +257,34 @@ $tertiary:'.tertiary';
                 transform:rotate(-135deg);                
             }
 
+            // effect underline
+            @include el-content("after"){
+                @include pos-offset($bottom:-.2rem);
+                @include eff-direction(center);
+                width:0;
+                @include transition(0.5s, all, ease);
+            }
+
             &:hover, &:focus {
                 @include el-content(before){
                     @include transition(0.3s, all, ease);
                     border-color:$color-red-500;
                 // border-width:2px;  margin-top:calc(-.6rem/2);
-                }                
+                }
+                @include line-effect($color-border-primary, after, center) {
+                    @include transition(0.5s, all, ease);
+                    background:$color-red-500;
+                    width:100%; height:.1rem;
+                }
             }
         }
 
-        // effect underline
-        @include el-content("after"){
-            @include pos-offset($bottom:-.2rem);
-            @include eff-direction(center);
-            width:0;
-            @include transition(0.5s, all, ease);
-        }
-        
-        &:hover, &:focus {
-            @include line-effect($color-border-primary, after, center) {
-                @include transition(0.5s, all, ease);
-                background:$color-red-500;
-                width:100%; height:.1rem;
-            }
+        &.add {
+            @include dflex(inline-flex, $j-content:center, $al-items:center);
+            @include el-content(before) {
+                width:2rem; height:2rem; margin-right:.4rem;
+                @extend %btn-add;
+            };
         }
     }
 
