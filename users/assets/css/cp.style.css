@@ -212,6 +212,14 @@
   box-shadow: 0 0 0 0.1rem #E0E3E8 inset;
 }
 
+._input-clear::before {
+  background: url("data:image/svg+xml;charset=utf8,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 10.5V1.5M10.5 6H1.5' stroke='%23fff' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A") no-repeat center center;
+}
+
+.btn.ico.add::before {
+  background: url("data:image/svg+xml;charset=utf8,%3Csvg width='14' height='15' viewBox='0 0 14 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.99998 13.2856V1.28564M13 7.28564H0.999985' stroke='%238C959F' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A") no-repeat 50% 50%;
+}
+
 /** FONT **/
 /* clamp 기반 font-size
 // 최소 크기 $min, 기본 크기 $preferred, 최대 크기 $max 사이에서 뷰포트에 따라 자동으로 크기가 반응형으로 조정
@@ -223,7 +231,7 @@
 .txt-small {@include font-clamp(0.9rem, 1.2rem, 1.6rem);}
 .txt-default {@include font-clamp(최소값, 선호값, 최대값);} // 최소값은 $min, 최대값은 $max를 벗어날수 없음
  */
-.field._label .field-outline._is-active > *:not(.field-label), .field._label .field-outline .field-label._is-active, .field._label .field-outline .field-label, .field._label .field-outline._hasValue > *:not(.field-label), .field._label .field-outline > *:not(.field-label) {
+.field._label .field-outline._is-active > *:not(.field-label), .field._label .field-outline .field-label._is-active, .field._label .field-outline .field-label, .field._label .field-outline._hasValue > *:not(.field-label), .field._label .field-outline > *:not(.field-label), .btn:hover, .btn:focus, .btn {
   transition: 0.3s all ease-in-out;
 }
 
@@ -993,13 +1001,7 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   border-bottom: 0.1rem #6E7780 solid;
   transform: rotate(-135deg);
 }
-.btn.ico.arrow:hover::before, .btn.ico.arrow:focus::before {
-  content: "";
-  display: block;
-  transition: 0.3s all ease;
-  border-color: #E34850;
-}
-.btn.ico::after {
+.btn.ico.arrow::after {
   content: "";
   display: block;
   position: absolute;
@@ -1009,13 +1011,19 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   width: 0;
   transition: 0.5s all ease;
 }
-.btn.ico:hover, .btn.ico:focus {
+.btn.ico.arrow:hover, .btn.ico.arrow:focus {
   backface-visibility: hidden;
   position: relative;
   text-decoration: none;
   color: #6E7780;
 }
-.btn.ico:hover::after, .btn.ico:focus::after {
+.btn.ico.arrow:hover::before, .btn.ico.arrow:focus::before {
+  content: "";
+  display: block;
+  transition: 0.3s all ease;
+  border-color: #E34850;
+}
+.btn.ico.arrow:hover::after, .btn.ico.arrow:focus::after {
   content: "";
   display: block;
   backface-visibility: hidden;
@@ -1026,6 +1034,19 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   background: #E34850;
   width: 100%;
   height: 0.1rem;
+}
+.btn.ico.add {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.btn.ico.add::before {
+  content: "";
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.4rem;
 }
 .btn.full {
   margin: 0;
@@ -1226,13 +1247,13 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 .field.box-opt.full {
   flex-wrap: wrap;
 }
+.field.box-opt.full:not(.gap) .field-chkrdo ~ .field-chkrdo {
+  margin-left: 0;
+  margin-top: 0.8rem;
+}
 .field.box-opt.full .field-chkrdo {
   text-align: left;
   width: 100%;
-}
-.field.box-opt.full .field-chkrdo ~ .field-chkrdo {
-  margin-left: 0;
-  margin-top: 0.8rem;
 }
 .field.box-opt.full .field-chkrdo .field-label {
   text-align: left;
@@ -1262,8 +1283,18 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   flex-wrap: nowrap;
   width: 100%;
 }
+.field.box-opt.gap.full .field-chkrdo {
+  text-align: left;
+}
+.field.box-opt.gap.full .field-chkrdo ~ .field-chkrdo {
+  margin-left: 0.8rem;
+  margin-top: 0;
+}
 .field.box-opt.gap, .field.box-opt.full {
   border: none;
+}
+.field.box-opt.gap .field-chkrdo ~ .field-chkrdo, .field.box-opt.full .field-chkrdo ~ .field-chkrdo {
+  margin-left: 0.8rem;
 }
 .field.box-opt.gap .field-chkrdo .field-label, .field.box-opt.full .field-chkrdo .field-label {
   box-shadow: 0 0 0 0.1rem #E0E3E8 inset;
@@ -1485,11 +1516,11 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 .field-outline.column .right {
   place-self: flex-end;
 }
-.field-outline.readonly {
+.field-outline._readonly {
   color: #515961;
   cursor: default;
 }
-.field-outline.disabled {
+.field-outline._disabled {
   opacity: 0.8;
   cursor: default;
   background: #ECEFF4;
@@ -1619,32 +1650,12 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 ._input-clear::before {
   content: "";
   display: block;
-  width: 1rem;
-  height: 0.15rem;
+  width: 1.2rem;
+  height: 1.2rem;
   position: absolute;
   top: 50%;
   left: 50%;
-  background: #fff;
-}
-._input-clear::after {
-  content: "";
-  display: block;
-  width: 1rem;
-  height: 0.15rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background: #fff;
-}
-._input-clear::before {
-  content: "";
-  display: block;
   transform: translate(-50%, -50%) rotate(45deg);
-}
-._input-clear::after {
-  content: "";
-  display: block;
-  transform: translate(-50%, -50%) rotate(-45deg);
 }
 ._input ._secureTxt {
   position: relative;
