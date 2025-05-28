@@ -323,6 +323,7 @@ $radius: (
     10:(border-radius:$radius-10),
     12:(border-radius:$radius-12),
     16:(border-radius:$radius-16),
+    24:(border-radius:$radius-24),
     round:(border-radius:$radius-round),
     full:(border-radius:$radius-full),
 );
@@ -332,6 +333,7 @@ $radius: (
 %radius-8 {@include dndCP($radius, 8);}
 %radius-12 {@include dndCP($radius, 12);}
 %radius-16 {@include dndCP($radius, 16);}
+%radius-24 {@include dndCP($radius, 24);}
 %radius-round {@include dndCP($radius, round);}
 %radius-full {@include dndCP($radius, full);}
 

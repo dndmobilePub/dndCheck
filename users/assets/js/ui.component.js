@@ -1080,13 +1080,15 @@ var COMPONENT_UI = (function (cp, $) {
         },
 
         showModal: function ($btn) {
-            const self = this,
-                dimmedEl = this.constEl.dimmedEl;
+            const self = this;
+                // dimmedEl = this.constEl.dimmedEl;
             const target = $btn.attr('data-modal');
             const $modal = $('.modalPop[modal-target="' + target + '"]');
             var $modalWrap = $modal.find("> .modalWrap");
 
             $modal.addClass('_is-active').attr({ 'aria-hidden': 'false' });
+
+            // $modal.addClass('_is-active').attr({ 'aria-hidden': 'false' });
             $modalWrap.attr({ 'role': 'dialog', 'aria-modal': 'true' })
                 .find('a, *[role="button"], button, h1, h2, h3, h4, h5, h6').first().each(function () {
                     if ($(this).is('h1, h2, h3, h4, h5, h6')) {
@@ -1107,13 +1109,13 @@ var COMPONENT_UI = (function (cp, $) {
             setTimeout(function () {
                 $modalWrap.find(".ico-his-prev").focus()
                 var firstFocusable;
-
+                
                 // .modal-header가 있을 경우
                 if ($modalWrap.find('.modal-header').length) {
-                    firstFocusable = $modalWrap.find('.modal-header').find('a.ico-his-prev, a, *[role="button"], button, h1, h2, h3, h4, h5, h6').first();
+                    firstFocusable = $modalWrap.find('.modal-header').find('a.ico-his-prev, a.ico ico-pop-close, a, *[role="button"], button').first();
                 } else {
                     // .modal-header가 없을 경우
-                    firstFocusable = $modalWrap.find('a.ico-his-prev, a, *[role="button"], button, h1, h2, h3, h4, h5, h6').first();
+                    firstFocusable = $modalWrap.find('a.ico-his-prev, a.ico ico-pop-close, a, *[role="button"], button').first();
                 }
 
                 if (firstFocusable.length) {
@@ -1128,11 +1130,18 @@ var COMPONENT_UI = (function (cp, $) {
 
         closePop: function () {
             const self = this;
-            $('.modalPop').on('click', '.btn-close-pop', function () {
-                var $modal = $(this).closest('.modalPop'); // 닫으려는 모달 선택
-                var $modalWrap = $modal.find("> .modalWrap"); // 모달 래퍼 선택
-                var modalWrapClass = $modal.attr('class'); // 모달 클래스 가져오기
+            $(document).on('click', '.btn-close-pop', function (e) {
+                e.preventDefault();
+                console.log('btn-close-pop clicked:', this, e);
+                const $modal = $(this).closest('.modalPop');
+                const $modalWrap = $modal.find("> .modalWrap");
 
+                // 툴팁 정리
+                if ($('.ico-tooltip').hasClass('_inModal')) {
+                    cp.toolTip.closeTip();
+                }
+
+                // 모달 닫기 처리
                 if ($modal.hasClass("_scroll")) {
                     $modal.removeClass('_is-active');
                     $modalWrap.css({
@@ -1140,38 +1149,36 @@ var COMPONENT_UI = (function (cp, $) {
                     }).find(" > .modal-container").css({
                         'height': ''
                     }).removeAttr("tabindex");
-                    self.isOpen = false; // 모달 닫힘 상태로 변경
                 } else {
                     $modal.removeClass('_is-active');
-                    self.isOpen = false; // 모달 닫힘 상태로 변경
                 }
 
-                // _inModal 클래스가 존재할 경우 closeTip() 실행
-                if ($('.ico-tooltip').hasClass('_inModal')) {
-                    cp.toolTip.closeTip();
-                }
+                self.isOpen = false;
 
-                if ($("._modalBtn").hasClass("_rtFocus2")) {
-                    setTimeout(function () {
-                        $('._rtFocus2').focus();
-                        $('._rtFocus2').removeClass('_rtFocus2');
-                    }, 300);
-                } else {
-                    // 포커스 관리
-                    self.rtFocus($(this));
-                }
-
-                $modal.attr({ 'aria-hidden': 'true' });
+                // 접근성 속성 제거 (aria-modal 먼저)
                 $modalWrap.attr({ 'aria-modal': 'false' }).removeAttr('tabindex')
                     .find('a, button, h1, h2, h3, h4, h5, h6').first().removeAttr('tabindex');
 
-                $(this).closest('.modalPop').prev().focus(); // 이전 요소에 포커스
-                // $('.dimmed').remove(); // dimmed 요소 제거
+                // 포커스 복원
+                if ($("._modalBtn").hasClass("_rtFocus2")) {
+                    setTimeout(function () {
+                        $('._rtFocus2').focus().removeClass('_rtFocus2');
+                        $modal.attr({ 'aria-hidden': 'true' }); // 이후에 aria-hidden 처리
+                    }, 300);
+                } else {
+                    self.rtFocus(); // 이 안에서 _rtFocus로 이동
+                    setTimeout(function () {
+                        $modal.attr({ 'aria-hidden': 'true' }); // 포커스 이동 후 처리
+                    }, 310); // rtFocus와 타이밍 맞춤
+                }
+
+                // 바디 스크롤 복구
                 if ($(".modalPop._is-active").length === 0) {
-                    $('body').removeClass('no-scroll'); // 스크롤 활성화
+                    $('body').removeClass('no-scroll');
                 }
             });
         },
+
 
         rtFocus: function () {
             setTimeout(function () {
@@ -2565,11 +2572,11 @@ var COMPONENT_UI = (function (cp, $) {
             } else {
                 $(target).append('<div class="loadingWrap"><div class="circle"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><p class="hide">로딩중</p></div>');
             }
-            $('body').addClass('no-scroll')
+            $('body').addClass('no-scroll').attr('aria-hidden','true');
         },
         loadingRemove: function () {
             $('.loadingWrap').remove();
-            $('body').removeClass('no-scroll')
+            $('body').removeClass('no-scroll');
         }
     };
 

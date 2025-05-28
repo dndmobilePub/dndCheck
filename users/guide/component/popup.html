@@ -34,38 +34,169 @@
                 <h1>POPUP</h1>
             </div>
             <section class="pbg-content">
+                <div class="pbg-titWrap dep2">
+                    <h2>팝업</h2>
+                </div>
+
                 <div class="btnWrap">
                     <a href="javascript:void(0);" class="btn tertiary size-lg _modalBtn" data-modal="modal1">Top Modal</a>
                     <a href="javascript:void(0);" class="btn tertiary size-lg _modalBtn" data-modal="modal2">Center Modal</a>
                     <a href="javascript:void(0);" class="btn tertiary 
-                    size-lg _modalBtn" data-modal="modal3">Left Modal</a>
+                    size-lg _modalBtn" data-modal="modal3">Right Modal</a>
                     <a href="javascript:void(0);" class="btn tertiary 
                     size-lg _modalBtn" data-modal="modal4">Bottom Modal</a>
                     <a href="javascript:void(0);" class="btn tertiary 
                     size-lg _modalBtn" data-modal="modal5">Full Modal</a>
                 </div>
 
+                <!-- Top Modal -->
                 <div class="modalPop _top" modal-target="modal1">
                     <div class="modalWrap">
                         <div class="modal-header">
                             <a href="#" class="ico ico-his-prev" role="button"><span class="hide">이전페이지</span></a>
+                            <a href="javascript:void(0);" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
                             <h1 class="mp-title dep01">Top Modal</h1>
-                            <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
                         </div>
                         <div class="modal-container"><p>Top Modal Content</p></div>
                         <div class="modal-footer">
-                            <div class="btnWrap grow">
-                                <button class="btn btn-size md type2 bg">확인</button>
-                                <button class="btn btn-size md bg btn-close-pop">취소</button>
+                            <div class="btnWrap grow full">
+                                <button type="button" class="btn secondary size-lg btn-close-pop">취소</button>
+                                <button type="button" class="btn primary size-lg btn-close-pop">확인</button>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Center Modal -->
+                <div class="modalPop _center" modal-target="modal2">
+                    <div class="modalWrap">
+                        <div class="modal-header">
+                            <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
+                            <h1 class="mp-title dep01">Center Modal</h1>
+                        </div>
+                        <div class="modal-container"><p>Center Modal Content</p></div>
+                        <div class="modal-footer">
+                            <div class="btnWrap grow full">
+                                <button type="button" class="btn secondary size-lg btn-close-pop">취소</button>
+                                <button type="button" class="btn primary size-lg btn-close-pop">확인</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Modal -->
+                <div class="modalPop _right" modal-target="modal3">
+                    <div class="modalWrap">
+                        <div class="modal-header">
+                            <a href="#" class="ico ico-his-prev" role="button"><span class="hide">이전페이지</span></a>
+                            <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
+                            <h1 class="mp-title dep01">Right Modal</h1>
+                        </div>
+                        <div class="modal-container"><p>Right Modal Content</p></div>
+                        <div class="modal-footer">
+                            <div class="btnWrap grow full">
+                                <button type="button" class="btn secondary size-lg btn-close-pop">취소</button>
+                                <button type="button" class="btn primary size-lg btn-close-pop">확인</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Modal -->
+                <div class="modalPop _bottom" modal-target="modal4">
+                    <div class="modalWrap">
+                        <div class="modal-header">
+                            <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
+                            <h1 class="mp-title dep01">Bottom Modal</h1>
+                        </div>
+                        <div class="modal-container"><p>Bottom Modal Content</p></div>
+                        <div class="modal-footer">
+                            <div class="btnWrap grow full">
+                                <button type="button" class="btn secondary size-lg btn-close-pop">취소</button>
+                                <button type="button" class="btn primary size-lg btn-close-pop">확인</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FULL Modal -->
+                <div class="modalPop _full" modal-target="modal5">
+                    <div class="modalWrap">
+                        <div class="modal-header">
+                            <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
+                            <h1 class="mp-title dep01">Bottom Modal</h1>
+                        </div>
+                        <div class="modal-container"><p>FULL Modal Content</p></div>
+                        <div class="modal-footer">
+                            <div class="btnWrap grow full">
+                                <button type="button" class="btn secondary size-lg btn-close-pop">취소</button>
+                                <button type="button" class="btn primary size-lg btn-close-pop">확인</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- [S] AlertPop : 네트워크 오류 -->
+                <div class="modalPop _alert _center" modal-target="networkError">
+                    <div class="modalWrap">
+                        <!-- <div class="modal-header">
+                            <a href="javascript:void(0);" class="btn-close-pop ico ico-close" role="button"><span class="hide">창닫기</span></a>                        
+                            <h1 class="mp-title">AlertPopTitle</h1>
+                        </div> -->
+                        <div class="modal-container">
+                        <p class="alert-msg">
+                            현재 네트워크가 불안정하여<br>
+                            접속이 원할하지 않습니다
+                        </p>
+                        <p class="alert-msg sub">
+                            이용에 불편을 드려 죄송합니다<br>
+                            잠시 후 다시 시도해 주세요
+                        </p>
+                        </div>
+                        <div class="modal-footer">
+                        <div class="btnWrap grow">
+                            <!-- <button type="button" class="btn secondary size-lg btn-close-pop">취소</button> -->
+                            <button type="button" class="btn primary size-lg btn-close-pop">확인</button>
+                            <!-- 창닫기 .btn-close-pop 클래스 적용 -->
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="pbg-content">
+                <div class="pbg-titWrap dep2">
+                    <h2>팝업</h2>
+                </div>
+                <div class="btnWrap">
+                    <a href="javascript:void(0);" class="btn tertiary size-lg _toastBtn" data-toast="토스트 팝업메세지를 출력">토스트팝업</a>
+                </div>
+                <!--[S] 토스트 팝업 출력 : WAH 고려하는 프로젝트일 경우 토스트팝업 메세지는 항상 문서 최상단에 존재해야 함 -->
+                <div class="toastWrap" role="alert" aria-hidden="true">
+                    <div class="toast-msg">토스트 팝업메세지를 출력</div>
+                    <a class="btn ico-close" href="#" aria-label="Close" aria-hidden="true"><span class="hide">토스트팝업닫기</span></a>
+                </div>
+                <!--// [E] 토스트 팝업 출력-->
             </section>
         </div>
     </div>
 
 </body>
 <script src="../../assets/js/ui.component.js"></script>
+<script>
+    // 팝업 강제호출
+    // const callBtn = $('<div data-modal="networkError"></div>');
+    // COMPONENT_UI.modalPop.showModal(callBtn);
+
+
+    // 토스트팝업 호출
+    COMPONENT_UI.toast.toastPop();
+    // 특정 위치 클릭시
+    $('._toastBtn').on('click', function() {
+        COMPONENT_UI.toast.returnToast('._toastBtn'); // 여기서 body를 포커스 대상을 지정
+    });
+
+
+</script>
 
 </html>
