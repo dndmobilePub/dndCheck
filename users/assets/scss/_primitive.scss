@@ -37,16 +37,20 @@ $color-red-50: #FDEDED;
 $color-red-500: #E34850;
 $color-red-600: #C9252D;
 
-$color-transparent-20: #c0c6cc33;
+$color-orange-50:#FFF7ED;
+$color-orange-100:#FFF7E6;
+$color-orange-200:#FED7AA;
+$color-orange-300:#FDBA74;
+$color-orange-400:#FB923C;
+$color-orange-500:#F97316;
+$color-orange-600:#EA580C;
+$color-orange-700:#C2410C;
+$color-orange-800:#9A3412;
+$color-orange-900:#7C2D12;
+
+$color-transparent-05: #0000000d;
+$color-transparent-50: #00000080;
 $color-transparent-60: #00000099;
-
-$color-brand-primary-400:$color-blue-400;
-$color-brand-primary-500:$color-blue-500;
-$color-brand-primary-600:$color-blue-600;
-
-$color-brand-secondary-200:$color-neutral-200;
-$color-brand-secondary-300:$color-neutral-300;
-$color-brand-secondary-400:$color-neutral-400;
 //--color
 
 /* typography */
@@ -100,6 +104,9 @@ $radius-full:100%;
 $shadow-sm:0 .1rem .2rem rgba(0, 0, 0, 0.05);
 $shadow-md:0 .4rem .6rem rgba(0, 0, 0, 0.1);
 $shadow-lg:0 1rem 1.5rem rgba(0, 0, 0, 0.15);
+
+$dim-opacity5:#00000080;
+$dim-opacity6:#00000099;
 //-box 
 
 

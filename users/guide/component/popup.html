@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover, user-scalable=no">
+    <title>팝업/알럿/토스트</title>
+
+    <!-- [S] PUBLISH COMMON STYLE -->
+    <link rel="stylesheet" href="../../assets/css/cp.style.css">
+    <!-- [E] PUBLISH COMMON STYLE -->
+
+    <!-- [S] PAGES - STYLE -->
+    <link rel="stylesheet" href="">
+    <!-- [E] PAGES - STYLE -->
+
+    <!-- [S] LIBRARY - SCRIPT -->
+    <script src="../../assets/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../assets/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <!-- [E] LIBRARY - SCRIPT -->
+
+    <!-- [S] @TEMP - GUIDE STYLE -->
+    <link rel="stylesheet" href="../assets/css/pb.guide.css">
+    <!-- [E] @TEMP - GUIDE STYLE -->
+</head>
+
+<body pb-component>
+    <div class="pbgWrap">
+        <div class="pbgContainer">
+            <div class="pbg-titWrap dep1">
+                <h1>POPUP</h1>
+            </div>
+            <section class="pbg-content">
+                <div class="btnWrap">
+                    <a href="javascript:void(0);" class="btn tertiary size-lg _modalBtn" data-modal="modal1">Top Modal</a>
+                    <a href="javascript:void(0);" class="btn tertiary size-lg _modalBtn" data-modal="modal2">Center Modal</a>
+                    <a href="javascript:void(0);" class="btn tertiary 
+                    size-lg _modalBtn" data-modal="modal3">Left Modal</a>
+                    <a href="javascript:void(0);" class="btn tertiary 
+                    size-lg _modalBtn" data-modal="modal4">Bottom Modal</a>
+                    <a href="javascript:void(0);" class="btn tertiary 
+                    size-lg _modalBtn" data-modal="modal5">Full Modal</a>
+                </div>
+
+                <div class="modalPop _top" modal-target="modal1">
+                    <div class="modalWrap">
+                        <div class="modal-header">
+                            <a href="#" class="ico ico-his-prev" role="button"><span class="hide">이전페이지</span></a>
+                            <h1 class="mp-title dep01">Top Modal</h1>
+                            <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
+                        </div>
+                        <div class="modal-container"><p>Top Modal Content</p></div>
+                        <div class="modal-footer">
+                            <div class="btnWrap grow">
+                                <button class="btn btn-size md type2 bg">확인</button>
+                                <button class="btn btn-size md bg btn-close-pop">취소</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+</body>
+<script src="../../assets/js/ui.component.js"></script>
+
+</html>

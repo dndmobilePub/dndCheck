@@ -8,9 +8,9 @@
 @import 'pg.variables';
 
 [temp-cp-gap] {
-    a:not(._input-clear):not(.btn-auth), button:not(._input-clear):not(.btn-auth) {margin-bottom:.5rem;}
+    a:not(._input-clear):not(.btn-auth):not(.titWrap .btn), button:not(._input-clear):not(.btn-auth) {margin-bottom:.5rem;}
     .field-outline ~ .field-outline {margin-top:1rem;}
-    .field ~ .field {margin-top:2rem;}
+    .field ~ .field, .titWrap ~ .titWrap {margin-top:2rem;}
 }
 // body[pb-component] {}
 .pbg {
@@ -32,11 +32,11 @@
         &Wrap {
             margin-bottom:1.5rem;
             & > h1 {
-                @extend %heading-xl;
+                @extend %heading-xl-medium;
                 color:$color-text-primary;
             }
             & > h2 {
-                @extend %heading-md;
+                @extend %heading-md-bold;
                 color:$color-text-secondary;
                 padding:.5rem 1rem;
             }

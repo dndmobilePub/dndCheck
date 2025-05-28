@@ -1,0 +1,52 @@
+%transitionPop { transition:opacity 250ms cubic-bezier(.86, 0, .07, 1);}
+.no-scroll {
+    @include overflow(both, hidden);
+    // overscroll-behavior:contain; // 페이지 바운스 막기
+}
+$pop:'.modalPop';
+$modal:'.modal';
+//--** POPUP
+#{$pop} {
+    visibility:hidden;
+    width: 100%; height: 100%;
+    @include pos-offset(fixed, $left: 0, $top:0, $z-index: 9995);
+    @extend %transition3s;
+    transition-delay: .2s;
+    &._is-active {
+        display:block; visibility: visible;
+        opacity: 1;        
+        @extend %transitionPop;
+
+        &:not(._full) {
+            @extend %sdimmed-60;
+            backdrop-filter: blur(.5rem);
+        }
+    }
+
+    #{$modal} {
+        &Wrap {
+            @include pos-offset;
+            @include dflex($direction:column);
+            width:100%; height:auto; max-height:100%;
+            background-color: $color-bg-primary;
+            box-sizing: border-box;
+            @extend %transition5s;
+        }
+
+        &-header {
+            @include dflex($al-items: center) { flex-shrink:1; }
+            padding: 1.4rem 2.4rem;
+            min-height: 5.6rem;
+            .mp-title {
+                flex: 1;
+                @extend %heading-md-bold;
+                max-height: 5.2rem;
+                word-break: keep-all;
+            }
+            .ico-close {
+                margin-left: auto;
+                margin-bottom: auto;
+            }
+        }
+    }
+}

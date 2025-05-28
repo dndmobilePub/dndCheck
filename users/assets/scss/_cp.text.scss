@@ -1,0 +1,32 @@
+$tit:'.tit';
+$bodyTxt:'.desc';
+//--** TITLE
+#{$tit} {
+    margin-right:auto;
+    &Wrap {
+        @include dflex($al-items:Center);
+    }
+    &.dep {
+        &01 {@extend %heading-lg-bold;}
+        &02 {@extend %heading-sm-bold;}
+    }
+    &.sub {@extend %body-sm-regular;}
+    & > .headtypo, & + .headtypo {@extend %body-sm-regular;}
+    
+}
+#{$bodyTxt} {
+    @extend %body-lg-regular;
+    &.txt {
+        &-lg {@extend %body-lg-regular;}
+        &-sm {@extend %body-sm-regular;}
+        &-xs {@extend %body-xs-regular;}
+    }
+}
+.full {
+    flex-wrap: wrap;
+    #{$tit} {
+        & + .headtypo {
+        width:100%;
+    }
+    }
+}
