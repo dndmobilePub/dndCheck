@@ -1327,6 +1327,32 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   display: block;
   border-color: transparent;
 }
+.field.box-opt.full.bar-fill .field-chkrdo._readonly .chk ~ .field-label, .field.box-opt.full.bar-fill .field-chkrdo._readonly .rdo ~ .field-label {
+  opacity: 1;
+}
+.field.box-opt.full.bar-fill .field-chkrdo._readonly .chk:checked ~ .field-label, .field.box-opt.full.bar-fill .field-chkrdo._readonly .rdo:checked ~ .field-label {
+  opacity: 1;
+}
+.field.box-opt.full.bar-fill .field-label {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1.4rem 2rem !important;
+}
+.field.box-opt.full.bar-fill .field-label > .fill-width {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: block;
+  height: 100%;
+  background-color: #F2F5F7;
+}
+.field.box-opt.full.bar-fill .chk:checked ~ .field-label > .fill-width, .field.box-opt.full.bar-fill .rdo:checked ~ .field-label > .fill-width {
+  background-color: #E8F5FF;
+}
 .field.box-opt .field-icon {
   display: none;
 }
