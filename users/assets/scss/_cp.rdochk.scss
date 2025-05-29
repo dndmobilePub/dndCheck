@@ -214,6 +214,40 @@ $fieldLabel:'#{$field}-label';
                     }
                 }
             }
+            &.bar-fill {
+                #{$field} {
+                    &-chkrdo {
+                        &._readonly {
+                            .chk, .rdo {
+                                & ~ #{$fieldLabel} {opacity:1;}
+                                &:checked {
+                                    & ~ #{$fieldLabel} {opacity:1}
+                                }
+                            }
+                        }
+                    }
+                }
+                #{$fieldLabel} {
+                    position:relative; overflow:hidden;
+                    @include dflex($j-content:space-between);
+                    padding:1.4rem 2rem !important;
+                    & > .fill-width {
+                        @include pos-offset($top:0, $left:0, $z-index:-1);
+                        display:block;
+                        height:100%;
+                        background-color:$color-bg-tertiary;
+                    }
+                }
+                .chk, .rdo {
+                    &:checked {
+                        & ~ #{$fieldLabel} {
+                            & > .fill-width {
+                                background-color:$color-bg-info-subtitle;
+                            }
+                        }
+                    }
+                }
+            }
         }
         @include dflex;
         #{$fieldIcon} {display:none;}
