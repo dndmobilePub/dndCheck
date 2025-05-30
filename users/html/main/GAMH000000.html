@@ -17,31 +17,29 @@
                 </div>
                 <div class="right">
                     <button class="alarm new"><span class="blind">알림</span></button>
-                    <button class="total"><span class="blind">전체메뉴</span></button>
+                    <button class="total _modalBtn" data-modal="modal3"><span class="blind">전체메뉴</span></button>
                 </div>
             </div>
             <div class="contentWrap">
-                <!-- holiday(공휴일), annual(휴무일), afterwork(출근버튼 누른 후), late(지각), overtime(야근), leave(조퇴) -->
-                <div class="commute-group leave">
-                    <div class="cont-box">
+                <!-- holiday(공휴일), annual(휴무일), afterwork(출근버튼 누른 후), late(지각), overtime(야근) / all(종일연차), morning(오전반차), affternoon(오후반차) -->
+                <div class="commute-group afterwork
+                 affternoon">
+                    <div class="cont-box dash-line">
                         <div class="cont-item title">
                             <strong class="tit">05.20(화)</strong>
-                            <!-- <span class="txt">오후반차</span> -->
-                            <span class="txt">09:00 ~ 18:00</span>
+                            <span class="txt">근무시간 09:00 ~ 18:00</span>
                         </div>
                     </div>
                     <div class="cont-box big">
                         <div class="cont-item state">
                             <div class="area-state">
                                 <i class="icon"></i>
-                                <span class="txt">출근 전</span>
-                                <!-- <div class="btnWrap">
-                                    <button test-btn="true" class="btn tertiary size-lg" btn-active="loading">보정신청</button>
-                                </div> -->
+                                <div class="btnWrap">
+                                    <button class="btn tertiary size-sm _modalBtn" data-modal="modal4">보정신청</button>
+                                </div>
                             </div>
                             <div class="area-time">
                                 <span class="tit">07:58:13</span>
-                                <span class="badge">조퇴</span>
                             </div>
                             <div class="btnWrap">
                                 <button class="btn primary size-lg full">출근하기</button>
@@ -49,9 +47,9 @@
                         </div>
                     </div>
                     <div class="cont-box stage">
-                        <div class="cont-item">
+                        <div class="cont-item flex-wrap start">
                             <strong class="tit">근무지</strong>
-                            <span class="txt">디앤디모바일(본사)</span>
+                            <span class="txt">디앤디모바일(본사)디앤디모바일(본사)디앤디모바일(본사)디앤디모바일(본사)</span>
                         </div>
                     </div>
                 </div>
@@ -67,6 +65,52 @@
                             <a href="#" class="link notice">공지/설문</a>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modalPop _right" modal-target="modal3">
+        <div class="modalWrap">
+            <div class="modal-header">
+                <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
+                <h1 class="mp-title dep01">전체메뉴</h1>
+            </div>
+            <div class="modal-container">
+                <div class="totla-menu">
+                    <a href="#" class="item"><i class="ico type1" aria-hidden="true"></i>출퇴근 현황</a>
+                    <a href="#" class="item"><i class="ico type2" aria-hidden="true"></i>휴가 현황</a>
+                    <a href="#" class="item"><i class="ico type3" aria-hidden="true"></i>공지/설문</a>
+                    <a href="#" class="item"><i class="ico type4" aria-hidden="true"></i>근무지 정보</a>
+                    <a href="#" class="item"><i class="ico type5" aria-hidden="true"></i>내정보</a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="btnWrap grow full">
+                    <button type="button" class="btn secondary size-lg btn-close-pop">취소</button>
+                    <button type="button" class="btn primary size-lg btn-close-pop">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modalPop _bottom" modal-target="modal4">
+        <div class="modalWrap">
+            <div class="modal-header">
+                <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
+                <h1 class="mp-title dep01">보정신청</h1>
+            </div>
+            <div class="modal-container">
+                <div class="textarea-wrap">
+                    <textarea name="" id="" class="textarea" placeholder="사유를 입력해주세요"></textarea>
+                    <p class="limit">
+                        (<span>0</span>/<span>100</span>자)
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="btnWrap grow full">
+                    <button type="button" class="btn primary size-lg btn-close-pop">보정신청</button>
                 </div>
             </div>
         </div>

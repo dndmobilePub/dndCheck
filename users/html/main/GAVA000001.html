@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckCheck</title>
+    <link rel="stylesheet" href="../../assets/css/cp.style.css">
+    <link rel="stylesheet" href="../../assets/js/lib/flatpickr/flatpickr.css">
+    <script src="../../assets/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../assets/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <script src="../../assets/js/lib/flatpickr/flatpickr.js"></script>
+    <script src="../../assets/js/lib/flatpickr/flatpickr-korea.js"></script>
+</head>
+<body screen-type="sub">
+    <div class="wrap" btn-area="true">
+        <div class="containerWrap">
+            <div class="headerWrap">
+                <div class="left">
+                    <button class="ico back"><span class="blind">뒤로가기</span></button>
+                </div>
+                <div class="center">
+                    <h2 class="title">휴가 신청</h2>
+                </div>
+            </div>
+            <div class="contentWrap">
+                <div class="cont-box blue">
+                    <div class="flex-wrap">
+                        <span class="tit">사용 가능</span>
+                        <strong class="txt">13일</strong>
+                    </div>
+                </div>
+                <div class="cont-group">
+                    <div class="titWrap">
+                        <h2 class="tit dep02">휴가 종류</h2>
+                    </div>
+                    <div class="radio-wrap">
+                        <div class="field box-opt gap">        
+                            <label for="rdo-b1" class="field-chkrdo">
+                                <input type="radio" name="boxRdo" id="rdo-b1" class="rdo" checked>
+                                <i class="field-icon" aria-hidden="hidden"></i>
+                                <span class="field-label">일반휴가</span>
+                            </label>
+                            <label for="rdo-b2" class="field-chkrdo">
+                                <input type="radio" name="boxRdo" id="rdo-b2" class="rdo">
+                                <i class="field-icon" aria-hidden="hidden"></i>
+                                <span class="field-label">포상휴가</span>
+                            </label>
+                            <label for="rdo-b3" class="field-chkrdo">
+                                <input type="radio" name="boxRdo" id="rdo-b3" class="rdo">
+                                <i class="field-icon" aria-hidden="hidden"></i>
+                                <span class="field-label">공가</span>
+                            </label>
+                            <label for="rdo-b4" class="field-chkrdo">
+                                <input type="radio" name="boxRdo" id="rdo-b4" class="rdo">
+                                <i class="field-icon" aria-hidden="hidden"></i>
+                                <span class="field-label">경조사</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="list-wrap">
+                        <ul class="list dot">
+                            <li class="item">포상휴가: 프로젝트 철수 후 1주일 이내 사용가능</li>
+                            <li class="item">공가: 예비군, 민방위 등</li>
+                            <li class="item">경조사: 회사내규에 따름</li>
+                            <li class="item">육아휴직(무급휴직 적용)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="cont-group">
+                    <div class="titWrap">
+                        <h2 class="tit dep02">휴가기간</h2>
+                    </div>
+                    <div class="btnWrap">
+                        <a href="javascript:void(0);" class="btn tertiary ico ico-md full del-file-r">2025.10.16(수)~2025.10.19(목)</a>
+                    </div>
+                    <div class="btnWrap">
+                        <a href="javascript:void(0);" class="btn tertiary ico ico-md full add-field _modalBtn" data-modal="modal4">추가</a>
+                    </div>
+                </div>
+                <div class="cont-group">
+                    <div class="titWrap">
+                        <h2 class="tit dep02">사유</h2>
+                    </div>
+                    <div class="textarea-wrap">
+                        <textarea name="" id="" class="textarea" placeholder="사유를 입력해주세요"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="btnWrap">
+                <button class="btn primary size-lg full">휴가신청</button>
+            </div>
+        </div>
+    </div>
+    <div class="modalPop _bottom" modal-target="modal4">
+        <div class="modalWrap">
+            <div class="modal-header">
+                <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
+                <h1 class="mp-title dep01">기간선택</h1>
+            </div>
+            <div class="modal-container">
+                <div class="flatpickr-group">
+                    <div class="flatpickr-wrap">
+                        <input id="myDate" class="flatpickr" type="hidden" placeholder="날짜를 선택하세요." readonly="readonly">
+                    </div>
+                    <div class="flatpickr-box">
+                        <div class="date start">
+                            <span class="tit">시작일</span>
+                            <span start-date id="startDate" class="off">YYYY.MM.DD</span>
+                        </div>
+                        <div class="date dash" aria-hidden="true">
+                            <span></span>
+                        </div>
+                        <div class="date end">
+                            <span class="tit">종료일</span>
+                            <span end-date id="endDate" class="off">YYYY.MM.DD</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="radio-group">
+                    <div class="titWrap">
+                        <h2 class="tit dep02"> 단위</h2>
+                    </div>
+                    <div class="field box-opt gap">        
+                        <label for="rdo-b1" class="field-chkrdo">
+                            <input type="radio" name="boxRdo" id="rdo-b1" class="rdo" checked>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">종일</span>
+                        </label>
+                        <label for="rdo-b2" class="field-chkrdo">
+                            <input type="radio" name="boxRdo" id="rdo-b2" class="rdo">
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">오전반차</span>
+                        </label>
+                        <label for="rdo-b3" class="field-chkrdo">
+                            <input type="radio" name="boxRdo" id="rdo-b3" class="rdo">
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">오후반차</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="btnWrap grow full">
+                    <button type="button" class="btn secondary size-lg btn-close-pop">취소</button>
+                    <button type="button" class="btn primary size-lg btn-close-pop">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../assets/js/ui.component.js"></script>
+    <script>
+        $(".flatpickr-wrap").flatpickr({
+            dateFormat: "Y-m-d",
+            mode: "range",
+            inline: true,
+            locale: 'ko',
+            clickOpens: true,
+
+            onReady: function (selectedDates, dateStr, instance) {
+                addAccessibilityAttributes(instance);
+
+                // 연도 input 숨기기
+                const $yearInput = $(instance.yearElements[0]);
+                $yearInput.hide();
+
+                // 연도 텍스트 노드 생성 (기존 위치에 표시)
+                const $yearDisplay = $("<span>")
+                .addClass("year-display-text")
+                .text(instance.currentYear);
+
+                $yearInput.after($yearDisplay);
+            },
+
+            onChange: function (selectedDates, dateStr, instance) {
+                const start = selectedDates[0];
+                const end = selectedDates[1];
+
+                $("[start-date]").text(start ? start.toLocaleDateString() : "");
+                $("[end-date]").text(end ? end.toLocaleDateString() : "");
+
+                setTimeout(() => addAccessibilityAttributes(instance), 0);
+            },
+
+            onMonthChange: function (selectedDates, dateStr, instance) {
+                updateYearText(instance);
+                addAccessibilityAttributes(instance);
+            },
+
+            onYearChange: function (selectedDates, dateStr, instance) {
+                updateYearText(instance);
+            }
+        });
+    </script>
+</body>
+</html>

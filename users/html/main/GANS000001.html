@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckCheck</title>
+    <link rel="stylesheet" href="../../assets/css/cp.style.css">
+    <script src="../../assets/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../assets/js/lib/lib.jquery-ui-1.13.2.js"></script>
+</head>
+<body screen-type="sub">
+    <div class="wrap" btn-area="true">
+        <div class="containerWrap">
+            <div class="headerWrap">
+                <div class="left">
+                    <button class="ico back"><span class="blind">뒤로가기</span></button>
+                </div>
+                <div class="center">
+                    <h2 class="title">공지/설문</h2>
+                </div>
+            </div>
+            <div class="contentWrap">
+                <div class="notice-title">
+                    <h3 class="tit">버전 업데이트 안내 v1.1</h3>
+                    <span class="txt">2025.03.17(월) 10:30</span>
+                </div>
+                <div class="notice-detail">
+                    안녕하세요, 경영지원부입니다. 
+                    모바일앱이 업데이트되어 최신 버전으로 업데이트 후 이용해 주시기 바랍니다.
+                    감사합니다.
+
+                    업데이트 내용 <Br> 안드로이드 12버전에서 푸시알림이 수신되지 않는
+                    오류 수정
+                </div>
+                <div class="cont-box file">
+                    <a href="#" class="item ico jpg">UIUX강의 커리큘럼.hwp <span class="bite">(0.5KB)</span></a>
+                    <a href="#" class="item ico hwp">UIUX강의 커리큘럼.JPG <span class="bite">(0.5KB)</span></a>
+                    <a href="#" class="item ico pdf">UIUX강의 커리큘럼.PDF <span class="bite">(0.5KB)</span></a>
+                    <a href="#" class="item ico">UIUX강의 커리큘럼.등등 <span class="bite">(0.5KB)</span></a>
+                </div>
+                <div class="survey-group">
+                    <div class="survey-list">
+                        <div class="survey-title">
+                            <strong class="txt">설문1</strong><strong class="tit">본사교육 참석여부</strong>
+                        </div>
+                        <div class="radio-wrap">
+                            <div class="field box-opt full ico">        
+                                <label for="rdo-fullicob1" class="field-chkrdo">
+                                    <input type="radio" name="fullicobBoxRdo" id="rdo-fullicob1" class="rdo" checked>
+                                    <i class="field-icon" aria-hidden="hidden"></i>
+                                    <span class="field-label">1. 참석</span>
+                                </label>
+                                <label for="rdo-fullicob2" class="field-chkrdo">
+                                    <input type="radio" name="fullicobBoxRdo" id="rdo-fullicob2" class="rdo">
+                                    <i class="field-icon" aria-hidden="hidden"></i>
+                                    <span class="field-label">2. 불참석</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="survey-list">
+                        <div class="survey-title">
+                            <strong class="txt">설문2</strong><strong class="tit">본사교육 참석여부</strong>
+                        </div>
+                        <div class="check-wrap">
+                            <div class="field box-opt full ico">
+                                <label for="chk-fullicob1" class="field-chkrdo">
+                                    <input type="checkbox" name="fullicobox" id="chk-fullicob1" class="chk" checked>
+                                    <i class="field-icon" aria-hidden="hidden"></i>
+                                    <span class="field-label">A. 식당</span>
+                                </label>
+                                <label for="chk-fullicob2" class="field-chkrdo">
+                                    <input type="checkbox" name="fullicobox" id="chk-fullicob2" class="chk">
+                                    <i class="field-icon" aria-hidden="hidden"></i>
+                                    <span class="field-label">B. 식당</span>
+                                </label>
+                                <label for="chk-fullicob3" class="field-chkrdo">
+                                    <input type="checkbox" name="fullicobox" id="chk-fullicob3" class="chk">
+                                    <i class="field-icon" aria-hidden="hidden"></i>
+                                    <span class="field-label">C. 식당</span>
+                                </label>
+                                <label for="chk-fullicob4" class="field-chkrdo">
+                                    <input type="checkbox" name="fullicobox" id="chk-fullicob4" class="chk" >
+                                    <i class="field-icon" aria-hidden="hidden"></i>
+                                    <span class="field-label">D. 식당</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btnWrap">
+                        <button class="btn primary size-md full">확인</button>
+                    </div>
+                </div>
+                <div class="survey-group">
+                    <div class="survey-list">
+                        <div class="survey-title">
+                            <strong class="txt">설문1</strong><strong class="tit">본사교육 참석여부</strong>
+                        </div>
+                        <div class="radio-wrap">
+                            <div class="field box-opt full bar-fill">
+                                <label for="rdo-fill1" class="field-chkrdo">
+                                    <input type="radio" name="Rdofill" id="rdo-fill1" class="rdo" checked readonly>
+                                    <i class="field-icon" aria-hidden="hidden"></i>
+                                    <span class="field-label">
+                                        1. 설문응답 - 복수선택
+                                        <span>15명</span>
+                                        <i class="fill-width" style="width:80%" aria-hidden="hidden"></i>
+                                    </span>
+                                </label>
+                                <label for="rdo-fill2" class="field-chkrdo">
+                                    <input type="checkbox" name="Rdofill" id="rdo-fill2" class="rdo" readonly>
+                                    <i class="field-icon" aria-hidden="hidden"></i>
+                                    <span class="field-label">
+                                        2. 설문응답 - 복수선택
+                                        <span>15명</span>
+                                        <i class="fill-width" style="width:50%" aria-hidden="hidden"></i>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="survey-list">
+                        <div class="survey-title">
+                            <strong class="txt">설문1</strong><strong class="tit">본사교육 참석여부</strong>
+                        </div>
+                        <div class="radio-wrap">
+                            <div class="field box-opt full bar-fill">
+                                <label for="rdo-fill1" class="field-chkrdo">
+                                    <input type="radio" name="Rdofill" id="rdo-fill1" class="rdo" checked readonly>
+                                    <i class="field-icon" aria-hidden="hidden"></i>
+                                    <span class="field-label">
+                                        1. 설문응답 - 복수선택
+                                        <span>15명</span>
+                                        <i class="fill-width" style="width:80%" aria-hidden="hidden"></i>
+                                    </span>
+                                </label>
+                                <label for="rdo-fill2" class="field-chkrdo">
+                                    <input type="checkbox" name="Rdofill" id="rdo-fill2" class="rdo" readonly>
+                                    <i class="field-icon" aria-hidden="hidden"></i>
+                                    <span class="field-label">
+                                        2. 설문응답 - 복수선택
+                                        <span>15명</span>
+                                        <i class="fill-width" style="width:50%" aria-hidden="hidden"></i>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <p class="info-txt">설문이 마감되었습니다.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="btnWrap">
+                <button class="btn tertiary size-lg full">목록</button>
+            </div>
+        </div>
+        
+    </div>
+    <script src="../../assets/js/ui.component.js"></script>
+</body>
+</html>
