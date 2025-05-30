@@ -29,8 +29,8 @@
 .pbg-titWrap > h3 {
   font-family: 'Pretendard', 'sans-serif';
   font-weight: 500;
-  font-size: 2rem;
-  line-height: 2.8rem;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
   letter-spacing: -0.02rem;
 }
 
@@ -438,7 +438,8 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   justify-content: space-between;
 }
 
-[temp-cp-gap] a:not(._input-clear):not(.btn-auth):not(.titWrap .btn), [temp-cp-gap] button:not(._input-clear):not(.btn-auth) {
+[temp-cp-gap] a:not(._input-clear):not(.btn-auth):not(.titWrap .btn):not(.field .btn):not(.modalWrap .btn),
+[temp-cp-gap] button:not(._input-clear):not(.btn-auth):not(.field .btn):not(.modalWrap .btn) {
   margin-bottom: 0.5rem;
 }
 [temp-cp-gap] .field-outline ~ .field-outline {
