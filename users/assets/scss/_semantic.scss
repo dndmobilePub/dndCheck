@@ -156,22 +156,22 @@ $heading:(
         bold:(
             font-family:$typo-family,
             font-weight:$typo-weight-bold,
-            font-size:$typo-size-20,
-            line-height:$typo-lheight-28,
+            font-size:$typo-size-18,
+            line-height:$typo-lheight-24,
             letter-spacing:$letter-spacing-tight,
         ),
         medium:(
             font-family:$typo-family,
             font-weight:$typo-weight-medium,
-            font-size:$typo-size-20,
-            line-height:$typo-lheight-28,
+            font-size:$typo-size-18,
+            line-height:$typo-lheight-24,
             letter-spacing:$letter-spacing-tight,
         ),
         regular:(
             font-family:$typo-family,
             font-weight:$typo-weight-regular,
-            font-size:$typo-size-20,
-            line-height:$typo-lheight-28,
+            font-size:$typo-size-18,
+            line-height:$typo-lheight-24,
             letter-spacing:$letter-spacing-tight,
         ),
     ),
@@ -338,10 +338,11 @@ $radius: (
 %radius-full {@include dndCP($radius, full);}
 
 %disabled {opacity:.6;}
-$btn: (
+
+$status: (
     disabled:(
         primary:(
-            background-color:$color-bg-info,
+            background-color:$color-bg-info-subtitle,
             color:$color-text-info,
             opacity:.5,
         ),
@@ -354,11 +355,26 @@ $btn: (
             color:$color-text-disabled,
             box-shadow: 0 0 0 .1rem $color-border-tertiary inset,
         ),
+        form:(
+            background-color:$color-bg-disabled,
+            color:$color-text-disabled,
+            box-shadow: 0 0 0 .1rem $color-border-secondary inset,
+        ),
+    ),
+    readonly:(
+        form:(
+            background-color:$color-bg-readonly,
+            color:$color-text-secondary,
+            box-shadow: 0 0 0 .1rem $color-border-secondary inset,
+        ),
     ),
 );
-%btn-disabled-primary {@include dndCP($btn, (disabled, primary));}
-%btn-disabled-secondary {@include dndCP($btn, (disabled, secondary));}
-%btn-disabled-tertiary {@include dndCP($btn, (disabled, tertiary));}
+%disabled-primary {@include dndCP($status, (disabled, primary));}
+%disabled-secondary {@include dndCP($status, (disabled, secondary));}
+%disabled-tertiary {@include dndCP($status, (disabled, tertiary));}
+%disabled-form {@include dndCP($status, (disabled, form));}
+
+%readonly-form {@include dndCP($status, (readonly, form));}
 
 $shadow: (
     sm:(box-shadow:0 .1rem .2rem rgba(0, 0, 0, 0.05)),
@@ -379,17 +395,3 @@ $dimmed:(
 %sdimmed-05 {@include dndCP($dimmed, opacity-05);}
 %sdimmed-50 {@include dndCP($dimmed, opacity-50);}
 %sdimmed-60 {@include dndCP($dimmed, opacity-60);}
-//---* ICON
-@function svgIco($iconName, $color: 666, $backgroundRepeat: no-repeat) {
-    $iconList: (
-        ico-add:"%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 10.5V1.5M10.5 6H1.5' stroke='%23#{$color}' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A",
-        btn-add:"%3Csvg width='14' height='15' viewBox='0 0 14 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.99998 13.2856V1.28564M13 7.28564H0.999985' stroke='%23#{$color}' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A",
-    );
-$svgIcon: map-get($iconList, $iconName);
-$backgroundImage: url("data:image/svg+xml;charset=utf8,#{$svgIcon}");
-@return $backgroundImage $backgroundRepeat;
-//background: svgIco(ico-add, fff);
-}
-
-%ico-add {background: svgIco(ico-add, fff) center center;}
-%btn-add {background: svgIco(btn-add, 8C959F) 50% 50%;}

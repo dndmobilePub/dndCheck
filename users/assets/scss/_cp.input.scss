@@ -14,9 +14,19 @@ $fieldLabel: '#{$field}-label';
     // FIELD - INPUT
     &-input {
         // height: 4.0rem;
-        input:not([type=checkbox]):not([type=radio]) {
+        textarea, input:not([type=checkbox]):not([type=radio]) {
             padding: 1.2rem 1rem; width: 100%; height: 100%; border: 0; background-color: transparent;
             @extend %body-md-regular;
+        }
+        textarea {
+            padding:2rem 1rem 0;
+            resize: none; height:12rem;
+            & + .byte-check {
+                display:inline-flex;
+                margin:2rem; margin-left:auto;
+                @extend %body-md-regular;
+                color:$color-text-placeholder;
+            }
         }
         input:not([type=checkbox]):not([type=radio]):focus {outline: none;}
         input:not([type=checkbox]):not([type=radio])::placeholder {color:$color-text-placeholder; @extend %body-md-regular;}
@@ -40,11 +50,10 @@ $fieldLabel: '#{$field}-label';
         &:focus-within {@include line(inset, $color-border-focusring, .2rem);}
 
         // 인증번호 필드 + 인증번호 & 인증번호 필드 + 인증시간
-        &.auth {
+        &._inbtn {
             display:inline-flex;
             width:100%;
             // width:calc(100% - 8rem);
-
             #{$field} {
                 &-input {@include dflex;}
                 ._input-clear {order:2; margin-right:0 !important;}
@@ -54,7 +63,7 @@ $fieldLabel: '#{$field}-label';
                 margin:0 1rem;
                 align-self:center; order:3;
             }
-            .btn-auth {align-self: center; margin-right:1rem;}
+            .btn-infield {align-self: center; margin-right:1rem;}
         }
 
         &.pw {
@@ -79,22 +88,20 @@ $fieldLabel: '#{$field}-label';
             .right {place-self: flex-end;}
         }
 
-        &._readonly {color:$color-text-secondary; cursor: default;}
-        &._disabled {
-            opacity:.8; cursor:default;
-            background:$color-bg-disabled;}
+        &._readonly {@extend %readonly-form; cursor: default;}
+        &._disabled {@extend %disabled-form; cursor:default;}
 
         .center {place-self: center;}
         .bottom {place-self: flex-end;}
     }
     // 인증번호 [필드 + 인증시간] + [인증번호]
-    &.auth {
+    &._inbtn {
         #{$field} {
             &-outline {
-                display:inline-flex; width:calc(100% - 11.7rem);
-                &~ .btn-auth {
-                    display:inline-flex; 
-                    margin-left:1rem;
+                display:inline-flex; width:calc(100% - 11rem);
+                &~ .btn-infield {
+                    @include dflex(inline-flex, $j-content:center);
+                    align-self: flex-end; min-width:10rem; margin-left:.6rem;
                 }
             }
             &-input {

@@ -61,11 +61,12 @@ $modal: '.modal';
                 margin-left: auto;
                 margin-bottom: auto;
             }
+            & + #{$modal}-container {padding-top:0;}
         }
 
         &-container {
             @include pos-offset(relative);
-            padding: 0 2rem 4rem;
+            padding: 4rem 2rem;
             margin: -.1rem 0;
             @extend %body-md-regular;
             color: $color-text-primary;
@@ -84,13 +85,13 @@ $modal: '.modal';
                 background: linear-gradient(-180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
             }
 
-            .btnWrap.grow.full {
+            .btnWrap.grow {
                 margin: 0;
                 @include pos-offset(relative, $z-index:1);
 
-                &>.btn,
-                &>.btn:first-child,
-                &>.btn:last-child {
+                & >[class*='btn'],
+                & >[class*='btn']:first-child,
+                & >[class*='btn']:last-child {
                     @extend %radius-0;
                 }
             }
@@ -144,8 +145,6 @@ $modal: '.modal';
             }
 
             &-container {
-                padding-top: 1.2rem;
-                padding-bottom: 4rem;
                 @include overflow(y, auto);
 
                 .alert {

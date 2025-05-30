@@ -1,40 +1,111 @@
 // SVG ICON
-@function svgIcon($iconName, $color: 666, $backgroundRepeat: no-repeat) {
-    $iconList: (
-    ico_selArrow:"%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23#{$color}' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E",
+$svgIcon-map: (
+    ico_selArrow:"%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='{COLOR}' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E",
 
-    ico_close:"%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23#{$color}' d='M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z' /%3E%3C/svg%3E",
+    ic_24_add:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='12' cy='12' r='10.5' fill='%23212529'/%3E%3Cpath d='M12 16.5V7.5M16.5 12H7.5' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A",
 
-    ico_asterisk:"%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23#{$color}' viewBox='0 0 16 16'%3E%3Cpath d='M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z'/%3E%3C/svg%3E",
-    
-    his_prev:"%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23#{$color}' d='M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z' /%3E%3C/svg%3E",
+    ico_close:"%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='{COLOR}' d='M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z' /%3E%3C/svg%3E",
+    ico_del:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22.5 12C22.5 17.799 17.799 22.5 12 22.5C6.20101 22.5 1.5 17.799 1.5 12C1.5 6.20101 6.20101 1.5 12 1.5C17.799 1.5 22.5 6.20101 22.5 12Z' fill='%238C959F'/%3E%3Cpath d='M7 12H16' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A",
 
-    ico_qCircle:"%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23#{$color}' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath d='M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z'/%3E%3C/svg%3E",
+    ico_del_field:"%3Csvg width='18' height='20' viewBox='0 0 18 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 9V15' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M7 9V15' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M3 5V17C3 18.1046 3.89543 19 5 19H13C14.1046 19 15 18.1046 15 17V5' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M1 5H17' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M4 5L6 1H12L14 5' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A",
 
-    ico_qCircle_fill:"%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23#{$color}' viewBox='0 0 16 16'%3E%3Cpath d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z'/%3E%3C/svg%3E",
+    ic_24_close:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22.5 12C22.5 17.799 17.799 22.5 12 22.5C6.20101 22.5 1.5 17.799 1.5 12C1.5 6.20101 6.20101 1.5 12 1.5C17.799 1.5 22.5 6.20101 22.5 12Z' fill='%238C959F'/%3E%3Cpath d='M8 8L16 16M16 8L8 16' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A",
 
+    ic_check:"%3Csvg width='14' height='10' viewBox='0 0 14 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.375 5L5.125 8.75L12.625 1.25' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A",
 
+    ico_asterisk:"%3Csvg xmlns='http://www.w3.org/2000/svg' fill='{COLOR}' viewBox='0 0 16 16'%3E%3Cpath d='M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z'/%3E%3C/svg%3E",
+
+    his_prev:"%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='{COLOR}' d='M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z' /%3E%3C/svg%3E",
+
+    ico_qCircle:"%3Csvg xmlns='http://www.w3.org/2000/svg' fill='{COLOR}' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath d='M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z'/%3E%3C/svg%3E",
+
+    ico_qCircle_fill:"%3Csvg xmlns='http://www.w3.org/2000/svg' fill='{COLOR}' viewBox='0 0 16 16'%3E%3Cpath d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z'/%3E%3C/svg%3E",
+
+    ico-add:"%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 10.5V1.5M10.5 6H1.5' stroke='{COLOR}' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A",
+
+    btn-add:"%3Csvg width='14' height='15' viewBox='0 0 14 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.99998 13.2856V1.28564M13 7.28564H0.999985' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A",
+    ) !default;
+
+// 문자열 치환
+@function str-replace($string, $search, $replace: "") {
+    $index: str-index($string, $search
     );
-    $svgIcon: map-get($iconList, $iconName);
-    $backgroundImage: url("data:image/svg+xml;charset=utf8,#{$svgIcon}");
-    @return $backgroundImage $backgroundRepeat;
-    // @return url("data:image/svg+xml;charset=utf8,#{$svgIcon}");
-    //background: svgIcon(ico_qCircle);
+
+@if $index ==null {
+    @return $string;
 }
 
+@return str-slice($string, 1, $index - 1)+$replace +str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+}
+
+// background-image URL 반환 함수
+@function svgIcoImage($iconName, $color: "666") {
+    @if not global-variable-exists(svgIcon-map) {
+        @warn "svgIcoImage(): $svgIcon-map is not defined.";
+        @return none;
+    }
+
+    $svgRaw: map-get($svgIcon-map, $iconName);
+
+    @if $svgRaw ==null {
+        @warn "svgIcoImage(): Icon `#{$iconName}` not found.";
+        @return none;
+    }
+
+    $encodedColor: "%23#{$color}";
+    $coloredSvg: str-replace($svgRaw, "{COLOR}", $encodedColor);
+    @return url("data:image/svg+xml;charset=utf8,#{$coloredSvg}");
+}
+
+// 믹스인: background-image 및 기본 background 속성 세팅
+@mixin svgIco($iconName,
+    $color: "666",
+    $backgroundPosition: center center,
+    $backgroundRepeat: no-repeat,
+    $backgroundSize: null) {
+    background-image: svgIcoImage($iconName, $color);
+    background-position: $backgroundPosition;
+    background-repeat: $backgroundRepeat;
+
+    @if $backgroundSize !=null {
+        background-size: $backgroundSize;
+    }
+}
+
+
+%ico-add {@include svgIco(ico-add, 8C959F);}
+%btn-add {@include svgIco(ic_24_add, 8C959F, 50% 50%); background-size: 2rem 2rem}
+%ico-del {@include svgIco(ico_del, 212529, 50% 50%); background-size: 2rem 2rem}
+%btn-del {@include svgIco(ico_del_field, 212529, 50% 50%);}
+
 .ico {
-    display:inline-block;
-    word-break:keep-all;
-    & + .ico {margin-left:1rem;}
+    display: inline-block;
+    word-break: keep-all;
+
+    &+.ico {
+        margin-left: 1rem;
+    }
+
     &.txt {
-        &-r {&::before {margin-right:.5rem;}}
-        &-l {&::after {margin-left:.5rem;}}
+        &-r {
+            &::before {
+                margin-right: .5rem;
+            }
+        }
+
+        &-l {
+            &::after {
+                margin-left: .5rem;
+            }
+        }
     }
 
     &-tooltip {
-        display:inline-block; vertical-align:middle;
+        display: inline-block;
+        vertical-align: middle;
         @include el-size(2rem, 2rem);
         background: svgIcon(ico_qCircle, 666);
+
         &._is-active {
             background: svgIcon(ico_qCircle_fill, 0048ff);
         }
@@ -49,6 +120,7 @@
         @include el-size(2.4rem, 2.4rem);
         background: svgIcon(his_prev, 666);
     }
+
     &-pop {
         &-close {
             @include el-size(2.4rem, 2.4rem);
@@ -57,13 +129,16 @@
     }
 
     &-star {
-        @include pos-offset(relative); padding-left:1.6rem;
+        @include pos-offset(relative);
+        padding-left: 1.6rem;
+
         @include el-content(before) {
-            @include pos-offset($top:0, $left:0);
+            @include pos-offset($top: 0, $left: 0);
             @include el-size(1rem, 2rem);
-            background:0 50% no-repeat; background: svgIcon(ico_asterisk, 666);
-            vertical-align:middle;
+            background: 0 50% no-repeat;
+            background: svgIcon(ico_asterisk, 666);
+            vertical-align: middle;
         }
     }
-    
+
 }

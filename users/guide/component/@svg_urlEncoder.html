@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover, user-scalable=no">
-    <title>버튼</title>
+    <title>SVG url-encoder</title>
     
     <!-- [S] PUBLISH COMMON STYLE -->
-    <link rel="stylesheet" href="../../asset/css/cm.common.css">
+    <link rel="stylesheet" href="../../assets/css/cp.style.css">
     <!-- [E] PUBLISH COMMON STYLE -->
 
     <!-- [S] PAGES - STYLE -->
@@ -16,12 +16,12 @@
     <!-- [E] PAGES - STYLE -->
 
     <!-- [S] LIBRARY - SCRIPT -->
-    <script src="../../asset/js/lib/lib.jquery-3.6.3.min.js"></script>
-    <script src="../../asset/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <script src="../../assets/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../assets/js/lib/lib.jquery-ui-1.13.2.js"></script>
     <!-- [E] LIBRARY - SCRIPT -->
 
     <!-- [S] @TEMP - GUIDE STYLE -->
-    <link rel="stylesheet" href="../com/css/cm.guide.css">
+    <link rel="stylesheet" href="../assets/css/pb.guide.css">
     <style>
         html, body, dl, dt, dd {padding:0; margin:0; word-break:keep-all;}
 body {font-family:"malgun ghothic", "맑은 고딕"; font-size:12px; color:#333; background:#e4eaee;}
@@ -35,12 +35,12 @@ button {border:none;}
 .codeView > dt button {padding:5px 10px; background:#008fba; color:#fff; border-radius:5px;}
 .codeView > dd {margin-top:10px; padding:20px; height:150px; background:#fff; border-radius:20px;}
 .codeView > dd > div {height:100%;}
+.codeView > dd.ex-desc { height:initial; background:transparent; padding:0;}
 
 @media (max-width: 430px) {
   .split {width:90%;}
   .split .col {width:100%;}
   .codeView > dt > span {width:75%;}
-  body {}
 } 
 
     </style>
@@ -75,6 +75,7 @@ button {border:none;}
                     <dd>
                         <textarea id="outputSCSSPath" placeholder="'data:image/svg+xml;charset=utf8,' 가 생략된 값이 여기 표시됩니다"></textarea>
                     </dd>
+                    <dd class="ex-desc">적용예시 - background: svgIcon(name, color)</dd>
                 </dl>
                 <dl class="col codeView">
                     <dt>

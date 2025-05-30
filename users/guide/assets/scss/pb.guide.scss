@@ -8,7 +8,8 @@
 @import 'pg.variables';
 
 [temp-cp-gap] {
-    a:not(._input-clear):not(.btn-auth):not(.titWrap .btn), button:not(._input-clear):not(.btn-auth) {margin-bottom:.5rem;}
+    a:not(._input-clear):not(.btn-auth):not(.titWrap .btn):not(.field .btn):not(.modalWrap .btn),
+    button:not(._input-clear):not(.btn-auth):not(.field .btn):not(.modalWrap .btn) {margin-bottom:.5rem;}
     .field-outline ~ .field-outline {margin-top:1rem;}
     .field ~ .field, .titWrap ~ .titWrap {margin-top:2rem;}
 }

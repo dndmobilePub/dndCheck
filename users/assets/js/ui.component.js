@@ -689,18 +689,36 @@ var COMPONENT_UI = (function (cp, $) {
         },
 
         // readonly일 경우
-        inpReadonly: function () {
-            $("input").each(function () {
-                var $input = $(this);
-                /*
-                if ($input.prop("readonly") || $input.prop("disabled")) {
-                    $input.parent().addClass("_readonly");
+        inpReadonly: function (callback) {
+            $("input, select").each(function () {
+                const $el = $(this),
+                    tag = this.tagName.toLowerCase(),
+                    isReadonly = $el.prop("readonly") || $el.attr("aria-readonly") === "true",
+                    isDisabled = $el.prop("disabled") || $el.attr("aria-disabled") === "true";
+
+                let status = null;
+
+                if (tag === "input") {
+                    if (isReadonly) {
+                        $el.parent().addClass("_readonly");
+                        status = "readonly";
+                    } else if (isDisabled) {
+                        $el.parent().addClass("_disabled");
+                        status = "disabled";
+                    }
+                } else if (tag === "select" && $el.hasClass("select-sys")) {
+                    if (isReadonly) {
+                        $el.parent().parent().addClass("_readonly");
+                        status = "readonly";
+                    } else if (isDisabled) {
+                        $el.parent().parent().addClass("_disabled");
+                        status = "disabled";
+                    }
                 }
-                */
-                if ($input.prop("readonly")) {
-                    $input.parent().addClass("_readonly");
-                } else if ($input.prop("disabled")) {
-                    $input.parent().addClass("_disabled");
+
+                // 콜백이 함수라면 실행
+                if (typeof callback === "function" && status) {
+                    callback($el, status);
                 }
             });
         },
