@@ -197,16 +197,11 @@ $fieldLabel: '#{$field}-label';
     &-clear {
         display:none;
         // pointer-events:none; touch-action: none;
-        @include el-size(2.1rem, 2.1rem);
-        background:$color-neutral-600;
-        border-radius:100%;
+        @include el-size(2.4rem, 2.4rem);
         @include pos-offset(relative);
         @include el-content(before) {
-            width:1.2rem;
-            height:1.2rem;
-            @include pos-offset($top:50%,$left:50%);
-            transform: translate(-50%, -50%) rotate(45deg);
-            @extend %ico-add;
+            @extend %ico-circle-x-24;
+            @include obj-offset-align;
         }
         //---* before/after로 그리기
         // @include el-content(both) {

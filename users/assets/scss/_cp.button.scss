@@ -286,15 +286,13 @@ $tertiary:'.tertiary';
             &-file {
                 @include dflex(inline-flex, $j-content:center, $al-items:center);
                 @include el-content(before) {
-                    width:2rem; height:2rem; margin:0 .5rem;
-                    @extend %ico-add;
+                    margin:0 .5rem; @extend %ico-add-file-20;
                 };
             }
             &-field {
                 @include dflex(inline-flex, $j-content:space-between, $al-items:center);
                 @include el-content(after) {
-                    width:2rem; height:2rem; margin:0 .5rem;
-                    @extend %btn-add;
+                    margin:0 .5rem; @extend %ico-add-field-24;
                 };
             }
         }
@@ -302,30 +300,26 @@ $tertiary:'.tertiary';
             &-file {
                 @include dflex(inline-flex, $j-content:center, $al-items:center);
                 @include el-content(before) {
-                    width:2rem; height:2rem; margin:0 .5rem;
-                    @extend %ico-del;
+                    margin:0 .5rem; @extend %ico-del-field-24;
                 };
                 &-r {
                     @include dflex(inline-flex, $j-content:space-between, $al-items:center);
                         @include el-content(before, none);
                         @include el-content(after) {
-                        width:2rem; height:2rem; margin:0 .5rem;
-                        @extend %ico-del;
+                        margin:0 .5rem; @extend %ico-del-field-24;
                     };
                 }
             }
             &-field {
                 @include dflex(inline-flex, $j-content:center, $al-items:center);
                 @include el-content(before) {
-                    width:2rem; height:2rem; margin:0 .5rem;
-                    @extend %btn-del;
+                    margin:0 .5rem; @extend %ico-trash-24;
                 };
                 &-r {
                     @include dflex(inline-flex, $j-content:space-between, $al-items:center);
-                        @include el-content(before, none);
-                        @include el-content(after) {
-                        width:2rem; height:2rem; margin:0 .5rem;
-                        @extend %btn-del;
+                    @include el-content(before, none);
+                    @include el-content(after) {
+                        margin:0 .5rem; @extend %ico-trash-24;
                     };
                 }
             }

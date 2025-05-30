@@ -18,8 +18,15 @@ $sel:'.select';
 
             &.add {
                 appearance: none;
-                background: svgIcon(ic_24_add) calc(100% - .8rem) 50%;
+                // background: svgIcon(ic_24_add) calc(100% - .8rem) 50%;
+                @extend %btn-add;
+                background-position:calc(100% - .8rem) 50%;
                 background-size:2.4rem 2.4rem;
+            }
+            &.arrow {
+                appearance: none;
+                @extend %ico-sys-select-arrow;
+                background-position:calc(100% - .8rem) 50%;
             }
         }
     }
@@ -45,7 +52,7 @@ $sel:'.select';
                     color:$color-brand-primary-400;
                     @extend %weight-bold;
                     @include el-content(after) {
-                        background:svgIcon(ic_check, 2380ff) 50% 50%;
+                        @extend %ico-check;
                     }
                 }
             }

@@ -708,7 +708,7 @@ html.util_show {
 
         ul {
             @include dflex; white-space:nowrap;
-            &.swiper-wrapper {display:none}
+            // &.swiper-wrapper {display:none}
             li {
                 box-flex:1; -webkit-box-flex:1;
                 & + li {margin-left:1rem;}
