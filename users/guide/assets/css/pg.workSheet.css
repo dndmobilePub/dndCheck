@@ -1464,9 +1464,6 @@ html.m .pg_content {
   flex-direction: row;
   white-space: nowrap;
 }
-.pg_board_tab ul.swiper-wrapper {
-  display: none;
-}
 .pg_board_tab ul li {
   box-flex: 1;
   -webkit-box-flex: 1;
@@ -3199,6 +3196,9 @@ html[light-mode=dark] .frame_device .device .btn_size_set button {
   }
   #pgContainer .pg_board_tab {
     top: 5rem;
+  }
+  #pgContainer .pg_board_tab ul.swiper-wrapper {
+    display: none;
   }
   html.m #pgContainer {
     margin: 0;
