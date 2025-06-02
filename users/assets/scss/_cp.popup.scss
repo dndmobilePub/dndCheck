@@ -367,7 +367,8 @@ $modal: '.modal';
             display:inline-block; flex-shrink:0; opacity:0;
             @include el-content(before) {
                 width:.1rem; height:2.4rem;
-                background: svgIcon(ico_close, fff);
+                background: svgIcoImage(24_close, fff);
+                //  background: svgIcon(ico_close, fff);
             }
             &._is-active {
                 opacity:1;

@@ -41,35 +41,26 @@
 
 // gradient
 @mixin bg-gradient($type, $angle, $color1, $color2) {
-    @if ($type ==line) {
+    @if $type == line {
         background: linear-gradient($angle, $color1, $color2);
-        @content;
-    }
-
-    @else if ($type ==circle) {
+    } @else if $type == circle {
         background: radial-gradient(circle, $color1, $color2);
-        @content;
     }
-
+    @content;
 }
 
 @mixin eff-direction($direction) {
-    @if ($direction ==left) {
+    @if $direction == left {
         left: 0;
-        @content;
-    }
-
-    @else if ($direction ==right) {
+    } @else if $direction == right {
         right: 0;
-        @content;
-    }
-
-    @else if ($direction ==center) {
+    } @else if $direction == center {
         left: 50%;
         transform: translateX(-50%);
-        @content;
     }
+    @content;
 }
+
 
 @mixin line-effect($color, $el-type, $direction) {
     backface-visibility: hidden;
@@ -92,65 +83,25 @@
 }
 
 @mixin ellipsis($line: 1, $height: null) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -moz-binding: url(ellipsis.xml#ellipsis);
+    height: $height;
 
-    @if ($line ==1) {
+    @if $line ==1 {
         display: block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        -o-text-overflow: ellipsis;
-        -moz-binding: url(ellipsis.xml#ellipsis);
         white-space: nowrap;
-        height: $height;
     }
 
     @else {
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: $line;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        -o-text-overflow: ellipsis;
-        -moz-binding: url(ellipsis.xml#ellipsis);
-        height: $height;
         white-space: normal;
         word-break: auto-phrase;
         word-break: break-all;
     }
-}
-
-@mixin btn-v($vertical) {
-    height: $vertical+ rem;
-    line-height: ($vertical - 0.1)+ rem;
-}
-
-@mixin btnSize($size, $pad: null, $radius: .8) {
-    padding: $pad;
-
-    @if ($size =="xs") {
-        @include fontSize("xs2");
-    }
-
-    @else if ($size =="s") {
-        @include fontSize("base");
-        font-weight: 400;
-    }
-
-    @else if ($size =="md") {
-        @include fontSize("base");
-    }
-
-    @else if ($size =="lg") {
-        @include fontSize("md");
-    }
-
-    @else if ($size =="xl") {
-        @include fontSize("lg");
-    }
-
-    border-radius:$radius+rem;
-    line-height:initial;
-    // z-index: 0;
-    isolation: isolate;
 }
 
 @mixin el-size ($width, $height, $minW: null, $maxW: null, $minH: null, $maxH: null) {
@@ -164,30 +115,26 @@
 }
 
 @mixin el-content($el-type, $display: block) {
-    @if ($el-type =="after") {
-        &::after {
-            content: "";
-            display: $display;
-            @content;
-        }
+    $pseudo-elements: (
+    );
+
+    @if $el-type =='before' {
+        $pseudo-elements: (
+            'before'
+        );
+    } @else if $el-type =='after' {
+        $pseudo-elements: (
+            'after'
+        );
+    } @else if $el-type =='both' {
+        $pseudo-elements: (
+            'before',
+            'after'
+        );
     }
 
-    @else if ($el-type =="before") {
-        &::before {
-            content: "";
-            display: $display;
-            @content;
-        }
-    }
-
-    @else if ($el-type =="both") {
-        &::before {
-            content: "";
-            display: $display;
-            @content;
-        }
-
-        &::after {
+    @each $pseudo in $pseudo-elements {
+        &::#{$pseudo} {
             content: "";
             display: $display;
             @content;
@@ -195,42 +142,45 @@
     }
 }
 
-@mixin obj-offset-align($pos: absolute, $direction: center, $top: null, $left: null, $bottom: null, $right: null) {
+@mixin obj-offset-align($pos: absolute,
+    $direction: center,
+    $top: null,
+    $left: null,
+    $bottom: null,
+    $right: null) {
     position: $pos;
 
-    @if ($direction =="center") {
+    @if $direction =='center' {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        @content;
     }
 
-    @else if ($direction =="all") {
+    @else if $direction =='all' {
         top: $top;
         left: $left;
-        transform: translate(-$left, -$top);
+        transform: translate(-#{$left}, -#{$top});
     }
 
-    @else if ($direction =="vertical") {
-        top: $top;
-        left: $left;
-        bottom: $bottom;
-        right: $right;
-        transform: translateY(-$top);
-        @content;
-    }
-
-    @else if ($direction =="horizontal") {
+    @else if $direction =='vertical' {
         top: $top;
         left: $left;
         bottom: $bottom;
         right: $right;
-        transform: translateX(-$left);
-        @content;
+        transform: translateY(-#{$top});
+    }
+
+    @else if $direction =='horizontal' {
+        top: $top;
+        left: $left;
+        bottom: $bottom;
+        right: $right;
+        transform: translateX(-#{$left});
     }
 
     @content;
 }
+
 
 @mixin pos-offset($pos: absolute, $top: null, $left: null, $bottom: null, $right: null, $z-index: null) {
     position: $pos;
@@ -381,20 +331,14 @@
     letter-spacing: $letter-spacing;
 }
 
-
-@mixin overflow ($offset, $overflow) {
-    @if ($offset==x) {
-        overflow-x: $overflow;
-    }
-
-    @else if ($offset==y) {
-        overflow-y: $overflow;
-    }
-
-    @else if ($offset==both) {
+@mixin overflow($offset, $overflow) {
+    @if $offset ==x {overflow-x: $overflow;}
+    @else if $offset ==y {overflow-y: $overflow;}
+    @else if $offset ==both or $offset ==all {
         overflow: $overflow;
     }
 }
+
 
 @mixin line($attribute, $args...) {
     @if $attribute =="border" {
@@ -402,11 +346,25 @@
         $direction: if(length($args) >=2, nth($args, 2), all);
         $radius: if(length($args) >=3, nth($args, 3), null);
 
-        @if $direction =="all" {border: $argument;}
-        @else if $direction =="top" {border-top: $argument;}
-        @else if $direction =="left" {border-left: $argument;}
-        @else if $direction =="bottom" {border-bottom: $argument;}
-        @else if $direction =="right" {border-right: $argument;}
+        @if $direction =="all" {
+            border: $argument;
+        }
+
+        @else if $direction =="top" {
+            border-top: $argument;
+        }
+
+        @else if $direction =="left" {
+            border-left: $argument;
+        }
+
+        @else if $direction =="bottom" {
+            border-bottom: $argument;
+        }
+
+        @else if $direction =="right" {
+            border-right: $argument;
+        }
 
         @if $radius !=null {
             border-radius: $radius;
@@ -418,11 +376,25 @@
         $direction: if(length($args) >=2, nth($args, 2), all);
         $offset: if(length($args) >=3, nth($args, 3), null);
 
-        @if $direction =="all" {outline: $argument;}
-        @else if $direction =="top" {outline-top: $argument;}
-        @else if $direction =="left" {outline-left: $argument;}
-        @else if $direction =="bottom" {outline-bottom: $argument;}
-        @else if $direction =="right" {outline-right: $argument;}
+        @if $direction =="all" {
+            outline: $argument;
+        }
+
+        @else if $direction =="top" {
+            outline-top: $argument;
+        }
+
+        @else if $direction =="left" {
+            outline-left: $argument;
+        }
+
+        @else if $direction =="bottom" {
+            outline-bottom: $argument;
+        }
+
+        @else if $direction =="right" {
+            outline-right: $argument;
+        }
 
         @if $offset !=null {
             outline-offset: $offset;
@@ -463,9 +435,5 @@ $bgIcoURL: '../img/';
     width: calc(100%/$col - ($space * ($col - 1)));
 }
 
-%transition3s {
-    @include transition(.3s, all, ease-in-out);
-}
-%transition5s {
-    @include transition(.5s, all, ease-in-out);
-}
+%transition3s {@include transition(.3s, all, ease-in-out);}
+%transition5s {@include transition(.5s, all, ease-in-out);}

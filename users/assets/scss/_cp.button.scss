@@ -285,47 +285,32 @@ $tertiary:'.tertiary';
         &.add{
             &-file {
                 @include dflex(inline-flex, $j-content:center, $al-items:center);
-                @include el-content(before) {
-                    margin:0 .5rem; @extend %ico-add-file-20;
-                };
+                @include icoMix(before, "%ico-add-file-20") {margin-right:.5rem;}
             }
             &-field {
                 @include dflex(inline-flex, $j-content:space-between, $al-items:center);
-                @include el-content(after) {
-                    margin:0 .5rem; @extend %ico-add-field-24;
-                };
+                @include icoMix(after, "%ico-add-file-20") {margin-left:.5rem;}
             }
         }
         &.del{
             &-file {
                 @include dflex(inline-flex, $j-content:center, $al-items:center);
-                @include el-content(before) {
-                    margin:0 .5rem; @extend %ico-del-field-24;
-                };
+                @include icoMix(before, "%ico-del-field-24") {margin-right:.5rem;}
                 &-r {
                     @include dflex(inline-flex, $j-content:space-between, $al-items:center);
-                        @include el-content(before, none);
-                        @include el-content(after) {
-                        margin:0 .5rem; @extend %ico-del-field-24;
-                    };
+                    @include el-content(before, none);
+                    @include icoMix(after, "%ico-del-field-24") {margin-left:.5rem;}
                 }
             }
             &-field {
                 @include dflex(inline-flex, $j-content:center, $al-items:center);
-                @include el-content(before) {
-                    margin:0 .5rem; @extend %ico-trash-24;
-                };
+                @include icoMix(before, "%ico-trash-24") {margin-right:.5rem;}
                 &-r {
                     @include dflex(inline-flex, $j-content:space-between, $al-items:center);
                     @include el-content(before, none);
-                    @include el-content(after) {
-                        margin:0 .5rem; @extend %ico-trash-24;
-                    };
+                    @include icoMix(after, "%ico-trash-24") {margin-left:.5rem;}
                 }
             }
-        }
-        &.full {
-            @include el-content(after){margin-right:0;}
         }
     }
 

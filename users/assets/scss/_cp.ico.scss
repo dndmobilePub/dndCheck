@@ -1,71 +1,59 @@
 // SVG ICON
 $svgIcon-map: (
     // 화살표
-    16_arrow_dn:"%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.8008 6L8.00078 10L3.20078 6' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A", // color: 8C959F
-    20_arrow_dn:"%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 7.5L10 12.5L4 7.5' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A",// color:212529
-    24_arrow_dn:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19.1992 9L11.9992 15L4.79922 9' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A",// color:212529
-    24_close:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.5 4.5L19.5 19.5M19.5 4.5L4.5 19.5' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A",// color:212529
+    16_arrow_dn:"%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.8008 6L8.00078 10L3.20078 6' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A",
+    // color: 8C959F
+    20_arrow_dn:"%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 7.5L10 12.5L4 7.5' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A",
+    // color:212529
+    24_arrow_dn:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19.1992 9L11.9992 15L4.79922 9' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A",
+    // color:212529
+
+    // close
+    16_close:"%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 3L13 13M13 3L3 13' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A",
+    24_close:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.5 4.5L19.5 19.5M19.5 4.5L4.5 19.5' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A",
+    // color:212529
 
     // 사이즈별
-    16_tooltip_default:"%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8 1C4.1 1 1 4.1 1 8C1 11.9 4.1 15 8 15C11.9 15 15 11.9 15 8C15 4.1 11.9 1 8 1Z' fill='white' stroke='{COLOR}'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7.78474 4.43243C7.78474 4.84965 8.12426 5.18919 8.5415 5.18919C8.95874 5.18919 9.29826 4.84965 9.29826 4.43243C9.29826 4.01522 8.95872 3.67568 8.5415 3.67568C8.12428 3.67568 7.78474 4.01522 7.78474 4.43243ZM8.10844 11.3865L8.85482 7.38027C8.89496 7.16022 8.82358 6.93662 8.65912 6.76684C8.49442 6.59724 8.25455 6.5 8.00096 6.5H7.03199C6.91247 6.5 6.81577 6.58497 6.81577 6.69C6.81577 6.79503 6.91247 6.88 7.03199 6.88C7.12955 6.88 7.22161 6.91768 7.28453 6.98335C7.34744 7.04884 7.37407 7.13495 7.35696 7.22159L6.61055 11.2278C6.57042 11.4479 6.6418 11.6715 6.80628 11.8412C6.97099 12.0108 7.21085 12.1081 7.46444 12.1081H8.43342C8.55293 12.1081 8.64963 12.0231 8.64963 11.9181C8.64963 11.8131 8.55293 11.7281 8.43342 11.7281C8.33585 11.7281 8.2438 11.6904 8.18088 11.6247C8.11796 11.5592 8.09134 11.4731 8.10844 11.3865Z' fill='{COLOR}'/%3E%3C/svg%3E%0A", // 212121, 347EFF
+    16_tooltip_default:"%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8 1C4.1 1 1 4.1 1 8C1 11.9 4.1 15 8 15C11.9 15 15 11.9 15 8C15 4.1 11.9 1 8 1Z' fill='white' stroke='{COLOR}'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7.78474 4.43243C7.78474 4.84965 8.12426 5.18919 8.5415 5.18919C8.95874 5.18919 9.29826 4.84965 9.29826 4.43243C9.29826 4.01522 8.95872 3.67568 8.5415 3.67568C8.12428 3.67568 7.78474 4.01522 7.78474 4.43243ZM8.10844 11.3865L8.85482 7.38027C8.89496 7.16022 8.82358 6.93662 8.65912 6.76684C8.49442 6.59724 8.25455 6.5 8.00096 6.5H7.03199C6.91247 6.5 6.81577 6.58497 6.81577 6.69C6.81577 6.79503 6.91247 6.88 7.03199 6.88C7.12955 6.88 7.22161 6.91768 7.28453 6.98335C7.34744 7.04884 7.37407 7.13495 7.35696 7.22159L6.61055 11.2278C6.57042 11.4479 6.6418 11.6715 6.80628 11.8412C6.97099 12.0108 7.21085 12.1081 7.46444 12.1081H8.43342C8.55293 12.1081 8.64963 12.0231 8.64963 11.9181C8.64963 11.8131 8.55293 11.7281 8.43342 11.7281C8.33585 11.7281 8.2438 11.6904 8.18088 11.6247C8.11796 11.5592 8.09134 11.4731 8.10844 11.3865Z' fill='{COLOR}'/%3E%3C/svg%3E%0A",
+    // 212121, 347EFF
 
-    20_add_file:"%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 16.2857V4.28571M16 10.2857H4' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A", // 8C959F
+    20_add_file:"%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 16.2857V4.28571M16 10.2857H4' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A",
+    // 8C959F
 
-    24_circle_x:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z' fill='{COLOR}'/%3E%3Cpath d='M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A", // 8C959F
-    24_calendar:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.83333 3.70831V6.20831M16.1667 3.70831V6.20831M4.59237 9.54165H19.4072M6.16667 19.5416H17.8333C18.7538 19.5416 19.5 18.7955 19.5 17.875V7.04165C19.5 6.12117 18.7538 5.37498 17.8333 5.37498H6.16667C5.24619 5.37498 4.5 6.12117 4.5 7.04165V17.875C4.5 18.7955 5.24619 19.5416 6.16667 19.5416Z' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A", // 212529
-    24_trash:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1646_17448)'%3E%3Cpath d='M14 11V17' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10 11V17' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M6 7V19C6 20.1046 6.89543 21 8 21H16C17.1046 21 18 20.1046 18 19V7' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M4 7H20' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M7 7L9 3H15L17 7' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1646_17448'%3E%3Crect width='24' height='24' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A", // 212529
-    24_clip:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.81836 15.1811L15.1823 8.81717' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M13.5909 16.7729L10.9392 19.4245C10.0953 20.2682 8.95077 20.7421 7.75743 20.742C6.56409 20.7419 5.41965 20.2678 4.57583 19.424C3.73201 18.5801 3.25791 17.4357 3.25781 16.2424C3.25771 15.049 3.73161 13.9045 4.57529 13.0606L7.22694 10.4089' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M16.7741 13.5904L19.4258 10.9388C20.2694 10.0948 20.7433 8.95031 20.7432 7.75697C20.7431 6.56363 20.269 5.41919 19.4252 4.57537C18.5814 3.73156 17.437 3.25746 16.2436 3.25735C15.0503 3.25725 13.9058 3.73115 13.0618 4.57483L10.4102 7.22648' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A", // 212529
-    24_add_field:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='12' cy='12' r='10' fill='{COLOR}'/%3E%3Cpath d='M12 16.5V7.5M16.5 12H7.5' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A", // 212529
-    24_del_field:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='12' cy='12' r='10' fill='{COLOR}'/%3E%3Cpath d='M7 12H17' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A", // A9B0B8
+    24_circle_x:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z' fill='{COLOR}'/%3E%3Cpath d='M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A",
+    // 8C959F
+    24_calendar:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.83333 3.70831V6.20831M16.1667 3.70831V6.20831M4.59237 9.54165H19.4072M6.16667 19.5416H17.8333C18.7538 19.5416 19.5 18.7955 19.5 17.875V7.04165C19.5 6.12117 18.7538 5.37498 17.8333 5.37498H6.16667C5.24619 5.37498 4.5 6.12117 4.5 7.04165V17.875C4.5 18.7955 5.24619 19.5416 6.16667 19.5416Z' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A",
+    // 212529
+    24_trash:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1646_17448)'%3E%3Cpath d='M14 11V17' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10 11V17' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M6 7V19C6 20.1046 6.89543 21 8 21H16C17.1046 21 18 20.1046 18 19V7' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M4 7H20' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M7 7L9 3H15L17 7' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1646_17448'%3E%3Crect width='24' height='24' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A",
+    // 212529
+    24_clip:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.81836 15.1811L15.1823 8.81717' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M13.5909 16.7729L10.9392 19.4245C10.0953 20.2682 8.95077 20.7421 7.75743 20.742C6.56409 20.7419 5.41965 20.2678 4.57583 19.424C3.73201 18.5801 3.25791 17.4357 3.25781 16.2424C3.25771 15.049 3.73161 13.9045 4.57529 13.0606L7.22694 10.4089' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M16.7741 13.5904L19.4258 10.9388C20.2694 10.0948 20.7433 8.95031 20.7432 7.75697C20.7431 6.56363 20.269 5.41919 19.4252 4.57537C18.5814 3.73156 17.437 3.25746 16.2436 3.25735C15.0503 3.25725 13.9058 3.73115 13.0618 4.57483L10.4102 7.22648' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A",
+    // 212529
+    24_add_field:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='12' cy='12' r='10' fill='{COLOR}'/%3E%3Cpath d='M12 16.5V7.5M16.5 12H7.5' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A",
+    // 212529
+    24_del_field:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='12' cy='12' r='10' fill='{COLOR}'/%3E%3Cpath d='M7 12H17' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A",
+    // A9B0B8
 
-    32_arrow_dn:"%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M23.1992 13L15.9992 19L8.79922 13' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A", // 212529
-    32_bell:"%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.9999 6.66667C17.9094 6.66667 19.7408 7.34095 21.0911 8.54118C22.4413 9.74142 23.1999 11.3693 23.1999 13.0667C23.1999 15.6921 23.7933 17.6581 24.5629 19.1039C25.5461 20.951 26.0377 21.8746 26.0104 22.0857C25.9785 22.3318 25.9379 22.3995 25.7355 22.5434C25.5621 22.6667 24.6992 22.6667 22.9735 22.6667H9.02625C7.30054 22.6667 6.43769 22.6667 6.26424 22.5434C6.06191 22.3995 6.02126 22.3318 5.98936 22.0857C5.96202 21.8746 6.45364 20.951 7.43687 19.1039C8.20643 17.6581 8.79988 15.6921 8.79988 13.0667C8.79988 11.3693 9.55845 9.74142 10.9087 8.54118C12.259 7.34095 14.0903 6.66667 15.9999 6.66667ZM15.9999 6.66667V4M12.4719 26.6667C13.4136 27.4978 14.6505 28.0021 16.0052 28.0021C17.36 28.0021 18.5969 27.4978 19.5386 26.6667' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A", // 212529
-    32_menu:"%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 23H25' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M7 16H25' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M7 9H25' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A", // 212529
+    32_arrow_dn:"%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M23.1992 13L15.9992 19L8.79922 13' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A",
+    // 212529
+    32_bell:"%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.9999 6.66667C17.9094 6.66667 19.7408 7.34095 21.0911 8.54118C22.4413 9.74142 23.1999 11.3693 23.1999 13.0667C23.1999 15.6921 23.7933 17.6581 24.5629 19.1039C25.5461 20.951 26.0377 21.8746 26.0104 22.0857C25.9785 22.3318 25.9379 22.3995 25.7355 22.5434C25.5621 22.6667 24.6992 22.6667 22.9735 22.6667H9.02625C7.30054 22.6667 6.43769 22.6667 6.26424 22.5434C6.06191 22.3995 6.02126 22.3318 5.98936 22.0857C5.96202 21.8746 6.45364 20.951 7.43687 19.1039C8.20643 17.6581 8.79988 15.6921 8.79988 13.0667C8.79988 11.3693 9.55845 9.74142 10.9087 8.54118C12.259 7.34095 14.0903 6.66667 15.9999 6.66667ZM15.9999 6.66667V4M12.4719 26.6667C13.4136 27.4978 14.6505 28.0021 16.0052 28.0021C17.36 28.0021 18.5969 27.4978 19.5386 26.6667' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A",
+    // 212529
+    32_menu:"%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 23H25' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M7 16H25' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M7 9H25' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A",
+    // 212529
 
-    // select 화살표
-    ico_selArrow:"%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='{COLOR}' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E",
-
-    // 파일추가 (+)
-    ic_24_add:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='12' cy='12' r='10.5' fill='%23212529'/%3E%3Cpath d='M12 16.5V7.5M16.5 12H7.5' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A",
-
-    // 팝업닫기
-    ico_close:"%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='{COLOR}' d='M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z' /%3E%3C/svg%3E",
-    
-    // 파일삭제 (-)
-    ico_del:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22.5 12C22.5 17.799 17.799 22.5 12 22.5C6.20101 22.5 1.5 17.799 1.5 12C1.5 6.20101 6.20101 1.5 12 1.5C17.799 1.5 22.5 6.20101 22.5 12Z' fill='%238C959F'/%3E%3Cpath d='M7 12H16' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A",
-    // 파일삭제 (휴지통)
-    ico_del_field:"%3Csvg width='18' height='20' viewBox='0 0 18 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 9V15' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M7 9V15' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M3 5V17C3 18.1046 3.89543 19 5 19H13C14.1046 19 15 18.1046 15 17V5' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M1 5H17' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M4 5L6 1H12L14 5' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A",
-    
-    // input clear
-    input_clear:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z' fill='%238C959F'/%3E%3Cpath d='M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A",
-
+    // etc
     ic_check:"%3Csvg width='14' height='10' viewBox='0 0 14 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.375 5L5.125 8.75L12.625 1.25' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A",
-
     ico_asterisk:"%3Csvg xmlns='http://www.w3.org/2000/svg' fill='{COLOR}' viewBox='0 0 16 16'%3E%3Cpath d='M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z'/%3E%3C/svg%3E",
+) !default;
 
-    his_prev:"%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='{COLOR}' d='M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z' /%3E%3C/svg%3E",
-
-    ico_qCircle:"%3Csvg xmlns='http://www.w3.org/2000/svg' fill='{COLOR}' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath d='M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z'/%3E%3C/svg%3E",
-
-    ico_qCircle_fill:"%3Csvg xmlns='http://www.w3.org/2000/svg' fill='{COLOR}' viewBox='0 0 16 16'%3E%3Cpath d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z'/%3E%3C/svg%3E",
-
-    ico-add:"%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 10.5V1.5M10.5 6H1.5' stroke='{COLOR}' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A",
-
-    btn-add:"%3Csvg width='14' height='15' viewBox='0 0 14 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.99998 13.2856V1.28564M13 7.28564H0.999985' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A",
-    ) !default;
-
-// 문자열 치환
+// 문자열 치환 (모든 $search → $replace 로 변경)
 @function str-replace($string, $search, $replace: "") {
-  $index: str-index($string, $search);
-
-  @if $index == null {
-    @return $string;
-  }
-
-  $before: str-slice($string, 1, $index - 1);
-  $after: str-slice($string, $index + str-length($search));
-
-  @return $before + $replace + str-replace($after, $search, $replace);
+    $index: str-index($string, $search);
+    @if $index == null {
+        @return $string;
+    }
+    $before: str-slice($string, 1, $index - 1);
+    $after: str-slice($string, $index + str-length($search));
+    @return $before + $replace + str-replace($after, $search, $replace);
 }
 
 // background-image URL 반환 함수
@@ -101,7 +89,15 @@ $svgIcon-map: (
         background-size: $backgroundSize;
     }
 }
-$ico:(
+// before, after 과 @extend 정의 함께 적용
+@mixin icoMix($el-type, $extend-target, $display: block) {
+    @include el-content($el-type, $display) {
+    @extend #{unquote($extend-target)};
+        @content;  // 컨텐츠 블록 실행 허용
+    }
+}
+
+$ico: (
     size:(
         16:(width:1.6rem, height:1.6rem),
         20:(width:2rem, height:2rem),
@@ -173,6 +169,11 @@ $ico:(
             background:50% 50% no-repeat,
             background-image: svgIcoImage(24_close, 212529),
         ),
+        close-w:(
+            width:2.4rem, height:2.4rem,
+            background:50% 50% no-repeat,
+            background-image: svgIcoImage(24_close, fff),
+        ),
         clip:(
             width:2.4rem, height:2.4rem,
             background:50% 50% no-repeat,
@@ -196,37 +197,10 @@ $ico:(
             background-image: svgIcoImage(32_menu, 212529),
         ),
     ),
-    his-back:(
-        background:50% 50% no-repeat,
-        background-image: svgIcoImage(his_prev, 666),
-    ),
-    pop-close:(
-        background:50% 50% no-repeat,
-        background-image: svgIcoImage(ico_close, 666),
-    ),
-    file-add: (
-        background:50% 50% no-repeat,
-        background-image: svgIcoImage(ico-add, 8C959F),
-    ),
-    field-add: (
-        background:50% 50% no-repeat,
-        background-image: svgIcoImage(ic_24_add, 8C959F),
-    ),
-    file-del: (
-        background:50% 50% no-repeat,
-        background-image: svgIcoImage(ico_del, 212529),
-    ),
-    field-del: (
-        background:50% 50% no-repeat,
-        background-image: svgIcoImage(ico_del_field, 212529),
-    ),
+    // etc
     item-check: (
         background:50% 50% no-repeat,
         background-image: svgIcoImage(ic_check, 2380ff),
-    ),
-    input-clear: (
-        background:50% 50% no-repeat,
-        background-image: svgIcoImage(input_clear),
     ),
     bul:(
         star:(
@@ -237,236 +211,164 @@ $ico:(
 );
 
 // 사이즈
-%ico-size-16 {@include dndCP($ico,(size, 16));}
-%ico-size-20 {@include dndCP($ico,(size, 20));}
-%ico-size-24 {@include dndCP($ico,(size, 24));}
-%ico-size-32 {@include dndCP($ico,(size, 32));}
+%ico-size-16 {@include dndCP($ico, (size, 16));}
+%ico-size-20 {@include dndCP($ico, (size, 20));}
+%ico-size-24 {@include dndCP($ico, (size, 24));}
+%ico-size-32 {@include dndCP($ico, (size, 32));}
 
 // 화살표 16
-%ico-arrow-up-16 {@include dndCP($ico,(16,arrow-dn));transform:rotate(180deg);}
-%ico-arrow-dn-16 {@include dndCP($ico,(16, arrow-dn));}
-%ico-arrow-left-16 {@include dndCP($ico,(16, arrow-dn));transform:rotate(-90deg);}
-%ico-arrow-right-16 {@include dndCP($ico,(16, arrow-dn));transform:rotate(90deg);}
+%ico-arrow-up-16 {@include dndCP($ico, (16, arrow-dn)); transform: rotate(180deg);}
+%ico-arrow-dn-16 {@include dndCP($ico, (16, arrow-dn));}
+%ico-arrow-left-16 {@include dndCP($ico, (16, arrow-dn)); transform: rotate(-90deg);}
+%ico-arrow-right-16 {@include dndCP($ico, (16, arrow-dn)); transform: rotate(90deg);}
+// 화살표 20
+%ico-arrow-up-20 {@include dndCP($ico, (20, arrow-dn)); transform: rotate(180deg);}
+%ico-arrow-dn-20 {@include dndCP($ico, (20, arrow-dn));}
+%ico-arrow-left-20 {@include dndCP($ico, (20, arrow-dn)); transform: rotate(-90deg);}
+%ico-arrow-right-20 {@include dndCP($ico, (20, arrow-dn)); transform: rotate(90deg);}
+// 화살표 24
+%ico-arrow-up-24 {@include dndCP($ico, (24, arrow-dn)); transform: rotate(180deg);}
+%ico-arrow-dn-24 {@include dndCP($ico, (24, arrow-dn));}
+%ico-arrow-left-24 {@include dndCP($ico, (24, arrow-dn)); transform: rotate(-90deg);}
+%ico-arrow-right-24 {@include dndCP($ico, (24, arrow-dn)); transform: rotate(90deg);}
+// 화살표 32
+%ico-arrow-up-32 {@include dndCP($ico, (32, arrow-dn)); transform: rotate(180deg);}
+%ico-arrow-dn-32 {@include dndCP($ico, (32, arrow-dn));}
+%ico-arrow-left-32 {@include dndCP($ico, (32, arrow-dn)); transform: rotate(-90deg);}
+%ico-arrow-right-32 {@include dndCP($ico, (32, arrow-dn)); transform: rotate(90deg);}
 
 // 툴팁 16
-%ico-tooltip_default-16 {@include dndCP($ico,(16, tooltip_default));}
-%ico-tooltip_active-16 {@include dndCP($ico,(16, tooltip_active));}
+%ico-tooltip_default-16 {@include dndCP($ico, (16, tooltip_default));}
+%ico-tooltip_active-16 {@include dndCP($ico, (16, tooltip_active));}
 
-// 화살표 20
-%ico-arrow-up-20 {@include dndCP($ico,(20,arrow-dn));transform:rotate(180deg);}
-%ico-arrow-dn-20 {@include dndCP($ico,(20, arrow-dn));}
-%ico-arrow-left-20 {@include dndCP($ico,(20, arrow-dn));transform:rotate(-90deg);}
-%ico-arrow-right-20 {@include dndCP($ico,(20, arrow-dn));transform:rotate(90deg);}
-
-// 화살표 24
-%ico-arrow-up-24 {@include dndCP($ico,(24,arrow-dn));transform:rotate(180deg);}
-%ico-arrow-dn-24 {@include dndCP($ico,(24, arrow-dn));}
-%ico-arrow-left-24 {@include dndCP($ico,(24, arrow-dn));transform:rotate(-90deg);}
-%ico-arrow-right-24 {@include dndCP($ico,(24, arrow-dn));transform:rotate(90deg);}
-
-// 유틸버튼
-%ico-add-file-20 {@include dndCP($ico,(20, add-file));}
-%ico-circle-x-24 {@include dndCP($ico,(24, circle-x));}
-%ico-close-24 {@include dndCP($ico,(24, close));}
-%ico-calendar-24 {@include dndCP($ico,(24, calendar));}
-%ico-trash-24  {@include dndCP($ico,(24, trash));}
-%ico-add-field-24  {@include dndCP($ico,(24, add-field));}
-%ico-del-field-24  {@include dndCP($ico,(24, del-field));}
-%ico-clip-24  {@include dndCP($ico,(24, clip));}
+// 유틸 ICO
+%ico-add-file-20 {@include dndCP($ico, (20, add-file));}
+%ico-circle-x-24,
+%input-clear {@include dndCP($ico, (24, circle-x));}
+%ico-close-24 {@include dndCP($ico, (24, close));}
+%ico-calendar-24 {@include dndCP($ico, (24, calendar));}
+%ico-trash-24 {@include dndCP($ico, (24, trash));}
+%ico-add-field-24 {@include dndCP($ico, (24, add-field));}
+%ico-del-field-24 {@include dndCP($ico, (24, del-field));}
+%ico-clip-24 {@include dndCP($ico, (24, clip));}
+%ico-his-prev {@include dndCP($ico, (24, arrow-dn)); transform: rotate(90deg);}
+%ico-check {@include dndCP($ico, item-check);}
+%ico-star {@include dndCP($ico, (bul, star));}
 
 // 헤더버튼
-%ico-arrow-up-32 {@include dndCP($ico,(32,arrow-dn));transform:rotate(180deg);}
-%ico-arrow-dn-32 {@include dndCP($ico,(32, arrow-dn));}
-%ico-arrow-left-32 {@include dndCP($ico,(32, arrow-dn));transform:rotate(-90deg);}
-%ico-arrow-right-32 {@include dndCP($ico,(32, arrow-dn));transform:rotate(90deg);}
-%ico-bell-32 {@include dndCP($ico,(32, bell));}
-%ico-menu-32 {@include dndCP($ico,(32, menu));}
+%ico-his-back {@include dndCP($ico, (32, arrow-dn)); transform: rotate(90deg);}
+%ico-bell-32 {@include dndCP($ico, (32, bell));}
+%ico-menu-32 {@include dndCP($ico, (32, menu));}
 
-$icos:'.icons';
-$ic:'.ico';
-#{$ic} {
-    display:inline-block; vertical-align:middle;
+$icos: '.icons';
+$icon: '.ico';
+
+#{$icon} {
+    display: inline-block;
+    vertical-align: middle;
     &-16 {
         @extend %ico-size-16;
-        &#{$ic} {
+        &#{$icon} {
             &-arrow {
-                &-up {
-                    @include el-content(before) {@extend %ico-arrow-up-16;}
-                }
-                &-dn {
-                    @include el-content(before) {@extend %ico-arrow-dn-16;}
-                }
-                &-left {
-                    @include el-content(before) {@extend %ico-arrow-left-16;}
-                }
-                &-right {
-                    @include el-content(before) {@extend %ico-arrow-right-16;}
-                }
+                &-up {@include icoMix(before, "%ico-arrow-up-16");}
+                &-dn {@include icoMix(before, "%ico-arrow-dn-16");}
+                &-left {@include icoMix(before, "%ico-arrow-left-16");}
+                &-right {@include icoMix(before, "%ico-arrow-right-16");}
             }
+
             &-tooltip {
-                @include el-content(before) {@extend %ico-tooltip_default-16;}
-                &._is-active {
-                    @include el-content(before) {@extend %ico-tooltip_active-16;}
-                }
+                &-up {@include icoMix(before, "%ico-tooltip_default-16");}
+                &._is-active {@include icoMix(before, "%ico-tooltip_active-16");}
                 &-close {
                     @include el-size(2rem, 2rem);
-                    // @include el-content(before) {@extend %ico-tooltip_close-16;}
-                    @extend %tooltip-ico-close;
+                    @include icoMix(before, "%tooltip-ico-close");
                 }
             }
         }
     }
     &-20 {
         @extend %ico-size-20;
-        &#{$ic} {
+        &#{$icon} {
             &-arrow {
-                &-up {
-                    @include el-content(before) {@extend %ico-arrow-up-20;}
-                }
-                &-dn {
-                    @include el-content(before) {@extend %ico-arrow-dn-20;}
-                }
-                &-left {
-                    @include el-content(before) {@extend %ico-arrow-left-20;}
-                }
-                &-right {
-                    @include el-content(before) {@extend %ico-arrow-right-20;}
-                }
+                &-up {@include icoMix(before, "%ico-arrow-up-20");}
+                &-dn {@include icoMix(before, "%ico-arrow-dn-20");}
+                &-left {@include icoMix(before, "%ico-arrow-left-20");}
+                &-right {@include icoMix(before, "%ico-arrow-right-20");}
             }
-            &-add-file {
-                @include el-content(before) {
-                    @extend %ico-add-file-20;
-                }
-            }
+            &-add-file {@include icoMix(before, "%ico-add-file-20");}
         }
     }
     &-24 {
         @extend %ico-size-24;
-        &#{$ic} {
+        &#{$icon} {
             &-arrow {
-                &-up {
-                    @include el-content(before) {@extend %ico-arrow-up-24;}
-                }
-                &-dn {
-                    @include el-content(before) {@extend %ico-arrow-dn-24;}
-                }
-                &-left {
-                    @include el-content(before) {@extend %ico-arrow-left-24;}
-                }
-                &-right {
-                    @include el-content(before) {@extend %ico-arrow-right-24;}
-                }
+                &-up {@include icoMix(before, "%ico-arrow-up-24");}
+                &-dn {@include icoMix(before, "%ico-arrow-dn-24");}
+                &-left {@include icoMix(before, "%ico-arrow-left-24");}
+                &-right {@include icoMix(before, "%ico-arrow-right-24");}
             }
-            &-add-field {
-                @include el-content(before) {
-                    @extend %ico-add-field-24;
-                }
-            }            
-            &-del-field {
-                @include el-content(before) {
-                    @extend %ico-del-field-24;
-                }
-            }
-            &-trash {
-                @include el-content(before) {
-                    @extend %ico-trash-24;
-                }
-            }
-            &-calendar {
-                @include el-content(before) {
-                    @extend %ico-calendar-24;
-                }
-            }
-            &-clear {
-                @include el-content(before) {
-                    @extend %ico-circle-x-24;
-                }
-            }
-            &-pop-close {
-                @include el-content(before) {
-                    @extend %ico-close-24;
-                }
-            }
-            &-clip {
-                @include el-content(before) {
-                    @extend %ico-clip-24;
-                }
-            }
-            
+            &-add-field {@include icoMix(before, "%ico-add-field-24");}
+            &-del-field {@include icoMix(before, "%ico-del-field-24");}
+            &-trash {@include icoMix(before, "%ico-trash-24");}
+            &-calendar {@include icoMix(before, "%ico-calendar-24");}
+            &-clear {@include icoMix(before, "%ico-circle-x-24");}
+            &-close {@include icoMix(before, "%ico-close-24");}
+            &-clip {@include icoMix(before, "%ico-clip-24");}
         }
     }
+
     &-32 {
         @extend %ico-size-32;
-        &#{$ic} {
+        &#{$icon} {
             &-arrow {
-                &-up {
-                    @include el-content(before) {@extend %ico-arrow-up-32;}
-                }
-                &-dn {
-                    @include el-content(before) {@extend %ico-arrow-dn-32;}
-                }
-                &-left {
-                    @include el-content(before) {@extend %ico-arrow-left-32;}
-                }
-                &-right {
-                    @include el-content(before) {@extend %ico-arrow-right-32;}
-                }
+                &-up {@include icoMix(before, "%ico-arrow-up-32");}
+                &-dn {@include icoMix(before, "%ico-arrow-dn-32");}
+                &-left {@include icoMix(before, "%ico-arrow-left-32");}
+                &-right {@include icoMix(before, "%ico-arrow-right-32");}
             }
-            &-bell {
-                @include el-content(before) {
-                    @extend %ico-bell-32;
-                }
-            }
-            &-menu {
-                @include el-content(before) {
-                    @extend %ico-menu-32;
-                }
-            }
+            &-bell {@include icoMix(before, "%ico-bell-32");}
+            &-menu {@include icoMix(before, "%ico-menu-32");}
+        }
+    }
+
+    &.item {
+        &-check {
+            @include icoMix(before, "%ico-check") {width: 1.4rem; height: 1rem;}
         }
     }
 }
 
-%ico-sys-select-arrow {@include dndCP($ico,(20, arrow-dn));}
-%ico-pop-close {@include dndCP($ico, pop-close);}
-%ico-his-back {@include dndCP($ico, his-back);}
-%ico-add {@include dndCP($ico, file-add);}
-%btn-add {@include dndCP($ico, field-add); background-size: 2rem 2rem;}
-%ico-del {@include dndCP($ico, file-del); background-size: 2rem 2rem;}
-%btn-del {@include dndCP($ico, field-del);}
-%ico-check {@include dndCP($ico, item-check);}
-%ico-star {@include dndCP($ico, (bul, star));}
-%ico-input-clear {@include dndCP($ico, input-clear);}
-
-$tooltip:(
+// 툴팁
+$tooltip: (
     ico:(
-        default:(
-            background-image: svgIcoImage(ico_qCircle, 666),
-        ),
-        active:(
-            background-image:svgIcoImage(ico_qCircle_fill, 0048ff),
-        ),
-        close:(
-            background-image:svgIcoImage(ico_close, 666),
-        )
+        default:(background-image: svgIcoImage(16_tooltip_default, 212121),),
+        active:(background-image:svgIcoImage(16_tooltip_default, 347EFF),),
+        close:(background-image:svgIcoImage(16_close, 38C959F),),
     ),
-    
 );
 %tooltip-ico-default {@include dndCP($tooltip, (ico, default));}
 %tooltip-ico-active {@include dndCP($tooltip, (ico, active));}
 %tooltip-ico-close {@include dndCP($tooltip, (ico, close));}
 
-.ico {
-    display: inline-block; word-break: keep-all;
+#{$icon} {
+    display: inline-block;
+    word-break: keep-all;
+    & + #{$icon} {margin-left: 1rem;}
 
-    &+.ico {margin-left: 1rem;}
     &.txt {
         &-r {
-            &::before {margin-right: .5rem;}
+            &::before {
+                margin-right: .5rem;
+            }
         }
+
         &-l {
-            &::after {margin-left: .5rem;}
+            &::after {
+                margin-left: .5rem;
+            }
         }
     }
+
     // 툴팁 아이콘
     &-tooltip {
         display: inline-block;
@@ -482,28 +384,38 @@ $tooltip:(
         //     @extend %tooltip-ico-close;
         // }
     }
+
     // 모달팝 아이콘
     &-his-prev {
         @include el-size(2.4rem, 2.4rem);
-        @extend %ico-his-back;
+        @extend %ico-his-prev;
     }
+
     &-pop {
         &-close {
             @include el-size(2.4rem, 2.4rem);
-            @extend %ico-pop-close;
+            @extend %ico-close-24;
+            // @extend %ico-pop-close;
         }
     }
-    // 블릿
-    &-star {
-        @include pos-offset(relative);
-        padding-left: 1.6rem;
+}
 
-        @include el-content(before) {
-            @include pos-offset($top: 0, $left: 0);
-            @include el-size(1rem, 2rem);
-            @extend %ico-star;
-            vertical-align: middle;
+p.bul {
+    display: block;
+}
+
+.bul {
+    &#{$icon} {
+
+        // 블릿
+        &-star {
+            @include pos-offset(relative);
+            padding-left: 1.6rem;
+            @include icoMix(before, "%ico-star") {
+                @include pos-offset($top: 0, $left: 0);
+                @include el-size(1rem, 2rem);
+                vertical-align: middle;
+            }
         }
     }
-
 }

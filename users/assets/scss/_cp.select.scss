@@ -18,15 +18,11 @@ $sel:'.select';
 
             &.add {
                 appearance: none;
-                // background: svgIcon(ic_24_add) calc(100% - .8rem) 50%;
-                @extend %btn-add;
-                background-position:calc(100% - .8rem) 50%;
-                background-size:2.4rem 2.4rem;
+                background:svgIcoImage(20_add_file, 8C959F) calc(100% - .8rem) 50% no-repeat;
             }
             &.arrow {
                 appearance: none;
-                @extend %ico-sys-select-arrow;
-                background-position:calc(100% - .8rem) 50%;
+                background: svgIcoImage(20_arrow_dn, 212529) calc(100% - .8rem) 50% no-repeat;
             }
         }
     }
