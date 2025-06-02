@@ -2214,13 +2214,13 @@ html.m .pg_board table tbody td a.btn_hover {
   position: relative;
   padding-right: 3rem;
   text-align: left;
-  display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
   -moz-binding: url(ellipsis.xml#ellipsis);
-  white-space: nowrap;
   height: auto;
+  display: block;
+  white-space: nowrap;
 }
 .pg_content table .remark > li::after {
   content: "";
@@ -2557,13 +2557,13 @@ html.m .pg_board table tbody td a.btn_hover {
 .frame_device .head > h2 {
   padding-top: 0.9rem;
   text-align: center;
-  display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
   -moz-binding: url(ellipsis.xml#ellipsis);
-  white-space: nowrap;
   height: auto;
+  display: block;
+  white-space: nowrap;
 }
 .frame_device .head > h2 > span {
   display: block;
@@ -2573,13 +2573,13 @@ html.m .pg_board table tbody td a.btn_hover {
   font-family: "Pretendard", "Malgun Gothic", "Dotum", Arial, sans-serif, "Malgun Gothic", "Dotum", Arial, sans-serif;
   font-weight: 500;
   color: #fff;
-  display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
   -moz-binding: url(ellipsis.xml#ellipsis);
-  white-space: nowrap;
   height: auto;
+  display: block;
+  white-space: nowrap;
 }
 .frame_device .head > h2 > span + span {
   font-size: 1.2rem;
@@ -3388,13 +3388,13 @@ html[light-mode=dark] .frame_device .device .btn_size_set button {
     font-weight: 500;
     vertical-align: middle;
     border-radius: 0 0 0.5rem 0.5rem;
-    display: block;
     overflow: hidden;
     text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
     -moz-binding: url(ellipsis.xml#ellipsis);
-    white-space: nowrap;
     height: 3rem;
+    display: block;
+    white-space: nowrap;
   }
   .pg_alert_btn_set button + button {
     margin-left: 0.5rem;
