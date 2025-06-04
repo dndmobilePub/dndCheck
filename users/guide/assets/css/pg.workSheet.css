@@ -19,6 +19,10 @@ body, th, td, input, select, textarea, button, input[type=checkbox]:checked {
 }
 
 /* Radius */
+#pgHeader .pg_util .btn_responsive {
+  border-radius: 0.5rem;
+}
+
 /** FONT **/
 /* clamp 기반 font-size
 // 최소 크기 $min, 기본 크기 $preferred, 최대 크기 $max 사이에서 뷰포트에 따라 자동으로 크기가 반응형으로 조정
@@ -641,6 +645,7 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   left: 0;
   width: 2.5rem;
   height: 4rem;
+  border: 0.1rem solid #fff;
   background: none;
   overflow: hidden;
 }
@@ -1064,6 +1069,16 @@ html.util_show .btn_util .bar.b3 {
   font-weight: 700;
   color: #fff;
   text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.5);
+}
+.pg_titles .pg_project_status {
+  justify-content: flex-end;
+}
+.pg_titles .pg_project_status .pg_count {
+  display: none;
+  color: #ccc;
+}
+.pg_titles .pg_project_status .pg_count ~ .pg_count {
+  margin-left: 1rem;
 }
 .pg_titles .btn_goTemplate {
   display: inline-flex;
@@ -1786,6 +1801,9 @@ html.m .panel_head {
   color: #fff;
 }
 
+.pg_count {
+  color: #fff;
+}
 .pg_status {
   display: flex;
   flex-direction: row;
