@@ -120,6 +120,11 @@ $ico: (
             background:50% 50% no-repeat,
             background-image: svgIcoImage(16_tooltip_default, 347EFF),
         ),
+        tooltip_close:(
+            width:1.6rem, height:1.6rem,
+            background:50% 50% no-repeat,
+            background-image: svgIcoImage(16_close, 212121),
+        ),
     ),
     20:(
         arrow-dn:(
@@ -240,6 +245,7 @@ $ico: (
 // 툴팁 16
 %ico-tooltip_default-16 {@include dndCP($ico, (16, tooltip_default));}
 %ico-tooltip_active-16 {@include dndCP($ico, (16, tooltip_active));}
+%ico-tooltip_close-16 {@include dndCP($ico, (16, tooltip_close));}
 
 // 유틸 ICO
 %ico-add-file-20 {@include dndCP($ico, (20, add-file));}

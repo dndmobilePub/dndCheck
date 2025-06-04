@@ -1122,6 +1122,7 @@ var COMPONENT_UI = (function (cp, $) {
             if ($modal.find(".ico-tooltip").length) {
                 // _inModal 클래스 추가
                 $modal.find('.ico-tooltip').addClass('_inModal');
+                cp.toolTip.openTip();
             }
 
             setTimeout(function () {
@@ -1230,7 +1231,7 @@ var COMPONENT_UI = (function (cp, $) {
                 }
             });
         },
-    },
+    };
 
     cp.toast = {
         init: function () {
@@ -1346,14 +1347,12 @@ var COMPONENT_UI = (function (cp, $) {
             active: '_is-active',
             duration: '250ms',
             easing: 'cubic-bezier(.86, 0, .07, 1)',
-            space: 10,
-            padding: 32
         },
         init() {
             this.openTip();
             this.closeTip();
             this.toolIndex();
-            $('[data-tooltip]').hover(this.showTip.bind(this), this.openTip.bind(this), this.closeTip.bind(this));
+            // $('[data-tooltip]').hover(this.showTip.bind(this), this.openTip.bind(this), this.closeTip.bind(this));
         },
         toolIndex() {
             $('[data-toggle="tooltip"]').each(function (index) {
@@ -1366,11 +1365,11 @@ var COMPONENT_UI = (function (cp, $) {
         openTip: function () {
             const self = this;
             const $tooltipToggle = $('[data-toggle="tooltip"]');
-            $tooltipToggle.click(function () {
+            $tooltipToggle.on('click', function (event) {
                 const $this = $(this);
                 if (!$this.hasClass('_is-active')) {
                     $(".ico-tooltip._is-active").removeClass(cp.toolTip.constEl.active).focus();
-                    self.showTip(event);
+                    self.showTip(event); // ⬅️ 이제 event는 명확하게 전달됨
                     $this.addClass('_is-active');
                 }
             });
@@ -1426,11 +1425,22 @@ var COMPONENT_UI = (function (cp, $) {
         showTip(event) {
             const self = this;
             const $this = $(event.currentTarget);
+
+            // 강제로 현재 _inModal 클래스 상태 재확인
+            const isInModal = $this.hasClass('_inModal') || $this.closest('.modalPop._is-active').length > 0;
+
+            // data-direction 재정의: _inModal일 때 기본값 지정하거나 데이터 속성 덮어쓰기
+            let direction = $this.data('direction') || 'default';
+            if (isInModal && !direction) {
+                direction = 'default';  // 혹은 'top', 'bottom' 등 적절한 방향
+            }
+
             const options = {
                 body: "body",
                 selector: $this,
                 container: $this.parent(),
-                direction: $this.data('direction'),
+                // direction: $this.data('direction'),
+                direction: $this.data('direction') || 'default',
                 maxWidth: $this.attr('tip-maxWidth'), // maxWidth 값을 가져옵니다.
                 message: $this.data('message'),
                 ariaDescribedBy: $this.attr('aria-describedby')
@@ -1506,6 +1516,7 @@ var COMPONENT_UI = (function (cp, $) {
                     }
                 } else if (options.direction === 'top') { // 위에 노출
                     let thisH = thisTooltip.outerHeight();
+                    // let bottomPosT = elOffsetT - (thisH + 10);
                     let bottomPosT = elOffsetT - (thisH + 10);
                     let thisW = thisTooltip.outerWidth();
                     cp.toolTip.calcHorizontal(thisW, elWidth, winW, elOffsetL, thisTooltip, bottomPosT);
@@ -1575,7 +1586,7 @@ var COMPONENT_UI = (function (cp, $) {
     cp.accordion = {
         constEl: {
             btnToggle: '.btn-toggle',
-            btnChk: '.field-checkbox'
+            btnChk: '.field-chkrdo'
         },
         init() {
             this.toggleAccordion();
@@ -1759,7 +1770,7 @@ var COMPONENT_UI = (function (cp, $) {
             this.tabSetting();
             this.tabClick();
             this.scrollEventHandler();
-            this.tabSticky(); // 선언
+            this.tabSticky();
         },
         tabSetting: function () {
             /**
@@ -1855,7 +1866,19 @@ var COMPONENT_UI = (function (cp, $) {
                 }
 
                 /* 탭활성화 초기화 */
-                $next.find('.tab, .tab-contents').removeClass('_is-active').eq(0).addClass('_is-active');
+                // $next.find('.tab, .tab-contents').removeClass('_is-active').eq(0).addClass('_is-active');
+                // 초기 탭과 콘텐츠 활성화
+                $tabs.removeClass('_is-active');
+                $contents.removeClass('_is-active');
+                $firstTab.addClass('_is-active');
+                $firstContent.addClass('_is-active');
+
+                // 콘텐츠 wrapper 높이 갱신
+                const $contentWrap = $next.find('.tab-contents-wrap');
+                if ($contentWrap.length) {
+                    const contentHeight = $firstContent.outerHeight(true);
+                    $contentWrap.css('height', contentHeight + 'px');
+                }
             }
         },
         moveHighLight: function ($tabWrap, $this, callback) {
@@ -1923,18 +1946,62 @@ var COMPONENT_UI = (function (cp, $) {
              * tab sticky 이벤트
              * @this 클릭한 탭 버튼
              * @tabWrap 클릭한 탭의 wrapper
-             * window 스크롤시 해당 content와 tab 활성화
+             * window 스크롤 시 해당 content와 tab 활성화
              */
             const self = this;
             const $tabWrap = $('.tab-sticky');
             let isTabClick; // 중복 호출 방지를 위한 플래그 변수
 
+            // ✅ 마지막 콘텐츠가 화면보다 작을 경우에만 _last 클래스 추가
+            function checkLastContH() {
+                const $lastContent = $('.tab-sticky .tab-contents').last();
+                const windowHeight = $(window).height();
+                const contentHeight = $lastContent.outerHeight(true);
+
+                if (contentHeight < windowHeight) {
+                    $lastContent.addClass('_last');
+                } else {
+                    $lastContent.removeClass('_last');
+                }
+            }
+
+            // 최초 실행
+            checkLastContH();
+
+            // 리사이즈 대응
+            $(window).on('resize', checkLastContH);
 
             $(window).on('scroll', function () {
                 if (!isTabClick) {
                     isTabClick = true;
 
-                    // sticky 안에서만 돌게 지정
+                    const scrollY = $(this).scrollTop();
+                    const windowHeight = $(this).height();
+
+                    // 먼저 _last가 있는 경우 우선 처리
+                    const $lastContent = $(".tab-sticky .tab-contents._last");
+                    if ($lastContent.length) {
+                        const contentTop = $lastContent.offset().top;
+
+                        if ((scrollY + windowHeight) >= (contentTop + 100)) {
+                            const targetId = $lastContent.attr("id");
+                            const targetTab = $('.tab[aria-controls="' + targetId + '"]');
+
+                            targetTab.closest('li').addClass("_is-active").siblings().removeClass("_is-active");
+                            targetTab.closest('ul').find('.tab a').attr('aria-selected', 'false');
+                            targetTab.find('a').attr('aria-selected', 'true');
+                            $lastContent.addClass("_is-active").siblings().removeClass("_is-active");
+
+                            if (typeof self.moveHighLight === "function") {
+                                self.moveHighLight($tabWrap, targetTab);
+                            }
+
+                            isTabClick = false;
+                            return; // _last가 처리되었으면 일반 콘텐츠는 스킵
+                        }
+                    }
+
+                    // 일반 콘텐츠 처리
                     $(".tab-sticky .tab-contents").each(function () {
                         const contentTop = $(this).offset().top;
                         const contentBottom = contentTop + $(this).outerHeight();
@@ -1958,9 +2025,15 @@ var COMPONENT_UI = (function (cp, $) {
                             isTabClick = false;
                         }, 10);
                     });
+
+                    // 플래그 해제
+                    setTimeout(function () {
+                        isTabClick = false;
+                    }, 10);
                 }
             });
         },
+
         scrollEventHandler: function () {
             /**
              * tab scroll 이벤트
@@ -2017,27 +2090,26 @@ var COMPONENT_UI = (function (cp, $) {
                     $contentsIdx.addClass('_is-active');
                     $contents.removeAttr('tabindex');
                     $contentsIdx.attr('tabindex', '0');
-                }
+                };
 
                 if ($tabWrap.attr('data-roll') === 'tab' && $tabWrap.hasClass('tab-scroll')) {
                     // tab-scroll 일 경우
                     tabAttr();
-                    self.moveHighLight($tabWrap);
+                    self.moveHighLight($tabWrap, $this, function () {
+                        $('.tab-scroll .tab-contents-wrap').off('scroll', self.scrollEventHandler);
 
-                    // tabpanel 영역 안 스크롤 이동
-                    $('.tab-scroll .tab-contents-wrap').off('scroll', self.scrollEventHandler); // 스크롤 이벤트 핸들러 제거
+                        const $targetHref = $('#' + $this.attr('aria-controls'));
+                        const $targetWrap = $targetHref.parent('.tab-contents-wrap');
+                        const location = $targetHref.position().top;
 
-                    const $targetHref = $('#' + $this.attr('aria-controls'));
-                    const $targetWrap = $targetHref.parent('.tab-contents-wrap');
-                    const location = $targetHref.position().top;
+                        $targetWrap.stop().animate({
+                            scrollTop: $targetWrap.scrollTop() + location
+                        }, 300);
 
-                    $targetWrap.stop().animate({
-                        scrollTop: $targetWrap.scrollTop() + location
-                    }, 300);
-
-                    setTimeout(function () {
-                        $('.tab-scroll .tab-contents-wrap').on('scroll', self.scrollEventHandler);
-                    }, 400);
+                        setTimeout(function () {
+                            $('.tab-scroll .tab-contents-wrap').on('scroll', self.scrollEventHandler);
+                        }, 400);
+                    });
                 } else if ($tabWrap.attr('data-roll') === 'tab' && $tabWrap.hasClass('tab-sticky')) {
                     // tab-sticky 일 경우
                     isTabClick = false;
@@ -2052,22 +2124,48 @@ var COMPONENT_UI = (function (cp, $) {
                             const targetTop = $target.offset().top - tabHeight;
 
                             $('html,body').stop().animate({
-                                'scrollTop': targetTop
+                                scrollTop: targetTop
                             }, 600, 'swing', function () {
-                                isTabClick = false; // 스크롤이동 끝난 후 false 부여
+                                isTabClick = false; // 스크롤 이동 끝난 후 false 부여
                             });
                         });
                     }
-                } else if ($tabWrap.attr('data-roll') === 'tab' && !$tabWrap.hasClass('tab-sticky')) {
+                } else if ($tabWrap.attr('data-roll') === 'tab' && $tabWrap.hasClass('tab-filter')) {
+                    // tab-filter 일 경우
+                    tabAttr();
+                    const $anchor = $this.children('a');
+                    const filterValue = $anchor.attr('category-filter');
+
+                    self.moveHighLight($tabWrap, $this, function () {
+                        self.tabFilter($tabWrap, filterValue);
+                    });
+                } else if ($tabWrap.attr('data-roll') === 'tab') {
+                    // 일반 탭 (기본)
                     tabAttr();
                     $contentsIdx.removeAttr('hidden');
-                    self.moveHighLight($tabWrap);
+                    self.moveHighLight($tabWrap, $this);
                 }
 
                 let newTop = 0;
                 self.tabSel($this, $tabWrap);
             });
-        }
+        },
+        tabFilter: function ($tabWrap, filterValue, callback) {
+            const $list = $tabWrap.find('.segmented-filter');
+            if (filterValue === 'all') {
+                $list.find('[category-value]').show();
+            } else {
+                $list.find('[category-value]').each(function () {
+                    const $item = $(this);
+                    $item.toggle($item.attr('category-value') === filterValue);
+                });
+            }
+            // 콜백 함수가 있으면 실행
+            if (callback && typeof callback === 'function') {
+                callback();
+            }
+        },
+
     };
 
     cp.tabSwiper = {
@@ -2162,7 +2260,7 @@ var COMPONENT_UI = (function (cp, $) {
         },
     };
 
-    cp.swiper = {
+    cp.swiper3 = {
         init: function () {
             this.swiperSetting();
             this.swiperControl();
@@ -2172,14 +2270,14 @@ var COMPONENT_UI = (function (cp, $) {
             $('.swip-swiper').each(function () {
                 const $thisSwiper = $(this),
                     $swiperContent = $thisSwiper.find('.swip-content'),
-                    swiperOptions = cp.swiper.swiperOptions($thisSwiper);
+                    swiperOptions = cp.swiper3.swiperOptions($thisSwiper);
 
-                cp.swiper.appendIndicate($thisSwiper, swiperOptions);
+                cp.swiper3.appendIndicate($thisSwiper, swiperOptions);
 
                 const swiperInstance = new Swiper($swiperContent, swiperOptions);
                 $thisSwiper.data('swiperInstance', swiperInstance);
 
-                cp.swiper.updatePaginationBullets($thisSwiper, swiperInstance);
+                cp.swiper3.updatePaginationBullets($thisSwiper, swiperInstance);
             });
         },
 
@@ -2666,7 +2764,7 @@ var COMPONENT_UI = (function (cp, $) {
         cp.accordion.init();
         cp.tab.init();
         cp.tabSwiper.init();
-        cp.swiper.init();
+        cp.swiper3.init();
         cp.swiper8.init();
         cp.loading.init();
         cp.quick.init();

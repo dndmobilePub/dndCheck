@@ -65,7 +65,7 @@
     background-color:$color-blue3;
     box-shadow:0 .2rem .4rem -.1rem rgba(0,0,0,.5);
 
-    #{$pg} {
+    #{$pg} {        
         &_util, h1 {
             display:inline-flex; align-items:center;
             width:100%; vertical-align:middle;
@@ -138,7 +138,8 @@
                 &_responsive {
                     @include pos-offset(relative, $left:0);
                     @include el-size(2.5rem, 4rem);
-                    @include line(border, .1rem solid $color-white, .4rem);
+                    @include line(border, .1rem solid #fff);
+                    @extend %radius-4;
                     background:none; @include overflow(both, hidden);
                     @extend %transition3s;
 
@@ -433,6 +434,15 @@ html.util_show {
         @include font(md, $fontweight:700, $color:$color-white);
         text-shadow:.1rem .1rem .2rem rgba(0, 0, 0, 0.5);
         @extend %transition3s;
+    }
+
+    #{$pgStatus} {
+        justify-content:flex-end;
+        .pg_count {
+            display:none;
+            color:#ccc;
+            & ~ .pg_count {margin-left:1rem;}
+        }
     }
     
     .btn_goTemplate {
@@ -949,6 +959,9 @@ html.util_show {
 }
 
 #{$pg} {
+    &_count {
+        color:#fff
+    }
     &_status {
         @include dflex;        
         @include pos-offset($bottom:1.5rem, $right:2rem);

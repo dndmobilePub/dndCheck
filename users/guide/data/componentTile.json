@@ -51,7 +51,7 @@
         "name": "탭 Sticky"
     },
     {
-        "id": "swiper3",
+        "id": "swiperV3",
         "name": "Swiper v3.4.2"
     },
     {
@@ -65,9 +65,5 @@
     {
         "id": "table",
         "name": "[웹접근성] TABLE"
-    },
-    {
-        "id": "chart",
-        "name": "차트"
     }
 ]

@@ -28,6 +28,38 @@
                 border-radius:.5rem;
             }
         }
+        .tab {
+            // &-wrap:not(.tab-sticky):not(.tab-filter) ~ .tab-contents-wrap{
+            //     @include line(border, .1rem solid $color-border-secondary);
+            // }
+
+            &-contents:not(.tab-sticky):not(.tab-filter) {
+                padding: 3rem 5rem 5rem;
+                &:nth-child(odd) {
+                    @include line(inset,$color-border-secondary);
+                }
+
+                &:nth-child(even) {
+                    background:$color-bg-tertiary;
+                }
+            }
+            &-sticky {
+                .tab-contents {
+                    padding: 8rem 5rem;
+                }
+            }
+            &-scroll {
+                .tab-contents {
+                    &-wrap {
+                        @include line(inset,$color-border-secondary);
+                    }
+                    padding: 3rem 5rem 5rem;
+                    &:nth-child(odd) {
+                        box-shadow:none;
+                    }
+                }
+            }
+        }
     }
     &-tit {
         &Wrap {
@@ -69,4 +101,121 @@
         width:100%; height:.1rem; padding:0; margin:1.5rem 0;
         &.primary {background:$color-border-primary;}
     }
+}
+
+/* TABLE */
+.cp-tbl {
+    @include dflex($j-content:start);
+    font-size:1.4rem; font-weight:500; line-height:normal;
+    margin-top:1rem;
+
+    #{$tbl} {
+        &Wrap {
+        & > p:first-child {margin-top:0;}
+        p {margin:4rem 0 1rem;}
+        table{
+            width:100%;
+            & + table {margin-top:2rem;}
+    
+            th, td {padding:1rem; @include line(border, .1rem #ddd solid);}
+            th {border-color:#ccc;}
+    
+            thead {
+            th {background:#96C3FF;}
+            & + tbody {
+                & > tr:first-child th, & > tr:first-child td {@include line(border, none, top)}
+            }
+            }    
+            tbody {
+                th {background:#E4F5EF;}
+            }    
+        }
+
+        caption {
+            @include pos-offset(relative !important);
+            padding:1.5rem 1rem .5rem !important;
+            background-color:#F2F5F7;
+            font-size:1.1rem; font-weight:500;
+            @include line(border, 1px #ddd solid !important);
+        
+            @include el-content(before, inline-block !important) {                
+                background-color:#ddd;
+                content:'Table Caption' !important;
+                @include pos-offset($top:-.5rem !important, $left:-.5rem !important);
+                padding:.3rem 1rem;
+            }
+        
+            & > p {margin:0 !important;}
+        }
+        legend, caption {
+            @include overflow(both, visible !important);
+            @include el-size(auto !important, auto !important);
+            margin: auto !important;
+            line-height: inherit !important;
+            clip: auto;
+        } 
+        
+        }
+    }
+
+    .desc {
+        display:none;
+        width:50rem;
+        background:$color-light-green1; padding:15px;
+        margin-right:5rem;
+        @include line(border, .1rem #4FF8B1 solid);
+
+        p {
+        @include el-content(before) {
+            display:inline-block;
+            @include el-size(.2rem, 1rem);
+            background-color:#F97316;
+            margin-right:5px;
+        }
+        & ~ p, & ~ ul {margin-top:10px;}
+        }
+    }
+
+    ul{
+        p{
+        @include el-content(before, none);
+        }
+    }
+
+    b {color:#E34850;}
+    strong {
+        color:#00663c;
+        font-weight: bold;
+        & + div, & + ul {margin-top:1rem;}
+    }
+
+    .bul{
+        & > li {
+        @include pos-offset(relative);
+        margin:.2rem 0 0; padding:0 0 .4rem 1.3rem; color:#333;
+        font-size:1.2rem !important;
+        @include el-content(before) {
+            @include pos-offset($top:1rem, $left:.5rem);
+            @include el-size(.3rem, .3rem);
+            border-radius: 100%; background-color:#0D47A1;
+        }
+        }
+    }
+    .case {
+        counter-reset: number 0;
+        & > li {
+        padding:10px 0; @include line(border, .1rem #4FF8B1 solid, top);
+        font-size:1.4rem;
+        @include el-content(before, inline-block) {
+            content:'CASE' counter(number);
+            counter-increment: number;
+            font-size:.9rem !important; font-weight:500; color:#fff;
+            line-height:normal;
+            background-color:#026327;
+            padding:.3rem .5rem; margin-right:.5rem; border-radius:.3rem;
+            vertical-align:middle;
+            }
+        }
+    }
+
 }

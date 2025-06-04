@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover, user-scalable=no">
+    <title>Swiper v8.4.7</title>
+
+    <!-- [S] PUBLISH COMMON STYLE -->
+    <link rel="stylesheet" href="../../assets/css/cp.style.css">
+    <!-- [E] PUBLISH COMMON STYLE -->
+
+    <!-- [S] PAGES - STYLE -->
+    <link rel="stylesheet" href="">
+    <!-- [E] PAGES - STYLE -->
+
+    <!-- [S] LIBRARY - SCRIPT -->
+    <script src="../../assets/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../assets/js/lib/lib.swiper.8.4.7.min.js"></script>
+    <script src="../../assets/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <!-- [E] LIBRARY - SCRIPT -->
+
+    <!-- [S] @TEMP - GUIDE STYLE -->
+    <link rel="stylesheet" href="../assets/css/pb.guide.css">
+    <!-- [E] @TEMP - GUIDE STYLE -->
+</head>
+
+<body pb-component>
+    <div class="pbgWrap swiper8">
+        <div class="pbgContainer">
+            <div class="pbg-titWrap dep1">
+                <h1>[swiper v8.4.7]</h1>
+            </div>
+            <section class="pbg-content">
+                <div class="pbg-titWrap dep2">
+                    <h2>탭메뉴 / slider default</h2>
+                </div>
+
+                <article class="pbg-component">
+                    <div class="tab-swiper swiper-wrap" swiper-type="tab" swiper-align="center" swiper-loop="">
+                    <!-- 탭메뉴 -->
+                    <div class="tab-nav swiper-container" swiper-tab="swiper1">
+                        <ul class="swiper-wrapper">
+                            <li class="swiper-slide active" data-slide-index="0"><a href="javascript:void(0);">Tab 1</a></li>
+                            <li class="swiper-slide" data-slide-index="1"><a href="javascript:void(0);">TabTab 2</a></li>
+                            <li class="swiper-slide" data-slide-index="2"><a href="javascript:void(0);">TabTabTab 3</a></li>
+                            <li class="swiper-slide" data-slide-index="3"><a href="javascript:void(0);">Tab 4</a></li>
+                            <li class="swiper-slide" data-slide-index="4"><a href="javascript:void(0);">Tab 5</a></li>
+                            <li class="swiper-slide" data-slide-index="5"><a href="javascript:void(0);">Tab 6</a></li>
+                            <li class="swiper-slide" data-slide-index="6"><a href="javascript:void(0);">Tab 7</a></li>
+                            <li class="swiper-slide" data-slide-index="7"><a href="javascript:void(0);">Tab 8</a></li>
+                            <li class="swiper-slide" data-slide-index="8"><a href="javascript:void(0);">Tab 9</a></li>
+                            <li class="swiper-slide" data-slide-index="9"><a href="javascript:void(0);">Tab 10</a></li>
+                        </ul>
+                    </div>
+                    <!-- 리스트 -->
+                    <div class="tab-content swiper-container" swiper-target="swiper1">
+                        <ul class="swiper-wrapper">
+                            <li class="swiper-slide">Swipe 1</li>
+                            <li class="swiper-slide">Swipe 2</li>
+                            <li class="swiper-slide">Swipe 3</li>
+                            <li class="swiper-slide">Swipe 4</li>
+                            <li class="swiper-slide">Swipe 5</li>
+                            <li class="swiper-slide">Swipe 6</li>
+                            <li class="swiper-slide">Swipe 7</li>
+                            <li class="swiper-slide">Swipe 8</li>
+                            <li class="swiper-slide">Swipe 9</li>
+                            <li class="swiper-slide">Swipe 10</li>
+                        </ul>
+                    </div>
+                </div>
+                </article>
+            </section>
+
+            <section class="pbg-content">
+                <div class="pbg-titWrap dep2">
+                    <h2>탭컨텐츠 loop=true</h2>
+                </div>
+
+                <article class="pbg-component">
+                    <div class="tab-swiper swiper-wrap" swiper-type="tab" swiper-align="center" swiper-loop="true">
+                        <!-- 탭메뉴 -->
+                        <div class="tab-nav swiper-container" swiper-tab="swiper11">
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide active" data-slide-index="0"><a href="javascript:void(0);">Tab 1</a></li>
+                                <li class="swiper-slide" data-slide-index="1"><a href="javascript:void(0);">TabTab 2</a></li>
+                                <li class="swiper-slide" data-slide-index="2"><a href="javascript:void(0);">TabTabTab 3</a></li>
+                                <li class="swiper-slide" data-slide-index="3"><a href="javascript:void(0);">Tab 4</a></li>
+                                <li class="swiper-slide" data-slide-index="4"><a href="javascript:void(0);">Tab 5</a></li>
+                                <li class="swiper-slide" data-slide-index="5"><a href="javascript:void(0);">Tab 6</a></li>
+                                <li class="swiper-slide" data-slide-index="6"><a href="javascript:void(0);">Tab 7</a></li>
+                                <li class="swiper-slide" data-slide-index="7"><a href="javascript:void(0);">Tab 8</a></li>
+                                <li class="swiper-slide" data-slide-index="8"><a href="javascript:void(0);">Tab 9</a></li>
+                                <li class="swiper-slide" data-slide-index="9"><a href="javascript:void(0);">Tab 10</a></li>
+                            </ul>
+                        </div>
+                        <!-- 리스트 -->
+                        <div class="tab-content swiper-container" swiper-target="swiper11">
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide">Swipe 1</li>
+                                <li class="swiper-slide">Swipe 2</li>
+                                <li class="swiper-slide">Swipe 3</li>
+                                <li class="swiper-slide">Swipe 4</li>
+                                <li class="swiper-slide">Swipe 5</li>
+                                <li class="swiper-slide">Swipe 6</li>
+                                <li class="swiper-slide">Swipe 7</li>
+                                <li class="swiper-slide">Swipe 8</li>
+                                <li class="swiper-slide">Swipe 9</li>
+                                <li class="swiper-slide">Swipe 10</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="pbg-content">
+                <div class="pbg-titWrap dep2">
+                    <h2>비쥬얼 스와이퍼 - default</h2>
+                </div>
+
+                <article class="pbg-component">
+                    <div class="swiper-wrap" swiper-view="1">
+                        <div class="swiper-container swiper-content" swiper-name="swiper2">
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide">Swipe 1</li>
+                                <li class="swiper-slide">Swipe 2</li>
+                                <li class="swiper-slide">Swipe 3</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="pbg-content">
+                <div class="pbg-titWrap dep2">
+                    <h2>비쥬얼 스와이퍼 - slideView:2</h2>
+                </div>
+
+                <article class="pbg-component">
+                    <div class="swiper-wrap" swiper-view="2" swiper-space="10">
+                        <div class="swiper-container swiper-content" swiper-name="swiper33">
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide">Swipe 1</li>
+                                <li class="swiper-slide">Swipe 2</li>
+                                <li class="swiper-slide">Swipe 3</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="pbg-content">
+                <div class="pbg-titWrap dep2">
+                    <h2>비쥬얼 스와이퍼 - slideView:1.5, preview</h2>
+                </div>
+
+                <article class="pbg-component">
+                    <div class="swiper-wrap" swiper-effect="preview" swiper-space="10">
+                        <div class="swiper-container swiper-content" swiper-name="swiper3">
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide">Swipe 1</li>
+                                <li class="swiper-slide">Swipe 2</li>
+                                <li class="swiper-slide">Swipe 3</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="pbg-content">
+                <div class="pbg-titWrap dep2">
+                    <h2>비쥬얼 스와이퍼 - slideView:3, coverflow</h2>
+                </div>
+
+                <article class="pbg-component">
+                    <div class="swiper-wrap" swiper-effect="coverflow" swiper-space="0" swiper-loop="true">
+                        <div class="swiper-container swiper-content" swiper-name="swiper4">
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide">Swipe 1</li>
+                                <li class="swiper-slide">Swipe 2</li>
+                                <li class="swiper-slide">Swipe 3</li>
+                                <li class="swiper-slide">Swipe 4</li>
+                                <li class="swiper-slide">Swipe 5</li>
+                                <li class="swiper-slide">Swipe 7</li>
+                                <li class="swiper-slide">Swipe 8</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="pbg-content">
+                <div class="pbg-titWrap dep2">
+                    <h2>비쥬얼 스와이퍼 - 이전/다음</h2>
+                </div>
+
+                <article class="pbg-component">
+                    <div class="swiper-wrap" swiper-arrow="true" auto-height="true">
+                        <div class="swiper-container swiper-content" swiper-name="swiper5">
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide">Swipe 1</li>
+                                <li class="swiper-slide">Swipe 2</li>
+                                <li class="swiper-slide">Swipe 3</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="pbg-content">
+                <div class="pbg-titWrap dep2">
+                    <h2>비쥬얼 스와이퍼 - autoplay(정지/재생)</h2>
+                </div>
+
+                <article class="pbg-component">
+                    <div class="swiper-wrap" swiper-play="stop" auto-btn="both" swiper-speed="300" swiper-loop="true" swiper-arrow="true">
+                        <div class="swiper-container swiper-content" swiper-name="swiper6">
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide">Swipe 1</li>
+                                <li class="swiper-slide">Swipe 2</li>
+                                <li class="swiper-slide">Swipe 3</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="pbg-content">
+                <div class="pbg-titWrap dep2">
+                    <h2>비쥬얼 스와이퍼 - pagenation</h2>
+                </div>
+
+                <article class="pbg-component">
+                    <div class="swiper-wrap" swiper-paging="true" swiper-loop="true">
+                        <div class="swiper-container swiper-content" swiper-name="swiper7">
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide">Swipe 1</li>
+                                <li class="swiper-slide">Swipe 2</li>
+                                <li class="swiper-slide">Swipe 3</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="pbg-content">
+                <div class="pbg-titWrap dep2">
+                    <h2>비쥬얼 스와이퍼 - pagenation / autoplay(정지/재생)</h2>
+                </div>
+
+                <article class="pbg-component">
+                    <div class="swiper-wrap" swiper-paging="true" swiper-play="auto" swiper-speed="2000" swiper-loop="true">
+                        <div class="swiper-container swiper-content" swiper-name="swiper8">
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide">Swipe 1</li>
+                                <li class="swiper-slide">Swipe 2</li>
+                                <li class="swiper-slide">Swipe 3</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </div>
+    </div>
+
+</body>
+<script src="../../assets/js/ui.component.js"></script>
+
+</html>
