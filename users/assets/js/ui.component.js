@@ -109,6 +109,49 @@ var COMPONENT_UI = (function (cp, $) {
             $('html').addClass(browser).addClass(device);
         },
     },
+        /* 포커스링 */
+        cp.userIsTabbing = {
+            init: function () {
+                this.tabbingCheck();
+            },
+
+            tabbingCheck: function () {
+                var self = this;
+
+                function enableTabbingMode() {
+                    $('body').addClass('user-is-tabbing');
+                }
+
+                function disableTabbingMode() {
+                    $('body').removeClass('user-is-tabbing');
+                }
+
+                function handleFirstTab(e) {
+                    if (e.key === 'Tab') {
+                        enableTabbingMode();
+                        $(window).off('keydown', handleFirstTab);
+                        $(window).on('mousedown touchstart', disableOnce);
+                    }
+                }
+
+                function disableOnce() {
+                    disableTabbingMode();
+                    $(window).off('mousedown touchstart', disableOnce);
+                    $(window).on('keydown', handleFirstTab);
+                }
+
+                // 키보드 탐지
+                $(window).on('keydown', handleFirstTab);
+
+                // 모바일 보이스오버/톡백 대응: 포커스 이동 감지 (fallback)
+                $(window).on('focusin', function (e) {
+                    // 터치스크린 기반 스크린리더 접근일 경우
+                    if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+                        enableTabbingMode();
+                    }
+                });
+            }
+        };
     /* COMMON UI */
     cp.btnFn = {
         init: function () {
@@ -135,1110 +178,1176 @@ var COMPONENT_UI = (function (cp, $) {
             }
         },
     },
-    cp.tblCaption = {
-        init: function () {
-            this.tblSetting();
-            this.tblCellsUpdate();
-        },
-        tblSetting: function () {
-            $('table').each(function () {
-                $(this).removeAttr('summary');
+        cp.tblCaption = {
+            init: function () {
+                this.tblSetting();
+                this.tblCellsUpdate();
+            },
+            tblSetting: function () {
+                $('table').each(function () {
+                    $(this).removeAttr('summary');
 
-                var hasHeader = $(this).find('th').length > 0;
+                    var hasHeader = $(this).find('th').length > 0;
 
-                if (!hasHeader) {
-                    $(this).find('caption').remove();
-                } else {
-                    cp.tblCaption.processCaption.call(this);
-                }
-            });
-        },
-        tblCellsUpdate: function () {
-            var theadCells = $('thead th');
-            var tbodyCells = $('tbody th, tfoot th');
-            var tdCells = $('tbody td, tfoot td');
-
-            function updateCells(cells, scopeType) {
-                cells.each(function () {
-                    $(this).removeAttr('scope');
-
-                    if ($(this).is('th:not([scope])')) {
-                        $(this).attr('scope', scopeType);
-                    }
-                    var colSpanGroup = $(this).attr('colspan');
-                    if (colSpanGroup !== undefined && colSpanGroup > 1) {
-                        $(this).attr('scope', 'colgroup');
-                    }
-                    var rowSpanGroup = $(this).attr('rowspan');
-                    if (rowSpanGroup !== undefined && rowSpanGroup > 1) {
-                        $(this).attr('scope', 'rowgroup');
+                    if (!hasHeader) {
+                        $(this).find('caption').remove();
+                    } else {
+                        cp.tblCaption.processCaption.call(this);
                     }
                 });
-            }
+            },
+            tblCellsUpdate: function () {
+                var theadCells = $('thead th');
+                var tbodyCells = $('tbody th, tfoot th');
+                var tdCells = $('tbody td, tfoot td');
 
-            updateCells(theadCells, 'col');
-            updateCells(tbodyCells, 'row');
-            updateCells(tdCells, '');
-        },
+                function updateCells(cells, scopeType) {
+                    cells.each(function () {
+                        $(this).removeAttr('scope');
 
-        processCaption: function () {
-            var captionType = $(this).data('caption');
-            var dataTblTit = $(this).data('tbl');
-            var tblCaption = $(this).find('caption');
+                        if ($(this).is('th:not([scope])')) {
+                            $(this).attr('scope', scopeType);
+                        }
+                        var colSpanGroup = $(this).attr('colspan');
+                        if (colSpanGroup !== undefined && colSpanGroup > 1) {
+                            $(this).attr('scope', 'colgroup');
+                        }
+                        var rowSpanGroup = $(this).attr('rowspan');
+                        if (rowSpanGroup !== undefined && rowSpanGroup > 1) {
+                            $(this).attr('scope', 'rowgroup');
+                        }
+                    });
+                }
 
-            if (tblCaption.hasClass("processedCaption") && captionType !== "innerTbl") {
-                return;
-            }
+                updateCells(theadCells, 'col');
+                updateCells(tbodyCells, 'row');
+                updateCells(tdCells, '');
+            },
 
-            if (captionType === 'basic') {
-                // basic 타입인 경우
+            processCaption: function () {
+                var captionType = $(this).data('caption');
+                var dataTblTit = $(this).data('tbl');
+                var tblCaption = $(this).find('caption');
+
+                if (tblCaption.hasClass("processedCaption") && captionType !== "innerTbl") {
+                    return;
+                }
+
+                if (captionType === 'basic') {
+                    // basic 타입인 경우
+                    tblCaption.remove();
+
+                    $(this).find('th').each(function () {
+                        var thHTML = $(this).html();
+                        $(this).replaceWith('<td>' + thHTML + '</td>');
+                    });
+                } else if (captionType === 'keep') {
+                    // keep 타입인 경우 기존 caption 정보를 유지함
+                } else {
+                    cp.tblCaption.handleRegularTbl.call(this);
+                }
+            },
+
+
+            handleRegularTbl: function () {
+                var tblCaption = $(this).find('caption');
+                var currentCaptionTit = $(this).data('tbl') || tblCaption.text().trim();
+                var tblColgroup = $(this).find('colgroup');
+                var captionText = $(this).find('> thead > tr > th, > tbody > tr > th').map(function () {
+                    return $(this).text();
+                }).get().join(', ');
+
                 tblCaption.remove();
 
-                $(this).find('th').each(function () {
-                    var thHTML = $(this).html();
-                    $(this).replaceWith('<td>' + thHTML + '</td>');
+                if (tblColgroup.length > 0) {
+                    var captionHtml = cp.tblCaption.getCaptionHtml(currentCaptionTit, captionText);
+                    tblColgroup.before(captionHtml);
+                } else {
+                    cp.tblCaption.insertCaption.call(this, tblCaption, cp.tblCaption.getCaptionHtml(currentCaptionTit, captionText));
+                }
+            },
+
+            insertCaption: function (tblCaption, captionHtml) {
+                var tableThead = $(this).find('thead');
+                var tableTbody = $(this).find('tbody');
+
+                if (tableThead.length > 0) {
+                    tableThead.before(captionHtml);
+                } else {
+                    tableTbody.before(captionHtml);
+                }
+            },
+
+            getCaptionHtml: function (title, text) {
+                return '<caption class="processedCaption"><strong>' + title + '</strong><p>' + text + ' 로 구성된 표' + '</p></caption>';
+            },
+        },
+        cp.formStatus = {
+            init: function () {
+                // 초기 상태 업데이트만 수행
+                $('.field input').each(function () {
+                    cp.formStatus.updateFieldStatus($(this));
                 });
-            } else if (captionType === 'keep') {
-                // keep 타입인 경우 기존 caption 정보를 유지함
-            } else {
-                cp.tblCaption.handleRegularTbl.call(this);
-            }
-        },
 
+                // label 클릭 차단 (readonly or disabled 상태)
+                $(document).on('click', 'label', function (e) {
+                    var $label = $(this);
+                    if ($label.hasClass('_readonly') || $label.hasClass('_disabled')) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        return false;
+                    }
+                });
+            },
 
-        handleRegularTbl: function () {
-            var tblCaption = $(this).find('caption');
-            var currentCaptionTit = $(this).data('tbl') || tblCaption.text().trim();
-            var tblColgroup = $(this).find('colgroup');
-            var captionText = $(this).find('> thead > tr > th, > tbody > tr > th').map(function () {
-                return $(this).text();
-            }).get().join(', ');
+            updateFieldStatus: function ($input) {
+                var $label = $input.closest('label');
+                if (!$label.length) return;
 
-            tblCaption.remove();
+                // 기존 상태 클래스 제거 (field-status, _disabled, _readonly, _status-*)
+                $label.removeClass(function (index, className) {
+                    return (className.match(/(^|\s)(field-status-\S+|_disabled|_readonly|_status-\S+)/g) || []).join(' ');
+                });
 
-            if (tblColgroup.length > 0) {
-                var captionHtml = cp.tblCaption.getCaptionHtml(currentCaptionTit, captionText);
-                tblColgroup.before(captionHtml);
-            } else {
-                cp.tblCaption.insertCaption.call(this, tblCaption, cp.tblCaption.getCaptionHtml(currentCaptionTit, captionText));
-            }
-        },
-
-        insertCaption: function (tblCaption, captionHtml) {
-            var tableThead = $(this).find('thead');
-            var tableTbody = $(this).find('tbody');
-
-            if (tableThead.length > 0) {
-                tableThead.before(captionHtml);
-            } else {
-                tableTbody.before(captionHtml);
-            }
-        },
-
-        getCaptionHtml: function (title, text) {
-            return '<caption class="processedCaption"><strong>' + title + '</strong><p>' + text + ' 로 구성된 표' + '</p></caption>';
-        },
-    },
-    cp.formStatus = {
-        init: function() {
-            // 초기 상태 업데이트만 수행
-            $('.field input').each(function() {
-                cp.formStatus.updateFieldStatus($(this));
-            });
-
-            // label 클릭 차단 (readonly or disabled 상태)
-            $(document).on('click', 'label', function(e) {
-                var $label = $(this);
-                if ($label.hasClass('_readonly') || $label.hasClass('_disabled')) {
-                    e.preventDefault();
-                    e.stopImmediatePropagation();
-                    return false;
+                if ($input.is(':disabled')) {
+                    $label.addClass('_disabled');
                 }
-            });
-        },
-
-        updateFieldStatus: function($input) {
-            var $label = $input.closest('label');
-            if (!$label.length) return;
-
-            // 기존 상태 클래스 제거 (field-status, _disabled, _readonly, _status-*)
-            $label.removeClass(function(index, className) {
-                return (className.match(/(^|\s)(field-status-\S+|_disabled|_readonly|_status-\S+)/g) || []).join(' ');
-            });
-
-            if ($input.is(':disabled')) {
-                $label.addClass('_disabled');
-            }
-            if ($input.is('[readonly]')) {
-                $label.addClass('_readonly');
-            }
-
-            var status = $input.attr('field-status');
-            if (status) {
-                $label.addClass('_status-' + status);
-            }
-        },
-
-        setDisabled: function($input, disabled) {
-            if (disabled) {
-                $input.attr('disabled', 'disabled');
-            } else {
-                $input.removeAttr('disabled');
-            }
-            cp.formStatus.updateFieldStatus($input);
-        },
-        // 콜백실행ex : COMPONENT_UI.formStatus.setDisabled($('#변경될INPUT'), false);
-
-        setReadonly: function($input, readonly) {
-            if (readonly) {
-                $input.attr('readonly', 'readonly');
-            } else {
-                $input.removeAttr('readonly');
-            }
-            cp.formStatus.updateFieldStatus($input);
-        },
-        // 콜백실행ex : COMPONENT_UI.formStatus.setReadonly($('#변경될INPUT'), false);
-
-        setFieldStatus: function($input, status) {
-            if (status) {
-                $input.attr('field-status', status);
-            } else {
-                $input.removeAttr('field-status');
-            }
-            cp.formStatus.updateFieldStatus($input);
-        }
-        // 콜백실행ex : COMPONENT_UI.formStatus.setFieldStatus($('#변경될INPUT'), false);
-    },    
-    cp.form = {
-        constEl: {
-            inputDiv: $("._input"),
-            inputSelector: "._input > input:not([type='radio']):not([type='checkbox']):not(.exp input)",
-            inputExpSelector: ".exp input",
-            clearSelector: "._input-clear",
-            labelDiv: $("._label")
-        },
-
-        init: function () {
-            this.input(this.inputSetting.bind(this));
-            this.inpClearBtn(this.clearBtnCallback);
-            this.secureTxt();
-            this.inpReadonly();
-            this.lbPlaceHolder();
-            this.inputRange(this.inputRangeCallback);
-            this.inputRangeDouble(this.inputRangeDoubleCallback);
-        },
-
-        inputSetting: function () {
-            const inputSelector = this.constEl.inputSelector;
-
-            $(inputSelector).each(function () {
-                const parentInput = $(this).closest('._input'),
-                    labelElOut = parentInput.parent().siblings("label"),
-                    labelElIn = parentInput.siblings("label");
-
-                // 현재 input의 id를 가져옵니다.
-                let inputId = parentInput.parent().find('._input:first-of-type input').attr('id');
-
-                // id가 없을 경우 임의의 id 생성
-                if (!inputId) {
-                    inputId = 'input_' + Math.random().toString(36).substr(2, 9); // 랜덤 id 생성
-                    $(this).parent().parent().find('._input:first-of-type input').attr('id', inputId); // 생성한 id를 input에 설정
+                if ($input.is('[readonly]')) {
+                    $label.addClass('_readonly');
                 }
 
-                // data-target을 설정
-                parentInput.parent().find('._input:first-of-type').attr('data-target', inputId);
-
-                // label의 for 속성 및 data-name 설정
-                labelElOut.attr({ 'for': inputId, 'data-name': inputId });
-                labelElIn.attr({ 'for': inputId });
-
-                // placeholder 값을 title 속성으로 설정
-                var placeholderValue = $(this).attr('placeholder');
-                $(this).attr('title', placeholderValue);
-            });
-
-            // data-name이 정의된 경우 해당 값을 for에 적용
-            $(inputSelector).each(function () {
-                const parentInput = $(this).closest('._input');
-                const dataName = parentInput.attr('data-name');
-
-                if (dataName) {
-                    parentInput.attr('id', dataName); // data-name 값을 id로 설정
-                    parentInput.parent().siblings("label").attr('for', dataName);
+                var status = $input.attr('field-status');
+                if (status) {
+                    $label.addClass('_status-' + status);
                 }
-            });
+            },
 
-            // 콜백 실행
-            if (typeof this.inputSettingCallback === "function") {
-                this.inputSettingCallback();
+            setDisabled: function ($input, disabled) {
+                if (disabled) {
+                    $input.attr('disabled', 'disabled');
+                } else {
+                    $input.removeAttr('disabled');
+                }
+                cp.formStatus.updateFieldStatus($input);
+            },
+            // 콜백실행ex : COMPONENT_UI.formStatus.setDisabled($('#변경될INPUT'), false);
+
+            setReadonly: function ($input, readonly) {
+                if (readonly) {
+                    $input.attr('readonly', 'readonly');
+                } else {
+                    $input.removeAttr('readonly');
+                }
+                cp.formStatus.updateFieldStatus($input);
+            },
+            // 콜백실행ex : COMPONENT_UI.formStatus.setReadonly($('#변경될INPUT'), false);
+
+            setFieldStatus: function ($input, status) {
+                if (status) {
+                    $input.attr('field-status', status);
+                } else {
+                    $input.removeAttr('field-status');
+                }
+                cp.formStatus.updateFieldStatus($input);
             }
+            // 콜백실행ex : COMPONENT_UI.formStatus.setFieldStatus($('#변경될INPUT'), false);
         },
+        cp.form = {
+            constEl: {
+                inputDiv: $("._input"),
+                inputSelector: "._input > input:not([type='radio']):not([type='checkbox']):not(.exp input)",
+                inputExpSelector: ".exp input",
+                clearSelector: "._input-clear",
+                labelDiv: $("._label")
+            },
 
-        // _label 붙은 input타입 스크립트
-        lbPlaceHolder: function (callback) {
-            const labelDiv = this.constEl.labelDiv.find(".field-label:not(._address)");
+            init: function () {
+                this.input(this.inputSetting.bind(this));
+                this.inpClearBtn(this.clearBtnCallback);
+                this.secureTxt();
+                this.inpReadonly();
+                this.lbPlaceHolder();
+                this.inputRange(this.inputRangeCallback);
+                this.inputRangeDouble(this.inputRangeDoubleCallback);
+            },
 
-            // 문서 클릭 핸들러 (한 번만 등록)
-            $(document).off("click.lbPlaceHolder").on("click.lbPlaceHolder", function (e) {
+            inputSetting: function () {
+                const inputSelector = this.constEl.inputSelector;
+
+                $(inputSelector).each(function () {
+                    const parentInput = $(this).closest('._input'),
+                        labelElOut = parentInput.parent().siblings("label"),
+                        labelElIn = parentInput.siblings("label");
+
+                    // 현재 input의 id를 가져옵니다.
+                    let inputId = parentInput.parent().find('._input:first-of-type input').attr('id');
+
+                    // id가 없을 경우 임의의 id 생성
+                    if (!inputId) {
+                        inputId = 'input_' + Math.random().toString(36).substr(2, 9); // 랜덤 id 생성
+                        $(this).parent().parent().find('._input:first-of-type input').attr('id', inputId); // 생성한 id를 input에 설정
+                    }
+
+                    // data-target을 설정
+                    parentInput.parent().find('._input:first-of-type').attr('data-target', inputId);
+
+                    // label의 for 속성 및 data-name 설정
+                    labelElOut.attr({ 'for': inputId, 'data-name': inputId });
+                    labelElIn.attr({ 'for': inputId });
+
+                    // placeholder 값을 title 속성으로 설정
+                    var placeholderValue = $(this).attr('placeholder');
+                    $(this).attr('title', placeholderValue);
+                });
+
+                // data-name이 정의된 경우 해당 값을 for에 적용
+                $(inputSelector).each(function () {
+                    const parentInput = $(this).closest('._input');
+                    const dataName = parentInput.attr('data-name');
+
+                    if (dataName) {
+                        parentInput.attr('id', dataName); // data-name 값을 id로 설정
+                        parentInput.parent().siblings("label").attr('for', dataName);
+                    }
+                });
+
+                // 콜백 실행
+                if (typeof this.inputSettingCallback === "function") {
+                    this.inputSettingCallback();
+                }
+            },
+
+            // _label 붙은 input타입 스크립트
+            lbPlaceHolder: function (callback) {
+                const labelDiv = this.constEl.labelDiv.find(".field-label:not(._address)");
+
+                // 문서 클릭 핸들러 (한 번만 등록)
+                $(document).off("click.lbPlaceHolder").on("click.lbPlaceHolder", function (e) {
+                    labelDiv.each(function () {
+                        const $fieldLabel = $(this),
+                            $fieldBox = $fieldLabel.parents(".field"),
+                            $fieldOutline = $fieldLabel.parents(".field-outline"),
+                            $fieldInputs = $fieldBox.find("input");
+
+                        if (!$(e.target).closest($fieldBox).length && $fieldInputs.val().trim() === "") {
+                            $fieldLabel.removeClass('_is-active');
+                            $fieldOutline.removeClass('_hasValue _is-active');
+                            $fieldLabel.attr("aria-pressed", "false");
+                        }
+                    });
+                });
+
                 labelDiv.each(function () {
                     const $fieldLabel = $(this),
                         $fieldBox = $fieldLabel.parents(".field"),
                         $fieldOutline = $fieldLabel.parents(".field-outline"),
                         $fieldInputs = $fieldBox.find("input");
 
-                    if (!$(e.target).closest($fieldBox).length && $fieldInputs.val().trim() === "") {
-                        $fieldLabel.removeClass('_is-active');
-                        $fieldOutline.removeClass('_hasValue _is-active');
-                        $fieldLabel.attr("aria-pressed", "false");
+                    $fieldLabel.attr({
+                        "tabindex": "0",
+                        "role": "button",
+                        "aria-pressed": "false",
+                        "aria-label": $fieldLabel.text()
+                    });
+
+                    function hasValue() {
+                        if ($fieldLabel.hasClass('_is-active')) {
+                            $fieldOutline.addClass('_hasValue');
+                            $fieldLabel.attr("aria-pressed", "true");
+                        } else {
+                            $fieldOutline.removeClass('_hasValue');
+                            $fieldLabel.attr("aria-pressed", "false");
+                        }
                     }
-                });
-            });
 
-            labelDiv.each(function () {
-                const $fieldLabel = $(this),
-                    $fieldBox = $fieldLabel.parents(".field"),
-                    $fieldOutline = $fieldLabel.parents(".field-outline"),
-                    $fieldInputs = $fieldBox.find("input");
+                    function handleLabelClick() {
+                        $fieldLabel.addClass('_is-active');
+                        $fieldOutline.addClass('_is-active');
+                        hasValue();
 
-                $fieldLabel.attr({
-                    "tabindex": "0",
-                    "role": "button",
-                    "aria-pressed": "false",
-                    "aria-label": $fieldLabel.text()
-                });
+                        const targetOffset = $fieldLabel.offset().top - 120,
+                            docH = $(document).height(),
+                            winH = $(window).height();
 
-                function hasValue() {
-                    if ($fieldLabel.hasClass('_is-active')) {
-                        $fieldOutline.addClass('_hasValue');
-                        $fieldLabel.attr("aria-pressed", "true");
-                    } else {
-                        $fieldOutline.removeClass('_hasValue');
-                        $fieldLabel.attr("aria-pressed", "false");
+                        if (docH - targetOffset < winH) {
+                            $(".containerWrap").addClass("scroll-space");
+                        }
+                        $("html, body").animate({ scrollTop: targetOffset }, 500);
+
+                        if (typeof callback === 'function') {
+                            callback();
+                        }
                     }
-                }
 
-                function handleLabelClick() {
-                    $fieldLabel.addClass('_is-active');
-                    $fieldOutline.addClass('_is-active');
-                    hasValue();
-
-                    const targetOffset = $fieldLabel.offset().top - 120,
-                        docH = $(document).height(),
-                        winH = $(window).height();
-
-                    if (docH - targetOffset < winH) {
-                        $(".containerWrap").addClass("scroll-space");
+                    function handleFocusOut() {
+                        if ($fieldInputs.val().trim() === "") {
+                            $fieldLabel.removeClass('_is-active');
+                            hasValue();
+                        }
                     }
-                    $("html, body").animate({ scrollTop: targetOffset }, 500);
 
-                    if (typeof callback === 'function') {
-                        callback();
-                    }
-                }
-
-                function handleFocusOut() {
-                    if ($fieldInputs.val().trim() === "") {
-                        $fieldLabel.removeClass('_is-active');
+                    function handleFocusIn() {
+                        $fieldLabel.addClass('_is-active');
+                        $fieldOutline.addClass('_is-active');
                         hasValue();
                     }
-                }
 
-                function handleFocusIn() {
-                    $fieldLabel.addClass('_is-active');
-                    $fieldOutline.addClass('_is-active');
-                    hasValue();
-                }
-
-                function handleKeydown(e) {
-                    if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        handleLabelClick();
+                    function handleKeydown(e) {
+                        if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            handleLabelClick();
+                        }
                     }
-                }
 
-                // 기존 핸들러 제거 후 재등록
-                $fieldLabel.off(".lbPlaceHolder")
+                    // 기존 핸들러 제거 후 재등록
+                    $fieldLabel.off(".lbPlaceHolder")
                         .on("click.lbPlaceHolder", handleLabelClick)
                         .on("keydown.lbPlaceHolder", handleKeydown);
 
-                $fieldInputs.off(".lbPlaceHolder")
-                            .on("focusout.lbPlaceHolder", handleFocusOut)
-                            .on("focusin.lbPlaceHolder", handleFocusIn);
-            });
-        },
-        
-        input: function (callback) {
-            const inputSelector = this.constEl.inputSelector,
-                clearSelector = this.constEl.clearSelector;
+                    $fieldInputs.off(".lbPlaceHolder")
+                        .on("focusout.lbPlaceHolder", handleFocusOut)
+                        .on("focusin.lbPlaceHolder", handleFocusIn);
+                });
+            },
 
-            $(inputSelector).each(function () {
-                const $inputTxt = $(this);
-                if ($inputTxt.prop("readonly") || $inputTxt.prop("disabled")) {
-                    return;
-                }
+            input: function (callback) {
+                const inputSelector = this.constEl.inputSelector,
+                    clearSelector = this.constEl.clearSelector;
 
-                function activateClearBtn() {
-                    const $clearBtn = $inputTxt.parent().find(clearSelector);
-
-                    if ($inputTxt.val()) {
-                        $inputTxt.parent().addClass("_hasClear");
-                        $clearBtn.addClass("_active");
-                        if ($inputTxt.hasClass('_money')) {
-                            $inputTxt.addClass('_is-active');
-                        }
-                    } else {
-                        $inputTxt.parent().removeClass('_hasClear');
-                        $clearBtn.removeClass("_active");
-                        $inputTxt.removeClass('_is-active');
+                $(inputSelector).each(function () {
+                    const $inputTxt = $(this);
+                    if ($inputTxt.prop("readonly") || $inputTxt.prop("disabled")) {
+                        return;
                     }
-                }
 
-                $inputTxt
-                    .on("keyup input", function () {
-                        activateClearBtn();
-                    })
-                    .on("focusin", function () {
-                        // 다른 input에서 _hasClear 모두 제거
-                        $("._input").removeClass("_hasClear");
+                    function activateClearBtn() {
+                        const $clearBtn = $inputTxt.parent().find(clearSelector);
 
-                        // 현재 input 값 있으면 _hasClear 추가
                         if ($inputTxt.val()) {
                             $inputTxt.parent().addClass("_hasClear");
-                            $inputTxt.parent().find(clearSelector).addClass("_active");
-                        }
-
-                        // 상위에 _is-active 클래스 토글(원본 유지)
-                        $inputTxt.parent().parent().addClass("_is-active");
-                    })
-                    .on("blur focusout", function () {
-                        // 포커스 이동시 버튼 포커스 확인 후 _hasClear 유지 또는 제거
-                        const $inputParent = $inputTxt.parent();
-                        setTimeout(() => {
-                            const focusedElem = document.activeElement;
-                            if (!$(focusedElem).closest($inputParent).length) {
-                                $inputParent.removeClass('_hasClear');
-                                $inputParent.find(clearSelector).removeClass('_active');
-
-                                if (!$inputTxt.val()) {
-                                    $inputTxt.removeClass('_is-active').parents(".field-outline").removeClass("_is-active");
-                                }
+                            $clearBtn.addClass("_active");
+                            if ($inputTxt.hasClass('_money')) {
+                                $inputTxt.addClass('_is-active');
                             }
-                        }, 100);
-                    });
-            });
+                        } else {
+                            $inputTxt.parent().removeClass('_hasClear');
+                            $clearBtn.removeClass("_active");
+                            $inputTxt.removeClass('_is-active');
+                        }
+                    }
 
-            // 콜백 실행
-            if (typeof callback === "function") {
-                callback();
-            }
-        },
+                    $inputTxt
+                        .on("keyup input", function () {
+                            activateClearBtn();
+                        })
+                        .on("focusin", function () {
+                            // 다른 input에서 _hasClear 모두 제거
+                            $("._input").removeClass("_hasClear");
 
-        inpClearBtn: function (callback) {
-            const inputSelector = this.constEl.inputSelector,
-                clearSelector = this.constEl.clearSelector;
+                            // 현재 input 값 있으면 _hasClear 추가
+                            if ($inputTxt.val()) {
+                                $inputTxt.parent().addClass("_hasClear");
+                                $inputTxt.parent().find(clearSelector).addClass("_active");
+                            }
 
-            $('body').on("mousedown touchstart keydown", clearSelector, function (e) {
-                if (e.type === "keydown" && e.which !== 13) return;
-                e.preventDefault();
-                const clearBtn = $(this),
+                            // 상위에 _is-active 클래스 토글(원본 유지)
+                            $inputTxt.parent().parent().addClass("_is-active");
+                        })
+                        .on("blur focusout", function () {
+                            // 포커스 이동시 버튼 포커스 확인 후 _hasClear 유지 또는 제거
+                            const $inputParent = $inputTxt.parent();
+                            setTimeout(() => {
+                                const focusedElem = document.activeElement;
+                                if (!$(focusedElem).closest($inputParent).length) {
+                                    $inputParent.removeClass('_hasClear');
+                                    $inputParent.find(clearSelector).removeClass('_active');
+
+                                    if (!$inputTxt.val()) {
+                                        $inputTxt.removeClass('_is-active').parents(".field-outline").removeClass("_is-active");
+                                    }
+                                }
+                            }, 100);
+                        });
+                });
+
+                // 콜백 실행
+                if (typeof callback === "function") {
+                    callback();
+                }
+            },
+
+            inpClearBtn: function (callback) {
+                const inputSelector = this.constEl.inputSelector,
+                    clearSelector = this.constEl.clearSelector;
+
+                $('body').on("mousedown touchstart keydown", clearSelector, function (e) {
+                    if (e.type === "keydown" && e.which !== 13) return;
+                    e.preventDefault();
+                    const clearBtn = $(this),
                         inputTxt = clearBtn.siblings(inputSelector);
 
-                setTimeout(() => {
-                    if ($('html').hasClass("ios") || $('html').hasClass("ios_old")) {
-                        inputTxt.val('').trigger('input').focus();
-                        inputTxt.parent().attr({ "contenteditable": "true" }).focus();
+                    setTimeout(() => {
+                        if ($('html').hasClass("ios") || $('html').hasClass("ios_old")) {
+                            inputTxt.val('').trigger('input').focus();
+                            inputTxt.parent().attr({ "contenteditable": "true" }).focus();
 
-                        setTimeout(() => inputTxt.focus(), 100);
+                            setTimeout(() => inputTxt.focus(), 100);
 
-                        inputTxt.parent().removeClass('_hasClear').removeAttr('contenteditable');
-                    } else {
-                        inputTxt.val('').focus();
+                            inputTxt.parent().removeClass('_hasClear').removeAttr('contenteditable');
+                        } else {
+                            inputTxt.val('').focus();
 
-                        setTimeout(() => inputTxt.focus(), 100);
+                            setTimeout(() => inputTxt.focus(), 100);
 
-                        inputTxt.parent().removeClass('_hasClear');
-                    }
-                }, 100);
-            });
-
-            /* 
-            $(clearSelector).on("focus", function () {
-                $(this).addClass("_active");
-            }).on("blur", function () {
-                $(this).removeClass("_active");
-            });
-            */
-
-            // IME 입력 완료시 input 이벤트 강제 트리거 - IOS 한글버그 대응
-            $("input").on("compositionstart compositionupdate compositionend input", function (event) {
-                var $input = $(this);
-                if (event.type === 'compositionend') {
-                    $input.trigger("input");
-                }
-            });
-
-
-            // 콜백 실행
-            if (typeof callback === "function") {
-                callback();
-            }
-        },
-
-        // 비밀번호 특수문자 모양
-        secureTxt: function (callbacks = {}) {
-            $('._secureTxt').each(function () {
-                var secureLine = parseInt($(this).attr("data-secureLine")) || 0;
-                var length = parseInt($(this).attr("data-length")) || 0;
-                var secureField = $(this);
-                var inputField = secureField.find("input");
-                var iTag = "";
-
-                for (var i = 0; i < length; i++) {
-                    iTag += '<i aria-hidden="true"></i>';
-                }
-                secureField.append(iTag);
-
-                var left = 0;
-                var space = 13;
-
-                secureField.find("i").each(function (index) {
-                    var $this = $(this);
-                    $this.width($this.height());
-                    $this.css("left", left + "px");
-
-                    if (index < secureLine) {
-                        $this.addClass("_line");
-                    }
-
-                    left += space;
-                    space = 16;
+                            inputTxt.parent().removeClass('_hasClear');
+                        }
+                    }, 100);
                 });
 
-                if (secureField.hasClass("_num")) {
-                    inputField.attr("type", "tel");
-                }
+                /* 
+                $(clearSelector).on("focus", function () {
+                    $(this).addClass("_active");
+                }).on("blur", function () {
+                    $(this).removeClass("_active");
+                });
+                */
 
-                function handleInputFocus(event) {
-                    var secureField = $(event.target).closest("._secureTxt");
-                    var inputField = secureField.find("input");
-                    var value = inputField.val();
-                    var activeLines = secureField.find("i._line").removeClass("_is-active").css({ opacity: ".5" });
-
-                    for (var i = 0; i < value.length && i < secureLine; i++) {
-                        activeLines.eq(i).addClass("_is-active").css({ opacity: "" });
+                // IME 입력 완료시 input 이벤트 강제 트리거 - IOS 한글버그 대응
+                $("input").on("compositionstart compositionupdate compositionend input", function (event) {
+                    var $input = $(this);
+                    if (event.type === 'compositionend') {
+                        $input.trigger("input");
                     }
-
-                    if (callbacks.onFocus) {
-                        callbacks.onFocus(secureField);
-                    }
-                }
-
-                function handleInputChange(event) {
-                    var secureField = $(event.target).closest("._secureTxt");
-                    var inputField = secureField.find("input");
-                    var value = inputField.val();
-                    var activeLines = secureField.find("i._line").removeClass("_is-active").css({ opacity: ".5" });
-
-                    for (var i = 0; i < value.length && i < secureLine; i++) {
-                        activeLines.eq(i).addClass("_is-active").css({ opacity: "" });
-                    }
-
-                    if (secureField.hasClass("_num")) {
-                        if (value) {
-                            secureField.find("i._is-active, i._line").hide();
-                        } else {
-                            secureField.find("i._is-active, i._line").show();
-                        }
-                    }
-
-                    if (callbacks.onChange) {
-                        callbacks.onChange(secureField, value);
-                    }
-                }
-
-                function handleInputKeyUp(event) {
-                    var secureField = $(event.target).closest("._secureTxt");
-                    if (event.keyCode === 8) {
-                        secureField.find("i._line").eq(event.target.value.length).removeClass("_is-active");
-                    }
-
-                    if (callbacks.onKeyUp) {
-                        callbacks.onKeyUp(secureField, event);
-                    }
-                }
-
-                // 보안키패드 연동시 아래 키 이벤트 부분 막아야 함
-                inputField.on("focus", handleInputFocus)
-                    .on("input", handleInputChange)
-                    .on("keyup", handleInputKeyUp)
-                    .on("blur", function () {
-                        if (!inputField.val()) {
-                            secureField.find("i._line").css({ opacity: "" }).removeClass("_is-active");
-                        }
-                    });
-                //--* 여기까지 보안키패드 연동시 막아야 함
-            });
-
-            /* 페이지에서 호출예시
-            COMPONENT_UI.form.secureTxt({
-                onFocus: function(secureField) {
-                    // focus 시 동작
-                },
-                onChange: function(secureField, value) {
-                    // 입력값 변경 시 동작
-                },
-                onKeyUp: function(secureField, event) {
-                    // 키 업 이벤트 시 동작
-                }
-            });
-            
-            */
-        },
-
-        // readonly일 경우
-        inpReadonly: function (callback) {
-            $("input, select").each(function () {
-                const $el = $(this),
-                    tag = this.tagName.toLowerCase(),
-                    isReadonly = $el.prop("readonly") || $el.attr("aria-readonly") === "true",
-                    isDisabled = $el.prop("disabled") || $el.attr("aria-disabled") === "true";
-
-                let status = null;
-
-                if (tag === "input") {
-                    if (isReadonly) {
-                        $el.parent().addClass("_readonly");
-                        status = "readonly";
-                    } else if (isDisabled) {
-                        $el.parent().addClass("_disabled");
-                        status = "disabled";
-                    }
-                } else if (tag === "select" && $el.hasClass("select-sys")) {
-                    if (isReadonly) {
-                        $el.parent().parent().addClass("_readonly");
-                        status = "readonly";
-                    } else if (isDisabled) {
-                        $el.parent().parent().addClass("_disabled");
-                        status = "disabled";
-                    }
-                }
-
-                // 콜백이 함수라면 실행
-                if (typeof callback === "function" && status) {
-                    callback($el, status);
-                }
-            });
-        },
-
-        // input:range
-        inputRange: function (callback) {
-            const rangeSelector = $('.range-slider');
-
-            rangeSelector.each(function () {
-                const rangeInput = $(this).find('._range');
-                const rangeValue = $(this).find('._value');
-                const rangeInfo = $(this).find('.range-info');
-
-                rangeValue.each(function () {
-                    const defaultvalue = rangeInput.attr('value');
-                    const rangeValueText = rangeValue.attr('range-value'); // Get the range-value text
-                    const innerValue = rangeValue.attr('inner-value') === "true"; // Check for inner-value attribute
-
-                    // Set the initial value of the span
-                    if (!rangeValueText) {
-                        // If no range-value, set the span to the default input value
-                        rangeValue.text(defaultvalue);
-                    } else {
-                        // Update span text based on inner-value
-                        rangeValue.text(innerValue ? `${rangeValueText} (${defaultvalue})` : rangeValueText);
-                    }
-
-                    rangeInfo.css({
-                        'left': defaultvalue + '%',
-                        'margin-left': `-${rangeInfo.outerWidth() / 2}px`
-                    });
-                    rangeInput.css('background', `linear-gradient(to right, #333 ${defaultvalue}%, #ccc ${defaultvalue}%)`);
                 });
 
-                rangeInput.on('input', function () {
-                    const rangeInputValue = Math.floor(this.value);
-                    const newValue = Number(($(this).val() - $(this).attr('min')) * 100 / ($(this).attr('max') - $(this).attr('min')));
-                    const newPosition = 8 - (newValue * 0.16);
 
-                    rangeInput.attr('value', rangeInputValue);
-                    const rangeValueText = rangeValue.attr('range-value'); // Get the range-value text
-                    const innerValue = rangeValue.attr('inner-value') === "true"; // Check for inner-value attribute
-
-                    // console.log("newValue:", newValue, "newPosition:", newPosition);
-
-                    // Update span text based on the presence of range-value
-                    if (!rangeValueText) {
-                        // If no range-value, set the span to the current input value
-                        rangeValue.text(rangeInputValue);
-                    } else {
-                        // Update span text based on inner-value
-                        rangeValue.text(innerValue ? `${rangeValueText} (${rangeInputValue})` : rangeValueText);
-                    }
-
-                    rangeInfo.css({
-                        'left': `calc(${newValue}% + (${newPosition}px))`,
-                        'margin-left': `-${rangeInfo.outerWidth() / 2}px`
-                    });
-
-                    if (rangeInputValue == $(this).attr('min')) {
-                        rangeInfo.addClass('left').removeClass('gap');
-                    } else if (newValue <= $(this).attr('arrow-min')) {
-                        rangeInfo.addClass('left gap');
-                    } else if (rangeInputValue >= $(this).attr('max')) {
-                        rangeInfo.addClass('right').removeClass('gap');
-                    } else if (newValue >= $(this).attr('arrow-max')) {
-                        rangeInfo.addClass('right gap');
-                    } else {
-                        rangeInfo.removeClass('left');
-                        rangeInfo.removeClass('right');
-                    }
-                    rangeInput.css('background', `linear-gradient(to right, #333 ${newValue}%, #ccc ${newValue}%)`);
-
-                    // Callback function
-                    if (typeof callback === "function") {
-                        callback(rangeInputValue);
-                    }
-                });
-            });
-        },
-
-        // input:doublerange
-        inputRangeDouble: function (callback) {
-            const doubRangeBg = $(".slider-container .double-slider");
-            const doubleInputRange = $(".range-slider.double .field-input input[type=range]");
-            const dobuleInputNum = $(".range-slider.double .field-input input[type=number]");
-            const minInfo = $('.doublerange-info.min');
-            const minInfoValue = $('.doublerange-info ._value-min');
-            const maxInfo = $('.doublerange-info.max');
-            const maxInfoValue = $('.doublerange-info ._value-max');
-
-            let doubleGap = 500; // 최소 간격
-
-            function updateRangeInfo(value, infoElement, infoValueElement, isMin) {
-                const rangeMessage = infoValueElement.attr('range-value');
-                const innerValue = infoValueElement.attr('inner-value') === 'true';
-                const arrowMin = infoValueElement.attr('arrow-min');
-                const arrowMax = infoValueElement.attr('arrow-max');
-
-                if (rangeMessage && innerValue) {
-                    infoValueElement.text(`${rangeMessage}(${value})`);
-                } else if (rangeMessage) {
-                    infoValueElement.text(rangeMessage);
-                } else {
-                    infoValueElement.text(value);
-                }
-
-                const sliderMaxValue = Number(doubleInputRange.eq(0).attr('max'));
-                const percentage = (value / sliderMaxValue) * 100;
-                const pixelPercentage = (percentage / 100) * window.innerWidth;
-                const elementWidth = infoElement.outerWidth() / 2;
-                const parentWidth = infoElement.parent(".field-input").width();
-
-                if (isMin) {
-                    infoElement.css({
-                        'left': pixelPercentage < elementWidth ? `${percentage * 0}%` : `${percentage}%`,
-                        'margin-left': pixelPercentage < elementWidth ? `0` : `-${elementWidth}px`
-                    });
-
-                    if (arrowMin !== undefined) {
-                        const arrowMinNum = Number(arrowMin);
-                        if (percentage <= arrowMinNum) {
-                            infoElement.addClass("left gap").removeClass("right");
-                        } else {
-                            infoElement.removeClass("left right gap");
-                        }
-                    } else {
-                        // arrow-min 없으면 기존 최소값 기준
-                        if (value === Number(doubleInputRange.eq(0).attr("min"))) {
-                            infoElement.addClass("left").removeClass("right gap");
-                        } else {
-                            infoElement.removeClass("left right gap");
-                        }
-                    }
-                } else {
-                    infoElement.css({
-                        'right': (parentWidth - (elementWidth / 2)) < pixelPercentage ? `${elementWidth}px` : `${100 - percentage}%`,
-                        'margin-right': (parentWidth + infoElement.outerWidth()) < pixelPercentage ? `0` : `-${elementWidth}px`
-                    });
-
-                    if (arrowMax !== undefined) {
-                        const arrowMaxNum = Number(arrowMax);
-                        if (percentage >= arrowMaxNum) {
-                            infoElement.addClass("right gap").removeClass("left");
-                        } else {
-                            infoElement.removeClass("left right gap");
-                        }
-                    } else {
-                        // arrow-max 없으면 기존 최대값 기준
-                        if (value === Number(doubleInputRange.eq(1).attr("max"))) {
-                            infoElement.addClass("right").removeClass("left gap");
-                        } else {
-                            infoElement.removeClass("left right gap");
-                        }
-                    }
-                }
-            }
-
-
-            function rangeInputWidth() {
-                let minVal = parseInt(doubleInputRange.eq(0).val());
-                let maxVal = parseInt(doubleInputRange.eq(1).val());
-                let diff = maxVal - minVal;
-
-                if (diff < doubleGap) {
-                    if ($(this).hasClass("min-range")) {
-                        doubleInputRange.eq(0).val(maxVal - doubleGap);
-                    } else {
-                        doubleInputRange.eq(1).val(minVal + doubleGap);
-                    }
-                } else {
-                    dobuleInputNum.eq(0).val(minVal);
-                    dobuleInputNum.eq(1).val(maxVal);
-
-                    updateRangeInfo(minVal, minInfo, minInfoValue, true);
-                    updateRangeInfo(maxVal, maxInfo, maxInfoValue, false);
-
-                    doubRangeBg.css("left", `${(minVal / doubleInputRange.eq(0).attr("max")) * 100}%`);
-                    doubRangeBg.css("right", `${100 - (maxVal / doubleInputRange.eq(1).attr("max")) * 100}%`);
-                }
-
+                // 콜백 실행
                 if (typeof callback === "function") {
-                    callback(minVal, maxVal);
+                    callback();
                 }
-            }
-
-            rangeInputWidth();
-
-            dobuleInputNum.on("input", function () {
-                let minp = parseInt(dobuleInputNum.eq(0).val());
-                let maxp = parseInt(dobuleInputNum.eq(1).val());
-                let diff = maxp - minp;
-
-                if (diff >= doubleGap && maxp <= doubleInputRange.eq(1).attr("max")) {
-                    if ($(this).hasClass("min-input")) {
-                        doubleInputRange.eq(0).val(minp);
-                        let value1 = doubleInputRange.eq(0).attr("max");
-                        doubRangeBg.css("left", `${(minp / value1) * 100}%`);
-                        updateRangeInfo(minp, minInfo, minInfoValue, true);
-                    } else {
-                        doubleInputRange.eq(1).val(maxp);
-                        let value2 = doubleInputRange.eq(1).attr("max");
-                        doubRangeBg.css("right", `${100 - (maxp / value2) * 100}%`);
-                        updateRangeInfo(maxp, maxInfo, maxInfoValue, false);
-                    }
-                }
-            });
-
-            doubleInputRange.on("input", function () {
-                let minVal = parseInt(doubleInputRange.eq(0).val());
-                let maxVal = parseInt(doubleInputRange.eq(1).val());
-
-                if (minVal >= maxVal - doubleGap) {
-                    if ($(this).hasClass("min-range")) {
-                        doubleInputRange.eq(0).val(maxVal - doubleGap);
-                    } else {
-                        doubleInputRange.eq(1).val(minVal + doubleGap);
-                    }
-                }
-                rangeInputWidth();
-            });
-        }
-
-
-    },
-    cp.selectPop = {
-        constEl: {
-            btnSelect: "._selectBtn",
-            // dimmedEl: $('<div class="dimmed" aria-hidden="true"></div>') // 딤 사용하지 않음
-        },
-        init: function (callbacks = {}) {
-            this.callbacks = callbacks; // 콜백을 저장
-            this.openSelect();
-            this.optSelect();
-        },
-
-        openSelect: function () {
-            const self = this,
-                btnSelect = this.constEl.btnSelect;
-            $(document).on('click', btnSelect, function () {
-                const $btn = $(this);
-                const target = $btn.attr('data-select');
-                const $select = $('.modalPop[select-target="' + target + '"]');
-                const $selectWrap = $select.find("> .modalWrap");
-
-                const $activeOption = $select.find('.select-lst > li._is-active');
-                if ($activeOption.length === 0) {
-                    const btnText = $btn.text();
-                    $select.find('.select-lst > li:eq(0)').before('<li class="_is-active"><a href="javascript:;" class="sel-opt _defaultTxt">' + btnText + '</a></li>');
-                } else {
-                    const btnText = $btn.text();
-                    if ($activeOption.find('a').text() !== btnText) {
-                        $activeOption.removeClass('_is-active');
-                        const $newActiveOption = $select.find('.select-lst > li > a').filter(function () {
-                            return $(this).text() === btnText;
-                        }).parent();
-                        $newActiveOption.addClass('_is-active');
-                    } else {
-                        $activeOption.addClass('_is-active');
-                    }
-                }
-
-                $btn.addClass('_selectTxt _rtFocus');
-                cp.modalPop.layerFocusControl($(this));
-                self.showSelect($(this));
-
-                // 콜백 함수 호출 (선택된 버튼)
-                if (self.callbacks.onOpen) {
-                    self.callbacks.onOpen($btn);
-                }
-            });
-        },
-
-        showSelect: function ($btn) {
-            const self = this,
-                dimmedEl = this.constEl.dimmedEl;
-            var target = $btn.attr('data-select');
-            var $select = $('.modalPop[select-target="' + target + '"]');
-            var $selectWrap = $select.find("> .modalWrap");
-            var selectWidth = '';
-            var selectHeight = '';
-
-            $select.addClass('_is-active').show();
-
-            selectWidth = $select.outerWidth();
-            selectHeight = $selectWrap.outerHeight();
-            winHeight = $(window).height();
-
-            selectTitHeight = $selectWrap.find(" > .modal-header").outerHeight();
-            selectConHeight = $selectWrap.find(" > .modal-container").outerHeight();
-            selectBtnHeight = $selectWrap.find(" > .modal-footer").outerHeight();
-
-            if (selectHeight > winHeight) {
-                $select
-                    .addClass('_scroll')
-                    .animate({ bottom: '0' }, 300).show();
-                $selectWrap
-                    .find(" > .modal-container").css({ 'max-height': winHeight - (selectTitHeight + selectBtnHeight) - 160 + 'px' }).attr("tabindex", "0");
-            } else {
-                $select
-                    .animate({ bottom: '0' }, 300).show();
-            }
-
-            $select.attr({ 'aria-hidden': 'false', 'tabindex': '0' }).focus();
-            $selectWrap.attr({ 'role': 'dialog', 'aria-modal': 'true' })
-                .find('h1, h2, h3, h4, h5, h6').first().attr('tabindex', '0');
-
-            // dimmedEl.remove();
-            $('body').addClass('no-scroll');
-            // $('body').addClass('no-scroll').append(dimmedEl);
-
-            $btn.addClass('_selectTxt');
-        },
-
-        optSelect: function () {
-            const self = this;
-            $(document).on('click', '.select-lst > li > a.sel-opt', function () {
-                $(this).parent('li').addClass('_is-active').siblings().removeClass('_is-active');
-            });
-
-            $(document).on('click', '.btn-selChoice', function () {
-                $('.modalPop .btn-close-pop').trigger('click');
-                const selectedOption = $('.select-lst > li._is-active > a.sel-opt');
-                const selectedText = selectedOption.text();
-                const selectTxtElement = $('._selectTxt');
-                selectTxtElement.text(selectedText).removeClass('_selectTxt');
-                selectedOption.addClass('sel-opt');
-
-                // 콜백 함수 호출 (선택된 옵션)
-                if (self.callbacks.onSelect) {
-                    self.callbacks.onSelect(selectedText);
-                }
-            });
-        }
-
-        /*
-        callbacks 호출예시
-        cp.selectPop.init({
-            onOpen: function($button) {
-                console.log("모달이 열렸습니다: ", $button.text());
             },
-            onSelect: function(selectedText) {
-                console.log("선택된 옵션: ", selectedText);
-            }
-        });
-        */
-    },
 
-    cp.modalPop = {
-        constEl: {
-            btnModal: "._modalBtn", // 모달 버튼 선택자
-            // dimmedEl: $('<div class="dimmed" aria-hidden="true"></div>') // dimmed 배경 요소
-        },
-        isOpen: false, // 모달 열림 상태를 관리하는 플래그
-        init: function () {
-            this.openPop(); // 모달 열기 이벤트 초기화
-            this.closePop(); // 모달 닫기 이벤트 초기화
-            $(".modalPop").attr({ 'aria-hidden': 'true' });
-        },
+            // 비밀번호 특수문자 모양
+            secureTxt: function (callbacks = {}) {
+                $('._secureTxt').each(function () {
+                    const secureField = $(this);
+                    const inputField = secureField.find("input");
+                    const secureTypeRaw = secureField.attr("secure-type");
+                    const secureType = (!secureTypeRaw || secureTypeRaw === "next") ? "next" : secureTypeRaw;
+                    const secureLine = parseInt(secureField.attr("data-secureLine")) || 0;
+                    const length = parseInt(secureField.attr("data-length")) || 0;
+                    const isNumField = secureField.hasClass("_num");
 
-        openPop: function () {
-            const self = this,
-                btnModal = this.constEl.btnModal;
+                    // maxlength 계산 (data-length - data-secureLine) 양수일 때만 적용
+                    if (length && secureLine && (length - secureLine) > 0) {
+                        inputField.attr("maxlength", length - secureLine);
+                    } else {
+                        inputField.removeAttr("maxlength");
+                    }
 
-            $('html, body').on('click', btnModal, function () {
+                    const createIcons = () => {
+                        secureField.find("i").remove();
 
-                if (!self.isOpen) { // 모달이 열려 있지 않은 경우에만 실행
-                    $(this).addClass('_rtFocus'); // 포커스 클래스 추가
-                    self.showModal($(this)); // 모달 표시
-                    self.layerFocusControl($(this)); // 포커스 제어
+                        if (secureType === "prev") {
+                            let iTag = "";
+                            for (let i = 0; i < length; i++) {
+                                if (i < secureLine) {
+                                    iTag += '<i class="_pwTxt" aria-hidden="true"></i>';
+                                } else {
+                                    iTag += '<i class="_line" aria-hidden="true"></i>';
+                                }
+                            }
+                            secureField.append(iTag);
+
+                        } else if (secureType === "normal") {
+                            let iTag = "";
+                            for (let i = 0; i < length; i++) {
+                                iTag += '<i class="_pwTxt" aria-hidden="true"></i>';
+                            }
+                            secureField.append(iTag);
+
+                        } else { // next 타입 - _line 앞, _pwTxt 뒤
+                            let iTag = "";
+                            const lineCount = length - secureLine; // 앞에 위치할 _line 개수
+                            const fixedCount = secureLine;         // 뒤에 고정될 _pwTxt 개수
+
+                            for (let i = 0; i < lineCount; i++) {
+                                iTag += '<i class="_line" aria-hidden="true"></i>';
+                            }
+                            for (let i = 0; i < fixedCount; i++) {
+                                iTag += '<i class="_pwTxt" aria-hidden="true"></i>';
+                            }
+                            secureField.append(iTag);
+                        }
+                    };
+
+                    const setIconStyles = () => {
+                        let left = 10;
+                        let space = 13;
+
+                        secureField.find("i").each(function () {
+                            const $icon = $(this);
+                            $icon.width($icon.height());
+                            $icon.css("left", `${left}px`);
+                            left += space;
+                            space = 16;
+                        });
+
+                        if (secureType === "prev" || secureType === "next") {
+                            const fixedIcons = secureField.find("i._pwTxt");
+                            const paddingLeft = fixedIcons.length ? (fixedIcons.last().position().left + fixedIcons.last().outerWidth()) : 0;
+                            inputField.css("padding-left", `${paddingLeft}px`);
+                        }
+                    };
+
+                    const updateIcons = (value) => {
+                        if (secureType === "normal") {
+                            const icons = secureField.find("i");
+                            const newLength = value.length;
+                            const currentLength = icons.length;
+                            const diff = newLength - currentLength;
+
+                            if (diff > 0) {
+                                for (let i = 0; i < diff; i++) {
+                                    secureField.append('<i class="_pwTxt" aria-hidden="true"></i>');
+                                }
+                            } else if (diff < 0) {
+                                icons.slice(newLength).remove();
+                            }
+
+                            setIconStyles();
+
+                        } else if (secureType === "prev") {
+                            const activeLines = secureField.find("i._line").removeClass("_is-active").css({ opacity: ".5" });
+
+                            for (let i = 0; i < value.length && i < activeLines.length; i++) {
+                                activeLines.eq(i).addClass("_is-active").css({ opacity: "" });
+                            }
+
+                            if (isNumField) {
+                                const show = !value;
+                                secureField.find("i._line, i._is-active").toggle(show);
+                            }
+
+                        } else { // next 타입
+                            const lineIcons = secureField.find("i._line").removeClass("_is-active").css({ opacity: ".5" });
+                            const fixedIcons = secureField.find("i._pwTxt");
+
+                            // value 길이만큼 _line 순서대로 _is-active 추가
+                            for (let i = 0; i < value.length && i < lineIcons.length; i++) {
+                                lineIcons.eq(i).addClass("_is-active").css({ opacity: "" });
+                            }
+
+                            // 뒤의 고정 _pwTxt는 항상 _is-active 상태 유지
+                            fixedIcons.addClass("_is-active").css({ opacity: "" });
+
+                            if (isNumField) {
+                                const show = !value;
+                                secureField.find("i").toggle(show);
+                            }
+                        }
+                    };
+
+                    const handleFocus = () => {
+                        const value = inputField.val();
+                        updateIcons(value);
+                        callbacks.onFocus?.(secureField);
+                    };
+
+                    const handleChange = () => {
+                        const value = inputField.val();
+
+                        if (secureType === "normal") {
+                            updateIcons(value);
+                            inputField.attr("type", value ? "password" : "text");
+                        } else {
+                            updateIcons(value);
+                        }
+
+                        callbacks.onChange?.(secureField, value);
+                    };
+
+                    const handleKeyUp = (event) => {
+                        if (secureType !== "normal" && event.keyCode === 8) {
+                            secureField.find("i._line").eq(event.target.value.length).removeClass("_is-active");
+                        }
+                        callbacks.onKeyUp?.(secureField, event);
+                    };
+
+                    const handleBlur = () => {
+                        if (!inputField.val()) {
+                            if (secureType === "normal") {
+                                secureField.find("i").remove();
+                                inputField.attr("type", "text");
+                            } else {
+                                secureField.find("i._line").removeClass("_is-active").css({ opacity: "" });
+                                secureField.find("i._pwTxt").removeClass("_is-active");
+                            }
+                        }
+                    };
+
+                    // 초기화
+                    createIcons();
+                    setIconStyles();
+
+                    if (isNumField && secureType !== "normal") {
+                        inputField.attr("type", "tel");
+                    } else if (secureType === "normal") {
+                        inputField.attr("type", "text");
+                    }
+
+                    // 이벤트 바인딩
+                    inputField.on("focus", handleFocus)
+                        .on("input", handleChange)
+                        .on("keyup", handleKeyUp)
+                        .on("blur", handleBlur);
+                });
+            },
+
+            // readonly일 경우
+            inpReadonly: function (callback) {
+                $("input, select").each(function () {
+                    const $el = $(this),
+                        tag = this.tagName.toLowerCase(),
+                        isReadonly = $el.prop("readonly") || $el.attr("aria-readonly") === "true",
+                        isDisabled = $el.prop("disabled") || $el.attr("aria-disabled") === "true";
+
+                    let status = null;
+
+                    if (tag === "input") {
+                        if (isReadonly) {
+                            $el.parent().addClass("_readonly");
+                            status = "readonly";
+                        } else if (isDisabled) {
+                            $el.parent().addClass("_disabled");
+                            status = "disabled";
+                        }
+                    } else if (tag === "select" && $el.hasClass("select-sys")) {
+                        if (isReadonly) {
+                            $el.parent().parent().addClass("_readonly");
+                            status = "readonly";
+                        } else if (isDisabled) {
+                            $el.parent().parent().addClass("_disabled");
+                            status = "disabled";
+                        }
+                    }
+
+                    // 콜백이 함수라면 실행
+                    if (typeof callback === "function" && status) {
+                        callback($el, status);
+                    }
+                });
+            },
+
+            // input:range
+            inputRange: function (callback) {
+                const rangeSelector = $('.range-slider');
+
+                rangeSelector.each(function () {
+                    const rangeInput = $(this).find('._range');
+                    const rangeValue = $(this).find('._value');
+                    const rangeInfo = $(this).find('.range-info');
+
+                    rangeValue.each(function () {
+                        const defaultvalue = rangeInput.attr('value');
+                        const rangeValueText = rangeValue.attr('range-value'); // Get the range-value text
+                        const innerValue = rangeValue.attr('inner-value') === "true"; // Check for inner-value attribute
+
+                        // Set the initial value of the span
+                        if (!rangeValueText) {
+                            // If no range-value, set the span to the default input value
+                            rangeValue.text(defaultvalue);
+                        } else {
+                            // Update span text based on inner-value
+                            rangeValue.text(innerValue ? `${rangeValueText} (${defaultvalue})` : rangeValueText);
+                        }
+
+                        rangeInfo.css({
+                            'left': defaultvalue + '%',
+                            'margin-left': `-${rangeInfo.outerWidth() / 2}px`
+                        });
+                        rangeInput.css('background', `linear-gradient(to right, #333 ${defaultvalue}%, #ccc ${defaultvalue}%)`);
+                    });
+
+                    rangeInput.on('input', function () {
+                        const rangeInputValue = Math.floor(this.value);
+                        const newValue = Number(($(this).val() - $(this).attr('min')) * 100 / ($(this).attr('max') - $(this).attr('min')));
+                        const newPosition = 8 - (newValue * 0.16);
+
+                        rangeInput.attr('value', rangeInputValue);
+                        const rangeValueText = rangeValue.attr('range-value'); // Get the range-value text
+                        const innerValue = rangeValue.attr('inner-value') === "true"; // Check for inner-value attribute
+
+                        // console.log("newValue:", newValue, "newPosition:", newPosition);
+
+                        // Update span text based on the presence of range-value
+                        if (!rangeValueText) {
+                            // If no range-value, set the span to the current input value
+                            rangeValue.text(rangeInputValue);
+                        } else {
+                            // Update span text based on inner-value
+                            rangeValue.text(innerValue ? `${rangeValueText} (${rangeInputValue})` : rangeValueText);
+                        }
+
+                        rangeInfo.css({
+                            'left': `calc(${newValue}% + (${newPosition}px))`,
+                            'margin-left': `-${rangeInfo.outerWidth() / 2}px`
+                        });
+
+                        if (rangeInputValue == $(this).attr('min')) {
+                            rangeInfo.addClass('left').removeClass('gap');
+                        } else if (newValue <= $(this).attr('arrow-min')) {
+                            rangeInfo.addClass('left gap');
+                        } else if (rangeInputValue >= $(this).attr('max')) {
+                            rangeInfo.addClass('right').removeClass('gap');
+                        } else if (newValue >= $(this).attr('arrow-max')) {
+                            rangeInfo.addClass('right gap');
+                        } else {
+                            rangeInfo.removeClass('left');
+                            rangeInfo.removeClass('right');
+                        }
+                        rangeInput.css('background', `linear-gradient(to right, #333 ${newValue}%, #ccc ${newValue}%)`);
+
+                        // Callback function
+                        if (typeof callback === "function") {
+                            callback(rangeInputValue);
+                        }
+                    });
+                });
+            },
+
+            // input:doublerange
+            inputRangeDouble: function (callback) {
+                const doubRangeBg = $(".slider-container .double-slider");
+                const doubleInputRange = $(".range-slider.double .field-input input[type=range]");
+                const dobuleInputNum = $(".range-slider.double .field-input input[type=number]");
+                const minInfo = $('.doublerange-info.min');
+                const minInfoValue = $('.doublerange-info ._value-min');
+                const maxInfo = $('.doublerange-info.max');
+                const maxInfoValue = $('.doublerange-info ._value-max');
+
+                let doubleGap = 500; // 최소 간격
+
+                function updateRangeInfo(value, infoElement, infoValueElement, isMin) {
+                    const rangeMessage = infoValueElement.attr('range-value');
+                    const innerValue = infoValueElement.attr('inner-value') === 'true';
+                    const arrowMin = infoValueElement.attr('arrow-min');
+                    const arrowMax = infoValueElement.attr('arrow-max');
+
+                    if (rangeMessage && innerValue) {
+                        infoValueElement.text(`${rangeMessage}(${value})`);
+                    } else if (rangeMessage) {
+                        infoValueElement.text(rangeMessage);
+                    } else {
+                        infoValueElement.text(value);
+                    }
+
+                    const sliderMaxValue = Number(doubleInputRange.eq(0).attr('max'));
+                    const percentage = (value / sliderMaxValue) * 100;
+                    const pixelPercentage = (percentage / 100) * window.innerWidth;
+                    const elementWidth = infoElement.outerWidth() / 2;
+                    const parentWidth = infoElement.parent(".field-input").width();
+
+                    if (isMin) {
+                        infoElement.css({
+                            'left': pixelPercentage < elementWidth ? `${percentage * 0}%` : `${percentage}%`,
+                            'margin-left': pixelPercentage < elementWidth ? `0` : `-${elementWidth}px`
+                        });
+
+                        if (arrowMin !== undefined) {
+                            const arrowMinNum = Number(arrowMin);
+                            if (percentage <= arrowMinNum) {
+                                infoElement.addClass("left gap").removeClass("right");
+                            } else {
+                                infoElement.removeClass("left right gap");
+                            }
+                        } else {
+                            // arrow-min 없으면 기존 최소값 기준
+                            if (value === Number(doubleInputRange.eq(0).attr("min"))) {
+                                infoElement.addClass("left").removeClass("right gap");
+                            } else {
+                                infoElement.removeClass("left right gap");
+                            }
+                        }
+                    } else {
+                        infoElement.css({
+                            'right': (parentWidth - (elementWidth / 2)) < pixelPercentage ? `${elementWidth}px` : `${100 - percentage}%`,
+                            'margin-right': (parentWidth + infoElement.outerWidth()) < pixelPercentage ? `0` : `-${elementWidth}px`
+                        });
+
+                        if (arrowMax !== undefined) {
+                            const arrowMaxNum = Number(arrowMax);
+                            if (percentage >= arrowMaxNum) {
+                                infoElement.addClass("right gap").removeClass("left");
+                            } else {
+                                infoElement.removeClass("left right gap");
+                            }
+                        } else {
+                            // arrow-max 없으면 기존 최대값 기준
+                            if (value === Number(doubleInputRange.eq(1).attr("max"))) {
+                                infoElement.addClass("right").removeClass("left gap");
+                            } else {
+                                infoElement.removeClass("left right gap");
+                            }
+                        }
+                    }
                 }
 
-                if ($(this).is(".modalPop._is-active ._modalBtn")) {
-                    $(this).removeClass('_rtFocus').addClass('_rtFocus2');
+
+                function rangeInputWidth() {
+                    let minVal = parseInt(doubleInputRange.eq(0).val());
+                    let maxVal = parseInt(doubleInputRange.eq(1).val());
+                    let diff = maxVal - minVal;
+
+                    if (diff < doubleGap) {
+                        if ($(this).hasClass("min-range")) {
+                            doubleInputRange.eq(0).val(maxVal - doubleGap);
+                        } else {
+                            doubleInputRange.eq(1).val(minVal + doubleGap);
+                        }
+                    } else {
+                        dobuleInputNum.eq(0).val(minVal);
+                        dobuleInputNum.eq(1).val(maxVal);
+
+                        updateRangeInfo(minVal, minInfo, minInfoValue, true);
+                        updateRangeInfo(maxVal, maxInfo, maxInfoValue, false);
+
+                        doubRangeBg.css("left", `${(minVal / doubleInputRange.eq(0).attr("max")) * 100}%`);
+                        doubRangeBg.css("right", `${100 - (maxVal / doubleInputRange.eq(1).attr("max")) * 100}%`);
+                    }
+
+                    if (typeof callback === "function") {
+                        callback(minVal, maxVal);
+                    }
                 }
-            });
-        },
 
-        showModal: function ($btn) {
-            const self = this;
-                // dimmedEl = this.constEl.dimmedEl;
-            const target = $btn.attr('data-modal');
-            const $modal = $('.modalPop[modal-target="' + target + '"]');
-            var $modalWrap = $modal.find("> .modalWrap");
+                rangeInputWidth();
 
-            $modal.addClass('_is-active').attr({ 'aria-hidden': 'false' });
+                dobuleInputNum.on("input", function () {
+                    let minp = parseInt(dobuleInputNum.eq(0).val());
+                    let maxp = parseInt(dobuleInputNum.eq(1).val());
+                    let diff = maxp - minp;
 
-            // $modal.addClass('_is-active').attr({ 'aria-hidden': 'false' });
-            $modalWrap.attr({ 'role': 'dialog', 'aria-modal': 'true' })
-                .find('a, *[role="button"], button, h1, h2, h3, h4, h5, h6').first().each(function () {
-                    if ($(this).is('h1, h2, h3, h4, h5, h6')) {
-                        $(this).attr('tabindex', '0');
+                    if (diff >= doubleGap && maxp <= doubleInputRange.eq(1).attr("max")) {
+                        if ($(this).hasClass("min-input")) {
+                            doubleInputRange.eq(0).val(minp);
+                            let value1 = doubleInputRange.eq(0).attr("max");
+                            doubRangeBg.css("left", `${(minp / value1) * 100}%`);
+                            updateRangeInfo(minp, minInfo, minInfoValue, true);
+                        } else {
+                            doubleInputRange.eq(1).val(maxp);
+                            let value2 = doubleInputRange.eq(1).attr("max");
+                            doubRangeBg.css("right", `${100 - (maxp / value2) * 100}%`);
+                            updateRangeInfo(maxp, maxInfo, maxInfoValue, false);
+                        }
                     }
                 });
 
-            if ($(".ico-tooltip._is-active").length) {
-                // cp.toolTip.closeTip() 호출
-                cp.toolTip.closeTip();
-            }
-            // $modal 안에 .ico-tooltip 요소가 존재하는지 확인
-            if ($modal.find(".ico-tooltip").length) {
-                // _inModal 클래스 추가
-                $modal.find('.ico-tooltip').addClass('_inModal');
-                cp.toolTip.openTip();
+                doubleInputRange.on("input", function () {
+                    let minVal = parseInt(doubleInputRange.eq(0).val());
+                    let maxVal = parseInt(doubleInputRange.eq(1).val());
+
+                    if (minVal >= maxVal - doubleGap) {
+                        if ($(this).hasClass("min-range")) {
+                            doubleInputRange.eq(0).val(maxVal - doubleGap);
+                        } else {
+                            doubleInputRange.eq(1).val(minVal + doubleGap);
+                        }
+                    }
+                    rangeInputWidth();
+                });
             }
 
-            setTimeout(function () {
-                $modalWrap.find(".ico-his-prev").focus()
-                var firstFocusable;
-                
-                // .modal-header가 있을 경우
-                if ($modalWrap.find('.modal-header').length) {
-                    firstFocusable = $modalWrap.find('.modal-header').find('a.ico-his-prev, a.ico ico-pop-close, a, *[role="button"], button').first();
-                } else {
-                    // .modal-header가 없을 경우
-                    firstFocusable = $modalWrap.find('a.ico-his-prev, a.ico ico-pop-close, a, *[role="button"], button').first();
-                }
-
-                if (firstFocusable.length) {
-                    firstFocusable.focus();
-                }
-            }, 300);
-            // dimmedEl.remove(); 
-            // $('body').addClass('no-scroll').append(dimmedEl);
-            $('body').addClass('no-scroll');
 
         },
+        cp.selectPop = {
+            constEl: {
+                btnSelect: "._selectBtn",
+                // dimmedEl: $('<div class="dimmed" aria-hidden="true"></div>') // 딤 사용하지 않음
+            },
+            init: function (callbacks = {}) {
+                this.callbacks = callbacks; // 콜백을 저장
+                this.openSelect();
+                this.optSelect();
+            },
 
-        closePop: function () {
-            const self = this;
-            $(document).on('click', '.btn-close-pop', function (e) {
-                e.preventDefault();
-                console.log('btn-close-pop clicked:', this, e);
-                const $modal = $(this).closest('.modalPop');
-                const $modalWrap = $modal.find("> .modalWrap");
+            openSelect: function () {
+                const self = this,
+                    btnSelect = this.constEl.btnSelect;
+                $(document).on('click', btnSelect, function () {
+                    const $btn = $(this);
+                    const target = $btn.attr('data-select');
+                    const $select = $('.modalPop[select-target="' + target + '"]');
+                    const $selectWrap = $select.find("> .modalWrap");
 
-                // 툴팁 정리
-                if ($('.ico-tooltip').hasClass('_inModal')) {
+                    const $activeOption = $select.find('.select-lst > li._is-active');
+                    if ($activeOption.length === 0) {
+                        const btnText = $btn.text();
+                        $select.find('.select-lst > li:eq(0)').before('<li class="_is-active"><a href="javascript:;" class="sel-opt _defaultTxt">' + btnText + '</a></li>');
+                    } else {
+                        const btnText = $btn.text();
+                        if ($activeOption.find('a').text() !== btnText) {
+                            $activeOption.removeClass('_is-active');
+                            const $newActiveOption = $select.find('.select-lst > li > a').filter(function () {
+                                return $(this).text() === btnText;
+                            }).parent();
+                            $newActiveOption.addClass('_is-active');
+                        } else {
+                            $activeOption.addClass('_is-active');
+                        }
+                    }
+
+                    $btn.addClass('_selectTxt _rtFocus');
+                    cp.modalPop.layerFocusControl($(this));
+                    self.showSelect($(this));
+
+                    // 콜백 함수 호출 (선택된 버튼)
+                    if (self.callbacks.onOpen) {
+                        self.callbacks.onOpen($btn);
+                    }
+                });
+            },
+
+            showSelect: function ($btn) {
+                const self = this,
+                    dimmedEl = this.constEl.dimmedEl;
+                var target = $btn.attr('data-select');
+                var $select = $('.modalPop[select-target="' + target + '"]');
+                var $selectWrap = $select.find("> .modalWrap");
+                var selectWidth = '';
+                var selectHeight = '';
+
+                $select.addClass('_is-active').show();
+
+                selectWidth = $select.outerWidth();
+                selectHeight = $selectWrap.outerHeight();
+                winHeight = $(window).height();
+
+                selectTitHeight = $selectWrap.find(" > .modal-header").outerHeight();
+                selectConHeight = $selectWrap.find(" > .modal-container").outerHeight();
+                selectBtnHeight = $selectWrap.find(" > .modal-footer").outerHeight();
+
+                if (selectHeight > winHeight) {
+                    $select
+                        .addClass('_scroll')
+                        .animate({ bottom: '0' }, 300).show();
+                    $selectWrap
+                        .find(" > .modal-container").css({ 'max-height': winHeight - (selectTitHeight + selectBtnHeight) - 160 + 'px' }).attr("tabindex", "0");
+                } else {
+                    $select
+                        .animate({ bottom: '0' }, 300).show();
+                }
+
+                $select.attr({ 'aria-hidden': 'false', 'tabindex': '0' }).focus();
+                $selectWrap.attr({ 'role': 'dialog', 'aria-modal': 'true' })
+                    .find('h1, h2, h3, h4, h5, h6').first().attr('tabindex', '0');
+
+                // dimmedEl.remove();
+                $('body').addClass('no-scroll');
+                // $('body').addClass('no-scroll').append(dimmedEl);
+
+                $btn.addClass('_selectTxt');
+            },
+
+            optSelect: function () {
+                const self = this;
+                $(document).on('click', '.select-lst > li > a.sel-opt', function () {
+                    $(this).parent('li').addClass('_is-active').siblings().removeClass('_is-active');
+                });
+
+                $(document).on('click', '.btn-selChoice', function () {
+                    $('.modalPop .btn-close-pop').trigger('click');
+                    const selectedOption = $('.select-lst > li._is-active > a.sel-opt');
+                    const selectedText = selectedOption.text();
+                    const selectTxtElement = $('._selectTxt');
+                    selectTxtElement.text(selectedText).removeClass('_selectTxt');
+                    selectedOption.addClass('sel-opt');
+
+                    // 콜백 함수 호출 (선택된 옵션)
+                    if (self.callbacks.onSelect) {
+                        self.callbacks.onSelect(selectedText);
+                    }
+                });
+            }
+
+            /*
+            callbacks 호출예시
+            cp.selectPop.init({
+                onOpen: function($button) {
+                    console.log("모달이 열렸습니다: ", $button.text());
+                },
+                onSelect: function(selectedText) {
+                    console.log("선택된 옵션: ", selectedText);
+                }
+            });
+            */
+        },
+
+        cp.modalPop = {
+            constEl: {
+                btnModal: "._modalBtn", // 모달 버튼 선택자
+                // dimmedEl: $('<div class="dimmed" aria-hidden="true"></div>') // dimmed 배경 요소
+            },
+            isOpen: false, // 모달 열림 상태를 관리하는 플래그
+            init: function () {
+                this.openPop(); // 모달 열기 이벤트 초기화
+                this.closePop(); // 모달 닫기 이벤트 초기화
+                $(".modalPop").attr({ 'aria-hidden': 'true' });
+            },
+
+            openPop: function () {
+                const self = this,
+                    btnModal = this.constEl.btnModal;
+
+                $('html, body').on('click', btnModal, function () {
+
+                    if (!self.isOpen) { // 모달이 열려 있지 않은 경우에만 실행
+                        $(this).addClass('_rtFocus'); // 포커스 클래스 추가
+                        self.showModal($(this)); // 모달 표시
+                        self.layerFocusControl($(this)); // 포커스 제어
+                    }
+
+                    if ($(this).is(".modalPop._is-active ._modalBtn")) {
+                        $(this).removeClass('_rtFocus').addClass('_rtFocus2');
+                    }
+                });
+            },
+
+            showModal: function ($btn) {
+                const self = this;
+                // dimmedEl = this.constEl.dimmedEl;
+                const target = $btn.attr('data-modal');
+                const $modal = $('.modalPop[modal-target="' + target + '"]');
+                var $modalWrap = $modal.find("> .modalWrap");
+
+                $modal.addClass('_is-active').attr({ 'aria-hidden': 'false' });
+
+                // $modal.addClass('_is-active').attr({ 'aria-hidden': 'false' });
+                $modalWrap.attr({ 'role': 'dialog', 'aria-modal': 'true' })
+                    .find('a, *[role="button"], button, h1, h2, h3, h4, h5, h6').first().each(function () {
+                        if ($(this).is('h1, h2, h3, h4, h5, h6')) {
+                            $(this).attr('tabindex', '0');
+                        }
+                    });
+
+                if ($(".ico-tooltip._is-active").length) {
+                    // cp.toolTip.closeTip() 호출
                     cp.toolTip.closeTip();
                 }
-
-                // 모달 닫기 처리
-                if ($modal.hasClass("_scroll")) {
-                    $modal.removeClass('_is-active');
-                    $modalWrap.css({
-                        'max-height': '', 'height': '', 'transition': ''
-                    }).find(" > .modal-container").css({
-                        'height': ''
-                    }).removeAttr("tabindex");
-                } else {
-                    $modal.removeClass('_is-active');
+                // $modal 안에 .ico-tooltip 요소가 존재하는지 확인
+                if ($modal.find(".ico-tooltip").length) {
+                    // _inModal 클래스 추가
+                    $modal.find('.ico-tooltip').addClass('_inModal');
+                    cp.toolTip.openTip();
                 }
 
-                self.isOpen = false;
+                setTimeout(function () {
+                    $modalWrap.find(".ico-his-prev").focus()
+                    var firstFocusable;
 
-                // 접근성 속성 제거 (aria-modal 먼저)
-                $modalWrap.attr({ 'aria-modal': 'false' }).removeAttr('tabindex')
-                    .find('a, button, h1, h2, h3, h4, h5, h6').first().removeAttr('tabindex');
+                    // .modal-header가 있을 경우
+                    if ($modalWrap.find('.modal-header').length) {
+                        firstFocusable = $modalWrap.find('.modal-header').find('a.ico-his-prev, a.ico ico-pop-close, a, *[role="button"], button').first();
+                    } else {
+                        // .modal-header가 없을 경우
+                        firstFocusable = $modalWrap.find('a.ico-his-prev, a.ico ico-pop-close, a, *[role="button"], button').first();
+                    }
 
-                // 포커스 복원
-                if ($("._modalBtn").hasClass("_rtFocus2")) {
-                    setTimeout(function () {
-                        $('._rtFocus2').focus().removeClass('_rtFocus2');
-                        $modal.attr({ 'aria-hidden': 'true' }); // 이후에 aria-hidden 처리
-                    }, 300);
-                } else {
-                    self.rtFocus(); // 이 안에서 _rtFocus로 이동
-                    setTimeout(function () {
-                        $modal.attr({ 'aria-hidden': 'true' }); // 포커스 이동 후 처리
-                    }, 310); // rtFocus와 타이밍 맞춤
-                }
+                    if (firstFocusable.length) {
+                        firstFocusable.focus();
+                    }
+                }, 300);
+                // dimmedEl.remove(); 
+                // $('body').addClass('no-scroll').append(dimmedEl);
+                $('body').addClass('no-scroll');
 
-                // 바디 스크롤 복구
-                if ($(".modalPop._is-active").length === 0) {
-                    $('body').removeClass('no-scroll');
-                }
-            });
-        },
+            },
+
+            closePop: function () {
+                const self = this;
+                $(document).on('click', '.btn-close-pop', function (e) {
+                    e.preventDefault();
+                    console.log('btn-close-pop clicked:', this, e);
+                    const $modal = $(this).closest('.modalPop');
+                    const $modalWrap = $modal.find("> .modalWrap");
+
+                    // 툴팁 정리
+                    if ($('.ico-tooltip').hasClass('_inModal')) {
+                        cp.toolTip.closeTip();
+                    }
+
+                    // 모달 닫기 처리
+                    if ($modal.hasClass("_scroll")) {
+                        $modal.removeClass('_is-active');
+                        $modalWrap.css({
+                            'max-height': '', 'height': '', 'transition': ''
+                        }).find(" > .modal-container").css({
+                            'height': ''
+                        }).removeAttr("tabindex");
+                    } else {
+                        $modal.removeClass('_is-active');
+                    }
+
+                    self.isOpen = false;
+
+                    // 접근성 속성 제거 (aria-modal 먼저)
+                    $modalWrap.attr({ 'aria-modal': 'false' }).removeAttr('tabindex')
+                        .find('a, button, h1, h2, h3, h4, h5, h6').first().removeAttr('tabindex');
+
+                    // 포커스 복원
+                    if ($("._modalBtn").hasClass("_rtFocus2")) {
+                        setTimeout(function () {
+                            $('._rtFocus2').focus().removeClass('_rtFocus2');
+                            $modal.attr({ 'aria-hidden': 'true' }); // 이후에 aria-hidden 처리
+                        }, 300);
+                    } else {
+                        self.rtFocus(); // 이 안에서 _rtFocus로 이동
+                        setTimeout(function () {
+                            $modal.attr({ 'aria-hidden': 'true' }); // 포커스 이동 후 처리
+                        }, 310); // rtFocus와 타이밍 맞춤
+                    }
+
+                    // 바디 스크롤 복구
+                    if ($(".modalPop._is-active").length === 0) {
+                        $('body').removeClass('no-scroll');
+                    }
+                });
+            },
 
 
-        rtFocus: function () {
-            setTimeout(function () {
-                $('._rtFocus').focus();
-                $('._rtFocus').removeClass('_rtFocus');
-            }, 300);
-        },
+            rtFocus: function () {
+                setTimeout(function () {
+                    $('._rtFocus').focus();
+                    $('._rtFocus').removeClass('_rtFocus');
+                }, 300);
+            },
 
-        // 탭으로 포커스 이동 시 팝업이 열린상태에서 팝업 내부해서만 돌도록 제어하는 함수
-        layerFocusControl: function ($btn) {
-            const target = $btn.attr('data-modal') || $btn.attr('data-select');
-            const $modal = $('.modalPop[modal-target="' + target + '"], .modalPop[select-target="' + target + '"]');
-            var $modalWrap = $modal.find("> .modalWrap");
+            // 탭으로 포커스 이동 시 팝업이 열린상태에서 팝업 내부해서만 돌도록 제어하는 함수
+            layerFocusControl: function ($btn) {
+                const target = $btn.attr('data-modal') || $btn.attr('data-select');
+                const $modal = $('.modalPop[modal-target="' + target + '"], .modalPop[select-target="' + target + '"]');
+                var $modalWrap = $modal.find("> .modalWrap");
 
-            var $firstEl = $modalWrap.find('a, button, h1, h2, h3, h4, h5, h6, input, textarea, select, [tabindex]:not([tabindex="-1"])').first();
-            var $lastEl = $modalWrap.find('a, button, h1, h2, h3, h4, h5, h6, input, textarea, select, [tabindex]:not([tabindex="-1"])').last();
+                var $firstEl = $modalWrap.find('a, button, h1, h2, h3, h4, h5, h6, input, textarea, select, [tabindex]:not([tabindex="-1"])').first();
+                var $lastEl = $modalWrap.find('a, button, h1, h2, h3, h4, h5, h6, input, textarea, select, [tabindex]:not([tabindex="-1"])').last();
 
-            $modalWrap.on("keydown", function (e) {
-                if (e.keyCode == 9) {
-                    if (e.shiftKey) { // shift + tab
-                        if ($(e.target).is($firstEl)) {
-                            $lastEl.focus();
-                            e.preventDefault();
-                        }
-                    } else { // tab
-                        if ($(e.target).is($lastEl)) {
-                            $firstEl.focus();
-                            e.preventDefault();
+                $modalWrap.on("keydown", function (e) {
+                    if (e.keyCode == 9) {
+                        if (e.shiftKey) { // shift + tab
+                            if ($(e.target).is($firstEl)) {
+                                $lastEl.focus();
+                                e.preventDefault();
+                            }
+                        } else { // tab
+                            if ($(e.target).is($lastEl)) {
+                                $firstEl.focus();
+                                e.preventDefault();
+                            }
                         }
                     }
-                }
-            });
-        },
-    };
+                });
+            },
+        };
 
     cp.toast = {
         init: function () {
@@ -2695,7 +2804,7 @@ var COMPONENT_UI = (function (cp, $) {
             } else {
                 $(target).append('<div class="loadingWrap"><div class="circle"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><p class="hide">로딩중</p></div>');
             }
-            $('body').addClass('no-scroll').attr('aria-hidden','true');
+            $('body').addClass('no-scroll').attr('aria-hidden', 'true');
         },
         loadingRemove: function () {
             $('.loadingWrap').remove();
@@ -2760,6 +2869,7 @@ var COMPONENT_UI = (function (cp, $) {
 
     cp.init = function () {
         cp.uaCheck.init();
+        cp.userIsTabbing.init();
         cp.btnFn.init();
         cp.tblCaption.init(); // table caption
         cp.formStatus.init();

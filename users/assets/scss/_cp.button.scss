@@ -297,7 +297,7 @@ $tertiary:'.tertiary';
             }
             &-field {
                 @include dflex(inline-flex, $j-content:space-between, $al-items:center);
-                @include icoMix(after, "%ico-add-file-20") {margin-left:.5rem;}
+                @include icoMix(after, "%ico-add-field-24"){margin-left:.5rem;}
             }
         }
         &.del{

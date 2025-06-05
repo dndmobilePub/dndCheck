@@ -14,6 +14,7 @@ $color-brand-secondary-200:$color-neutral-200;
 $color-brand-secondary-300:$color-neutral-300;
 $color-brand-secondary-400:$color-neutral-400;
 
+$color-text-white:$color-base-white;
 $color-text-primary:$color-neutral-900;
 $color-text-interactive-primary:$color-base-white; 
 $color-text-secondary:$color-neutral-800;
@@ -30,6 +31,17 @@ $color-text-warning:$color-orange-700;
 $color-text-disabled:$color-neutral-500;
 $color-text-readonly:$color-neutral-900;
 $color-text-inverse:$color-base-white;
+
+$color-icon-primary:$color-neutral-900;
+$color-icon-secondary:$color-neutral-600;
+$color-icon-tertiary:$color-neutral-400;
+$color-icon-disabled:$color-neutral-300;
+$color-icon-info:$color-brand-primary-400;
+$color-icon-success:$color-green-600;
+$color-icon-danger:$color-red-600;
+$color-icon-warning:$color-orange-700;
+$color-icon-inverse:$color-base-white;
+$color-icon-cast:$color-transparent-60;
 
 $color-bg-primary:$color-base-white;
 $color-bg-secondary:$color-neutral-50;
@@ -115,22 +127,22 @@ $heading:(
         bold:(
             font-family:$typo-family,
             font-weight:$typo-weight-bold,
-            font-size:$typo-size-28,
-            line-height:$typo-lheight-36,
+            font-size:$typo-size-24,
+            line-height:$typo-lheight-32,
             letter-spacing:$letter-spacing-tight,
         ),
         medium:(
             font-family:$typo-family,
             font-weight:$typo-weight-bold,
-            font-size:$typo-size-28,
-            line-height:$typo-lheight-36,
+            font-size:$typo-size-24,
+            line-height:$typo-lheight-32,
             letter-spacing:$letter-spacing-tight,
         ),
         regular:(
             font-family:$typo-family,
             font-weight:$typo-weight-regular,
-            font-size:$typo-size-28,
-            line-height:$typo-lheight-36,
+            font-size:$typo-size-24,
+            line-height:$typo-lheight-32,
             letter-spacing:$letter-spacing-tight,
         ),
     ),

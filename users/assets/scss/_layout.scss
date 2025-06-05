@@ -6,7 +6,7 @@
 //  * https://opensource.org/licenses/MIT
 
 //-- ** layout
-body{
+body {
     &[screen-type="login"], &[screen-type="main"]{
         background-color: $color-bg-tertiary;
     }
@@ -38,31 +38,23 @@ body{
     }
     .containerWrap{
         > .btnWrap{
-            position: fixed;
+            @include pos-offset(fixed, $bottom:0, $left:0, $z-index:10);
             padding: 2.4rem 2rem;
-            bottom: 0;
-            left: 0;
+            
             @include el-size(100%, auto);
-            background-color: $color-base-white;
-            z-index: 10;
+            background-color:$color-bg-primary;
         }
     }
     .headerWrap{
-        position: fixed;
-        top: 0;
-        left: 0;
+        @include pos-offset(fixed, $top:0, $left:0, $z-index:10);
         @include el-size(100%, 5.6rem);
-        background-color: $color-base-white;
-        z-index: 10;
+        background-color:$color-bg-primary;
     }
 }
-
+// 로그인
 .login{
     &Wrap{
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        @include obj-offset-align($pos:fixed);
         @include el-size(100%, auto);
         padding: 0 2rem;
     }
@@ -76,7 +68,7 @@ body{
     &-content{
         padding: 2.4rem 2rem;
         background-color: $color-bg-primary;
-        border-radius: 1.2rem;
+        @extend %radius-12;
         .tit{
             @extend %heading-sm-bold;
             margin-bottom: 1.6rem;
@@ -102,69 +94,123 @@ body{
 .header{
     &Wrap{
         position: relative;
-        height: 5.6rem;
-        .left{
-            position: relative;
+        padding:1.2rem 2rem;
+        min-height: 5.6rem;
+        @include dflex($al-items:center);
+        // 메인 로그인 정보
+        .left {
             .tit{
-                @include pos-offset(absolute, $top:0, $left:0);
-                @extend %heading-lg-medium;
-                @extend %weight-regular;
-                &::after{
-                    content: '';
-                    position: relative;
-                    display: inline-block;
-                    background: url(../img/common/icon_arrow_right.svg) no-repeat center / auto;
-                    @include el-size(2rem, 2rem);
-                    vertical-align: baseline;
+                @include dflex($al-items:center);
+                @extend %heading-lg-regular;
+                & > strong {@extend %heading-lg-bold;}
+                @include icoMix(after, "%ico-arrow-left-20") {
                     margin-left: 0.4rem;
                 }
             }
+
             .back{
-                @include pos-offset(absolute, $top:0, $left:0);
                 display: inline-block;
                 @include el-size(2.4rem, 2.4rem);
-                background: url(../img/common/icon_arrow_right.svg) no-repeat center / 2.4rem 2.4rem;
-                transform: rotate(180deg);
+                @include icoMix(after, "%ico-arrow-right-24");
+                margin-right:-2.4rem;
             }
+            & ~ .right {margin-left:auto;}
         }
+        // 서브페이지
         .center{
-            @include pos-offset(absolute, $top:50%, $right:50%);
-            transform: translate(50%, -50%);
-            .title{
+            margin:0 auto;
+            .title {
                 @extend %body-lg-bold;
             }
         }
-        .right{
-            @include pos-offset(absolute, $top:1.2rem, $right:1.2rem);
-            .alarm{
+
+        // 우측 유틸
+        .right {
+            @include dflex($al-items:center);
+            
+            .alarm {
                 position: relative;
-                display: inline-block;
                 @include el-size(3.2rem, 3.2rem);
-                background: url(../img/common/icon_bell.svg) no-repeat center / auto;
-                &.new{
-                    &::after{
-                    content: '';
-                    display: block;
-                    @include pos-offset(absolute, $top:0.4rem, $right:0.3rem);
-                    @include el-size(0.6rem, 0.6rem);
-                    border: 0.2rem solid $color-bg-tertiary;
-                    border-radius: 50%;
-                    background-color: red;
-                }
+                @include icoMix(before, "%ico-bell-32");
+                &.new {
+                    @include el-content(after) {
+                        @include pos-offset(absolute, $top:0.4rem, $right:0.3rem);
+                        @include el-size(0.65rem, 0.6rem);
+                        @include line(border, .2rem solid $color-bg-tertiary);
+                        background-color:$color-text-danger;
+                        @extend %radius-full;
+                    }
                 }
             }
-            .total{
-                display: inline-block;
+            .nav {
                 @include el-size(3.2rem, 3.2rem);
-                background: url(../img/common/icon_menu.svg) no-repeat center / auto;
+                @include icoMix(before, "%ico-menu-32");
             }
-            .close{
-                @include pos-offset(absolute, $top:0.4rem, $right:1.2rem);
-                display: inline-block;
-                @include el-size(2.4rem, 2.4rem);
-                background: url(../img/common/icon_close.svg) no-repeat center / 2.4rem 2.4rem;
-            }
+            .ico ~ .ico {margin-left:1.2rem;}
+            .ico-pop-close {margin-left:-2.4rem;}
         }
+        // .left{
+        //     position: relative;
+        //     .tit{
+        //         @include pos-offset(absolute, $top:0, $left:0);
+        //         @extend %heading-lg-medium;
+        //         @extend %weight-regular;
+        //         &::after{
+        //             content: '';
+        //             position: relative;
+        //             display: inline-block;
+        //             background: url(../img/common/icon_arrow_right.svg) no-repeat center / auto;
+        //             @include el-size(2rem, 2rem);
+        //             vertical-align: baseline;
+        //             margin-left: 0.4rem;
+        //         }
+        //     }
+        //     .back{
+        //         @include pos-offset(absolute, $top:0, $left:0);
+        //         display: inline-block;
+        //         @include el-size(2.4rem, 2.4rem);
+        //         background: url(../img/common/icon_arrow_right.svg) no-repeat center / 2.4rem 2.4rem;
+        //         transform: rotate(180deg);
+        //     }
+        // }
+        // .center{
+        //     @include pos-offset(absolute, $top:50%, $right:50%);
+        //     transform: translate(50%, -50%);
+        //     .title{
+        //         @extend %body-lg-bold;
+        //     }
+        // }
+        // .right{
+        //     @include pos-offset(absolute, $top:1.2rem, $right:1.2rem);
+        //     .alarm{
+        //         position: relative;
+        //         display: inline-block;
+        //         @include el-size(3.2rem, 3.2rem);
+        //         background: url(../img/common/icon_bell.svg) no-repeat center / auto;
+        //         &.new{
+        //             &::after{
+        //             content: '';
+        //             display: block;
+        //             @include pos-offset(absolute, $top:0.4rem, $right:0.3rem);
+        //             @include el-size(0.6rem, 0.6rem);
+        //             border: 0.2rem solid $color-bg-tertiary;
+        //             border-radius: 50%;
+        //             background-color: red;
+        //         }
+        //         }
+        //     }
+        //     .total{
+        //         display: inline-block;
+        //         @include el-size(3.2rem, 3.2rem);
+        //         background: url(../img/common/icon_menu.svg) no-repeat center / auto;
+        //     }
+        //     .close{
+        //         @include pos-offset(absolute, $top:0.4rem, $right:1.2rem);
+        //         display: inline-block;
+        //         @include el-size(2.4rem, 2.4rem);
+        //         background: url(../img/common/icon_close.svg) no-repeat center / 2.4rem 2.4rem;
+        //     }
+        // }
         .content-wrap{
             margin-top: 1.6rem;
         }
@@ -189,22 +235,22 @@ body{
             padding: 2.4rem;
         }
         &.line{
-            border: 0.1rem solid $color-border-divider-01;
+            @include line(border, .1rem solid $color-border-divider-01);
         }
         &.stage{
             margin-top: 1.2rem;
             .tit{
-                @extend %heading-sm-bold;
+                @extend %body-lg-bold;
             }
             .txt{
-                @extend %heading-sm-regular;
+                @extend %body-lg-regular;
                 margin-left: 1.2rem;
                 word-break: break-all;
             }
         }
         &.blue{
             background-color: $color-bg-info;
-            color: $color-base-white;
+            color: $color-text-white;
             .tit{
                 @extend %body-lg-regular;
             }
@@ -213,8 +259,7 @@ body{
             }
         }
         &.file{
-            display: flex;
-            flex-direction: column;
+            @include dflex($direction: column);
             gap: 1.2rem;
             background-color: $color-bg-secondary;
             .item{
@@ -223,12 +268,8 @@ body{
                     position: relative;
                     padding-left: 3.2rem;
                     margin-left: 0;
-                    &::before{
-                        content: '';
-                        display: block;
-                        position: absolute;
-                        top: 50%;
-                        left: 0;
+                    @include el-content(before) {
+                        @include pos-offset($top:50%, $left:0);
                         transform: translateY(-50%);
                         @include el-size(2.4rem, 2.4rem);
                         background: url(../img/common/icon_file_etc.svg) no-repeat center / auto;
@@ -259,9 +300,7 @@ body{
             }
         }
         .flex-wrap{
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
+            @include dflex($al-items:flex-start, $j-content:space-between);
             &.start{
                 justify-content: flex-start;
             }
@@ -305,21 +344,16 @@ body{
         }
     }
     &-menu{
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
+        @include dflex($al-items:center, $j-content:space-around);
         .item{
             .link{
                 position: relative;
                 min-width: 5.6rem;
                 padding-top: 6.4rem;
                 text-align: center;
-                &::after{
-                    content: '';
-                    display: block;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
+                color:$color-text-primary;
+                @include el-content(after) {
+                    @include pos-offset($top:0, $left:0);
                     @include el-size(5.6rem, 5.6rem);
                 }
                 &.attendance{
@@ -367,22 +401,37 @@ body{
                 &.title{
                     display: flex;
                     flex-direction: column;
+                    @include el-content(before) {
+                        color:$color-text-disabled;
+                        @extend %body-lg-regular; margin-top:.2rem;
+                    }
                     .tit{
-                        @extend %heading-sm-bold;
-                        &::before{
-                            display: none;
-                            content: '';
-                            float: right;
+                        @include dflex($al-items:center);
+                        @extend %body-lg-bold;
+                        @include el-content(before, none){
+                            order:2;
                         }
-                        &::after{
-                            content: '';
-                            display: none;
+                        @include el-content(after, none) {
                             margin: 0 0.3rem;
                             @include el-size(0.3rem, 0.3rem);
                             @extend %radius-full;
                             background-color: $color-neutral-600;
                             vertical-align: middle;
                         }
+                        // &::before{
+                        //     display: none;
+                        //     content: '';
+                        //     float: right;
+                        // }
+                        // &::after{
+                        //     content: '';
+                        //     display: none;
+                        //     margin: 0 0.3rem;
+                        //     @include el-size(0.3rem, 0.3rem);
+                        //     @extend %radius-full;
+                        //     background-color: $color-neutral-600;
+                        //     vertical-align: middle;
+                        // }
                     }
                     .txt{
                         margin-top: 0.4rem;
@@ -394,42 +443,48 @@ body{
                     .area{
                         &-state{
                             position: relative;
-                            &::before{
+                            @include dflex($al-items:center);
+                            @include el-content(before, inline-flex) {
                                 content: '출근\00a0전';
-                                display: block;
-                                position: absolute;
-                                top: 0;
-                                left: 2.4rem;
                                 width: fit-content;
-                                @extend %heading-sm-medium;
+                                order:2;
+                                @extend %body-lg-regular;
                                 color: $color-text-secondary;
+                                margin-left:.6rem;
                             }
+                            // &::before{
+                            //     content: '출근\00a0전';
+                            //     display: block;
+                            //     position: absolute;
+                            //     top: 0;
+                            //     left: 2.4rem;
+                            //     width: fit-content;
+                            //     @extend %heading-sm-medium;
+                            //     color: $color-text-secondary;
+                            // }
                             .icon{
                                 position: relative;
-                                display: inline-block;
-                                margin-top: 0.7rem;
+                                display: inline-flex;
+                                order:1;
+                                // margin-top: 0.7rem;
                                 @include el-size(1.8rem, 1.8rem);
                                 border: 0.15rem solid $color-neutral-600;
                                 @extend %radius-full;
-                                &::after{
-                                    content: '';
-                                    display: block;
-                                    position: absolute;
-                                    top: 50%;
-                                    left: 50%;
-                                    transform: translate(-50%, -50%);
+                                @include el-content(after) {
+                                    @include obj-offset-align;
                                     @include el-size(0.6rem, 0.6rem);
                                     @extend %radius-full;
-                                    background-color: $color-neutral-600;
+                                    background-color:$color-icon-secondary;
                                 }
                             }
                             .btnWrap{
-                                float: right;
+                                display: inline-flex;
+                                order:3;
+                                margin-left:auto;
                             }
                         }
                         &-time{
-                            display: flex;
-                            align-items: center;
+                            @include dflex($al-items:center);
                             margin: 2.4rem 0 3.2rem;
                             .tit{
                                 @extend %heading-xl-bold;
@@ -441,15 +496,20 @@ body{
             }
             &-box{
                 &.dash-line{
-                    &::after{
-                        content: '';
-                        display: block;
-                        position: absolute;
+                    @include el-content(after) {
+                        @include pos-offset($bottom: 0, $left: 1.75rem);
                         @include el-size(calc(100% - 3.5rem), 0.1rem);
-                        bottom: 0;
-                        left: 1.75rem;
-                        border-bottom: 0.1rem dashed $color-border-secondary;
+                        @include line(border, 0.1rem dashed $color-border-secondary, bottom);
                     }
+                    // &::after{
+                    //     content: '';
+                    //     display: block;
+                    //     position: absolute;
+                    //     @include el-size(calc(100% - 3.5rem), 0.1rem);
+                    //     bottom: 0;
+                    //     left: 1.75rem;
+                    //     border-bottom: 0.1rem dashed $color-border-secondary;
+                    // }
                 }
                 &.stage{
                     display: none;
@@ -466,11 +526,8 @@ body{
                     .txt{
                         display: none;
                     }
-                    &::before{
+                    &::before {
                         content: '오늘은 공휴일이에요';
-                        display: block;
-                        @extend %body-lg-regular;
-                        color: $color-text-disabled;
                     }
                 }
             }
@@ -484,9 +541,6 @@ body{
                     }
                     &::before{
                         content: '오늘은 공휴일이에요';
-                        display: block;
-                        @extend %body-lg-regular;
-                        color: $color-text-disabled;
                     }
                 }
             }
@@ -497,16 +551,22 @@ body{
                     .area{
                         &-state{
                             position: relative;
-                            &::before{
+                            @include el-content(before) {
                                 content: '업무\00a0중';
-                                display: block;
-                                position: absolute;
-                                top: 0;
-                                left: 2.4rem;
                                 width: fit-content;
-                                @extend %heading-md-medium;
+                                @extend %body-lg-regular;
                                 color: $color-text-info;
                             }
+                            // &::before{
+                            //     content: '업무\00a0중';
+                            //     display: block;
+                            //     position: absolute;
+                            //     top: 0;
+                            //     left: 2.4rem;
+                            //     width: fit-content;
+                            //     @extend %body-lg-regular;
+                            //     color: $color-text-info;
+                            // }
                             .icon{
                                 border-color: $color-border-focusring;
                                 &::after{
@@ -542,12 +602,6 @@ body{
                             position: relative;
                             &::before{
                                 content: '업무완료';
-                                display: block;
-                                position: absolute;
-                                top: 0;
-                                left: 2.4rem;
-                                width: fit-content;
-                                @extend %heading-md-medium;
                                 color: $color-text-secondary;
                             }
                         }
@@ -570,9 +624,16 @@ body{
         &.all{
             .cont-item{
                 &.title{
+                    flex-direction: column-reverse;
+                    .txt{
+                        display: none;
+                    }
+                    &::before{
+                        content: '오늘은 휴무일이에요';
+                    }
                     .tit{
                         &::before{
-                            display: inline-block;
+                            display: inline-flex;
                             content: '종일연차';
                         }
                         &::after{
@@ -587,7 +648,7 @@ body{
                 &.title{
                     .tit{
                         &::before{
-                            display: inline-block;
+                            display: inline-flex;
                             content: '오전반차';
                         }
                         &::after{
@@ -602,7 +663,7 @@ body{
                 &.title{
                     .tit{
                         &::before{
-                            display: inline-block;
+                            display: inline-flex;
                             content: '오후반차';
                         }
                         &::after{
@@ -624,7 +685,7 @@ body{
         border-radius: 0 0 2.4rem 2.4rem;
         box-shadow: 0.4rem 1.6rem 1.6rem 0 $color-effect-shadow;
         + .commute-details{
-             padding-top: 3.2rem;
+            padding-top: 3.2rem;
         }
         .commute-list{
             margin: 0 2rem;

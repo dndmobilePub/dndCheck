@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CheckCheck</title>
+    <title>메인 - CHECK CHECK</title>
     <link rel="stylesheet" href="../../assets/css/cp.style.css">
     <script src="../../assets/js/lib/lib.jquery-3.6.3.min.js"></script>
     <script src="../../assets/js/lib/lib.jquery-ui-1.13.2.js"></script>
@@ -16,8 +16,8 @@
                     <a href="#" class="tit"><strong>홍길동</strong>님</a>
                 </div>
                 <div class="right">
-                    <button class="alarm new"><span class="blind">알림</span></button>
-                    <button class="total _modalBtn" data-modal="modal3"><span class="blind">전체메뉴</span></button>
+                    <button class="ico alarm new"><span class="blind">알림</span></button>
+                    <button class="ico nav _modalBtn" data-modal="allMenu"><span class="blind">전체메뉴</span></button>
                 </div>
             </div>
             <div class="contentWrap">
@@ -42,7 +42,7 @@
                                 <span class="tit">07:58:13</span>
                             </div>
                             <div class="btnWrap">
-                                <button class="btn primary size-lg full">출근하기</button>
+                                <button class="btn primary size-md full">출근하기</button>
                             </div>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
         </div>
     </div>
 
-    <div class="modalPop _right" modal-target="modal3">
+    <div class="modalPop _right" modal-target="allMenu">
         <div class="modalWrap">
             <div class="modal-header">
                 <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
@@ -83,12 +83,6 @@
                     <a href="#" class="item"><i class="ico type3" aria-hidden="true"></i>공지/설문</a>
                     <a href="#" class="item"><i class="ico type4" aria-hidden="true"></i>근무지 정보</a>
                     <a href="#" class="item"><i class="ico type5" aria-hidden="true"></i>내정보</a>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="btnWrap grow full">
-                    <button type="button" class="btn secondary size-lg btn-close-pop">취소</button>
-                    <button type="button" class="btn primary size-lg btn-close-pop">확인</button>
                 </div>
             </div>
         </div>

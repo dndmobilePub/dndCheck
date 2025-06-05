@@ -10,6 +10,7 @@ $field:'.field';
 $fmsg: '#{$field}-msg';
 $fieldLabel: '#{$field}-label';
 #{$field} {
+    line-height: normal;
     &.grow, .grow {flex:1 0 0;}
     &-btn {@include dflex($j-content:center, $al-items:center); flex-shrink:0;}
     &-label:not(.field-chkrdo .field-label) {display:block; margin-bottom: 1rem;}
@@ -238,20 +239,24 @@ $fieldLabel: '#{$field}-label';
     }
 
     ._secureTxt {
-        @include pos-offset(relative); display:block; height:4rem;
+        @include pos-offset(relative);
+        display:block; width:100%; height:4rem;
         & > input[type="password"] {
             @include pos-offset(relative, $z-index:2); color:transparent;
             &::placeholder {color:transparent;}
         }
+        &._input {display: flex;}
         ._password {padding:0 !important;}
 
         & > i {
             @include pos-offset($top:50%, $left:0, $z-index:1);
             transform: translate(0, -50%);
-            display:block; @include el-size(1rem, 1rem);
-            background:$color-bg-interactive-secondary; @extend %radius-full;
+            display:block; @include el-size(1rem, 0);
+            background:$color-text-primary; @extend %radius-full;
+            // @include transition(.3s, height, ease-in-out);
 
             & + i {margin-left:.3rem;}
+            &._line, &._is-active, &._pwTxt{height:1rem;}
             &._line {
                 @include line(inset, $color-border-secondary);
                 background:$color-bg-primary;

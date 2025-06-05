@@ -91,7 +91,14 @@ hr {
     margin-right:2.4rem !important;
 }
 
-// *:focus, *:focus-visible {outline:none;}
+*:focus, *:focus-visible {
+  outline: none;
+}
+
+.user-is-tabbing *:focus:not(textarea), .user-is-tabbing *:focus-visible:focus:not(textarea){
+  outline:.1rem solid #666;
+  outline-offset:.2rem;
+}
 
 //-- ** PART: BASIC CSS
 .hide {@include ir("hide");}

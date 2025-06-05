@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CheckCheck</title>
+    <title>LOGIN - CHECK CHECK</title>
     <link rel="stylesheet" href="../../assets/css/cp.style.css">
     <script src="../../assets/js/lib/lib.jquery-3.6.3.min.js"></script>
     <script src="../../assets/js/lib/lib.jquery-ui-1.13.2.js"></script>
@@ -13,7 +13,7 @@
         <div class="containerWrap">
             <div class="loginWrap">
                 <div class="login-title">
-                    <h1 class="tit">회사명</h1>
+                    <h1 class="tit">디앤디모바일</h1>
                 </div>
                 <div class="login-content">
                     <div class="login-group">
@@ -31,9 +31,12 @@
                                 </p>
                             </div>
                             <div class="field">
-                                <div class="field-outline">
+                                <div class="field-outline pw-group">
                                     <div class="field-input grow _input">
-                                        <input type="password" class="_format _password" placeholder="●●●●" maxlength="4">
+                                        <div class="_secureTxt grow _input" secure-type="normal">
+                                            <input type="text" class="_format" placeholder="비밀번호" title="비밀번호 입력">
+                                            <button type="button" class="field-btn _input-clear"><span class="hide">입력값삭제</span></button>
+                                        </div>
                                     </div>
                                 </div>
                                 <p class="field-msg">
@@ -43,7 +46,7 @@
                         </div>
                         <div class="chech-group">
                             <div class="field">
-                                <label for="chk1-1" class="field-chkrdo">
+                                <label for="chk1-1" class="field-chkrdo sm">
                                     <input type="checkbox" name="chkGroup" id="chk1-1" class="chk">
                                     <i class="field-icon" aria-hidden="hidden"></i>
                                     <span class="field-label">로그인 상태 유지</span>
