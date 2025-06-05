@@ -1,3 +1,11 @@
+//--- *!
+//  * Publishing UI Components
+//  * © 2025 BLUEWEBD™. All rights reserved.
+//  * Licensed under the MIT License.
+//  * Attribution to BLUEWEBD™ is required for all copies and derivative works.
+//  * https://opensource.org/licenses/MIT
+
+//-- ** LOADING
 .loadingWrap {
     @include dflex($j-content:center, $al-items:center, $gap:1.5rem 0) {flex-flow: column;}
     @include pos-offset(fixed, $top:0, $z-index:9995);

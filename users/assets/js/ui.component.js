@@ -1,3 +1,10 @@
+/*!
+ * Publishing UI Components
+ * © 2025 BLUEWEBD™. All rights reserved.
+ * Licensed under the MIT License.
+ * https://opensource.org/licenses/MIT
+ */
+
 var COMPONENT_UI = (function (cp, $) {
 
     /* 브라우저 & 디바이스버전 체크 */

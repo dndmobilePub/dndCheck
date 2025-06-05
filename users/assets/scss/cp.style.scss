@@ -1,18 +1,26 @@
+//--- *!
+//  * Publishing UI Components
+//  * © 2025 BLUEWEBD™. All rights reserved.
+//  * Licensed under the MIT License.
+//  * Attribution to BLUEWEBD™ is required for all copies and derivative works.
+//  * https://opensource.org/licenses/MIT
+
+//-- ** import
 @import 'mix.token';
 @import 'primitive';
 @import 'semantic';
 @import 'mixin';
 @import 'reset';
-@import 'cp.ico'; // 이미지 아이콘 관련
-@import 'cp.list'; // List
-@import 'cp.loading'; // 로딩, scrollTop
-@import 'cp.button'; // 버튼
-@import 'cp.rdochk'; // 라디오+체크
-@import 'cp.input'; // input:text
-@import 'cp.text'; // Title, Text, List
-@import 'cp.popup'; // 모달팝, alert, toast
-@import 'cp.select'; // select
-@import 'cp.tab'; // TAB
-@import 'cp.toggle'; // 아코디언
-@import 'cp.swiper'; // SWIPER
-@import 'layout'; // 페이지 작업 - BHY
+@import 'cp.ico';
+@import 'cp.list';
+@import 'cp.loading';
+@import 'cp.button';
+@import 'cp.rdochk';
+@import 'cp.input';
+@import 'cp.text';
+@import 'cp.popup';
+@import 'cp.select';
+@import 'cp.tab';
+@import 'cp.toggle';
+@import 'cp.swiper';
+@import 'layout';

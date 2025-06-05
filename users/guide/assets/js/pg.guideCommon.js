@@ -15,12 +15,12 @@ $headerHtml += '</div>';
 
 $(function () {
   if (localStorage.lightMode == "dark") $('html').attr("light-mode", "dark");
-  guide.header();  
+  guide.header();
   makeBoard();
 
   $(window).resize();
 });
-var makeBoard = function () {  
+var makeBoard = function () {
   var $slide = $('.pg_board_tab .swiper-slide');
   var $lenth = $slide.length;
   var htmlBoard = function (data) {
@@ -31,7 +31,7 @@ var makeBoard = function () {
     html += '</div>';
     $('.pg_content').append(html);
   };
-  
+
   var htmlUl = function (data) {
     var $data = data;
     var ulHtml = '';
@@ -49,7 +49,7 @@ var makeBoard = function () {
         liHtml += '                새창열기';
         liHtml += '            </a>';
         liHtml += '        </div>';
-        liHtml += '    </div>';        
+        liHtml += '    </div>';
         liHtml += '        <div class="tblWrap">';
         liHtml += '            <table class="tbl">';
         liHtml += '                <caption>' + obj.name + ' component info</caption>';
@@ -88,7 +88,7 @@ var makeBoard = function () {
       if (data.length) $dataHtml = htmlUl(data);
     },
     complete: function (data) {
-      
+
       htmlBoard($dataHtml);
 
       if (LoadCount === $lenth) {
@@ -106,7 +106,7 @@ var makeBoard = function () {
   });
 
   $slide.each(function (i) {
-    LoadCount += 1;    
+    LoadCount += 1;
   });
 };
 
@@ -130,9 +130,9 @@ var guide = {
       $('html').toggleClass('util_show');
     });
   },
+
   switchSet: function (e) {
     var $util = $('body').attr('data-util');
-    
     $('.switch li').each(function () {
       var $this = $(this);
       if ($util.charAt(0).toUpperCase() + $util.slice(1) === $this.text()) $this.addClass('active');
@@ -147,6 +147,7 @@ var guide = {
     });
     $(window).resize();
   },
+
   switch: function () {
     if ($('.switch').length) {
       $('.switch>ul>li>a').on('mouseover focusin', function (e) {
@@ -157,23 +158,7 @@ var guide = {
       });
     }
   },
-  tab: function () {
-    var $tab = $('.pg_board_tab ul li');
-    var $tabCurrent = $('.pg_board_tab ul li.active');
-    $tab.on('click', function () {
-      var $this = $(this);
-      $this.addClass('active').siblings('li').removeClass('active');
-      
-    });
-    $tab.eq(0).addClass('active');
-  },
-  UI: function () {
-    var $document = $(document),
-      $currentName = $('nav a[href^="' + location.pathname.split("/")[5] + '"]'),
-      $currentTile = $currentName.text();
-    $currentName.closest('li').addClass('active').parents('li').addClass('active'); // 현재 메뉴 활성화
-    if (!$('.btm_btn_set').length) $('body').append('<div class="btm_btn_set"><button type="button" class="btn_guide_top"><span class="hide">TOP</span></button><button type="button" class="btn_light_mode"><i></i><i></i><i></i><i></i><span class="hide">다크모드</span></button></div>');
-  },
+
   slide: function () {
     var $tab = $('.pg_board_tab');
     if ($tab.length > 0) {
@@ -181,38 +166,74 @@ var guide = {
         slidesPerView: 'auto',
         freeMode: true
       });
-      $('.pg_board_tab .swiper-slide').on('click', function (e) {
+
+      // 중복 클릭 방지를 위한 바인딩 통합
+      $('.pg_board_tab .swiper-slide').off('click').on('click', function (e) {
+        e.preventDefault();
+
         var $this = $(this);
-        var gnbWidth = $tab.width();
+
+        // 탭 활성화 처리
+        $this.addClass('active').siblings('li').removeClass('active');
+
+        // Swiper 위치 보정
+        var gnbWidth = $('.pg_board_tab').width();
         var offset = $this.width() + $this.offset().left + $this.width();
         var myIndex = $this.index();
         (gnbWidth < offset) ? tabSwiper.slideNext() : tabSwiper.slideTo(myIndex - 1);
+
+        // 👉 앵커 이동 처리
+        var targetSelector = $this.find('a').attr('href');
+        if ($(targetSelector).length) {
+          var top = $(targetSelector).offset().top;
+          $('html, body').animate({ scrollTop: top - 170 }, 500); // 상단 여백 조정
+        }
       });
+
+
+      // 초기 상태: 첫 번째 탭 활성화
+      $('.pg_board_tab ul li').eq(0).addClass('active');
     }
   },
+
   scroll: function () {
     $(window).scroll(function () {
       guide.btnSet();
-      guide.headFixed();      
+      guide.headFixed();
     });
     $(window).scroll();
   },
+
   btnSet: function () {
-    var $window = $(window), $btmBtnSet = $('.btm_btn_set'), $btnTop = $('.btn_guide_top'), $btnLightMode = $('.btn_light_mode');
+    var $window = $(window),
+      $btmBtnSet = $('.btm_btn_set'),
+      $btnTop = $('.btn_guide_top'),
+      $btnLightMode = $('.btn_light_mode');
+
     ($(window).scrollTop() > 100) ? $btmBtnSet.addClass('active') : $btmBtnSet.removeClass('active');
-    $btnTop.on('click', function () {
+
+    $btnTop.off('click').on('click', function () {
       $tabLiOn = $('.pg_board_tab .swiper-slide');
       $(window).scrollTop(0);
       $tabLiOn.removeClass('active').eq(0).addClass('active');
     });
+
     $btnLightMode.off('click').on('click', function () {
       guide.toggle_light_mode();
     });
   },
+
   headFixed: function () {
-    var $window = $(window), $wrap = $('#pgWrap'), $gHeader = $('#pgHeader'), $gTitle = $('.pg_titles');
-    ($(window).scrollTop() > $gTitle.height() && $(window).width() > 1024) ? $wrap.addClass('fixed') : $wrap.removeClass('fixed');
+    var $window = $(window),
+      $wrap = $('#pgWrap'),
+      $gHeader = $('#pgHeader'),
+      $gTitle = $('.pg_titles');
+
+    ($(window).scrollTop() > $gTitle.height() && $(window).width() > 1024)
+      ? $wrap.addClass('fixed')
+      : $wrap.removeClass('fixed');
   },
+
   toggle_light_mode: function () {
     var app = $('html');
     if (localStorage.lightMode == "dark") {
@@ -225,12 +246,25 @@ var guide = {
       $(".component-wrap > iframe").contents().find("html").attr("light-mode", "dark");
     }
   },
+
+  UI: function () {
+    var $document = $(document),
+      $currentName = $('nav a[href^="' + location.pathname.split("/")[5] + '"]'),
+      $currentTile = $currentName.text();
+
+    $currentName.closest('li').addClass('active').parents('li').addClass('active');
+
+    if (!$('.btm_btn_set').length) {
+      $('body').append('<div class="btm_btn_set"><button type="button" class="btn_guide_top"><span class="hide">TOP</span></button><button type="button" class="btn_light_mode"><i></i><i></i><i></i><i></i><span class="hide">다크모드</span></button></div>');
+    }
+  },
+
   init: function () {
     guide.UI();
     guide.slide();
     guide.switchSet();
     guide.switch();
     guide.scroll();
-    guide.tab();
+    // guide.tab(); // 중복 클릭 방지를 위해 제거
   }
 };

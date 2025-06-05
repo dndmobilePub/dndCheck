@@ -1,9 +1,13 @@
 @charset "utf-8";
 
-/* */
-/****************************************/
-/*	PART: RESET CSS
-/****************************************/
+//--- *!
+//  * Publishing UI Components
+//  * © 2025 BLUEWEBD™. All rights reserved.
+//  * Licensed under the MIT License.
+//  * Attribution to BLUEWEBD™ is required for all copies and derivative works.
+//  * https://opensource.org/licenses/MIT
+
+//-- ** PART: RESET CSS
 * {
     box-sizing: border-box;
 }
@@ -89,9 +93,7 @@ hr {
 
 // *:focus, *:focus-visible {outline:none;}
 
-/****************************************/
-/*	PART: BASIC CSS
-/****************************************/
+//-- ** PART: BASIC CSS
 .hide {@include ir("hide");}
 .blind {@include ir("blind");}
 .screen {@include ir("screen");}

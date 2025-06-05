@@ -56,18 +56,18 @@ var makeBoard = function () {
     html += '<table>';
     html += '<caption>메뉴별 코딩리스트</caption>';
     html += '<colgroup>';
-    html += '<col style="width:40px">';
+    html += '<col style="width:50px">';
     html += '<col style="width:150px">';
     html += '<col style="width:90px">';
     html += '<col class="d1" style="width:auto">';
     html += '<col class="d2" style="width:auto">';
     html += '<col class="d3" style="width:auto">';
     html += '<col class="d4" style="width:auto">';
-    html += '<col style="width:250px">';
+    html += '<col style="width:300px">';
     html += '<col style="width:90px">';
-    html += '<col style="width:90px">';
-    html += '<col style="width:90px">';
-    html += '<col style="width:90px">';
+    html += '<col style="width:110px">';
+    html += '<col style="width:100px">';
+    html += '<col style="width:100px">';
     html += '<col style="width:80px">';
     html += '<col style="width:100px">';
     html += '</colgroup>';
@@ -121,7 +121,7 @@ var makeBoard = function () {
     var $data = data;
     var tbodyHtml = '';
     var idx = 1;
-    var urlLink = '../../users/html';
+    var urlLink = '../../v2/html';
     var createTr = function (obj) {
       var trHtml = '';
       if (obj.directory !== undefined && obj.directory !== '') {
@@ -226,8 +226,6 @@ var makeBoard = function () {
               remark += '<li class="issue">' + this + '</li>';
             } else if (this.indexOf('지연') != -1) {
               remark += '<li class="schedule">' + this + '</li>';
-            } else if (this.indexOf('접근성') != -1) {
-              remark += '<li class="wah">' + this + '</li>';
             } else if (this.indexOf('기타') != -1) {
               remark += '<li class="etc">' + this + '</li>';
             } else {
@@ -317,7 +315,6 @@ var guide = {
   },
   switchSet: function (e) {
     var $util = $('body').attr('data-util');
-    
     $('.switch li').each(function () {
       var $this = $(this);
       if ($util.charAt(0).toUpperCase() + $util.slice(1) === $this.text()) $this.addClass('active');
@@ -822,16 +819,33 @@ var guide = {
         slidesPerView: 'auto',
         freeMode: true
       });
-      $('.pg_board_tab .swiper-slide').on('click', function (e) {
+
+      // 중복 클릭 방지를 위한 바인딩 통합
+      $('.pg_board_tab .swiper-slide').off('click').on('click', function (e) {
+        e.preventDefault();
+
         var $this = $(this);
-        var gnbWidth = $tab.width();
+
+        // 탭 활성화 처리
+        $this.addClass('active').siblings('li').removeClass('active');
+
+        // Swiper 위치 보정
+        var gnbWidth = $('.pg_board_tab').width();
         var offset = $this.width() + $this.offset().left + $this.width();
         var myIndex = $this.index();
         (gnbWidth < offset) ? tabSwiper.slideNext() : tabSwiper.slideTo(myIndex - 1);
+
+        // 👉 앵커 이동 처리
+        var targetSelector = $this.find('a').attr('href');
+        if ($(targetSelector).length) {
+          var top = $(targetSelector).offset().top;
+          $('html, body').animate({ scrollTop: top - 60 }, 300); // 상단 여백 조정
+        }
       });
-      $(window).on('load', function () {
-        tabSwiper.update();
-      });
+
+
+      // 초기 상태: 첫 번째 탭 활성화
+      $('.pg_board_tab ul li').eq(0).addClass('active');
     }
   },
   devicePreview: function () {
@@ -1068,19 +1082,18 @@ var guide = {
         $plan = $this.find('.remark li.plan');
         $issue = $this.find('.remark li.issue');
         $schedule = $this.find('.remark li.schedule');
-        $wah = $this.find('.remark li.wah');
         $etc = $this.find('.remark li.etc');
       if ($design.length) {
         var num = $design.length,
           $btn = $this.find('.btn_design');
         $design.closest('tr').addClass('design');
-        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_design">디자인확인 필요<strong>[' + num + ']</strong></button>');
+        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_design">디자인확인 필요 <strong>[' + num + ']</strong></button>');
       }
       if ($plan.length) {
         var num = $plan.length,
           $btn = $this.find('.btn_plan');
         $plan.closest('tr').addClass('plan');
-        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_plan">기획확인 필요<strong>[' + num + ']</strong></button>');
+        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_plan">기획확인 필요 <strong>[' + num + ']</strong></button>');
       }
       if ($issue.length) {
         var num = $issue.length,
@@ -1092,13 +1105,7 @@ var guide = {
         var num = $schedule.length,
           $btn = $this.find('.btn_schedule');
         $schedule.closest('tr').addClass('schedule');
-        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_schedule">일정확인 필요<strong>[' + num + ']</strong></button>');
-      }
-      if ($schedule.length) {
-        var num = $schedule.length,
-          $btn = $this.find('.btn_wah');
-        $schedule.closest('tr').addClass('wah');
-        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_wah">접근성<strong>[' + num + ']</strong></button>');
+        if (!$btn.length) $this.find('.pg_alert_btn_set').append('<button type="button" class="btn_schedule">일정확인 필요 <strong>[' + num + ']</strong></button>');
       }
       if ($etc.length) {
         var num = $etc.length,
@@ -1148,16 +1155,6 @@ var guide = {
         } else {
           $this.removeClass('active');
           $tr.show().siblings('tr.schedule').find('.remark>li').removeAttr('style');
-        }
-      }
-      if ($this.hasClass('btn_wah')) {
-        $this.siblings().removeClass('active');
-        if (!$this.hasClass('active')) {
-          $this.addClass('active');
-          $tr.hide().siblings('tr.wah').show().find('.remark>li').show();
-        } else {
-          $this.removeClass('active');
-          $tr.show().siblings('tr.wah').find('.remark>li').removeAttr('style');
         }
       }
       if ($this.hasClass('btn_etc')) {

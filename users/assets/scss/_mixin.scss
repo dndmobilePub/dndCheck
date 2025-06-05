@@ -1,4 +1,12 @@
-// ir
+//--- *!
+//  * Publishing UI Components
+//  * © 2025 BLUEWEBD™. All rights reserved.
+//  * Licensed under the MIT License.
+//  * Attribution to BLUEWEBD™ is required for all copies and derivative works.
+//  * https://opensource.org/licenses/MIT
+
+//-- ** MixIn
+//- * ir
 @mixin ir-reset($width, $height) {
     position: absolute !important;
     overflow: hidden !important;
@@ -39,7 +47,7 @@
     }
 }
 
-// gradient
+//- *gradient
 @mixin bg-gradient($type, $angle, $color1, $color2) {
     @if $type == line {
         background: linear-gradient($angle, $color1, $color2);
@@ -142,6 +150,7 @@
     }
 }
 
+//- * pos
 @mixin obj-offset-align($pos: absolute,
     $direction: center,
     $top: null,
@@ -274,7 +283,7 @@
 //   @content;
 // }
 
-// /* Typography Mixin */
+//- * Typography Mixin
 // /* 문자열 % 포함 수치 변환 */
 @function str-to-number($string) {
     @if type-of($string)=='string' and str-index($string, '%') !=null {

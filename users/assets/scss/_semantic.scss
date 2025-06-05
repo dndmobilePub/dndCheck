@@ -1,7 +1,12 @@
-/**************************/
-/*** Semantic Variables ***/
-/**************************/
-/* Color */
+//--- *!
+//  * Publishing UI Components
+//  * © 2025 BLUEWEBD™. All rights reserved.
+//  * Licensed under the MIT License.
+//  * Attribution to BLUEWEBD™ is required for all copies and derivative works.
+//  * https://opensource.org/licenses/MIT
+
+//-- ** Semantic Variables
+//- * Color
 $color-brand-primary-400:$color-blue-400;
 $color-brand-primary-500:$color-blue-500;
 $color-brand-primary-600:$color-blue-600;
@@ -277,7 +282,7 @@ $fontWeight:(
     bold:(font-weight:$typo-weight-bold),
 );
 
-/* Typography */
+//- * Typography */
 
 %heading-2xl-bold {@include dndCP($heading, (2xl, bold));}
 %heading-2xl-medium {@include dndCP($heading, (2xl, medium));}
@@ -312,7 +317,7 @@ $fontWeight:(
 %weight-medium {@include dndCP($fontWeight, medium);}
 %weight-bold {@include dndCP($fontWeight, bold);}
 
-/* Radius */
+//- * Radius */
 $radius: (
     0:(border-radius:$radius-0),
     2:(border-radius:$radius-2),
