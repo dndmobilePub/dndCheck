@@ -201,6 +201,15 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   margin-right: 2.4rem !important;
 }
 
+*:focus, *:focus-visible {
+  outline: none;
+}
+
+.user-is-tabbing *:focus:not(textarea), .user-is-tabbing *:focus-visible:focus:not(textarea) {
+  outline: 0.1rem solid #666;
+  outline-offset: 0.2rem;
+}
+
 .hide {
   position: absolute !important;
   overflow: hidden !important;

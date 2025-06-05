@@ -14,19 +14,19 @@
   letter-spacing: -0.02rem;
 }
 
-.commute-date, .cont-box.blue .txt, .login-title .tit, .tit.dep01 {
+.commute-date, .cont-box.blue .txt, .headerWrap .left .tit > strong, .login-title .tit, .tit.dep01 {
   font-family: 'Pretendard', 'sans-serif';
   font-weight: 600;
-  font-size: 2.8rem;
-  line-height: 3.6rem;
+  font-size: 2.4rem;
+  line-height: 3.2rem;
   letter-spacing: -0.02rem;
 }
 
 .headerWrap .left .tit {
   font-family: 'Pretendard', 'sans-serif';
-  font-weight: 600;
-  font-size: 2.8rem;
-  line-height: 3.6rem;
+  font-weight: 400;
+  font-size: 2.4rem;
+  line-height: 3.2rem;
   letter-spacing: -0.02rem;
 }
 
@@ -38,15 +38,7 @@
   letter-spacing: -0.02rem;
 }
 
-.commute-group.overtime .cont-item.state .area-state::before, .commute-group.afterwork .cont-item.state .area-state::before, .commute-group.late .cont-item.state .area-state::before {
-  font-family: 'Pretendard', 'sans-serif';
-  font-weight: 600;
-  font-size: 2rem;
-  line-height: 2.8rem;
-  letter-spacing: -0.02rem;
-}
-
-.commute-wrap .date-tit .tit, .commute-group .cont-item.title .tit, .cont-box.stage .tit, .login-content .tit, .tit.dep02 {
+.commute-wrap .date-tit .tit, .login-content .tit, .tit.dep02 {
   font-family: 'Pretendard', 'sans-serif';
   font-weight: 600;
   font-size: 1.8rem;
@@ -54,7 +46,7 @@
   letter-spacing: -0.02rem;
 }
 
-.commute-list .item .txt, .commute-group .cont-item.state .area-state::before {
+.commute-list .item .txt {
   font-family: 'Pretendard', 'sans-serif';
   font-weight: 500;
   font-size: 1.8rem;
@@ -62,15 +54,7 @@
   letter-spacing: -0.02rem;
 }
 
-.cont-box.stage .txt {
-  font-family: 'Pretendard', 'sans-serif';
-  font-weight: 400;
-  font-size: 1.8rem;
-  line-height: 2.4rem;
-  letter-spacing: -0.02rem;
-}
-
-.survey-title .txt, .survey-title .tit, .current-box .item.day .tit, .headerWrap .center .title, .tab-wrap.tab-moving.box .tab-list-wrap .tab a, .btn.size-md, .btn.size-lg {
+.survey-title .txt, .survey-title .tit, .current-box .item.day .tit, .commute-group .cont-item.title .tit, .cont-box.stage .tit, .headerWrap .center .title, .tab-wrap.tab-moving.box .tab-list-wrap .tab a, .btn.size-md, .btn.size-lg {
   font-family: 'Pretendard', 'sans-serif';
   font-size: 1.6rem;
   line-height: 2.4rem;
@@ -86,7 +70,7 @@
   font-weight: 500;
 }
 
-.commute-wrap .commute-list .item .txt, .commute-wrap .commute-list .item .tit, .commute-group.annual .cont-item.title::before, .commute-group.holiday .cont-item.title::before, .commute-group .cont-item.title .txt, .cont-box.file .item, .cont-box.blue .tit, .desc.txt-lg, .desc {
+.commute-wrap .commute-list .item .txt, .commute-wrap .commute-list .item .tit, .commute-group.afterwork .cont-item.state .area-state::before, .commute-group.late .cont-item.state .area-state::before, .commute-group .cont-item.state .area-state::before, .commute-group .cont-item.title .txt, .commute-group .cont-item.title::before, .cont-box.file .item, .cont-box.blue .tit, .cont-box.stage .txt, .desc.txt-lg, .desc {
   font-family: 'Pretendard', 'sans-serif';
   font-size: 1.6rem;
   line-height: 2.4rem;
@@ -126,7 +110,7 @@
   font-weight: 500;
 }
 
-.commute-list .item .tit, .tooltip-content, .desc.txt-sm, .tit > .headtypo, .tit + .headtypo, .tit.sub, .field._label .field-outline .field-label {
+.commute-list .item .tit, .tooltip-content, .desc.txt-sm, .tit > .headtypo, .tit + .headtypo, .tit.sub, .field._label .field-outline .field-label, .field-chkrdo.sm .field-label {
   font-family: 'Pretendard', 'sans-serif';
   font-size: 1.3rem;
   line-height: 1.8rem;
@@ -158,10 +142,6 @@
   font-weight: 400;
 }
 
-.headerWrap .left .tit {
-  font-weight: 400;
-}
-
 .tab-nav .swiper-slide.active > a, .select-lst > li._is-active > a {
   font-weight: 600;
 }
@@ -178,7 +158,7 @@
   border-radius: 0.8rem;
 }
 
-.current-box, .commute-list, .tab-wrap.tab-moving.box .tab-list-wrap .highlight, .tab-wrap.tab-moving.box .tab-list-wrap .tab-list, .btn.ico-md, .btn.size-md, .btn.size-lg, .lst.segmented-filter > li {
+.current-box, .commute-list, .login-content, .tab-wrap.tab-moving.box .tab-list-wrap .highlight, .tab-wrap.tab-moving.box .tab-list-wrap .tab-list, .btn.ico-md, .btn.size-md, .btn.size-lg, .lst.segmented-filter > li {
   border-radius: 1rem;
 }
 
@@ -194,7 +174,7 @@
   border-radius: 99.9rem;
 }
 
-.list.dot.one::before, .list.dot .item::before, .commute-wrap.roundline .commute-list::before, .commute-group .cont-item.state .area-state .icon::after, .commute-group .cont-item.state .area-state .icon, .commute-group .cont-item.title .tit::after, .cont-box .text-group.ico::before, .swiper-pagination-bullet, ._input ._secureTxt > i, .field.box-opt.ico .field-icon, .field-switch .field-icon::before, .field-chkrdo .rdo ~ .field-icon, .field-chkrdo .rdo:checked + .field-icon::before {
+.list.dot.one::before, .list.dot .item::before, .commute-wrap.roundline .commute-list::before, .commute-group .cont-item.state .area-state .icon::after, .commute-group .cont-item.state .area-state .icon, .commute-group .cont-item.title .tit::after, .cont-box .text-group.ico::before, .headerWrap .right .alarm.new::after, .swiper-pagination-bullet, ._input ._secureTxt > i, .field.box-opt.ico .field-icon, .field-switch .field-icon::before, .field-chkrdo .rdo ~ .field-icon, .field-chkrdo .rdo:checked + .field-icon::before {
   border-radius: 100%;
 }
 
@@ -254,6 +234,61 @@
   transition: 0.5s all ease-in-out;
 }
 
+/* WEB FONT */
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 900;
+  font-display: swap;
+  src: local("Pretendard Bold"), url("../fonts/webfonts/Pretendard-Bold.subset.woff2") format("woff2"), url("../fonts/webfonts/Pretendard-Bold.subset.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 800;
+  font-display: swap;
+  src: local("Pretendard Bold"), url("../fonts/webfonts/Pretendard-Bold.subset.woff2") format("woff2"), url("../fonts/webfonts/Pretendard-Bold.subset.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-display: swap;
+  src: local("Pretendard SemiBold"), url("../fonts/webfonts/Pretendard-SemiBold.subset.woff2") format("woff2"), url("../fonts/webfonts/Pretendard-SemiBold.subset.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-display: swap;
+  src: local("Pretendard SemiBold"), url("../fonts/webfonts/Pretendard-SemiBold.subset.woff2") format("woff2"), url("../fonts/webfonts/Pretendard-SemiBold.subset.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 500;
+  font-display: swap;
+  src: local("Pretendard Medium"), url("../fonts/webfonts/Pretendard-Medium.subset.woff2") format("woff2"), url("../fonts/webfonts/Pretendard-Medium.subset.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-display: swap;
+  src: local("Pretendard Regular"), url("../fonts/webfonts/Pretendard-Regular.subset.woff2") format("woff2"), url("../fonts/webfonts/Pretendard-Regular.subset.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 300;
+  font-display: swap;
+  src: local("Pretendard Light"), url("../fonts/webfonts/Pretendard-Light.subset.woff2") format("woff2"), url("../fonts/webfonts/Pretendard-Light.subset.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 200;
+  font-display: swap;
+  src: local("Pretendard ExtraLight"), url("../fonts/webfonts/Pretendard-ExtraLight.subset.woff2") format("woff2"), url("../fonts/webfonts/Pretendard-ExtraLight.subset.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 100;
+  font-display: swap;
+  src: local("Pretendard Thin"), url("../fonts/webfonts/Pretendard-Thin.subset.woff2") format("woff2"), url("../fonts/webfonts/Pretendard-Thin.subset.woff") format("woff");
+}
 * {
   box-sizing: border-box;
 }
@@ -430,6 +465,15 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   margin-right: 2.4rem !important;
 }
 
+*:focus, *:focus-visible {
+  outline: none;
+}
+
+.user-is-tabbing *:focus:not(textarea), .user-is-tabbing *:focus-visible:focus:not(textarea) {
+  outline: 0.1rem solid #666;
+  outline-offset: 0.2rem;
+}
+
 .hide {
   position: absolute !important;
   overflow: hidden !important;
@@ -539,7 +583,7 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 7.5L10 12.5L4 7.5' stroke='%23212529' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
 }
 
-.ico-20.ico-arrow-left::before {
+.headerWrap .left .tit::after, .ico-20.ico-arrow-left::before {
   width: 2rem;
   height: 2rem;
   background: 50% 50% no-repeat;
@@ -578,7 +622,7 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   transform: rotate(-90deg);
 }
 
-.ico-24.ico-arrow-right::before {
+.headerWrap .left .back::after, .ico-24.ico-arrow-right::before {
   width: 2.4rem;
   height: 2.4rem;
   background: 50% 50% no-repeat;
@@ -587,31 +631,31 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 }
 
 .ico-32.ico-arrow-up::before {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 3.2rem;
+  height: 3.2rem;
   background: 50% 50% no-repeat;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M23.1992 13L15.9992 19L8.79922 13' stroke='%23212529' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
   transform: rotate(180deg);
 }
 
 .ico-32.ico-arrow-dn::before {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 3.2rem;
+  height: 3.2rem;
   background: 50% 50% no-repeat;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M23.1992 13L15.9992 19L8.79922 13' stroke='%23212529' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
 }
 
 .ico-32.ico-arrow-left::before {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 3.2rem;
+  height: 3.2rem;
   background: 50% 50% no-repeat;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M23.1992 13L15.9992 19L8.79922 13' stroke='%23212529' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
   transform: rotate(-90deg);
 }
 
 .ico-32.ico-arrow-right::before {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 3.2rem;
+  height: 3.2rem;
   background: 50% 50% no-repeat;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M23.1992 13L15.9992 19L8.79922 13' stroke='%23212529' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
   transform: rotate(90deg);
@@ -638,7 +682,7 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 3L13 13M13 3L3 13' stroke='%23212121' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A");
 }
 
-.btn.ico.add-field::after, .btn.ico.add-file::before, .ico-20.ico-add-file::before {
+.btn.ico.add-file::before, .ico-20.ico-add-file::before {
   width: 2rem;
   height: 2rem;
   background: 50% 50% no-repeat;
@@ -673,7 +717,7 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1646_17448)'%3E%3Cpath d='M14 11V17' stroke='%23212529' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10 11V17' stroke='%23212529' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M6 7V19C6 20.1046 6.89543 21 8 21H16C17.1046 21 18 20.1046 18 19V7' stroke='%23212529' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M4 7H20' stroke='%23212529' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M7 7L9 3H15L17 7' stroke='%23212529' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1646_17448'%3E%3Crect width='24' height='24' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
 }
 
-.ico-24.ico-add-field::before {
+.btn.ico.add-field::after, .ico-24.ico-add-field::before {
   width: 2.4rem;
   height: 2.4rem;
   background: 50% 50% no-repeat;
@@ -712,16 +756,16 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z'/%3E%3C/svg%3E");
 }
 
-.ico-32.ico-bell::before {
-  width: 2.4rem;
-  height: 2.4rem;
+.headerWrap .right .alarm::before, .ico-32.ico-bell::before {
+  width: 3.2rem;
+  height: 3.2rem;
   background: 50% 50% no-repeat;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.9999 6.66667C17.9094 6.66667 19.7408 7.34095 21.0911 8.54118C22.4413 9.74142 23.1999 11.3693 23.1999 13.0667C23.1999 15.6921 23.7933 17.6581 24.5629 19.1039C25.5461 20.951 26.0377 21.8746 26.0104 22.0857C25.9785 22.3318 25.9379 22.3995 25.7355 22.5434C25.5621 22.6667 24.6992 22.6667 22.9735 22.6667H9.02625C7.30054 22.6667 6.43769 22.6667 6.26424 22.5434C6.06191 22.3995 6.02126 22.3318 5.98936 22.0857C5.96202 21.8746 6.45364 20.951 7.43687 19.1039C8.20643 17.6581 8.79988 15.6921 8.79988 13.0667C8.79988 11.3693 9.55845 9.74142 10.9087 8.54118C12.259 7.34095 14.0903 6.66667 15.9999 6.66667ZM15.9999 6.66667V4M12.4719 26.6667C13.4136 27.4978 14.6505 28.0021 16.0052 28.0021C17.36 28.0021 18.5969 27.4978 19.5386 26.6667' stroke='%23212529' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
 }
 
-.ico-32.ico-menu::before {
-  width: 2.4rem;
-  height: 2.4rem;
+.headerWrap .right .nav::before, .ico-32.ico-menu::before {
+  width: 3.2rem;
+  height: 3.2rem;
   background: 50% 50% no-repeat;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 23H25' stroke='%23212529' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M7 16H25' stroke='%23212529' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M7 9H25' stroke='%23212529' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A");
 }
@@ -1596,6 +1640,25 @@ p.bul {
 .field-chkrdo + .field-chkrdo {
   margin-left: 2rem;
 }
+.field-chkrdo.sm .field-label {
+  margin-left: 0.8rem;
+}
+.field-chkrdo.sm .chk:checked + .field-icon::before {
+  width: 0.3rem;
+  height: 0.8rem;
+}
+.field-chkrdo.sm .chk ~ .field-icon {
+  width: 2rem;
+  height: 2rem;
+}
+.field-chkrdo.sm .rdo:checked + .field-icon::before {
+  width: 0.6rem;
+  height: 0.6rem;
+}
+.field-chkrdo.sm .rdo ~ .field-icon {
+  width: 1.6rem;
+  height: 1.6rem;
+}
 .field-chkrdo .chk:checked + .field-icon {
   background-color: #347EFF;
   border-color: #347EFF;
@@ -1940,6 +2003,7 @@ p.bul {
 }
 
 .field {
+  line-height: normal;
   /* FIELD - VALID */
   /* FIELD - PLACEHOLDER TYPE */
 }
@@ -2209,6 +2273,7 @@ p.bul {
 ._input ._secureTxt {
   position: relative;
   display: block;
+  width: 100%;
   height: 4rem;
 }
 ._input ._secureTxt > input[type=password] {
@@ -2218,6 +2283,9 @@ p.bul {
 }
 ._input ._secureTxt > input[type=password]::placeholder {
   color: transparent;
+}
+._input ._secureTxt._input {
+  display: flex;
 }
 ._input ._secureTxt ._password {
   padding: 0 !important;
@@ -2230,11 +2298,14 @@ p.bul {
   transform: translate(0, -50%);
   display: block;
   width: 1rem;
-  height: 1rem;
-  background: #ECEFF4;
+  height: 0;
+  background: #212529;
 }
 ._input ._secureTxt > i + i {
   margin-left: 0.3rem;
+}
+._input ._secureTxt > i._line, ._input ._secureTxt > i._is-active, ._input ._secureTxt > i._pwTxt {
+  height: 1rem;
 }
 ._input ._secureTxt > i._line {
   box-shadow: 0 0 0 0.1rem #C0C6CC inset;
@@ -3685,22 +3756,22 @@ body [btn-area=true] .headerWrap + .contentWrap {
 }
 body .containerWrap > .btnWrap {
   position: fixed;
-  padding: 2.4rem 2rem;
-  bottom: 0;
   left: 0;
+  bottom: 0;
+  z-index: 10;
+  padding: 2.4rem 2rem;
   width: 100%;
   height: auto;
   background-color: #fff;
-  z-index: 10;
 }
 body .headerWrap {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
   width: 100%;
   height: 5.6rem;
   background-color: #fff;
-  z-index: 10;
 }
 
 .loginWrap {
@@ -3719,7 +3790,6 @@ body .headerWrap {
 .login-content {
   padding: 2.4rem 2rem;
   background-color: #fff;
-  border-radius: 1.2rem;
 }
 .login-content .tit {
   margin-bottom: 1.6rem;
@@ -3736,53 +3806,51 @@ body .headerWrap {
 
 .headerWrap {
   position: relative;
-  height: 5.6rem;
-}
-.headerWrap .left {
-  position: relative;
+  padding: 1.2rem 2rem;
+  min-height: 5.6rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .headerWrap .left .tit {
-  position: absolute;
-  top: 0;
-  left: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .headerWrap .left .tit::after {
   content: "";
-  position: relative;
-  display: inline-block;
-  background: url(../img/common/icon_arrow_right.svg) no-repeat center/auto;
-  width: 2rem;
-  height: 2rem;
-  vertical-align: baseline;
+  display: block;
   margin-left: 0.4rem;
 }
 .headerWrap .left .back {
-  position: absolute;
-  top: 0;
-  left: 0;
   display: inline-block;
   width: 2.4rem;
   height: 2.4rem;
-  background: url(../img/common/icon_arrow_right.svg) no-repeat center/2.4rem 2.4rem;
-  transform: rotate(180deg);
+  margin-right: -2.4rem;
+}
+.headerWrap .left .back::after {
+  content: "";
+  display: block;
+}
+.headerWrap .left ~ .right {
+  margin-left: auto;
 }
 .headerWrap .center {
-  position: absolute;
-  top: 50%;
-  right: 50%;
-  transform: translate(50%, -50%);
+  margin: 0 auto;
 }
 .headerWrap .right {
-  position: absolute;
-  top: 1.2rem;
-  right: 1.2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .headerWrap .right .alarm {
   position: relative;
-  display: inline-block;
   width: 3.2rem;
   height: 3.2rem;
-  background: url(../img/common/icon_bell.svg) no-repeat center/auto;
+}
+.headerWrap .right .alarm::before {
+  content: "";
+  display: block;
 }
 .headerWrap .right .alarm.new::after {
   content: "";
@@ -3790,26 +3858,24 @@ body .headerWrap {
   position: absolute;
   top: 0.4rem;
   right: 0.3rem;
-  width: 0.6rem;
+  width: 0.65rem;
   height: 0.6rem;
   border: 0.2rem solid #F2F5F7;
-  border-radius: 50%;
-  background-color: red;
+  background-color: #C9252D;
 }
-.headerWrap .right .total {
-  display: inline-block;
+.headerWrap .right .nav {
   width: 3.2rem;
   height: 3.2rem;
-  background: url(../img/common/icon_menu.svg) no-repeat center/auto;
 }
-.headerWrap .right .close {
-  position: absolute;
-  top: 0.4rem;
-  right: 1.2rem;
-  display: inline-block;
-  width: 2.4rem;
-  height: 2.4rem;
-  background: url(../img/common/icon_close.svg) no-repeat center/2.4rem 2.4rem;
+.headerWrap .right .nav::before {
+  content: "";
+  display: block;
+}
+.headerWrap .right .ico ~ .ico {
+  margin-left: 1.2rem;
+}
+.headerWrap .right .ico-pop-close {
+  margin-left: -2.4rem;
 }
 .headerWrap .content-wrap {
   margin-top: 1.6rem;
@@ -3882,8 +3948,9 @@ body .headerWrap {
 }
 .cont-box .flex-wrap {
   display: flex;
-  align-items: flex-start;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: flex-start;
 }
 .cont-box .flex-wrap.start {
   justify-content: flex-start;
@@ -3922,14 +3989,16 @@ body .headerWrap {
 }
 .cont-menu {
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: space-around;
+  align-items: center;
 }
 .cont-menu .item .link {
   position: relative;
   min-width: 5.6rem;
   padding-top: 6.4rem;
   text-align: center;
+  color: #212529;
 }
 .cont-menu .item .link::after {
   content: "";
@@ -3966,10 +4035,21 @@ body .headerWrap {
   display: flex;
   flex-direction: column;
 }
-.commute-group .cont-item.title .tit::before {
-  display: none;
+.commute-group .cont-item.title::before {
   content: "";
-  float: right;
+  display: block;
+  color: #A9B0B8;
+  margin-top: 0.2rem;
+}
+.commute-group .cont-item.title .tit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.commute-group .cont-item.title .tit::before {
+  content: "";
+  display: none;
+  order: 2;
 }
 .commute-group .cont-item.title .tit::after {
   content: "";
@@ -3986,20 +4066,23 @@ body .headerWrap {
 }
 .commute-group .cont-item.state .area-state {
   position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .commute-group .cont-item.state .area-state::before {
+  content: "";
+  display: inline-flex;
   content: "출근 전";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 2.4rem;
   width: fit-content;
+  order: 2;
   color: #515961;
+  margin-left: 0.6rem;
 }
 .commute-group .cont-item.state .area-state .icon {
   position: relative;
-  display: inline-block;
-  margin-top: 0.7rem;
+  display: inline-flex;
+  order: 1;
   width: 1.8rem;
   height: 1.8rem;
   border: 0.15rem solid #8C959F;
@@ -4016,10 +4099,13 @@ body .headerWrap {
   background-color: #8C959F;
 }
 .commute-group .cont-item.state .area-state .btnWrap {
-  float: right;
+  display: inline-flex;
+  order: 3;
+  margin-left: auto;
 }
 .commute-group .cont-item.state .area-time {
   display: flex;
+  flex-direction: row;
   align-items: center;
   margin: 2.4rem 0 3.2rem;
 }
@@ -4030,10 +4116,10 @@ body .headerWrap {
   content: "";
   display: block;
   position: absolute;
+  left: 1.75rem;
+  bottom: 0;
   width: calc(100% - 3.5rem);
   height: 0.1rem;
-  bottom: 0;
-  left: 1.75rem;
   border-bottom: 0.1rem dashed #C0C6CC;
 }
 .commute-group .cont-box.stage {
@@ -4050,8 +4136,6 @@ body .headerWrap {
 }
 .commute-group.holiday .cont-item.title::before {
   content: "오늘은 공휴일이에요";
-  display: block;
-  color: #A9B0B8;
 }
 .commute-group.annual .cont-item.title {
   flex-direction: column-reverse;
@@ -4061,18 +4145,14 @@ body .headerWrap {
 }
 .commute-group.annual .cont-item.title::before {
   content: "오늘은 공휴일이에요";
-  display: block;
-  color: #A9B0B8;
 }
 .commute-group.afterwork .cont-item.state .area-state, .commute-group.late .cont-item.state .area-state {
   position: relative;
 }
 .commute-group.afterwork .cont-item.state .area-state::before, .commute-group.late .cont-item.state .area-state::before {
-  content: "업무 중";
+  content: "";
   display: block;
-  position: absolute;
-  top: 0;
-  left: 2.4rem;
+  content: "업무 중";
   width: fit-content;
   color: #347EFF;
 }
@@ -4097,11 +4177,6 @@ body .headerWrap {
 }
 .commute-group.overtime .cont-item.state .area-state::before {
   content: "업무완료";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 2.4rem;
-  width: fit-content;
   color: #515961;
 }
 .commute-group.overtime .cont-item.state .area-time .tit {
@@ -4110,22 +4185,31 @@ body .headerWrap {
 .commute-group.overtime .cont-box.stage {
   display: block;
 }
+.commute-group.all .cont-item.title {
+  flex-direction: column-reverse;
+}
+.commute-group.all .cont-item.title .txt {
+  display: none;
+}
+.commute-group.all .cont-item.title::before {
+  content: "오늘은 휴무일이에요";
+}
 .commute-group.all .cont-item.title .tit::before {
-  display: inline-block;
+  display: inline-flex;
   content: "종일연차";
 }
 .commute-group.all .cont-item.title .tit::after {
   display: inline-block;
 }
 .commute-group.morning .cont-item.title .tit::before {
-  display: inline-block;
+  display: inline-flex;
   content: "오전반차";
 }
 .commute-group.morning .cont-item.title .tit::after {
   display: inline-block;
 }
 .commute-group.affternoon .cont-item.title .tit::before {
-  display: inline-block;
+  display: inline-flex;
   content: "오후반차";
 }
 .commute-group.affternoon .cont-item.title .tit::after {
