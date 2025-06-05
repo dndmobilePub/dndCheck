@@ -1,15 +1,11 @@
 @charset "UTF-8";
-/**************************/
-/*** Primitive Variables ***/
-/**************************/
-/* Color */
-/* typography */
-/* box */
-/**************************/
-/*** Semantic Variables ***/
-/**************************/
-/* Color */
-/* Typography */
+/*!
+ * Publishing UI Components
+ * © 2025 BLUEWEBD™. All rights reserved.
+ * Licensed under the MIT License.
+ * Attribution to BLUEWEBD™ is required for all copies and derivative works.
+ * https://opensource.org/licenses/MIT
+ */
 body, th, td, input, select, textarea, button, input[type=checkbox]:checked {
   font-family: 'Pretendard', 'sans-serif';
   font-size: 1.4rem;
@@ -18,7 +14,6 @@ body, th, td, input, select, textarea, button, input[type=checkbox]:checked {
   font-weight: 400;
 }
 
-/* Radius */
 #pgHeader .pg_util .btn_responsive {
   border-radius: 0.5rem;
 }
@@ -38,10 +33,6 @@ body, th, td, input, select, textarea, button, input[type=checkbox]:checked {
   transition: 0.3s all ease-in-out;
 }
 
-/* */
-/****************************************/
-/*	PART: RESET CSS
-/****************************************/
 * {
   box-sizing: border-box;
 }
@@ -218,9 +209,6 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   margin-right: 2.4rem !important;
 }
 
-/****************************************/
-/*	PART: BASIC CSS
-/****************************************/
 .hide {
   position: absolute !important;
   overflow: hidden !important;
@@ -3003,7 +2991,7 @@ html[light-mode=dark] .frame_device .device .btn_size_set button {
 .pg-docSection + hr {
   display: block;
   border: 0;
-  height: 18rem;
+  height: 10rem;
 }
 
 @media screen and (max-width: 768px) {

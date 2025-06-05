@@ -1,15 +1,11 @@
 @charset "UTF-8";
-/**************************/
-/*** Primitive Variables ***/
-/**************************/
-/* Color */
-/* typography */
-/* box */
-/**************************/
-/*** Semantic Variables ***/
-/**************************/
-/* Color */
-/* Typography */
+/*!
+ * Publishing UI Components
+ * © 2025 BLUEWEBD™. All rights reserved.
+ * Licensed under the MIT License.
+ * Attribution to BLUEWEBD™ is required for all copies and derivative works.
+ * https://opensource.org/licenses/MIT
+ */
 .commute-group .cont-item.state .area-time .tit {
   font-family: 'Pretendard', 'sans-serif';
   font-weight: 600;
@@ -170,7 +166,6 @@
   font-weight: 600;
 }
 
-/* Radius */
 .modalPop .modal-footer .btnWrap.grow > [class*=btn], .modalPop .modal-footer .btnWrap.grow > [class*=btn]:first-child, .modalPop .modal-footer .btnWrap.grow > [class*=btn]:last-child, .field.box-opt.ico .field-icon::before, .field.box-opt.ico .rdo:checked + .field-icon::before, .field.box-opt.ico .chk:checked + .field-icon::before {
   border-radius: 0;
 }
@@ -259,10 +254,6 @@
   transition: 0.5s all ease-in-out;
 }
 
-/* */
-/****************************************/
-/*	PART: RESET CSS
-/****************************************/
 * {
   box-sizing: border-box;
 }
@@ -439,9 +430,6 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   margin-right: 2.4rem !important;
 }
 
-/****************************************/
-/*	PART: BASIC CSS
-/****************************************/
 .hide {
   position: absolute !important;
   overflow: hidden !important;
