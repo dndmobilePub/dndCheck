@@ -32,7 +32,7 @@ $fieldLabel: '#{$field}-label';
             resize: none; height:12rem;
             & + .byte-check {
                 display:inline-flex;
-                margin:2rem; margin-left:auto;
+                margin:2rem 1rem 2rem 2rem; margin-left:auto;
                 @extend %body-md-regular;
                 color:$color-text-placeholder;
             }

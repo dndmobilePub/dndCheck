@@ -51,6 +51,8 @@ $svgIcon-map: (
     // etc
     ic_check:"%3Csvg width='14' height='10' viewBox='0 0 14 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.375 5L5.125 8.75L12.625 1.25' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A",
     ico_asterisk:"%3Csvg xmlns='http://www.w3.org/2000/svg' fill='{COLOR}' viewBox='0 0 16 16'%3E%3Cpath d='M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z'/%3E%3C/svg%3E",
+    20_notice_list:"%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1648_490)'%3E%3Cpath d='M18.3337 13.4722H15.5911C14.421 13.4722 13.4724 14.4208 13.4724 15.5908V18.3334M13.4724 18.3334H5.20329C4.26552 18.3334 3.36589 17.9608 2.70275 17.2977C2.03961 16.6345 1.66699 15.7349 1.66699 14.7971V5.20305C1.66699 4.26528 2.03961 3.36564 2.70275 2.70251C3.36589 2.03937 4.26552 1.66675 5.20329 1.66675H14.7971C15.7349 1.66675 16.6345 2.03937 17.2976 2.70251C17.9608 3.36564 18.3334 4.26528 18.3334 5.20305V13.4724C18.3334 14.3617 17.9801 15.2148 17.3514 15.8435L15.8434 17.3514C15.2147 17.9801 14.3617 18.3334 13.4724 18.3334ZM5.83359 14.1668H10.0002M5.83359 5.83335H14.1671M5.83359 9.99995H14.1671' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1648_490'%3E%3Crect width='20' height='20' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A", // 8C959F
+
 ) !default;
 
 // 문자열 치환 (모든 $search → $replace 로 변경)
@@ -145,6 +147,11 @@ $ico: (
             background:50% 50% no-repeat,
             background-image: svgIcoImage(20_add_file, 8C959F),
         ),
+        notice_list :(
+            width:2rem, height:2rem,
+            background:50% 50% no-repeat,
+            background-image: svgIcoImage(20_notice_list, 8C959F),
+        ),
     ),
     24:(
         arrow-dn:(
@@ -221,6 +228,11 @@ $ico: (
             background-image: svgIcoImage(ico_asterisk, 666),
         )
     ),
+    icon_notice_list:(
+        width: 2rem, height: 2rem,
+        background: center center no-repeat,
+        background-image: svgIcoImage(icon_notice_list, 8C959F)
+    ),
 );
 
 // 사이즈
@@ -268,11 +280,13 @@ $ico: (
 %ico-his-prev {@include dndCP($ico, (24, arrow-dn)); transform: rotate(90deg);}
 %ico-check {@include dndCP($ico, item-check);}
 %ico-star {@include dndCP($ico, (bul, star));}
+%icon_notice_list {@include dndCP($ico, (20, notice_list));}
 
 // 헤더버튼
 %ico-his-back {@include dndCP($ico, (32, arrow-dn)); transform: rotate(90deg);}
 %ico-bell-32 {@include dndCP($ico, (32, bell));}
 %ico-menu-32 {@include dndCP($ico, (32, menu));}
+
 
 $icos: '.icons';
 $icon: '.ico';

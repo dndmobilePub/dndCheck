@@ -465,7 +465,7 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   padding: 3rem 5rem 5rem;
 }
 .pbg-content .tab-contents:not(.tab-sticky):not(.tab-filter):nth-child(odd) {
-  box-shadow: 0 0 0 0.1rem #C0C6CC inset;
+  box-shadow: 0 0 0 0.1rem #D2D6DB inset;
 }
 .pbg-content .tab-contents:not(.tab-sticky):not(.tab-filter):nth-child(even) {
   background: #F2F5F7;
@@ -477,7 +477,7 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   padding: 3rem 5rem 5rem;
 }
 .pbg-content .tab-scroll .tab-contents-wrap {
-  box-shadow: 0 0 0 0.1rem #C0C6CC inset;
+  box-shadow: 0 0 0 0.1rem #D2D6DB inset;
 }
 .pbg-content .tab-scroll .tab-contents:nth-child(odd) {
   box-shadow: none;

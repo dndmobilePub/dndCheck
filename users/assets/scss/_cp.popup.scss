@@ -349,6 +349,24 @@ $modal: '.modal';
             &-footer {}
         }
     }
+
+    //nav
+    &.nav{
+        #{$modal}{
+           &Wrap{
+            .modal{
+                &-header{
+                    .mp-title{
+                        @extend %heading-lg-bold;
+                    }
+                }
+                &-container{
+                    margin-top: 0.8rem;
+                }
+            }
+           } 
+        }
+    }
 }
 .dimmed {
     @include pos-offset(fixed, $top:0, $left:0, $z-index: 9990);

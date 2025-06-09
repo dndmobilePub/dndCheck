@@ -20,34 +20,41 @@
                 </div>
             </div>
             <div class="contentWrap">
-                <div class="tab-wrap">
-                </div>
-                <div class="cont-group">
-                    <div class="notice-list">
-                        <a href="#" class="cont-box line">
-                            <div class="text-group ico">
-                                <strong class="tit">공지설문 제목 입력</strong>
-                                <span class="txt">2025.03.17(월)</span>
-                            </div>
-                        </a>
-                        <a href="#" class="cont-box line">
-                            <div class="text-group ico">
-                                <strong class="tit">공지설문 제목 입력</strong>
-                                <span class="txt">2025.03.17(월)</span>
-                            </div>
-                        </a>
-                        <a href="#" class="cont-box line">
-                            <div class="text-group ico">
-                                <strong class="tit">공지설문 제목 입력</strong>
-                                <span class="txt">2025.03.17(월)</span>
-                            </div>
-                        </a>
-                        <a href="#" class="cont-box line">
-                            <div class="text-group ico">
-                                <strong class="tit">공지설문 제목 입력 공지설문 제목 입력 공지설문 제목 입력</strong>
-                                <span class="txt">2025.03.17(월)</span>
-                            </div>
-                        </a>
+                <div class="tab-wrap tab-moving box tab-filter" data-roll="tab" id="tab-4">
+                    <div class="tab-list-wrap">
+                        <ul class="tab-list">
+                            <li class="tab _is-active"><a href="javascript:void(0);"  category-filter="all">전체</a></li>
+                            <li class="tab"><a href="javascript:void(0);"  category-filter="category1">공지</a></li>
+                            <li class="tab"><a href="javascript:void(0);"  category-filter="category2">설문</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents-wrap">
+                        <ul class="lst segmented-filter notice-list">
+                            <li category-value="category1">
+                                <a href="#" class="cont-box line">
+                                    <div class="text-group ico">
+                                        <strong class="tit">공지설문 제목 입력</strong>
+                                        <span class="txt">2025.03.17(월)</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li category-value="category2">
+                                <a href="#" class="cont-box line">
+                                    <div class="text-group ico">
+                                        <strong class="tit">공지설문 제목 입력</strong>
+                                        <span class="txt">2025.03.17(월)</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li category-value="category2">
+                                <a href="#" class="cont-box line">
+                                    <div class="text-group ico">
+                                        <strong class="tit">공지설문 제목 입력</strong>
+                                        <span class="txt">2025.03.17(월)</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -55,5 +62,36 @@
         
     </div>
     <script src="../../assets/js/ui.component.js"></script>
+    <script>
+        $(function(){
+            /* segmented-filter 동적데이터 추가 예시 */
+            const $tabWrap = $('#tab-4');
+            const $list = $tabWrap.find('.segmented-filter');
+            
+            $list.append(`<li category-value="category1">
+                            <a href="#" class="cont-box line">
+                                <div class="text-group ico">
+                                    <strong class="tit">공지설문 제목 입력</strong>
+                                    <span class="txt">2025.03.17(월)</span>
+                                </div>
+                            </a>
+                         </li>`);
+            $list.append(`<li category-value="category1">
+                            <a href="#" class="cont-box line">
+                                <div class="text-group ico">
+                                    <strong class="tit">공지설문 제목 입력</strong>
+                                    <span class="txt">2025.03.17(월)</span>
+                                </div>
+                            </a>
+                         </li>`);
+            
+            const initFilter = $tabWrap.find('.tab._is-active > a').attr('category-filter') || 'all';
+            // console.log('초기 필터 값:', initFilter);
+            COMPONENT_UI.tab.tabFilter($tabWrap, initFilter, function () {
+            const $activeTab = $tabWrap.find('.tab._is-active');
+            COMPONENT_UI.tab.moveHighLight($tabWrap, $activeTab);
+            });
+        });
+    </script>
 </body>
 </html>

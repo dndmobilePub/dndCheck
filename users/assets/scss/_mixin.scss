@@ -417,6 +417,10 @@
         box-shadow: 0 0 0 $thickness $color inset;
     }
 
+    @else if $attribute =="none" {
+        box-shadow: none;
+    }
+
     @content;
 }
 

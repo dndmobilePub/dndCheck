@@ -15,6 +15,11 @@ $list:'.lst';
             @extend %radius-12;            
             & ~ li {margin-top:1.2rem;}
             & > a {padding:2rem;}
+            .cont-box{
+                &.line{
+                    @include line(none);
+                }
+            }
         }
     }
 }

@@ -101,7 +101,8 @@ $fieldLabel:'#{$field}-label';
                 & + #{$fieldIcon} {
                     border-color:$color-bg-interactive-primary;
                     @include el-content(before) {
-                        transform:translate(calc(50% + .05rem), calc(50% + .05rem));
+                        // transform:translate(calc(50% + .05rem), calc(50% + .05rem));
+                        transform:translate(50%, 50%);
                         width:.8rem;
                         height:.8rem;
                         background-color:$color-bg-interactive-primary;
@@ -229,7 +230,7 @@ $fieldLabel:'#{$field}-label';
                 }
             }
             &.ico {
-                .rdo, .chk {
+                .chk {
                     &:checked {
                         & + #{$fieldIcon} {
                             background-color:transparent;
@@ -238,10 +239,32 @@ $fieldLabel:'#{$field}-label';
                     }
                 }
                 #{$fieldIcon} {
-                    @include obj-offset-align($direction:"all", $top:50%, $left:98%);
+                    @include pos-offset($top:50%, $left:auto, $right:2rem){transform: translate(0, -50%)};
                     border-color:transparent;
                     @include el-content(before) {
                         border-color:transparent;
+                    }
+                }
+                .rdo{
+                    &:checked {
+                        & + #{$fieldIcon} {
+                            border-color:$color-bg-interactive-primary;
+                            @include pos-offset($top:50%, $left:auto, $right:2rem){transform: translate(0, -50%)};
+                            @include el-content(before) {
+                                @include pos-offset($top: 50%, $left:50%);
+                                @include el-size(.8rem, .8rem);
+                                background-color:$color-bg-interactive-primary;
+                                @extend %radius-full;
+                            }
+                        }
+                        &:disabled + #{$fieldIcon} {
+                            background-color: $color-base-white;
+                            border-color: $color-bg-disabled;                        
+                            @include el-content(before) {
+                                background-color:$color-bg-disabled;
+                                border-color: $color-bg-disabled;                        
+                            }
+                        }
                     }
                 }
             }

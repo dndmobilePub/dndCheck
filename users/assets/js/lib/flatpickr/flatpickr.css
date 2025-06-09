@@ -388,3 +388,13 @@ input[type=number] {
       height: 2.4rem;
       min-width: 8.5rem;
 }
+
+/* 휴일 */
+.holiday{
+      color: #C9252D;
+}
+
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay {
+  visibility: hidden;   /* 또는 display: none; 도 가능 */
+}

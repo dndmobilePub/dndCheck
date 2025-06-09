@@ -74,7 +74,7 @@
                         <a href="javascript:void(0);" class="btn tertiary ico ico-md full del-file-r">2025.10.16(수)~2025.10.19(목)</a>
                     </div>
                     <div class="btnWrap">
-                        <a href="javascript:void(0);" class="btn tertiary ico ico-md full add-field _modalBtn" data-modal="modal4">추가</a>
+                        <a href="javascript:void(0);" class="btn tertiary ico ico-md full add-field _modalBtn" data-modal="modal4">날짜를 선택해 주세요</a>
                     </div>
                 </div>
                 <div class="cont-group">
@@ -86,14 +86,14 @@
                         <div class="field-outline">
                             <div class="field-input full _input">
                                 <textarea id="holidayDesc" placeholder="사유를 입력해주세요" title=""></textarea>
-                                <span class="byte-check">0/100자</span>
+                                <!-- <span class="byte-check">0/100자</span> -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="btnWrap">
-                <button class="btn primary size-lg full">휴가신청</button>
+                <button class="btn primary size-lg full">신청하기</button>
             </div>
         </div>
     </div>
@@ -106,6 +106,7 @@
             <div class="modal-container">
                 <div class="flatpickr-group">
                     <div class="flatpickr-wrap">
+                        <!-- 휴일 시 holiday 클래스 사용하면 글씨색 변경됨 -->
                         <input id="myDate" class="flatpickr" type="hidden" placeholder="날짜를 선택하세요." readonly="readonly">
                     </div>
                     <div class="flatpickr-box">
@@ -127,18 +128,18 @@
                         <h2 class="tit dep02"> 단위</h2>
                     </div>
                     <div class="field box-opt gap">        
-                        <label for="rdo-b1" class="field-chkrdo">
-                            <input type="radio" name="boxRdo" id="rdo-b1" class="rdo" checked>
+                        <label for="rdo-b11" class="field-chkrdo">
+                            <input type="radio" name="boxRdo1" id="rdo-b11" class="rdo" checked>
                             <i class="field-icon" aria-hidden="hidden"></i>
                             <span class="field-label">종일</span>
                         </label>
-                        <label for="rdo-b2" class="field-chkrdo">
-                            <input type="radio" name="boxRdo" id="rdo-b2" class="rdo">
+                        <label for="rdo-b12" class="field-chkrdo">
+                            <input type="radio" name="boxRdo1" id="rdo-b12" class="rdo">
                             <i class="field-icon" aria-hidden="hidden"></i>
                             <span class="field-label">오전반차</span>
                         </label>
-                        <label for="rdo-b3" class="field-chkrdo">
-                            <input type="radio" name="boxRdo" id="rdo-b3" class="rdo">
+                        <label for="rdo-b13" class="field-chkrdo">
+                            <input type="radio" name="boxRdo1" id="rdo-b13" class="rdo">
                             <i class="field-icon" aria-hidden="hidden"></i>
                             <span class="field-label">오후반차</span>
                         </label>
@@ -147,8 +148,7 @@
             </div>
             <div class="modal-footer">
                 <div class="btnWrap grow full">
-                    <button type="button" class="btn secondary size-lg btn-close-pop">취소</button>
-                    <button type="button" class="btn primary size-lg btn-close-pop">확인</button>
+                    <button type="button" class="btn primary size-lg btn-close-pop disabled">적용</button>
                 </div>
             </div>
         </div>
@@ -159,7 +159,10 @@
             dateFormat: "Y-m-d",
             mode: "range",
             inline: true,
-            locale: 'ko',
+            locale: {
+                ...flatpickr.l10ns.ko,
+                firstDayOfWeek: 0
+            },
             clickOpens: true,
 
             onReady: function (selectedDates, dateStr, instance) {

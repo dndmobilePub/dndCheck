@@ -10,9 +10,14 @@ $tit:'.tit';
 $bodyTxt:'.desc';
 //--** TITLE
 #{$tit} {
-    margin-right:auto;
     &Wrap {
         @include dflex($al-items:Center);
+        .tit{
+            margin-right:auto;
+        }
+        &.end{
+            align-items: end;
+        }
     }
     &.dep {
         &01 {@extend %heading-lg-bold;}
