@@ -127,7 +127,6 @@ $fieldLabel:'#{$field}-label';
                 border-color: $color-bg-readonly;
                 pointer-events: none;
             }
-
             & ~ #{$fieldIcon} {
                 width: 2rem;
                 height: 2rem;
@@ -148,6 +147,56 @@ $fieldLabel:'#{$field}-label';
                 margin-left:1rem;
                 @extend %body-md-regular;
                 color:$color-text-tertiary;
+            }
+        }
+
+        // no-border
+        &.no-line{
+            .chk{
+                & ~ #{$fieldIcon} {
+                    border: none;
+                    @include el-content(before) {
+                        @include pos-offset($top:45%, $left:50%){
+                            transform:translate(-50%, -50%) rotate(45deg);
+                        }
+                        width: 0.5rem; height: 1rem;
+                        border: solid $color-icon-secondary;
+                        border-width: 0 2px 2px 0;
+                    }
+                }
+                &:checked {
+                    & + #{$fieldIcon} {
+                        background-color:transparent;
+                        border-color:transparent;
+                        @include el-content(before) {
+                            @include pos-offset($top:45%, $left:50%){
+                                transform:translate(-50%, -50%) rotate(45deg);
+                            }
+                            width: 0.5rem; height: 1rem;
+                            border: solid $color-icon-info;
+                            border-width: 0 2px 2px 0;
+                        }
+                    }
+                    &:disabled + #{$fieldIcon} {
+                        background-color: transparent;
+                        border-color: transparent;                        
+                        @include el-content(before) {
+                            border-color:$color-bg-info-subtitle;
+                        }
+                    }
+                }
+                &.readonly {
+                    border-color: transparent;
+                    pointer-events: none;
+                }
+                &:disabled:not(:checked) {
+                    & + #{$fieldIcon} {
+                        border-color: transparent;
+                        @include el-content(before) {
+                            border-color:$color-icon-disabled;
+                        }
+                    }
+                }
             }
         }
     }
@@ -230,7 +279,19 @@ $fieldLabel:'#{$field}-label';
                 }
             }
             &.ico {
+                .chk, .rdo{
+                    & + #{$fieldIcon}{
+                        @include pos-offset($top:50%, $left:auto, $right:2rem){transform: translate(0, -50%)};
+                        @include el-size(2rem, 2rem);
+                    }
+                }
                 .chk {
+                    & + #{$fieldIcon} {
+                        border-color:transparent;
+                        @include el-content(before) {
+                            border-color:$color-border-secondary;
+                        }
+                    }
                     &:checked {
                         & + #{$fieldIcon} {
                             background-color:transparent;
@@ -238,14 +299,13 @@ $fieldLabel:'#{$field}-label';
                         }
                     }
                 }
-                #{$fieldIcon} {
-                    @include pos-offset($top:50%, $left:auto, $right:2rem){transform: translate(0, -50%)};
-                    border-color:transparent;
-                    @include el-content(before) {
-                        border-color:transparent;
-                    }
-                }
                 .rdo{
+                    & + #{$fieldIcon} {
+                        border-color: $color-border-secondary;
+                        @include el-content(before) {
+                            border-color:transparent;
+                        }
+                    }
                     &:checked {
                         & + #{$fieldIcon} {
                             border-color:$color-bg-interactive-primary;

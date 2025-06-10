@@ -31,6 +31,7 @@ $color-text-warning:$color-orange-700;
 $color-text-disabled:$color-neutral-500;
 $color-text-readonly:$color-neutral-900;
 $color-text-inverse:$color-base-white;
+$color-text-primary-disabled:$color-blue-400-50;
 
 $color-icon-primary:$color-neutral-900;
 $color-icon-secondary:$color-neutral-600;
@@ -361,8 +362,7 @@ $status: (
     disabled:(
         primary:(
             background-color:$color-bg-info-subtitle,
-            color:$color-text-info,
-            opacity:.5,
+            color:$color-blue-400-50,
         ),
         secondary:(
             background-color:$color-bg-disabled,

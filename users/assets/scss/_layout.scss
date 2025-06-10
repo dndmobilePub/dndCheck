@@ -237,6 +237,7 @@ body {
         &.line{
             @include line(inset, $color-border-divider-01, .1rem);
             background-color: transparent;
+            padding: 2rem;
         }
         &.stage{
             margin-top: 1.2rem;
@@ -328,6 +329,7 @@ body {
                     display: block;
                     @extend %body-md-regular;
                     color: $color-text-secondary;
+                    margin-top: 0.4rem;
                 }
             }
             & + .text-group{

@@ -22,6 +22,7 @@ $bodyTxt:'.desc';
     &.dep {
         &01 {@extend %heading-lg-bold;}
         &02 {@extend %heading-sm-bold;}
+        &03 {@extend %heading-md-bold;}
     }
     &.sub {@extend %body-sm-regular;}
     & > .headtypo, & + .headtypo {@extend %body-sm-regular;}
