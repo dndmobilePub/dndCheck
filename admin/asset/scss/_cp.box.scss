@@ -14,11 +14,11 @@
         }
     }
     &.attendance{
+        flex-wrap: wrap;
         justify-content: space-between;
-        gap: 1.35%;
         .item-box{
             display: flex;
-            width: 100%;
+            // width: 100%;
             justify-content: space-between;
             .flex-wrap{
                 width: 100%;
@@ -50,31 +50,32 @@
                             color: $color-text-point-green;
                         }
                     }
-                    &.total{
-                        width: 15.5rem;
-                    }
                     &:first-child{
                         margin-right: auto;
                         .tit{
                             margin-bottom: 0.8rem;
                         }
+                        + .item{
+                            &::before{
+                                content: none;
+                            }
+                        }
                     }
                     &:not(:first-child){
-                        width: 10rem;
-                        gap: 6rem;
-                        & + .item{
-                            margin-left: 3rem;
-                            padding-left: 3rem;
-                            &::before{
-                                content: '';
-                                display: inline-block;
-                                position: absolute;
-                                top: 50%;
-                                transform: translateY(-50%);
-                                left: 0;
-                                @include el-size(0.1rem, 6rem);
-                                background-color: $color-icon-inverse;
-                            }
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        width: 9.2rem;
+                        &::before{
+                            content: '';
+                            display: inline-block;
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            left: 0;
+                            @include el-size(0.1rem, 6rem);
+                            background-color: $color-icon-inverse;
                         }
                     }
                 }
@@ -99,17 +100,18 @@
                 }
             }
             &:first-child{
-                width: 38.12%;
+                width: 50%;
             }
             &:last-child{
-                width: 60.52%;
+                width: calc(50% - 1.6rem);
             }
         }
-        @media (max-width: 1490px) {
+        @media (max-width: 1800px) {
             flex-wrap: wrap;
             gap: 2rem;
             .item-box{
                 width: 100% !important;
+                min-width: 68.5rem;
             }
         }
     }
