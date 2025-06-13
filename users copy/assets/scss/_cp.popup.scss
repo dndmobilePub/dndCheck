@@ -1,0 +1,597 @@
+//--- *!
+//  * Publishing UI Components
+//  * © 2025 BLUEWEBD™. All rights reserved.
+//  * Licensed under the MIT License.
+//  * Attribution to BLUEWEBD™ is required for all copies and derivative works.
+//  * https://opensource.org/licenses/MIT
+
+//-- ** POPUP
+%transitionPop {
+    transition: opacity 250ms cubic-bezier(.86, 0, .07, 1);
+}
+
+.no-scroll {
+    @include overflow(both, hidden);
+    // overscroll-behavior:contain; // 페이지 바운스 막기
+}
+$pop: '.modalPop';
+$modal: '.modal';
+//--** POPUP
+#{$pop} {
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    @include pos-offset(fixed, $left: 0, $top: 0, $z-index: 9995);
+    @extend %transition3s;
+    // transition-delay: .3s;
+
+    &._is-active {
+        visibility: visible;
+        opacity: 1;
+        @extend %transitionPop;
+
+        &:not(._full) {
+            @extend %sdimmed-60;
+            backdrop-filter: blur(.5rem);
+        }
+    }
+
+    // Modal layout
+    #{$modal} {
+        &Wrap {
+            @include pos-offset;
+            @include dflex($direction: column);
+            width: 88.3rem;
+            height: auto;
+            max-height: 100%;
+            background-color: $color-bg-primary;
+            box-sizing: border-box;
+            @extend %transition5s;
+
+             //modal-size
+            &[modal-size="lg"]{
+                width: 88.3rem;
+            }
+            &[modal-size="md"]{
+                width: 60rem;
+            }
+            &[modal-size="sm"]{
+                width: 50rem;
+            }
+            &[modal-size="xs"]{
+                width: 40rem;
+            }
+            //modal header style
+            &[modal-style="border"]{
+                .modal-header{
+                    @include line(border, .1rem solid $color-border-divider-01, bottom);
+                    margin-bottom: 3.2rem;
+                }
+            }
+        }
+
+        &-header {
+            @include dflex($al-items: center) {
+                flex-shrink: 1;
+            }
+
+            padding: 4rem 4rem 2.4rem 4rem;
+            min-height: 2.8rem;
+            .ico-pop-close {
+                order:3;
+                @include el-size(3.2rem, 3.2rem)
+            }
+            .mp-title {
+                flex: 1;
+                @extend %heading-md-bold;
+                max-height: 2.8rem;
+                word-break: keep-all;
+            }
+
+            .ico-close {
+                margin-left: auto;
+                margin-bottom: auto;
+            }
+            & + #{$modal}-container {padding-top:0;}
+
+            ._inModal.tooltip {top:.5rem !important;}
+        }
+
+        &-container {
+            @include pos-offset(relative);
+            padding: 4rem 4rem;
+            margin: -.1rem 0;
+            @extend %body-md-regular;
+            color: $color-text-primary;
+        }
+
+        &-footer {
+            @include pos-offset(relative, $z-index: 1);
+            text-align: center;
+            padding: 0 4rem 4.8rem 4rem;
+
+            // padding: 0 1.6rem 2rem;
+            @include el-content(before) {
+                // 푸터 상단 그라데이션 적용
+                @include pos-offset($left: 0, $right: 0, $top: -2.4rem);
+                @include el-size(100%, 2.4rem);
+                background: linear-gradient(-180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+            }
+
+            .btnWrap.grow {
+                margin: 0;
+                @include pos-offset(relative, $z-index:1);
+
+                & >[class*='btn'],
+                & >[class*='btn']:first-child,
+                & >[class*='btn']:last-child {
+                    @extend %radius-0;
+                }
+            }
+        }
+    }
+
+
+
+    // 상단
+    &._top {
+        width: 100%;
+        margin: auto;
+
+        &._is-active {
+            .modalWrap {
+                top: 0;
+            }
+        }
+
+        #{$modal} {
+            &Wrap {
+                top: -100%;
+            }
+
+            &-footer {
+                border-radius: 0 0 2.4rem 2.4rem;
+                overflow: hidden;
+            }
+        }
+
+    }
+
+    // 센터
+    &._center {
+        #{$modal} {
+
+            &Wrap,
+            &-header,
+            &-container,
+            &-footer {
+                opacity: 0;
+                @extend %transitionPop;
+            }
+
+            &Wrap {
+                @include obj-offset-align;
+                max-width: 88.3rem;
+                height: auto;
+                max-height: 84.6rem;
+                // background:$color-bg-primary;
+                @extend %radius-24;
+                overflow: hidden;
+            }
+
+            &-container {
+                @include overflow(y, auto);
+
+                .alert {
+                    &-msg {
+                        text-align: center;
+                        @extend %body-md-regular;
+                        color: $color-text-secondary;
+
+                        &.sub {
+                            margin-top: 1.6rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        &._is-active {
+            #{$modal} {
+
+                &Wrap,
+                &-header,
+                &-container,
+                &-footer {
+                    opacity: 1;
+                    @extend %transitionPop;
+                }
+            }
+        }
+    }
+
+    // 왼쪽
+    &._left {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        @include overflow(y, auto);
+        overflow-x: hidden;
+
+        &._is-active {
+            .modalWrap {
+                left: 0;
+            }
+        }
+
+        .modal {
+            &Wrap {
+                left: -100%;
+                height: 100%;
+                max-width: 80%;
+                @include dflex($direction: column);
+                background: $color-bg-primary;
+            }
+
+            &-container {
+                padding-bottom: 4.8rem;
+                max-height: calc(100% - 7.6rem - 5.6rem);
+                @include overflow(y, auto);
+            }
+
+            &-footer {
+                width: 80%;
+                @include pos-offset(fixed, $bottom: 0);
+            }
+        }
+    }
+
+    // 오른쪽
+    &._right {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        @include overflow(y, auto);
+        overflow-x: hidden;
+
+        &._is-active {
+            .modalWrap {
+                right: 0;
+            }
+        }
+
+        .modal {
+            &Wrap {
+                right: -100%;
+                height: 100%;
+                max-width: 80%;
+                @include dflex($direction: column);
+                background: $color-bg-primary;
+            }
+
+            &-container {
+                padding-bottom: 4.8rem;
+                max-height: calc(100% - 7.6rem - 5.6rem);
+                @include overflow(y, auto);
+            }
+
+            &-footer {
+                width: 80%;
+                @include pos-offset(fixed, $bottom: 0);
+            }
+        }
+    }
+
+    // 하단
+    &._bottom {
+        width: 100%;
+        height: 100%;
+        top: auto;
+        bottom: 0;
+        margin: auto;
+
+        &._is-active {
+            .modalWrap {
+                bottom: 0;
+            }
+        }
+
+        #{$modal} {
+            &Wrap {
+                bottom: -100%;
+            }
+
+            &-header {
+                border-radius: 2.4rem 2.4rem 0 0;
+                overflow: hidden;
+            }
+
+            &-container {
+                max-height: 40.4rem;
+                padding-bottom: 4rem;
+                @include overflow(y, auto);
+            }
+
+            &-footer {
+                position: relative;
+                margin-top: auto;
+            }
+        }
+    }
+
+    // FULL
+    &._full {
+        #{$modal} {
+            &Wrap,
+            &-header,
+            &-container,
+            &-footer {
+                opacity: 0;
+                @extend %transitionPop;
+            }
+
+            &Wrap {
+                @include pos-offset($top: 0, $left: 0);
+                width: 100%;
+                height: 100%;
+                min-height: 100%;
+                background-color:$color-bg-primary;
+            }
+
+            &-container {
+                padding-bottom: 4.8rem;
+                max-height: calc(100% - 7.6rem - 5.6rem);
+                @include overflow(y, auto);
+            }
+
+            &-footer {
+                width:100%;
+                @include pos-offset(fixed, $bottom: 0);
+            }
+        }
+        &._is-active {
+            #{$modal} {
+
+                &Wrap,
+                &-header,
+                &-container,
+                &-footer {
+                    opacity: 1;
+                    @extend %transitionPop;
+                }
+            }
+        }
+    }
+
+    // alert
+    &._alert {
+        .modal {
+            &-header {
+                min-height: 3.2rem;
+                padding: 0 2rem;
+            }
+
+            &-footer {}
+        }
+    }
+
+    //nav
+    &.nav{
+        #{$modal}{
+           &Wrap{
+            .modal{
+                &-header{
+                    .mp-title{
+                        @extend %heading-lg-bold;
+                    }
+                }
+                &-container{
+                    margin-top: 0.8rem;
+                }
+            }
+           } 
+        }
+    }
+
+}
+.dimmed {
+    @include pos-offset(fixed, $top:0, $left:0, $z-index: 9990);
+    width:100%; height:100%; @include overflow(both, hidden);
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(.5rem);
+}
+$toast:'.toast';
+#{$toast} {
+    &Wrap {
+        display:none;
+        @include pos-offset(fixed, $left:50%, $bottom:-10rem, $z-index:99999);
+        transform: translateX(-50%);
+        width:calc(100% - 4rem);
+        background-color: rgba(0, 0, 0, 0.5); border-radius:1rem;
+        transition:bottom .3s;
+        
+        &._is-active {
+            @include dflex($j-content:space-between, $al-items:center);   
+            bottom: 4rem;
+        }
+        &:focus {outline: none;}
+
+        & > a {
+            display:inline-block; flex-shrink:0; opacity:0;
+            @include el-content(before) {
+                width:.1rem; height:2.4rem;
+                background: svgIcoImage(24_close, fff);
+                //  background: svgIcon(ico_close, fff);
+            }
+            &._is-active {
+                opacity:1;
+                @include el-content(before) {
+                    width:2.4rem;
+                }
+            }
+        }
+    }
+
+    &-msg {
+        flex:1;
+        padding:1rem 5rem; color:$color-bg-primary; text-align:center;
+    }
+}
+
+$tooltip:'.tooltip';
+#{$tooltip} {
+    display:none; opacity:0;
+    @include pos-offset($z-index:1);
+    padding:1rem; background:$color-bg-primary;
+    @include line(border, .1rem solid $color-border-primary);
+    border-radius: .5rem;
+    transition: opacity .25s cubic-bezier(.86, 0, .07, 1);
+    word-break:break-all;
+    
+    &Wrap {
+        @include pos-offset(relative);
+        &.c {text-align: center !important;}
+        &.r {text-align: right !important;}
+        &.r .tooltip {text-align:left;}
+
+    }
+
+    &._right, &._left {max-width: 60%;}
+    &._top, &._bottom {max-width: calc(100% - 20px);}
+
+    &-content {
+        @include pos-offset(relative); margin-right:2rem;
+        @extend %body-sm-regular;
+        .ico-tooltip-close {
+            @extend %ico-tooltip_close-16;
+            @include pos-offset($top:0, $right:-2rem);
+        }
+        
+    }
+    &-message {word-break: break-all;}
+
+    
+    &._is-active {display:block; opacity:1;}
+}
+
+%ico_tipL {
+    @include el-content(before) {
+        top:.4rem;
+        left:auto;
+        right:-2rem;
+        transform: rotate(135deg);
+    }
+}
+%ico_tipR {
+    @include el-content(before) {
+        top:.4rem; left:-1.7rem; right:auto;
+        transform: rotate(315deg);
+    }
+}
+._inModal {
+    &.tooltip {z-index:9995;}
+    &.ico-tooltip {
+        &._is-active {
+            z-index:9996;
+            @include el-content(before) {z-index:9996;}
+        }
+    }
+}
+
+.ico-tooltip {
+    @include el-content(before) {opacity:0;}
+    @extend %ico-tooltip_default-16;
+    &._is-active {
+        @include pos-offset(relative);
+        @extend %ico-tooltip_active-16;
+        @include el-content(before) {
+            @include pos-offset($z-index:5);
+            width:1rem; height:1rem;
+            opacity:1;
+            background:$color-bg-primary;
+            box-shadow: 1px 1px 0 0 $color-border-primary;
+        }
+
+        &._default {@extend %ico_tipL;}
+        &._left {@extend %ico_tipR;}
+        
+        &._top {
+            @include el-content(before) {
+                top:-1.7rem; left:.4rem; right:auto;
+                transform: rotate(45deg);
+                transition: opacity .25s cubic-bezier(.86, 0, .07, 1);
+            }
+        }
+        &._bottom {
+            @include el-content(before) {
+                bottom:-2rem; left:.4rem; right:auto;
+                transform: rotate(225deg);
+            }
+        }
+    }
+}
+
+.reverse {
+    &.ico-tooltip {
+        &._is-active {
+            &._default {@extend %ico_tipR;}
+            &._left {@extend %ico_tipL;}
+        }
+    }
+}
+
+//알림팝업
+.alarm{
+    &[modal-type="alarm"]{
+        .modalWrap{
+            width: 40rem;
+        }
+    }
+    &-item{
+        position: relative;
+        padding-left: 1rem;
+        .tit{
+            @extend %body-lg-medium;
+        }
+        .txt{
+            display: block;
+            margin-top: 0.5rem;
+            @extend %body-md-regular;
+        }
+        @include el-content(before){
+            @include pos-offset($top:3rem, $left:0);
+            @include el-size(0.3rem, 0.3rem);
+            background-color: $color-base-black;
+            @extend %radius-full;
+        };
+        &.new{
+            padding-left: 1.7rem;
+            @include el-content(before){
+                @include pos-offset($top:2.7rem, $left:0);
+                @include el-size(1rem, 1rem);
+                background-color: $color-icon-danger;
+            }
+        }
+        &:first-child{
+            @include el-content(before){
+                @include pos-offset($top:.9rem, $left:0);
+            }
+            &.new{
+                @include el-content(before){
+                    @include pos-offset($top:.7rem, $left:0);
+                }
+            }
+        }
+        + .alarm-item{
+            margin-top: 2rem;
+            padding-top: 2rem;
+            @include line(border, .1rem solid $color-border-divider-01, top);
+        }
+    }
+}
+
+[modal-btnwrap="false"]{
+    .modalWrap{
+        margin-bottom: 4rem;
+    }
+}

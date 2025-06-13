@@ -1,0 +1,468 @@
+//--- *!
+//  * Publishing UI Components
+//  * © 2025 BLUEWEBD™. All rights reserved.
+//  * Licensed under the MIT License.
+//  * Attribution to BLUEWEBD™ is required for all copies and derivative works.
+//  * https://opensource.org/licenses/MIT
+
+//-- ** INPUT
+$field:'.field';
+$fmsg: '#{$field}-msg';
+$fieldLabel: '#{$field}-label';
+#{$field} {
+    line-height: normal;
+    &.grow, .grow {flex:1 0 0;}
+    &-btn {@include dflex($j-content:center, $al-items:center); flex-shrink:0;}
+    &-label:not(.field-chkrdo .field-label) {display:block; margin-bottom: 1rem;}
+    &-txt {@include dflex($al-items:center); flex-shrink:0;}
+    &-msg {
+        display:none; margin-top:.5rem; color:$color-text-tertiary; @extend %body-xs-regular;
+        &.info {display:block;}
+    }
+
+    // FIELD - INPUT
+    &-input {
+        // height: 4.0rem;
+        textarea, input:not([type=checkbox]):not([type=radio]) {
+            padding: 1.2rem 1rem; width: 100%; height: 100%; border: 0; background-color: transparent;
+            @extend %body-md-regular;
+        }
+        textarea {
+            padding:2rem 1rem 0;
+            resize: none; height:12rem;
+            & + .byte-check {
+                display:inline-flex;
+                margin:2rem 1rem 2rem 2rem; margin-left:auto;
+                @extend %body-md-regular;
+                color:$color-text-placeholder;
+            }
+        }
+        input:not([type=checkbox]):not([type=radio]):focus {outline: none;}
+        input:not([type=checkbox]):not([type=radio])::placeholder {color:$color-text-placeholder; @extend %body-md-regular;}
+
+        &.right {input {text-align:right;}}
+        &.center {input {text-align:center;}}
+
+        &.mid_num {
+            @include pos-offset(relative);
+            max-width:1.1rem;
+            padding-right:0;
+            input::placeholder {font-size:.4rem;}
+        }
+    }
+    &-outline {
+        @include dflex($al-items: stretch);
+        min-height: 4.8rem;
+        @extend %radius-5;
+        @include line(inset, $color-border-secondary, .1rem);
+        background:$color-bg-primary;
+        &:focus-within {@include line(inset, $color-border-focusring, .2rem);}
+        + .field-outline{
+            margin-top: 0.4rem;
+        }
+        + .byte-check{
+            display: block;
+            margin-top: 0.4rem;
+            text-align: end;
+            @extend %body-xs-regular;
+            color: $color-text-tertiary;
+        }
+
+        // 인증번호 필드 + 인증번호 & 인증번호 필드 + 인증시간
+        &._inbtn {
+            display:inline-flex;
+            width:100%;
+            // width:calc(100% - 8rem);
+            #{$field} {
+                &-input {@include dflex;}
+                ._input-clear {order:2; margin-right:0 !important;}
+            }
+        
+            .auth-time {
+                margin:0 1rem;
+                align-self:center; order:3;
+            }
+            .btn-infield {align-self: center; margin-right:1rem;}
+        }
+
+        &.pw {
+            &-group {
+                &.type2 {
+                    & > ._input {
+                        max-width: 3rem;
+                        &:first-child {padding-right:0;}
+                    }
+                }
+            }
+        }
+        
+        &.grow {flex:1 0 0;}
+        & > * {padding:0 1rem;}
+        & > * + * {padding-left:0;}
+        
+        &.column {
+            flex-direction: column;
+            & > * {padding:1rem;} 
+            & > * + * {padding-top:0;}
+            .right {place-self: flex-end;}
+        }
+
+        &._readonly {@extend %readonly-form; cursor: default;}
+        &._disabled {@extend %disabled-form; cursor:default;}
+
+        .center {place-self: center;}
+        .bottom {place-self: flex-end;}
+    }
+    // 인증번호 [필드 + 인증시간] + [인증번호]
+    &._inbtn {
+        #{$field} {
+            &-outline {
+                display:inline-flex; width:calc(100% - 11rem);
+                &~ .btn-infield {
+                    @include dflex(inline-flex, $j-content:center);
+                    align-self: flex-end; min-width:10rem; margin-left:.6rem;
+                }
+            }
+            &-input {
+                @include dflex;
+                .auth-time {
+                    display:block;
+                    margin:0 1rem;
+                    align-self:center; order:3;
+                }
+            }
+            ._input-clear {order:2;}
+        }
+    }
+    &._ico{
+        #{$field}{
+            &-outline{
+                width: calc(100% - 3.2rem);
+            }
+            &-input{
+                position: relative;
+                padding: 0 1rem 0 4.2rem;
+                @include el-content(before){
+                    @include pos-offset($top:50%, $left:2rem){transform: translateY(-50%)};
+                };
+            }
+        }
+        &.ico{
+            &-chk{
+                #{$field}{
+                    &-input{
+                        @include el-content(before){
+                            @include el-size(2.4rem, 2.4rem);
+                            @extend %ico-check-white;
+                        };
+                    }
+                }
+            }
+            &-rdo{
+                #{$field}{
+                    &-input{
+                        @include el-content(before){
+                            @include el-size(2rem, 2rem);
+                            @include line(border, .2rem solid $color-border-secondary);
+                            @extend %radius-full;
+                        };
+                    }
+                }
+            }
+        }
+    }
+    /* FIELD - VALID */
+    &.valid, &.invalid {
+        #{$fmsg} {display:block;}
+    }
+    &.valid {
+        #{$field} {
+            &-outline {
+                @include line(inset, $color-border-success);
+                &:focus-within {
+                    @include line(inset, $color-border-success, .2rem);
+                    input::placeholder {color:$color-text-success;} // 상황에 따라 삭제할 것
+                }
+            }
+        }
+        & + #{$fmsg}, #{$fmsg} {color:$color-text-success;}
+    }
+    &.invalid {
+        #{$field} {
+            &-outline {
+                @include line(inset, $color-border-warning);
+                input {color:$color-text-warning;}
+                &:focus-within {
+                    @include line(inset, $color-border-warning, .2rem);
+                    input::placeholder {color:$color-text-warning;} // 상황에 따라 삭제할 것
+                }
+            }
+        }
+        & + #{$fmsg}, #{$fmsg} {color:$color-text-warning;}
+    }
+    /* FIELD - PLACEHOLDER TYPE */
+    &._label {
+        #{$field} {
+            &-outline {
+                @include pos-offset(relative, $z-index:1);
+                padding:0 1rem;
+                @include dflex($al-items:center, $al-content: center, $wrap:wrap);
+                // flex-wrap: wrap;
+
+                & > *:not(.field-label) {display:none; @extend %transition3s;}
+                &._hasValue {
+                    & > *:not(.field-label) {display:flex; @extend %transition3s;}
+                }
+                
+                #{$field} {
+                    &-label {
+                        width:100%; height:100%; margin-bottom:0;
+                        @extend %body-sm-regular; color:$color-text-primary;
+                        @extend %transition3s;
+                        &._is-active {
+                            padding:1rem 0;
+                            @extend %body-xs-bold; @extend %transition3s;
+                        }
+                    }
+                }
+                &._is-active {
+                    & > *:not(.field-label) {display:flex; @extend %transition3s;}
+                }
+            }            
+        }
+    }
+    // 셀렉박스랑 같이 있는 경우
+    &._inslt{
+        @include dflex($al-items:center);
+        #{$field} {
+            &-outline {
+                display:inline-flex; width:calc(100% - 24rem);
+                & + .select {
+                    width: auto;
+                    @include dflex(inline-flex, $j-content:center);
+                    align-self: flex-end; min-width:20rem; margin-left:.8rem;
+                }
+            }
+            &-input {
+                @include dflex;
+                .auth-time {
+                    display:block;
+                    margin:0 1rem;
+                    align-self:center; order:3;
+                }
+            }
+            ._input-clear {order:2;}
+        }
+    }
+
+    &.field-set{
+        @include dflex($al-items:center, $j-content:space-between);
+        padding: 2rem 2.4rem;
+        @include line(border, .1rem solid $color-border-primary, top);
+        @include line(border, .1rem solid $color-border-tertiary, bottom);
+    }
+}
+
+/* FIELD - INPUT SCRIPT */
+._hasClear {
+    ._input-clear {
+        @include dflex(inline-flex, $j-content:flex-end) { align-self:center;}
+        // pointer-events:all; 
+        margin:0 1rem;
+        &:focus {
+            background-color:$color-bg-interactive-primary;
+            @include line(inset, $color-bg-interactive-primary-hover, .1rem);
+        }
+    }
+}
+._input {
+    @include dflex($al-items:center);
+    &._clear {width:calc(100% - 2.2rem);}
+    &-clear {
+        display:none;
+        // pointer-events:none; touch-action: none;
+        @include el-size(2.4rem, 2.4rem);
+        @include pos-offset(relative);
+        @include el-content(before) {
+            @extend %ico-circle-x-24;
+            @include obj-offset-align;
+        }
+        //---* before/after로 그리기
+        // @include el-content(both) {
+        //     @include el-size(1rem, .15rem);
+        //     @include pos-offset($top:calc(50%), $left:calc(50%));
+        //     background:$color-bg-primary;
+        // }
+        
+        // @include el-content(before) {transform:translate(-50%, -50%) rotate(45deg);}
+        // @include el-content(after) {transform:translate(-50%, -50%) rotate(-45deg);}
+
+        /* 
+        &._active {
+            @include dflex(inline-flex, $j-content:flex-end) { align-self:center;}
+            pointer-events:all; 
+            margin-left:.5rem;
+        }
+        */
+    }
+    input {
+        &._password {
+            @extend %body-md-medium;
+            &::placeholder {@extend %body-md-medium; }
+            // &:read-only, &:disabled { padding-top:1.3rem;}
+        }
+    }
+
+    ._secureTxt {
+        @include pos-offset(relative);
+        display:block; width:100%; height:4rem;
+        & > input[type="password"] {
+            @include pos-offset(relative, $z-index:2); color:transparent;
+            &::placeholder {color:transparent;}
+        }
+        &._input {display: flex;}
+        ._password {padding:0 !important;}
+
+        & > i {
+            @include pos-offset($top:50%, $left:0, $z-index:1);
+            transform: translate(0, -50%);
+            display:block; @include el-size(1rem, 0);
+            background:$color-text-primary; @extend %radius-full;
+            // @include transition(.3s, height, ease-in-out);
+
+            & + i {margin-left:.3rem;}
+            &._line, &._is-active, &._pwTxt{height:1rem;}
+            &._line {
+                @include line(inset, $color-border-secondary);
+                background:$color-bg-primary;
+                &._is-active {background:$color-bg-interactive-primary-hover; box-shadow: none;}
+            }
+        }
+    }
+}
+
+// input range
+#{$field} {
+    input[type=range] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: .6rem !important;
+        padding: 0 !important;
+        cursor: pointer;
+        outline: none;
+        border-radius: 1.5rem;
+        &::-webkit-slider-thumb { 
+            -webkit-appearance: none;
+            background:$color-bg-primary;
+            width: 1.6rem;
+            height: 1.6rem;
+            border: 0.25rem solid $color-border-primary;
+            border-radius: 50%;
+            cursor: pointer;
+            transform: translateY(calc(-50% + 8px));
+        }
+    }
+
+    &.range-slider {
+        @include pos-offset(relative);
+        .field-input {height:4rem;}
+        &.double {
+            .slider-container {
+                background:$color-bg-tertiary;
+                @include pos-offset(relative);
+                height: .6rem;
+                border-radius: .5rem;
+                margin-top: 2rem;
+                .double-slider {
+                    @include pos-offset;
+                    background-color:$color-bg-interactive-primary;
+                    height: 100%;
+                }
+            }
+            .field-input {
+                @include pos-offset(relative);
+                height: 100%;
+                input[type=range] {
+                    @include pos-offset($top: -5px);
+                    pointer-events: none;
+                    &::-webkit-slider-thumb {
+                        pointer-events: auto;
+                    }
+                }
+            }
+        }
+        .range-info, .doublerange-info {
+            @include pos-offset($bottom:4.8rem);
+            padding: .6rem 1rem;
+            background-color:$color-bg-primary;
+            @include line(border, .1rem solid $color-border-primary);
+            text-align: center; text-wrap:nowrap;
+            &:after {
+                content:'';
+                display:block;
+                @include pos-offset($left:50%, $bottom:-.4rem, $right:auto);
+                width: 1rem;
+                height: 1rem;
+                background:$color-bg-primary;
+                box-shadow: 1px 1px 0 0 $color-border-primary;
+                transform: translateX(-50%) rotate(45deg);
+            }
+            &.left {
+                left: calc(0% + 20px) !important;
+                margin-left: -22px !important;
+                &:after {
+                    left: .4rem !important;
+                    transform: rotate(45deg);
+                }
+                &.gap {
+                    @include el-content(after) {left:3.4rem;}
+                }
+            }
+            &.right {
+                left: auto !important;
+                right: 0 !important;
+                &:after {
+                    left: auto;
+                    right: .4rem !important;
+                    transform: rotate(45deg);
+                }
+                &.gap {
+                    @include el-content(after) {right:3.0rem;}
+                }
+            }
+        }
+        .doublerange-info {
+            bottom: 2.4rem;
+            &.right {
+                right: 0;
+                margin-right: 0 !important;
+            }
+        }
+    }
+}
+
+/* date box */
+/* 요일 선택 */
+.date{
+    appearance: none;
+    @include el-size(100%, 4.8rem);
+    padding: 0;
+    @extend %radius-8;
+    @extend %body-md-regular;
+    @extend %ico-calendar-24;
+    input[type="date"]{
+        position: relative;
+        @extend %ico-calendar-24;
+        color: $color-base-black;
+        &::-webkit-calendar-picker-indicator {
+            @include pos-offset($top:0, $left:0);
+            @include el-size(100%, 100%);
+            background: transparent;
+            cursor: pointer;
+        }
+        &.select{
+            padding-left: 2rem;
+        }
+    }
+}

@@ -1,0 +1,163 @@
+//--- *!
+//  * Publishing UI Components
+//  * © 2025 BLUEWEBD™. All rights reserved.
+//  * Licensed under the MIT License.
+//  * Attribution to BLUEWEBD™ is required for all copies and derivative works.
+//  * https://opensource.org/licenses/MIT
+
+//-- ** Accordion
+$toggle:'.accordion';
+
+//--** toggle
+#{$toggle} {
+    &-wrap {
+        @include line(border, .2rem solid #666);
+
+        #{$toggle} {
+            @include line(border, .1rem solid #666);
+
+            &:first-child {
+                @include line(border, none, top);
+            }
+        }
+    }
+    &.field {
+        .field-chkrdo {
+            .chk {
+                & ~.field-icon {
+                    width:1.8rem; height:1.8rem;
+                }
+                &:checked + .field-icon::before {
+                    width:.3rem; height:.8rem;
+                }
+            }
+            .field-label {color:#333;}
+        }
+    }
+}
+
+.btn-toggle {
+    display:block;
+    @include pos-offset($top:0, $right:0);
+    width:2rem; height:100%;
+
+    &:not([class*='btn-style']){
+        @include el-content(after) {
+            @include pos-offset($top:50%, $right:1.5rem);
+            width: .8rem;
+            height: .8rem;
+            @include line(border,.2rem solid#666);
+            border-width: 2px 2px 0 0;
+            transform: translateY(-50%) rotate(135deg);
+            @extend %transition3s;
+}
+
+        &._is-active {
+            @include el-content(after) {
+                right: 1.2rem;
+                transform: rotate(-45deg) translateY(-25%);
+                border-color:#347EFF;
+            }
+            &.btn-act-orange::after {
+                border-color:#fc4902;
+            }
+        }
+    }
+
+    &.toggle-tit {
+        top: auto; right: auto;
+        width: 100%; height: auto;
+        transform: none;
+        // &::after {right:1.5rem;}
+        // &._is-active::after {right: 2.1rem;}
+    }
+
+    &.btn-style-02 {
+        @include el-content(both) {
+            @include pos-offset($top:50%, $right:1.9rem);
+            width: .8rem;
+            height: 0.15rem;
+            background:#666;
+            transform: translateY(-50%) rotate(-45deg);
+            @extend%transition3s;
+        }
+        @include el-content(after) {
+            right: 2.4rem;
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        &._is-active {
+            @include el-content(both) {background-color:#fc4902;}
+            @include el-content(before) {
+                // right: 1.9rem;
+                transform: translateY(-50%) rotate(45deg);
+            }
+            @include el-content(after) {
+                // right: 2.4rem;
+                transform: translateY(-50%) rotate(-45deg);
+            }
+    
+            &.btn-act-orange {
+                @include el-content(both) {background-color:#fc4902;}
+            }
+        }
+    }
+
+    &.btn-none {
+        width: auto;
+        margin-right: 5rem;
+        padding: 1rem;
+        @include el-content(after, none !important);
+    }
+}
+
+.btn-more {
+    display:block;
+    @include pos-offset($top:0, $right:.6rem);
+    width:2rem; height:100%;
+
+    @include el-content(after) {
+        @include pos-offset($top:50%, $right:1rem);
+        width: .8rem; height: .8rem;
+        border: 2px solid #666;
+        border-width: 2px 2px 0 0;
+        transform: translateY(-50%) rotate(45deg);
+    }
+}
+
+.toggle-tit {
+    display:block;
+    @include pos-offset(relative);
+    padding: 1rem 5rem 1rem 2rem;
+    font-size:1.4rem;
+
+    & ~ .btn-style-02 {
+        @include el-content(before) {right: 1.1rem;}
+        @include el-content(after) {right: 2rem;}
+
+        &._is-active {
+            @include el-content(before) {right: 1.1rem;}
+            @include el-content(after) {right: 2rem;}
+        }
+    }
+}
+
+.accordion-header {
+    @include pos-offset(relative);
+    
+    &.dflex {
+        @include dflex($al-items:center);
+        padding-left: 2rem;
+        
+        .toggle-tit {
+            flex-grow: 1;
+            width: auto;
+        }
+    }
+}
+
+.accordion-contents {
+    display:none;
+    padding: 1rem 2rem;
+    @include line(border, .1rem solid #ddd, top);
+}

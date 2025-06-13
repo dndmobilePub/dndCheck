@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>popup</title>
+    <link rel="stylesheet" href="../../assets/css/cp.style.css">
+    <script src="../../assets/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../assets/js/lib/lib.swiper.8.4.7.min.js"></script>
+    <script src="../../assets/js/lib/lib.jquery-ui-1.13.2.js"></script>
+</head>
+<body>
+    <button class="btn primary size-lg _modalBtn" data-modal="modal1">근무시간 설정 팝업</button>
+    <div class="modalPop _center" modal-target="modal1">
+        <div class="modalWrap" modal-size="lg">
+            <div class="modal-header">
+                <h1 class="mp-title">
+                    근무시간 설정
+                </h1>
+                <button class="btn-close-pop ico ico-pop-close">
+                    <span class="hide">창닫기</span>
+                </button>
+            </div>
+            <div class="modal-container">
+                <div class="table-wrap">
+                    <table class="table col">
+                        <colgroup>
+                            <col style="width: 30%;">
+                            <col style="width: auto">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th><label for="text1">본사 근무시간</label></th>
+                                <td>
+                                    <div class="flex-wrap date-ds">
+                                        <div class="field">
+                                            <div class="field-outline">
+                                                <div class="field-input grow _input">
+                                                    <input type="text" placeholder="출근 시각" id="text1">
+                                                    <button type="button" class="field-btn _input-clear">
+                                                    <span class="hide">입력값삭제</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="date-dash">-</span>
+                                        <div class="field">
+                                            <div class="field-outline">
+                                                <div class="field-input grow _input">
+                                                    <input type="text" placeholder="퇴근 시각" id="text2">
+                                                    <button type="button" class="field-btn _input-clear">
+                                                    <span class="hide">입력값삭제</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><label for="text2">파견 근무시간</label></th>
+                                <td>
+                                    <div class="flex-wrap date-ds">
+                                        <div class="field">
+                                            <div class="field-outline">
+                                                <div class="field-input grow _input">
+                                                    <input type="text" placeholder="출근 시각" id="text3">
+                                                    <button type="button" class="field-btn _input-clear">
+                                                    <span class="hide">입력값삭제</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="date-dash">-</span>
+                                        <div class="field">
+                                            <div class="field-outline">
+                                                <div class="field-input grow _input">
+                                                    <input type="text" placeholder="퇴근 시각" id="text4">
+                                                    <button type="button" class="field-btn _input-clear">
+                                                    <span class="hide">입력값삭제</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="btnWrap _center">
+                    <button class="btn secondary size-lg">취소</button>
+                    <button class="btn primary size-lg">저장</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../assets/js/ui.component.js"></script>
+    <script src="../../assets/js/pup.js"></script><!-- 퍼블 확인용 -->
+</body>
+</html>

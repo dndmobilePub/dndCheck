@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DND 그룹웨어</title>
+    <link rel="stylesheet" href="../../assets/css/cp.style.css">
+    <script src="../../assets/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../assets/js/lib/lib.swiper.8.4.7.min.js"></script>
+    <script src="../../assets/js/lib/lib.jquery-ui-1.13.2.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div id="nav" class="nav-wrap"></div>
+        <div class="container-wrap">
+            <div id="header" class="header-wrap"></div>
+            <div class="content-wrap">
+                <div class="titWrap">
+                    <h2 class="tit dep01">개인정보</h2>
+                </div>
+                <div class="cont-box">
+                    <div class="cont-group">
+                        <div class="table-wrap">
+                            <table class="table col">
+                                <colgroup>
+                                    <col style="width: 20%;">
+                                    <col style="width: 30%;">
+                                    <col style="width: 20%;">
+                                    <col style="width: 30%;">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"><label for="input1">이름</label></th>
+                                        <td>
+                                            <div class="field">
+                                                <div class="field-outline">
+                                                    <div class="field-input grow _input">
+                                                        <input type="text" placeholder="이름 입력" id="input1">
+                                                        <button type="button" class="field-btn _input-clear">
+                                                        <span class="hide">입력값삭제</span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <th><label for="input2">생년월일</label></th>
+                                        <td>
+                                            <div class="field-outline">
+                                                <label class="field-input grow _input date">
+                                                    <input type="date" id="input2" class="select">
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><label for="input3">이메일</label></th>
+                                        <td>
+                                            <div class="field">
+                                                <div class="field-outline">
+                                                    <div class="field-input grow _input">
+                                                        <input type="text" placeholder="이메일 입력" id="input3">
+                                                        <button type="button" class="field-btn _input-clear">
+                                                        <span class="hide">입력값삭제</span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <th><label for="input4">전화번호</label></th>
+                                        <td>
+                                            <div class="field">
+                                                <div class="field-outline">
+                                                    <div class="field-input grow _input">
+                                                        <input type="text" placeholder="전화번호 입력" id="input4">
+                                                        <button type="button" class="field-btn _input-clear">
+                                                        <span class="hide">입력값삭제</span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><label for="input5">주소</label></th>
+                                        <td colspan="3">
+                                            <div class="field _inbtn">
+                                                <div class="field-outline">
+                                                    <div class="field-input grow _input">
+                                                        <input type="tel" class="_format _number" id="auth_num" placeholder="주소 입력" maxlength="6">
+                                                        <button type="button" class="field-btn _input-clear  ico ico-clear">
+                                                            <span class="hide">입력값삭제</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <button class="btn primary size-md btn-infield">주소검색</button>
+                                                <div class="field-outline">
+                                                    <div class="field-input grow _input">
+                                                        <input type="text" placeholder="상세주소 입력" id="input4">
+                                                        <button type="button" class="field-btn _input-clear">
+                                                        <span class="hide">입력값삭제</span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="cont-group">
+                        <div class="titWrap">
+                            <h2 class="tit dep02">재직정보</h2>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="table col">
+                                <colgroup>
+                                    <col style="width: 20%;">
+                                    <col style="width: 30%;">
+                                    <col style="width: 20%;">
+                                    <col style="width: 30%;">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"><label for="date1">입사일</label></th>
+                                        <td>
+                                            <div class="field-outline">
+                                                <label class="field-input grow _input date">
+                                                    <input type="date" id="date1" class="select">
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <th>재직기간</th>
+                                        <td>
+                                            -
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><label for="select1">계약형태</label></th>
+                                        <td>
+                                            <div class="field">
+                                                <div class="field-outline">
+                                                    <div class="field-select grow">
+                                                        <select class="select-sys" title="기본 선택" id="select1">
+                                                            <option>선택해주세요</option>
+                                                            <option>선택1</option>
+                                                            <option>선택2</option>
+                                                            <option>선택13</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <th>잔여휴가</th>
+                                        <td>
+                                            -
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">재직여부</th>
+                                        <td>
+                                            -
+                                        </td>
+                                        <th><label for="select2">권한</label></th>
+                                        <td>
+                                            <div class="field">
+                                                <div class="field-outline">
+                                                    <div class="field-select grow">
+                                                        <select class="select-sys" title="기본 선택" id="select2">
+                                                            <option>선택해주세요</option>
+                                                            <option>선택1</option>
+                                                            <option>선택2</option>
+                                                            <option>선택13</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><label for="select3">부서</label></th>
+                                        <td>
+                                            <div class="field">
+                                                <div class="field-outline">
+                                                    <div class="field-select grow">
+                                                        <select class="select-sys" title="기본 선택" id="select3">
+                                                            <option>선택해주세요</option>
+                                                            <option>선택1</option>
+                                                            <option>선택2</option>
+                                                            <option>선택13</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <th><label for="select4">직급</label></th>
+                                        <td>
+                                            <div class="field">
+                                                <div class="field-outline">
+                                                    <div class="field-select grow">
+                                                        <select class="select-sys" title="기본 선택" id="select4">
+                                                            <option>선택해주세요</option>
+                                                            <option>선택1</option>
+                                                            <option>선택2</option>
+                                                            <option>선택13</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="btnWrap _center">
+                        <button class="btn secondary size-lg">취소</button>
+                        <button class="btn primary size-lg">등록</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../assets/js/ui.component.js"></script>
+    <script src="../../assets/js/pup.js"></script><!-- 퍼블 확인용 -->
+</body>
+</html>

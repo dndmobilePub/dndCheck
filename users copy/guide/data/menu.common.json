@@ -1,0 +1,530 @@
+[
+    {
+        "path":"main",
+        "id": "GALI000000",
+        "type": "페이지", 
+        "depth1": "로그인",
+        "depth2": "",
+        "depth3": "",
+        "depth4": "",
+        "name": "로그인",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+    ,{
+        "path":"main",
+        "id": "GAAH000000",
+        "type": "페이지", 
+        "depth1": "home",
+        "depth2": "",
+        "depth3": "",
+        "depth4": "",
+        "name": "home",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+    ,{
+        "path":"main",
+        "id": "GAWA000000",
+        "type": "페이지", 
+        "depth1": "출퇴근 관리",
+        "depth2": "출퇴근 내역(일별, 전직원)",
+        "depth3": "",
+        "depth4": "",
+        "name": "출퇴근 내역(일별)",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+    ,{
+        "path":"main",
+        "id": "GAWA000001",
+        "type": "페이지", 
+        "depth1": "",
+        "depth2": "출퇴근 내역(월별, 전직원)",
+        "depth3": "",
+        "depth4": "",
+        "name": "출퇴근 내역(일별)",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+    ,{
+        "path":"main",
+        "id": "GAWA000002",
+        "type": "팝업", 
+        "depth1": "",
+        "depth2": "",
+        "depth3": "",
+        "depth4": "출퇴근 현황 팝업",
+        "name": "출퇴근 현황 팝업",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+    ,{
+        "path":"main",
+        "id": "GAWA000003",
+        "type": "페이지", 
+        "depth1": "",
+        "depth2": "출퇴근 내역(월별, 개인)",
+        "depth3": "",
+        "depth4": "",
+        "name": "출퇴근 내역(월별, 개인)",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+    ,{
+        "path":"main",
+        "id": "GAWA000004",
+        "type": "페이지", 
+        "depth1": "",
+        "depth2": "출퇴근 보정신청 현황",
+        "depth3": "",
+        "depth4": "",
+        "name": "출퇴근 보정신청 현황",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+    ,{
+        "path":"main",
+        "id": "GAVA000000",
+        "type": "페이지", 
+        "depth1": "휴가관리",
+        "depth2": "휴가 사용현황",
+        "depth3": "",
+        "depth4": "",
+        "name": "휴가 사용현황",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+    ,{
+        "path":"main",
+        "id": "GAVA000001",
+        "type": "페이지", 
+        "depth1": "",
+        "depth2": "휴가 신청내역",
+        "depth3": "",
+        "depth4": "",
+        "name": "휴가 신청내역",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+    ,{
+        "path":"main",
+        "id": "GAAH000002",
+        "type": "팝업", 
+        "depth1": "",
+        "depth2": "",
+        "depth3": "",
+        "depth4": "개인별 휴가 사용내역 팝업",
+        "name": "개인별 휴가 사용내역 팝업",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+    ,{
+        "path":"main",
+        "id": "GAMS000000",
+        "type": "페이지", 
+        "depth1": "직원관리",
+        "depth2": "직원관리",
+        "depth3": "",
+        "depth4": "",
+        "name": "직원관리",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+    ,{
+        "path":"main",
+        "id": "GAMS000001",
+        "type": "페이지", 
+        "depth1": "",
+        "depth2": "직원정보 등록",
+        "depth3": "",
+        "depth4": "",
+        "name": "직원정보 등록",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+    ,{
+        "path":"main",
+        "id": "GAMS000002",
+        "type": "페이지", 
+        "depth1": "",
+        "depth2": "직원정보 상세",
+        "depth3": "",
+        "depth4": "",
+        "name": "직원정보 상세",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+    ,{
+        "path":"main",
+        "id": "GAMS000003",
+        "type": "페이지", 
+        "depth1": "",
+        "depth2": "직원정보 수정",
+        "depth3": "",
+        "depth4": "",
+        "name": "직원정보 수정",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+    ,{
+        "path":"main",
+        "id": "GANT000000",
+        "type": "페이지", 
+        "depth1": "공지/설문 관리",
+        "depth2": "공지/설문",
+        "depth3": "",
+        "depth4": "",
+        "name": "공지/설문",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+    ,{
+        "path":"main",
+        "id": "GANT000001",
+        "type": "페이지", 
+        "depth1": "",
+        "depth2": "공지/설문 등록",
+        "depth3": "",
+        "depth4": "",
+        "name": "공지/설문 등록",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["GANT000004 유사"]
+    }
+    ,{
+        "path":"main",
+        "id": "GANT000002",
+        "type": "페이지", 
+        "depth1": "",
+        "depth2": "공지/설문 상세",
+        "depth3": "",
+        "depth4": "",
+        "name": "공지/설문 상세",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["GANT000003 팝업은 설문결과 클릭시 나옴"]
+    }
+    ,{
+        "path":"main",
+        "id": "GAPA000000",
+        "type": "페이지", 
+        "depth1": "근무지 관리",
+        "depth2": "근무지 관리",
+        "depth3": "",
+        "depth4": "",
+        "name": "근무지 관리",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+    ,{
+        "path":"main",
+        "id": "GAPA000001",
+        "type": "팝업", 
+        "depth1": "",
+        "depth2": "",
+        "depth3": "",
+        "depth4": "근무지 정보 팝업",
+        "name": "근무지 정보 팝업",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+    ,{
+        "path":"main",
+        "id": "GAPA000002",
+        "type": "팝업", 
+        "depth1": "",
+        "depth2": "",
+        "depth3": "",
+        "depth4": "근무시간 설정 팝업",
+        "name": "근무시간 설정 팝업",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+    ,{
+        "path":"main",
+        "id": "GAAH000001",
+        "type": "팝업", 
+        "depth1": "",
+        "depth2": "",
+        "depth3": "",
+        "depth4": "알림팝업",
+        "name": "알림팝업",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+    ,{
+        "path":"main",
+        "id": "GAMS000003_pop",
+        "type": "팝업", 
+        "depth1": "",
+        "depth2": "",
+        "depth3": "",
+        "depth4": "휴가설정",
+        "name": "휴가설정",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+    ,{
+        "path":"main",
+        "id": "GAMS000004_pop",
+        "type": "팝업", 
+        "depth1": "",
+        "depth2": "",
+        "depth3": "",
+        "depth4": "휴가사용",
+        "name": "휴가사용",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+    ,{
+        "path":"main",
+        "id": "common_pop",
+        "type": "팝업", 
+        "depth1": "",
+        "depth2": "",
+        "depth3": "",
+        "depth4": "출퇴근 시각 수정",
+        "name": "출퇴근 시각 수정",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
+]

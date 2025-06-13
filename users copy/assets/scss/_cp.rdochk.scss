@@ -1,0 +1,524 @@
+//--- *!
+//  * Publishing UI Components
+//  * © 2025 BLUEWEBD™. All rights reserved.
+//  * Licensed under the MIT License.
+//  * Attribution to BLUEWEBD™ is required for all copies and derivative works.
+//  * https://opensource.org/licenses/MIT
+
+//-- ** CHECKBOX, RADIO
+$field:'.field';
+$fieldIcon:'#{$field}-icon';
+$fieldLabel:'#{$field}-label';
+//--** checkbox, radio
+#{$field} {
+
+    &._readonly, ._readonly, ._readonly #{$fieldIcon} {cursor:default;}
+    &._disabled, ._disabled, ._disabled #{$fieldIcon} {cursor:default;}
+    ._disabled:not(.box-opt.gap .field-chkrdo) #{$fieldLabel} {opacity: .5;}
+    [class*='field'] {
+        .chk, .rdo {
+            @include pos-offset;
+            opacity: 0; width: 0; height: 0;
+        }
+    }
+
+    // 체크&라디오
+    &-chkrdo {
+        @include dflex(inline-flex, $al-items: center);
+        position:relative;
+        cursor: pointer;
+
+        & + .field-chkrdo {margin-left:2rem;}
+
+        // 사이즈
+        &.sm {
+            #{$fieldLabel} {
+                margin-left:.8rem;
+                @extend %body-sm-regular;
+            }
+            .chk {
+                &:checked + #{$fieldIcon} {
+                    &::before {
+                        width:.3rem; height:.8rem;
+                    }
+                }
+                & ~ #{$fieldIcon} {width:2rem; height:2rem;}
+            }
+            .rdo {
+                &:checked + #{$fieldIcon} {
+                    &::before {
+                        width:.6rem; height:.6rem;
+                    }
+                }
+                & ~ #{$fieldIcon} {width:1.6rem; height:1.6rem;}
+            }
+        }
+
+        // 체크
+        .chk {
+            &:checked {
+                & + #{$fieldIcon} {
+                    background-color:$color-bg-interactive-primary;
+                    border-color:$color-bg-interactive-primary;
+                    @include el-content(before) {
+                        @include pos-offset($top:45%, $left:50%){
+                            transform:translate(-50%, -50%) rotate(45deg);
+                        }
+                        width: 0.5rem; height: 1rem;
+                        border: solid $color-base-white;
+                        border-width: 0 2px 2px 0;
+                    }
+                }
+                &:disabled + #{$fieldIcon} {
+                    background-color: $color-bg-disabled;
+                    border-color: $color-bg-disabled;                        
+                    @include el-content(before) {
+                        border-color:$color-base-white;
+                    }
+                }
+            }
+            &.readonly {
+                border-color: $color-bg-readonly;
+                pointer-events: none;
+            }
+            &:disabled:not(:checked) {
+                & + #{$fieldIcon} {
+                    border-color: $color-bg-disabled;
+                    @include el-content(before, none);
+                }
+            }
+            & ~ #{$fieldIcon} {
+                width: 2.4rem; height: 2.4rem;
+                background-color: $color-base-white;
+                border: 0.2rem solid $color-border-secondary;
+                @extend %radius-5;
+            }
+        }
+
+        // 라디오
+        .rdo {
+            &:checked {
+                & + #{$fieldIcon} {
+                    border-color:$color-bg-interactive-primary;
+                    @include el-content(before) {
+                        // transform:translate(calc(50% + .05rem), calc(50% + .05rem));
+                        transform:translate(50%, 50%);
+                        width:.8rem;
+                        height:.8rem;
+                        background-color:$color-bg-interactive-primary;
+                        @extend %radius-full;
+                    }
+                }
+                &:disabled + #{$fieldIcon} {
+                    background-color: $color-base-white;
+                    border-color: $color-bg-disabled;                        
+                    @include el-content(before) {
+                        background-color:$color-bg-disabled;
+                    }
+                }
+            }
+            &:disabled:not(:checked) {
+                & + #{$fieldIcon} {
+                    border-color: $color-bg-disabled;
+                    @include el-content(before, none);
+                }
+            }
+            &.readonly {
+                border-color: $color-bg-readonly;
+                pointer-events: none;
+            }
+            & ~ #{$fieldIcon} {
+                width: 2rem;
+                height: 2rem;
+                background-color: $color-base-white;
+                border: 0.2rem solid $color-border-secondary;
+                @extend %radius-full;
+            }
+        }
+
+        // 공통 아이콘
+        .field {
+            &-icon:not(.field-switch) {
+                position: relative;                
+                transition: background-color 0.3s, border-color 0.3s;
+            }
+            &-label {
+                display: inline-block;
+                margin-left:.6rem;
+                @extend %body-md-regular;
+                color:$color-text-primary
+            }
+        }
+
+        // no-border
+        &.no-line{
+            .chk{
+                & ~ #{$fieldIcon} {
+                    border: none;
+                    @include el-content(before) {
+                        @include pos-offset($top:45%, $left:50%){
+                            transform:translate(-50%, -50%) rotate(45deg);
+                        }
+                        width: 0.5rem; height: 1rem;
+                        border: solid $color-icon-secondary;
+                        border-width: 0 2px 2px 0;
+                    }
+                }
+                &:checked {
+                    & + #{$fieldIcon} {
+                        background-color:transparent;
+                        border-color:transparent;
+                        @include el-content(before) {
+                            @include pos-offset($top:45%, $left:50%){
+                                transform:translate(-50%, -50%) rotate(45deg);
+                            }
+                            width: 0.5rem; height: 1rem;
+                            border: solid $color-icon-info;
+                            border-width: 0 2px 2px 0;
+                        }
+                    }
+                    &:disabled + #{$fieldIcon} {
+                        background-color: transparent;
+                        border-color: transparent;                        
+                        @include el-content(before) {
+                            border-color:$color-bg-info-subtitle;
+                        }
+                    }
+                }
+                &.readonly {
+                    border-color: transparent;
+                    pointer-events: none;
+                }
+                &:disabled:not(:checked) {
+                    & + #{$fieldIcon} {
+                        border-color: transparent;
+                        @include el-content(before) {
+                            border-color:$color-icon-disabled;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 스위치        
+    &-switch {
+        $switch-w:5rem; $switch-h:2rem;
+        
+        & ~ .field-switch {margin-left:1rem;}
+        @include pos-offset(relative); display:inline-block;
+        width:$switch-w; height:calc($switch-h + .4rem);
+        
+        .chk {
+            &:checked {
+            & ~  #{$fieldIcon} {
+                background:$color-bg-interactive-primary !important;
+                border-color:$color-bg-interactive-primary;
+                @include el-content(before) {
+                    background-color:$color-base-white; 
+                    @include pos-offset($top:50%, $left:calc(100% - 1.4rem)); transform: translate(0, -50%);
+                }
+                @include el-content(after) {
+                    content:'ON';
+                    color:$color-base-white;
+                    left:.6rem;
+                }
+            }
+            &:disabled ~  #{$fieldIcon},
+            &.disabled ~  #{$fieldIcon} {opacity:.8;}
+        }
+        &.readonly ~  #{$fieldIcon}, .readonly ~  #{$fieldIcon} {opacity:.8;}
+        }
+        
+        #{$fieldIcon} {
+            display:inline-block;
+            @include pos-offset($right:0, $bottom:0);
+            width:$switch-w; height:$switch-h; cursor: pointer;
+            background-color:$color-bg-readonly;
+            border-radius:$switch-h;
+            transition: .4s;
+
+            @include el-content(before) {
+                @include pos-offset($top:50%, $left:.4rem); transform: translate(0, -50%);
+                width:1rem; height:1rem;
+                background-color:$color-base-white;
+                @extend %radius-full;
+                transition: .4s;
+            }
+            @include el-content(after) {
+                content:'OFF';
+                color:$color-text-secondary; font-size:$typo-size-12;
+                @include pos-offset($top:45%, $right:.6rem); transform: translate(0, -50%);
+                transition: 1s;
+            }
+        }
+    }
+
+    // 박스형
+    &.box-opt {
+        &.full {
+            flex-wrap: wrap;
+            &:not(.gap) {
+                #{$field} {
+                    &-chkrdo {
+                        & ~ #{$field}-chkrdo {
+                            margin-left:0; margin-top:.8rem
+                        }
+                    }
+                }
+            }
+            #{$field} {
+                &-chkrdo {
+                    text-align: left;
+                    width:100%;
+                    #{$fieldLabel} {
+                        text-align: left;
+                        color:$color-text-primary;
+                        padding:1.4rem 4.8rem 1.4rem 2rem !important;
+                    }
+                }
+            }
+            &.ico {
+                .chk, .rdo{
+                    & + #{$fieldIcon}{
+                        @include pos-offset($top:50%, $left:auto, $right:2rem){transform: translate(0, -50%)};
+                        @include el-size(2rem, 2rem);
+                    }
+                }
+                .chk {
+                    & + #{$fieldIcon} {
+                        border-color:transparent;
+                        @include el-content(before) {
+                            border-color:$color-border-secondary;
+                        }
+                    }
+                    &:checked {
+                        & + #{$fieldIcon} {
+                            background-color:transparent;
+                            border-color:transparent;
+                        }
+                    }
+                }
+                .rdo{
+                    & + #{$fieldIcon} {
+                        border-color: $color-border-secondary;
+                        @include el-content(before) {
+                            border-color:transparent;
+                        }
+                    }
+                    &:checked {
+                        & + #{$fieldIcon} {
+                            border-color:$color-bg-interactive-primary;
+                            @include pos-offset($top:50%, $left:auto, $right:2rem){transform: translate(0, -50%)};
+                            @include el-content(before) {
+                                @include pos-offset($top: 50%, $left:50%);
+                                @include el-size(.8rem, .8rem);
+                                background-color:$color-bg-interactive-primary;
+                                @extend %radius-full;
+                            }
+                        }
+                        &:disabled + #{$fieldIcon} {
+                            background-color: $color-base-white;
+                            border-color: $color-bg-disabled;                        
+                            @include el-content(before) {
+                                background-color:$color-bg-disabled;
+                                border-color: $color-bg-disabled;                        
+                            }
+                        }
+                    }
+                }
+            }
+            &.bar-fill {
+                #{$field} {
+                    &-chkrdo {
+                        &._readonly {
+                            .chk, .rdo {
+                                & ~ #{$fieldLabel} {opacity:1;}
+                                &:checked {
+                                    & ~ #{$fieldLabel} {opacity:1}
+                                }
+                            }
+                        }
+                    }
+                }
+                #{$fieldLabel} {
+                    position:relative; overflow:hidden;
+                    @include dflex($j-content:space-between);
+                    padding:1.4rem 2rem !important;
+                    & > .fill-width {
+                        @include pos-offset($top:0, $left:0, $z-index:-1);
+                        display:block;
+                        height:100%;
+                        background-color:$color-bg-tertiary;
+                    }
+                }
+                .chk, .rdo {
+                    &:checked {
+                        & ~ #{$fieldLabel} {
+                            & > .fill-width {
+                                background-color:$color-bg-info-subtitle;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @include dflex;
+        #{$fieldIcon} {display:none;}
+        &.gap {
+            &.full {
+                flex-wrap:nowrap;
+                width:100%;
+                #{$field} {
+                    &-chkrdo {
+                        text-align: left;
+                        & ~ #{$field}-chkrdo {
+                            margin-left:.8rem; margin-top:0;
+                        }
+                    }
+                }
+            }
+        }
+        &.gap, &.full {            
+            border:none;
+            #{$field} {
+                &-chkrdo {
+                    & ~ #{$field}-chkrdo {
+                        margin-left:.8rem;
+                    }
+                    #{$fieldLabel} {
+                        @extend %body-md-regular;
+                        @extend %radius-8;
+                        @include line(inset, $color-border-tertiary, .1rem);
+                    }
+                    &._disabled {
+                        .chk:not(:checked), .rdo:not(:checked) {
+                            & ~ #{$fieldLabel} {
+                                color:$color-text-disabled;
+                                @include line(inset, $color-border-tertiary, .1rem);
+                            }
+                        }
+                        .chk:checked, .rdo:checked {
+                            & ~ #{$fieldLabel} {
+                                color:$color-text-disabled;
+                                @include line(inset, $color-border-tertiary, .1rem);
+                                background-color:$color-bg-tertiary;
+                            }
+                        }
+                    }
+                    &._readonly {
+                        .chk, .rdo {
+                            & ~ #{$fieldLabel} {
+                                opacity:.5;
+                            }
+                            &:checked {
+                                & ~ #{$fieldLabel} {
+                                    opacity:.5;
+                                    @extend %body-md-bold;
+                                    color:$color-text-info;                        
+                                    @include line(inset, $color-border-focusring, .2rem);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .chk, .rdo {
+                &:checked {
+                    & ~ #{$fieldLabel} {
+                        @extend %body-md-bold;
+                        color:$color-text-info;                        
+                        @include line(inset, $color-border-focusring, .2rem);
+                    }
+                }
+            }
+        }
+        &.nogap {
+            #{$field} {
+                &-chkrdo {
+                    width:100%;
+                    &:first-child {   
+                        #{$fieldLabel} {
+                            border-top-left-radius: $radius-8;
+                            border-bottom-left-radius: $radius-8;
+                        }
+                    }
+                    &:last-child {
+                        #{$fieldLabel} {
+                            border-top-right-radius: $radius-8;
+                            border-bottom-right-radius: $radius-8;
+                        }
+                    }
+                    & ~ #{$field}-chkrdo {
+                        margin-left:0;
+                        #{$fieldLabel} {margin-left: -.1rem;}
+                    }
+                }
+            }
+            .chk, .rdo {
+                & ~ #{$fieldLabel} {
+                    @include line(border, .1rem solid $color-border-tertiary);
+                }
+                &:checked {
+                    & ~ #{$fieldLabel} {
+                        color:$color-base-white;
+                        background-color:$color-bg-interactive-primary;
+                        border-color:$color-border-focusring;
+                        z-index:1;
+                    }
+                }
+            }
+        }
+        &.ico {
+            .rdo, .chk {
+                &:checked {
+                    & + #{$fieldIcon} {
+                        background-color:$color-base-white;
+                        border-color:$color-base-white;
+                        @include el-content(before) {
+                            background:transparent;
+                            border-color:$color-bg-interactive-primary;
+                            @extend %radius-0;
+                        }
+                    }
+                }
+            }
+            
+            #{$fieldIcon} {
+                display:block;
+                @include pos-offset($top:1.5rem,$left:50%, $z-index:2);
+                transform:translateX(-50%);
+                width:2.4rem; height:2.4rem;
+                border-color:$color-border-secondary;
+                @extend %radius-full;
+                @include el-content(before) {
+                    @include pos-offset($top:45%, $left:50%){
+                        transform:translate(-50%, -50%) rotate(45deg);
+                    }
+                    width: 0.3rem; height:.8rem;
+                    border: solid $color-border-secondary;
+                    border-width: 0 2px 2px 0;
+                    @extend %radius-0;
+                }
+            }
+            #{$fieldLabel} {
+                padding-top:4rem !important;
+            }
+        }
+
+        #{$field} {
+            &-chkrdo {
+                @include dflex;
+                
+                #{$fieldLabel} {
+                    @include dflex($direction:column, $j-content:center);
+                    width:100%; height:100%;
+                    padding:1rem 1.6rem;
+                    margin-left:0;
+                    color:$color-text-secondary;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

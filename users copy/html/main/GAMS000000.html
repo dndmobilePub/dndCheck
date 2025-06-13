@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DND 그룹웨어</title>
+    <link rel="stylesheet" href="../../assets/css/cp.style.css">
+    <script src="../../assets/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../assets/js/lib/lib.swiper.8.4.7.min.js"></script>
+    <script src="../../assets/js/lib/lib.jquery-ui-1.13.2.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div id="nav" class="nav-wrap"></div>
+        <div class="container-wrap">
+            <div id="header" class="header-wrap"></div>
+            <div class="content-wrap">
+                <div class="titWrap start">
+                    <h2 class="tit dep01">직원관리</h2>
+                    <div class="btnWrap">
+                        <button class="btn primary size-md">직원등록</button>
+                    </div>
+                </div>
+                <div class="cont-box">
+                    <div class="table-wrap">
+                        <table class="table col">
+                            <colgroup>
+                                <col style="width: 20%;">
+                                <col style="width: 30%;">
+                                <col style="width: 20%;">
+                                <col style="width: 30%;">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">계약형태</th>
+                                    <td colspan="3">
+                                        <div class="flex-wrap">
+                                            <div class="field">
+                                                <label for="rdo2-1" class="field-chkrdo">
+                                                    <input type="radio" name="rdoLabel-0" id="rdo2-1" class="rdo" data-show="a" checked>
+                                                    <i class="field-icon" aria-hidden="hidden"></i>
+                                                    <span class="field-label">전체</span>
+                                                </label>
+                                                <label for="rdo2-2" class="field-chkrdo">
+                                                    <input type="radio" name="rdoLabel-0" id="rdo2-2" class="rdo" data-show="b">
+                                                    <i class="field-icon" aria-hidden="hidden"></i>
+                                                    <span class="field-label">선택</span>
+                                                </label>
+                                            </div>
+                                            <div class="parentheses">
+                                                <div class="field">
+                                                    <label for="chk1-1" class="field-chkrdo">
+                                                        <input type="checkbox" name="chkGroup" id="chk1-1" class="chk" data-disabled="b">
+                                                        <i class="field-icon" aria-hidden="hidden"></i>
+                                                        <span class="field-label">정규</span>
+                                                    </label>
+                                                    <label for="chk1-2" class="field-chkrdo">
+                                                        <input type="checkbox" name="chkGroup" id="chk1-2" class="chk" data-disabled="b">
+                                                        <i class="field-icon" aria-hidden="hidden"></i>
+                                                        <span class="field-label">장기</span>
+                                                    </label>
+                                                    <label for="chk1-3" class="field-chkrdo">
+                                                        <input type="checkbox" name="chkGroup" id="chk1-3" class="chk" data-disabled="b">
+                                                        <i class="field-icon" aria-hidden="hidden"></i>
+                                                        <span class="field-label">퇴사</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">부서</th>
+                                    <td colspan="3">
+                                        <div class="flex-wrap">
+                                            <div class="field">
+                                                <label for="chk1-11" class="field-chkrdo">
+                                                    <input type="checkbox" name="chkGroup" id="chk1-11" class="chk">
+                                                    <i class="field-icon" aria-hidden="hidden"></i>
+                                                    <span class="field-label">기획</span>
+                                                </label>
+                                                <label for="chk1-12" class="field-chkrdo">
+                                                    <input type="checkbox" name="chkGroup" id="chk1-12" class="chk">
+                                                    <i class="field-icon" aria-hidden="hidden"></i>
+                                                    <span class="field-label">디자인</span>
+                                                </label>
+                                                <label for="chk1-13" class="field-chkrdo">
+                                                    <input type="checkbox" name="chkGroup" id="chk1-13" class="chk">
+                                                    <i class="field-icon" aria-hidden="hidden"></i>
+                                                    <span class="field-label">퍼블</span>
+                                                </label>
+                                                <label for="chk1-14" class="field-chkrdo">
+                                                    <input type="checkbox" name="chkGroup" id="chk1-14" class="chk">
+                                                    <i class="field-icon" aria-hidden="hidden"></i>
+                                                    <span class="field-label">경영지원</span>
+                                                </label>
+                                                <label for="chk1-15" class="field-chkrdo">
+                                                    <input type="checkbox" name="chkGroup" id="chk1-15" class="chk">
+                                                    <i class="field-icon" aria-hidden="hidden"></i>
+                                                    <span class="field-label">인사관리</span>
+                                                </label>
+                                                <label for="chk1-16" class="field-chkrdo">
+                                                    <input type="checkbox" name="chkGroup" id="chk1-16" class="chk">
+                                                    <i class="field-icon" aria-hidden="hidden"></i>
+                                                    <span class="field-label">연차</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-wrap">
+                        <table class="table row">
+                            <colgroup>
+                                <col style="width: 10%;">
+                                <col style="width: 15%;">
+                                <col style="width: 15%;">
+                                <col style="width: 15%;">
+                                <col style="width: 15%;">
+                                <col style="width: 15%;">
+                                <col style="width: 15%;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="field">
+                                            <label for="chk1-20" class="field-chkrdo">
+                                                <input type="checkbox" name="chkGroup" id="chk1-20" class="chk" check-type="all" check-id="a">
+                                                <i class="field-icon" aria-hidden="hidden"></i>
+                                            </label>
+                                        </div>
+                                    </th>
+                                    <th>No.</th>
+                                    <th>계약형태</th>
+                                    <th>부서</th>
+                                    <th>이름</th>
+                                    <th>직급</td>
+                                    <th>잔여 연차</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="field">
+                                            <label for="chk1-21" class="field-chkrdo">
+                                                <input type="checkbox" name="chkGroup" id="chk1-21" class="chk" check-type="item" check-id="a">
+                                                <i class="field-icon" aria-hidden="hidden"></i>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>1</td>
+                                    <td>정규</td>
+                                    <td>기획</td>
+                                    <td>박유석</td>
+                                    <td>과장</td>
+                                    <td>15일</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="field">
+                                            <label for="chk1-22" class="field-chkrdo">
+                                                <input type="checkbox" name="chkGroup" id="chk1-22" class="chk" check-type="item" check-id="a">
+                                                <i class="field-icon" aria-hidden="hidden"></i>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>2</td>
+                                    <td>정규</td>
+                                    <td>기획</td>
+                                    <td>박유석</td>
+                                    <td>과장</td>
+                                    <td>15일</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="field">
+                                            <label for="chk1-23" class="field-chkrdo">
+                                                <input type="checkbox" name="chkGroup" id="chk1-23" class="chk" check-type="item" check-id="a">
+                                                <i class="field-icon" aria-hidden="hidden"></i>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>3</td>
+                                    <td>정규</td>
+                                    <td>기획</td>
+                                    <td>박유석</td>
+                                    <td>과장</td>
+                                    <td>15일</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="field">
+                                            <label for="chk1-24" class="field-chkrdo">
+                                                <input type="checkbox" name="chkGroup" id="chk1-24" class="chk" check-type="item" check-id="a">
+                                                <i class="field-icon" aria-hidden="hidden"></i>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>4</td>
+                                    <td>정규</td>
+                                    <td>기획</td>
+                                    <td>박유석</td>
+                                    <td>과장</td>
+                                    <td>15일</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="field">
+                                            <label for="chk1-25" class="field-chkrdo">
+                                                <input type="checkbox" name="chkGroup" id="chk1-25" class="chk" check-type="item" check-id="a">
+                                                <i class="field-icon" aria-hidden="hidden"></i>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>5</td>
+                                    <td>정규</td>
+                                    <td>기획</td>
+                                    <td>박유석</td>
+                                    <td>과장</td>
+                                    <td>15일</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="pagination">
+                            <div class="pagination-wrap">
+                                <a href="#" class="page-link prev first"></a>
+                                <a href="#" class="page-link prev"></a>
+                                <a href="#" class="page-link">1</a>
+                                <a href="#" class="page-link">2</a>
+                                <a href="#" class="page-link">3</a>
+                                <a href="#" class="page-link">4</a>
+                                <a href="#" class="page-link">5</a>
+                                <a href="#" class="page-link">6</a>
+                                <a href="#" class="page-link">7</a>
+                                <a href="#" class="page-link">8</a>
+                                <a href="#" class="page-link">9</a>
+                                <a href="#" class="page-link next"></a>
+                                <a href="#" class="page-link next last"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../assets/js/ui.component.js"></script>
+    <script src="../../assets/js/pup.js"></script><!-- 퍼블 확인용 -->
+</body>
+</html>

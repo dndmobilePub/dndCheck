@@ -1,0 +1,25 @@
+//--- *!
+//  * Publishing UI Components
+//  * © 2025 BLUEWEBD™. All rights reserved.
+//  * Licensed under the MIT License.
+//  * Attribution to BLUEWEBD™ is required for all copies and derivative works.
+//  * https://opensource.org/licenses/MIT
+
+//-- ** LIST
+$list:'.lst';
+
+#{$list} {
+    &.segmented-filter {
+        & > li {
+            @include line(inset, $color-border-divider-01, .1rem);
+            @extend %radius-12;            
+            & ~ li {margin-top:1.2rem;}
+            & > a {padding:2rem;}
+            .cont-box{
+                &.line{
+                    @include line(none);
+                }
+            }
+        }
+    }
+}

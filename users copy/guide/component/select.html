@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="copyright" content="©2025 BLUEWEBD™. All rights reserved.">
+    <meta name="author" content="BLUEWEBD™">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover, user-scalable=no">
+    <title>폼요소 : SELECT</title>
+
+    <!-- [S] PUBLISH COMMON STYLE -->
+    <link rel="stylesheet" href="../../assets/css/cp.style.css">
+    <!-- [E] PUBLISH COMMON STYLE -->
+
+    <!-- [S] PAGES - STYLE -->
+    <link rel="stylesheet" href="">
+    <!-- [E] PAGES - STYLE -->
+
+    <!-- [S] LIBRARY - SCRIPT -->
+    <script src="../../assets/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../assets/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <!-- [E] LIBRARY - SCRIPT -->
+
+    <!-- [S] @TEMP - GUIDE STYLE -->
+    <link rel="stylesheet" href="../assets/css/pg.component.css">
+    <!-- [E] @TEMP - GUIDE STYLE -->
+</head>
+
+<body pb-component>
+    <div class="pbgWrap">
+        <div class="pbgContainer">
+            <div class="pbg-titWrap dep1">
+                <h1>SELECT</h1>
+            </div>
+            <section class="pbg-content">
+                <div class="pbg-titWrap dep2">
+                    <h2>sys select</h2>
+                </div>
+                <article class="pbg-component" temp-cp-gap>
+                    <div class="pbg-titWrap dep3">
+                        <h3>기본</h3>
+                    </div>
+                    <div class="field">
+                        <label class="field-label">기본 선택</label>
+                        <div class="field-outline">
+                        <div class="field-select grow">
+                            <select class="select-sys" title="기본 선택">
+                            <option>선택해주세요</option>
+                            <option>선택1</option>
+                            <option>선택2</option>
+                            <option>선택13</option>
+                            </select>
+                        </div>
+                        </div>
+                        <p class="field-msg">
+                        <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                        </p>
+                        <p class="field-msg info">
+                        <span class="ico ico-info txt-r">안내성 메세지</span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <label class="field-label">기본 readonly</label>
+                        <div class="field-outline">
+                            <div class="field-select grow">
+                                <select class="select-sys" title="기본 readonly" aria-readonly="true">
+                                <option>선택해주세요</option>
+                                <option>선택1</option>
+                                <option>선택2</option>
+                                <option>선택13</option>
+                                </select>
+                            </div>
+                        </div>
+                        <p class="field-msg">
+                        <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                        </p>
+                        <p class="field-msg info">
+                        <span class="ico ico-info txt-r">안내성 메세지</span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <label class="field-label">기본 disabled</label>
+                        <div class="field-outline">
+                            <div class="field-select grow">
+                                <select class="select-sys" title="기본 disabled" aria-disabled="true" disabled>
+                                <option>선택해주세요</option>
+                                <option>선택1</option>
+                                <option>선택2</option>
+                                <option>선택13</option>
+                                </select>
+                            </div>
+                        </div>
+                        </div>
+                        <p class="field-msg">
+                        <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                        </p>
+                        <p class="field-msg info">
+                        <span class="ico ico-info txt-r">안내성 메세지</span>
+                        </p>
+                    </div>
+                    
+                    <div class="field">
+                        <label class="field-label">아이콘변형 select</label>
+                        <div class="field-outline">
+                        <div class="field-select grow">
+                            <select class="select-sys add" title="아이콘변형 select">
+                            <option>선택해주세요</option>
+                            <option>선택1</option>
+                            <option>선택2</option>
+                            <option>선택13</option>
+                            </select>
+                        </div>
+                        </div>
+                        <p class="field-msg">
+                        <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                        </p>
+                        <p class="field-msg info">
+                        <span class="ico ico-info txt-r">안내성 메세지</span>
+                        </p>
+                    </div>
+                    <hr class="divider m" />
+                    <div class="pbg-titWrap dep3">
+                        <h3>MIX</h3>
+                    </div>
+                    <div class="field">
+                        <label class="field-label">이메일</label>
+                        <div class="field-outline">
+                        <div class="field-input grow _input">
+                            <input type="tel" class="_format _number" placeholder="메일아이디" maxlength="3">
+                            <button type="button" class="field-btn _input-clear"><span
+                                        class="hide">입력값삭제</span></button>
+                        </div>
+                        <span class="field-txt">@</span>
+                        <div class="field-select grow">
+                            <select class="select-sys" title="메일도메인">
+                            <option>선택해주세요</option>
+                            <option>naver.com</option>
+                            <option>daum.net</option>
+                            <option>gmail.com</option>
+                            </select>
+                        </div>
+                        </div>
+                        <p class="field-msg">
+                        <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                        </p>
+                        <p class="field-msg info">
+                        <span class="ico ico-info txt-r">안내성 메세지</span>
+                        </p>
+                    </div>
+                </article>
+            </section>
+
+            <section class="pbg-content">
+                <div class="pbg-titWrap dep2">
+                    <h2>select : UI select</h2>
+                </div>
+                <article class="pbg-component" temp-cp-gap>
+                    <div class="pbg-titWrap dep3">
+                        <h3>input+select</h3>
+                    </div>
+                    <div class="field _inbtn">
+                        <label class="field-label">휴대전화번호</label>
+                        <div class="field-outline">
+                            <div class="field-input grow _input">
+                                <input type="tel" class="_format _number" placeholder="통신사 제외 나머지 번호 입력">
+                                <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
+                                    <span class="hide">입력값삭제</span>
+                                </button> -->
+                            </div>
+                        </div>
+                        <button class="btn primary size-md btn-infield _selectBtn"  data-select="select1">선택</button>
+                        <p class="field-msg">
+                            <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                        </p>
+                        <p class="field-msg info">
+                            <span class="ico ico-info txt-r">안내성 메세지</span>
+                        </p>
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label">휴대전화번호</label>
+                        <div class="field-outline _inbtn">
+                            <div class="field-input grow _input">
+                                <input type="tel" class="_format _number" placeholder="휴대전화 통신사 제외 나머지 번호 입력">
+                                <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
+                                    <span class="hide">입력값삭제</span>
+                                </button> -->
+                            </div>
+                            <button class="btn primary size-sm btn-infield _selectBtn"  data-select="select1">선택</button>
+                        </div>
+                        
+                        <p class="field-msg">
+                            <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
+                        </p>
+                        <p class="field-msg info">
+                            <span class="ico ico-info txt-r">안내성 메세지</span>
+                        </p>
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label">달력</label>
+                        <div class="field-outline">
+                            <label class="field-input grow _input date">
+                                <input type="date" id="date1" class="select">
+                            </label>
+                        </div>
+                    </div>
+                </article>
+                
+            </section>
+        </div>
+    </div>
+
+    <!-- [s] modal : _bottom-->
+    <div class="modalPop _bottom" select-target="select1">
+        <div class="modalWrap">
+            <div class="modal-header">
+                <h2 class="tit dep02">통신사를 선택해주세요</h2>
+                <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span class="hide">창닫기</span></a>
+            </div>
+            <div class="modal-container">
+                <ul class="select-lst">
+                    <li><a href="javascript:;" class="sel-opt">SKT</a></li>
+                    <li><a href="javascript:;" class="sel-opt">KT</a></li>
+                    <li><a href="javascript:;" class="sel-opt">LG U+</a></li>
+                    <li><a href="javascript:;" class="sel-opt">알뜰폰</a></li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <div class="btnWrap full grow">
+                    <button type="button" class="btn secondary size-lg btn-close-pop">취소</button>
+                    <button type="button" class="btn primary size-lg btn-selChoice">선택</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// [e] modal : _bottom-->
+    
+    <!-- [S] AlertPop : 네트워크 오류 -->
+    <div class="modalPop _alert _center" modal-target="networkError">
+        <div class="modalWrap">
+            <!-- <div class="modal-header">
+                <a href="javascript:void(0);" class="btn-close-pop ico ico-close" role="button"><span class="hide">창닫기</span></a>                        
+                <h1 class="mp-title">AlertPopTitle</h1>
+            </div> -->
+            <div class="modal-container">
+            <p class="alert-msg">
+                현재 네트워크가 불안정하여<br>
+                접속이 원할하지 않습니다
+            </p>
+            <p class="alert-msg sub">
+                이용에 불편을 드려 죄송합니다<br>
+                잠시 후 다시 시도해 주세요
+            </p>
+            </div>
+            <div class="modal-footer">
+            <div class="btnWrap grow">
+                <!-- <button type="button" class="btn secondary size-lg btn-close-pop">취소</button> -->
+                <button type="button" class="btn primary size-lg btn-close-pop">확인</button>
+                <!-- 창닫기 .btn-close-pop 클래스 적용 -->
+            </div>
+        </div>
+        </div>
+    </div>
+
+</body>
+<script src="../../assets/js/ui.component.js"></script>
+<script>
+    // 팝업 강제호출
+    // const callBtn = $('<div data-modal="networkError"></div>');
+    // COMPONENT_UI.modalPop.showModal(callBtn);
+
+
+</script>
+
+</html>

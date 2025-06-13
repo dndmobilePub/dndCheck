@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DND 그룹웨어</title>
+    <link rel="stylesheet" href="../../assets/css/cp.style.css">
+    <script src="../../assets/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../assets/js/lib/lib.swiper.8.4.7.min.js"></script>
+    <script src="../../assets/js/lib/lib.jquery-ui-1.13.2.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div id="nav" class="nav-wrap"></div>
+        <div class="container-wrap">
+            <div id="header" class="header-wrap"></div>
+            <div class="content-wrap">
+                <div class="titWrap start">
+                    <h2 class="tit dep01">공지/설문 등록</h2>
+                </div>
+                <div class="cont-box">
+                    <div class="table-wrap">
+                        <table class="table col">
+                            <colgroup>
+                                <col style="width: 20%;">
+                                <col style="width: 30%;">
+                                <col style="width: 20%;">
+                                <col style="width: 30%;">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">유형</th>
+                                    <td colspan="3">
+                                        <div class="flex-wrap">
+                                            <div class="field">
+                                                <label for="rdo2-1" class="field-chkrdo">
+                                                    <input type="radio" name="rdoLabel-0" id="rdo2-1" data-show="a" class="rdo">
+                                                    <i class="field-icon" aria-hidden="hidden"></i>
+                                                    <span class="field-label">공지</span>
+                                                </label>
+                                                <label for="rdo2-2" class="field-chkrdo">
+                                                    <input type="radio" name="rdoLabel-0" id="rdo2-2" data-show="b" class="rdo">
+                                                    <i class="field-icon" aria-hidden="hidden"></i>
+                                                    <span class="field-label">설문</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <label for="input1">상태</label>
+                                    </th>
+                                    <td colspan="3">
+                                        <div class="field">
+                                            <div class="field-outline">
+                                                <div class="field-input grow _input">
+                                                    <input type="text" placeholder="제목입력" title="" id="input1">
+                                                    <button type="button" class="field-btn _input-clear">
+                                                        <span class="hide">입력값삭제</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <label for="textarea1">내용</label>
+                                    </th>
+                                    <td colspan="3">
+                                        <div class="field">
+                                            <div class="field-outline">
+                                                <div class="field-input full _input">
+                                                    <textarea placeholder="textarea 입력해주세요" title=""></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-appear="b">
+                                    <th scope="row">문항
+                                    </th>
+                                    <td colspan="3">
+                                        <div class="option-group">
+                                            <div class="field _inslt">
+                                                <div class="field-outline">
+                                                    <div class="field-input grow _input">
+                                                        <input type="text" placeholder="문항질문" title="">
+                                                        <button type="button" class="field-btn _input-clear"><span
+                                                                class="hide">입력값삭제</span></button>
+                                                    </div>
+                                                </div>
+                                                <div class="field-outline select">
+                                                    <div class="field-select grow">
+                                                        <select class="select-sys" title="기본 선택">
+                                                            <option ico-type="ico-chk">복수선택</option>
+                                                            <option ico-type="ico-rdo">단일선택</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <div class="field _inbtn _ico ico-chk">
+                                                    <div class="field-outline">
+                                                        <div class="field-input grow _input">
+                                                            <input type="text" placeholder="옵션" title="">
+                                                            <button type="button" class="field-btn _input-clear">
+                                                                <span class="hide">입력값삭제</span></button>
+                                                        </div>
+                                                    </div>
+                                                    <button class="btn input-btn plus">
+                                                        <span class="blind">추가</span>
+                                                    </button>
+                                                </div>
+                                                <div class="field _inbtn _ico ico-chk">
+                                                    <div class="field-outline">
+                                                        <div class="field-input grow _input">
+                                                            <input type="text" placeholder="옵션" title="">
+                                                            <button type="button" class="field-btn _input-clear">
+                                                                <span class="hide">입력값삭제</span></button>
+                                                        </div>
+                                                    </div>
+                                                    <button class="btn input-btn minus">
+                                                        <span class="blind">삭제</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="btnWrap">
+                                                <button class="btn secondary size-sm">문항삭제</button>
+                                                <button class="btn primary size-sm">문항복사</button>
+                                            </div>
+                                        </div>
+                                        <div class="option-group">
+                                            <div class="field _inslt">
+                                                <div class="field-outline">
+                                                    <div class="field-input grow _input">
+                                                        <input type="text" placeholder="문항질문" title="">
+                                                        <button type="button" class="field-btn _input-clear"><span
+                                                                class="hide">입력값삭제</span></button>
+                                                    </div>
+                                                </div>
+                                                <div class="field-outline select">
+                                                    <div class="field-select grow">
+                                                        <select class="select-sys" title="기본 선택">
+                                                            <option ico-type="ico-chk">복수선택</option>
+                                                            <option ico-type="ico-rdo">단일선택</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <div class="field _inbtn _ico ico-chk">
+                                                    <div class="field-outline">
+                                                        <div class="field-input grow _input">
+                                                            <input type="text" placeholder="옵션" title="">
+                                                            <button type="button" class="field-btn _input-clear">
+                                                                <span class="hide">입력값삭제</span></button>
+                                                        </div>
+                                                    </div>
+                                                    <button class="btn input-btn plus">
+                                                        <span class="blind">추가</span>
+                                                    </button>
+                                                </div>
+                                                <div class="field _inbtn _ico ico-chk">
+                                                    <div class="field-outline">
+                                                        <div class="field-input grow _input">
+                                                            <input type="text" placeholder="옵션" title="">
+                                                            <button type="button" class="field-btn _input-clear">
+                                                                <span class="hide">입력값삭제</span></button>
+                                                        </div>
+                                                    </div>
+                                                    <button class="btn input-btn minus">
+                                                        <span class="blind">삭제</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="btnWrap">
+                                                <button class="btn secondary size-sm">문항삭제</button>
+                                                <button class="btn primary size-sm">문항복사</button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <label for="date1">종료시점</label>
+                                    </th>
+                                    <td colspan="3">
+                                        <div class="field-outline">
+                                            <label class="field-input grow _input date">
+                                                <input type="date" id="date1" class="select">
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        첨부파일
+                                        <span class="sub-txt">파일당 5MB이하, 최대 10개</span>
+                                    </th>
+                                    <td colspan="3">
+                                        <ul class="attachment">
+                                            <li class="attachment-item">
+                                                <span class="tit">2025본사 교육자료.docx</span>
+                                                <button class="btn ico ico-sm del-field-r"></button>
+                                            </li>
+                                            <li class="attachment-item">
+                                                <span class="tit">2025본사 교육자료.docx</span>
+                                                <button class="btn ico ico-sm del-field-r"></button>
+                                            </li>
+                                            <li class="attachment-item">
+                                                <span class="tit">2025본사 교육자료.docx</span>
+                                                <button class="btn ico ico-sm del-field-r"></button>
+                                            </li>
+                                        </ul>
+                                        <div class="btnWrap">
+                                            <button class="btn tertiary size-sm">업로드</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="btnWrap _center">
+                        <button class="btn secondary size-lg">취소</button>
+                        <button class="btn secondary size-lg">임시저장</button>
+                        <button class="btn primary size-lg">등록</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../assets/js/ui.component.js"></script>
+    <script src="../../assets/js/pup.js"></script><!-- 퍼블 확인용 -->
+</body>
+</html>

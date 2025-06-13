@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="copyright" content="©2025 BLUEWEBD™. All rights reserved.">
+    <meta name="author" content="BLUEWEBD™">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover, user-scalable=no">
+    <title>탭메뉴 sticky</title>
+
+    <!-- [S] PUBLISH COMMON STYLE -->
+    <link rel="stylesheet" href="../../assets/css/cp.style.css">
+    <!-- [E] PUBLISH COMMON STYLE -->
+
+    <!-- [S] PAGES - STYLE -->
+    <link rel="stylesheet" href="">
+    <!-- [E] PAGES - STYLE -->
+
+    <!-- [S] LIBRARY - SCRIPT -->
+    <script src="../../assets/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../assets/js/lib/lib.jquery-ui-1.13.2.js"></script>
+    <!-- [E] LIBRARY - SCRIPT -->
+
+    <!-- [S] @TEMP - GUIDE STYLE -->
+    <link rel="stylesheet" href="../assets/css/pg.component.css">
+    <!-- [E] @TEMP - GUIDE STYLE -->
+</head>
+
+<body pb-component>
+    <div class="pbgWrap">
+        <div class="pbgContainer">
+            <div class="pbg-titWrap dep1" style="position:fixed; top:0; left:0; z-index:10; padding:2rem; margin-bottom:0; background:#fff; width:100%;">
+                <h1>[TAB]탭</h1>
+            </div>
+            
+            <section class="pbg-content" style="margin-top:8rem;">
+                <div class="pbg-titWrap dep2">
+                    <h2>tab 메뉴 sticky<br>tab 메뉴 sticky<br>tab 메뉴 sticky<br>tab 메뉴 sticky<br>tab 메뉴 sticky<br>tab 메뉴 sticky<br></h2>
+                </div>
+
+                <div class="tab-wrap tab-moving box tab-filter" data-roll="tab" id="tab-4">
+                    <div class="tab-list-wrap" style="background:#fff;">
+                        <ul class="tab-list">
+                            <li class="tab _is-active"><a href="javascript:void(0);"  category-filter="all">전체</a></li>
+                            <li class="tab"><a href="javascript:void(0);"  category-filter="category1">카테고리1</a></li>
+                            <li class="tab"><a href="javascript:void(0);"  category-filter="category2">카테고리2</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents-wrap">
+                        <ul class="lst segmented-filter"></ul>
+                    </div>
+                </div>
+            </section>
+            
+        </div>
+    </div>
+
+</body>
+<script src="../../assets/js/ui.component.js"></script>
+<script>
+$(function() {
+  const $tabWrap = $('#tab-4');
+  const $list = $tabWrap.find('.segmented-filter');
+  const $tabList = $tabWrap.find('ul.tab-list');
+
+  const listData = [
+    { key:"카테고리1", categoryValue: "category1", text: "category1 컨텐츠" },
+    { key:"카테고리2", categoryValue: "category2", text: "category2 컨텐츠" },
+    { key:"카테고리2", categoryValue: "category2", text: "category2 컨텐츠" },
+    { key:"카테고리2", categoryValue: "category2", text: "category2 컨텐츠" },
+    { key:"카테고리2", categoryValue: "category2", text: "category2 컨텐츠" },
+    { key:"카테고리2", categoryValue: "category2", text: "category2 컨텐츠" },
+    { key:"카테고리3", categoryValue: "category3", text: "category3 컨텐츠" },
+	{ key:"카테고리3", categoryValue: "category3", text: "category3 컨텐츠" },
+	{ key:"카테고리1", categoryValue: "category1", text: "category1 컨텐츠" },
+    { key:"카테고리1", categoryValue: "category1", text: "category1 컨텐츠" },
+    { key:"카테고리2", categoryValue: "category2", text: "category2 컨텐츠" },
+    { key:"카테고리2", categoryValue: "category2", text: "category2 컨텐츠" },
+    { key:"카테고리2", categoryValue: "category2", text: "category2 컨텐츠" },
+    { key:"카테고리2", categoryValue: "category2", text: "category2 컨텐츠" },
+    { key:"카테고리2", categoryValue: "category2", text: "category2 컨텐츠" },
+    { key:"카테고리3", categoryValue: "category3", text: "category3 컨텐츠" },
+	{ key:"카테고리3", categoryValue: "category3", text: "category3 컨텐츠" },
+  ];
+  listData.forEach(item => {
+    $list.append(`<li category-value="${item.categoryValue}"><a href="#">${item.text}</a></li>`);
+  });
+  const uniqueCategories = [...new Set(listData.map(item => item.categoryValue))];
+  const categoryNameMap = {};
+  listData.forEach(item => {
+    if (!categoryNameMap[item.categoryValue]) {
+      categoryNameMap[item.categoryValue] = item.key;
+    }
+  });
+  $tabList.empty();
+  $tabList.append(`<li class="tab _is-active"><a href="javascript:void(0);" category-filter="all">전체</a></li>`);
+  uniqueCategories.forEach(category => {
+    const displayName = categoryNameMap[category] || category;
+    $tabList.append(`<li class="tab"><a href="javascript:void(0);" category-filter="${category}">${displayName}</a></li>`);
+  });
+
+  const initFilter = 'all';
+  COMPONENT_UI.tab.tabFilter($tabWrap, initFilter, function () {
+    const $activeTab = $tabWrap.find('.tab._is-active');
+    COMPONENT_UI.tab.moveHighLight($tabWrap, $activeTab);
+  });
+});
+
+function initTabListWrapSticky() {
+  const $tabListWrap = $('.tab-wrap .tab-list-wrap');
+  const $titWrapDep1 = $('.pbg-titWrap.dep1');
+  const $titWrapDep2 = $('.pbg-titWrap.dep2');
+  const $tabContentsWrap = $('.tab-contents-wrap');
+
+  function updateSticky() {
+    // 각 요소 높이 갱신 (동적 변동 대응)
+    const titDep1Height = $titWrapDep1.outerHeight();
+    const titDep2Height = $titWrapDep2.outerHeight();
+    const tabListWrapHeight = $tabListWrap.outerHeight();
+
+    const tabContentsHeight = $tabContentsWrap.outerHeight();
+    const currentWindowHeight = $(window).height();
+
+    const minContentsHeight = currentWindowHeight - (titDep1Height + titDep2Height + tabListWrapHeight);
+
+    const scrollTop = $(window).scrollTop();
+
+    const tabListWrapLeft = $tabListWrap.offset().left;
+    const tabListWrapWidth = $tabListWrap.outerWidth();
+
+    if (scrollTop >= titDep1Height && tabContentsHeight >= minContentsHeight) {
+      $tabListWrap.css({
+        position: 'fixed',
+        top: titDep1Height + 'px',
+        left: tabListWrapLeft,
+        width: tabListWrapWidth,
+        'z-index': 5,
+        margin: 0,
+      });
+    } else {
+      $tabListWrap.css({
+        position: 'relative',
+        top: '',
+        left: '',
+        width: '',
+        'z-index': '',
+        margin: '',
+      });
+    }
+  }
+
+  // 이벤트 바인딩
+  $(window).on('scroll resize', updateSticky);
+
+  // 초기 실행
+  updateSticky();
+}
+
+// 문서 준비 후 함수 호출
+$(function() {
+  initTabListWrapSticky();
+});
+
+
+
+
+</script>
+</html>

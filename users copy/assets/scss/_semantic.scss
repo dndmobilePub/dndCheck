@@ -1,0 +1,417 @@
+//--- *!
+//  * Publishing UI Components
+//  * © 2025 BLUEWEBD™. All rights reserved.
+//  * Licensed under the MIT License.
+//  * Attribution to BLUEWEBD™ is required for all copies and derivative works.
+//  * https://opensource.org/licenses/MIT
+
+//-- ** Semantic Variables
+//- * Color
+$color-brand-primary-400:$color-blue-400;
+$color-brand-primary-500:$color-blue-500;
+$color-brand-primary-600:$color-blue-600;
+$color-brand-secondary-200:$color-neutral-200;
+$color-brand-secondary-300:$color-neutral-300;
+$color-brand-secondary-400:$color-neutral-400;
+
+$color-text-white:$color-base-white;
+$color-text-primary:$color-neutral-900;
+$color-text-interactive-primary:$color-base-white; 
+$color-text-secondary:$color-neutral-800;
+$color-text-interactive-secondary:$color-neutral-800;
+$color-text-tertiary:$color-neutral-700;
+$color-text-interactive-tertiary:$color-neutral-700;
+$color-text-placeholder:$color-neutral-500;
+$color-text-info:$color-brand-primary-400;
+$color-text-point-blue:$color-sky-100;
+$color-text-point-green:$color-green-300;
+$color-text-success:$color-green-600;
+$color-text-danger:$color-red-600;
+$color-text-warning:$color-orange-700;
+$color-text-disabled:$color-neutral-500;
+$color-text-readonly:$color-neutral-900;
+$color-text-inverse:$color-base-white;
+$color-text-primary-disabled:$color-blue-400-50;
+
+$color-icon-primary:$color-neutral-900;
+$color-icon-secondary:$color-neutral-600;
+$color-icon-tertiary:$color-neutral-400;
+$color-icon-disabled:$color-neutral-300;
+$color-icon-info:$color-brand-primary-400;
+$color-icon-success:$color-green-600;
+$color-icon-danger:$color-red-600;
+$color-icon-warning:$color-orange-700;
+$color-icon-inverse:$color-base-white;
+$color-icon-cast:$color-transparent-60;
+
+$color-bg-primary:$color-base-white;
+$color-bg-secondary:$color-neutral-50;
+$color-bg-tertiary:$color-neutral-100;
+$color-bg-info:$color-blue-300;
+$color-bg-info-subtitle:$color-blue-50;
+$color-bg-success-subtitle:$color-green-50;
+$color-bg-warning-subtitle:$color-red-50;
+$color-bg-disabled:$color-neutral-200;
+$color-bg-readonly:$color-neutral-100;
+$color-bg-nav:$color-blue-800;
+
+$color-bg-interactive-primary:$color-brand-primary-400;
+$color-bg-interactive-primary-hover:$color-brand-primary-500;
+$color-bg-interactive-primary-pressed:$color-brand-primary-600;
+$color-bg-interactive-secondary:$color-brand-secondary-200;
+$color-bg-interactive-secondary-hover:$color-brand-secondary-300;
+$color-bg-interactive-secondary-pressed:$color-brand-secondary-400;
+
+$color-bg-interactive-tertiary:$color-base-white;
+$color-bg-interactive-tertiary-hover:$color-neutral-300;
+$color-bg-interactive-tertiary-pressed:$color-neutral-50;
+
+$color-border-none:none;
+$color-border-primary:$color-neutral-700;
+$color-border-secondary:$color-neutral-400;
+$color-border-tertiary:$color-neutral-300;
+$color-border-divider-01:$color-neutral-200;
+$color-border-divider-02:$color-neutral-100;
+$color-border-focusring:$color-brand-primary-400;
+$color-border-success:$color-green-600;
+$color-border-warning:$color-red-600;
+
+$color-effect-shadow:$color-transparent-05;
+
+$heading:(
+    2xl:(
+        bold:(
+            font-family:$typo-family,
+            font-weight:$typo-weight-bold,
+            font-size:$typo-size-40,
+            line-height:$typo-lheight-48,
+            letter-spacing:$letter-spacing-tight,
+        ),
+        medium:(
+            font-family:$typo-family,
+            font-weight:$typo-weight-bold,
+            font-size:$typo-size-40,
+            line-height:$typo-lheight-48,
+            letter-spacing:$letter-spacing-tight,
+        ),
+        regular:(
+            font-family:$typo-family,
+            font-weight:$typo-weight-regular,
+            font-size:$typo-size-40,
+            line-height:$typo-lheight-48,
+            letter-spacing:$letter-spacing-tight,
+        ),
+    ),
+    xl:(
+        bold:(
+            font-family:$typo-family,
+            font-weight:$typo-weight-bold,
+            font-size:$typo-size-32,
+            line-height:$typo-lheight-40,
+            letter-spacing:$letter-spacing-tight,
+        ),
+        medium:(
+            font-family:$typo-family,
+            font-weight:$typo-weight-bold,
+            font-size:$typo-size-32,
+            line-height:$typo-lheight-40,
+            letter-spacing:$letter-spacing-tight,
+        ),
+        regular:(
+            font-family:$typo-family,
+            font-weight:$typo-weight-regular,
+            font-size:$typo-size-32,
+            line-height:$typo-lheight-40,
+            letter-spacing:$letter-spacing-tight,
+        ),
+    ),
+    lg:(
+        bold:(
+            font-family:$typo-family,
+            font-weight:$typo-weight-bold,
+            font-size:$typo-size-28,
+            line-height:$typo-lheight-36,
+            letter-spacing:$letter-spacing-tight,
+        ),
+        medium:(
+            font-family:$typo-family,
+            font-weight:$typo-weight-bold,
+            font-size:$typo-size-28,
+            line-height:$typo-lheight-36,
+            letter-spacing:$letter-spacing-tight,
+        ),
+        regular:(
+            font-family:$typo-family,
+            font-weight:$typo-weight-regular,
+            font-size:$typo-size-28,
+            line-height:$typo-lheight-36,
+            letter-spacing:$letter-spacing-tight,
+        ),
+    ),
+    md:(
+        bold:(
+            font-family:$typo-family,
+            font-weight:$typo-weight-bold,
+            font-size:$typo-size-24,
+            line-height:$typo-lheight-32,
+            letter-spacing:$letter-spacing-tight,
+        ),
+        medium:(
+            font-family:$typo-family,
+            font-weight:$typo-weight-bold,
+            font-size:$typo-size-24,
+            line-height:$typo-lheight-32,
+            letter-spacing:$letter-spacing-tight,
+        ),
+        regular:(
+            font-family:$typo-family,
+            font-weight:$typo-weight-regular,
+            font-size:$typo-size-24,
+            line-height:$typo-lheight-32,
+            letter-spacing:$letter-spacing-tight,
+        ),
+    ),
+    sm:(
+        bold:(
+            font-family:$typo-family,
+            font-weight:$typo-weight-bold,
+            font-size:$typo-size-20,
+            line-height:$typo-lheight-28,
+            letter-spacing:$letter-spacing-tight,
+        ),
+        medium:(
+            font-family:$typo-family,
+            font-weight:$typo-weight-medium,
+            font-size:$typo-size-20,
+            line-height:$typo-lheight-28,
+            letter-spacing:$letter-spacing-tight,
+        ),
+        regular:(
+            font-family:$typo-family,
+            font-weight:$typo-weight-regular,
+            font-size:$typo-size-20,
+            line-height:$typo-lheight-28,
+            letter-spacing:$letter-spacing-tight,
+        ),
+    ),
+);
+
+$body:(
+    lg:(
+        bold:(
+            font-family:$typo-family,
+            font-size:$typo-size-18,
+            line-height:$typo-lheight-24,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-bold,
+        ),
+        medium:(
+            font-family:$typo-family,
+            font-size:$typo-size-18,
+            line-height:$typo-lheight-24,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-medium,
+        ),
+        regular:(
+            font-family:$typo-family,
+            font-size:$typo-size-18,
+            line-height:$typo-lheight-24,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-regular,
+        ),
+    ),
+    md:(
+        bold:(
+            font-family:$typo-family,
+            font-size:$typo-size-16,
+            line-height:$typo-lheight-24,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-bold,
+        ),
+        medium:(
+            font-family:$typo-family,
+            font-size:$typo-size-16,
+            line-height:$typo-lheight-24,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-medium,
+        ),
+        regular:(
+            font-family:$typo-family,
+            font-size:$typo-size-16,
+            line-height:$typo-lheight-24,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-regular,
+        ),
+    ),
+    sm:(
+        bold:(
+            font-family:$typo-family,
+            font-size:$typo-size-14,
+            line-height:$typo-lheight-20,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-bold,
+        ),
+        medium:(
+            font-family:$typo-family,
+            font-size:$typo-size-14,
+            line-height:$typo-lheight-20,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-medium,
+        ),
+        regular:(
+            font-family:$typo-family,
+            font-size:$typo-size-14,
+            line-height:$typo-lheight-20,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-regular,
+        ),
+    ),
+    xs:(
+        bold:(
+            font-family:$typo-family,
+            font-size:$typo-size-13,
+            line-height:$typo-lheight-18,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-bold,
+        ),
+        medium:(
+            font-family:$typo-family,
+            font-size:$typo-size-13,
+            line-height:$typo-lheight-18,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-medium,
+        ),
+        regular:(
+            font-family:$typo-family,
+            font-size:$typo-size-13,
+            line-height:$typo-lheight-18,
+            letter-spacing:$letter-spacing-tight,
+            font-weight:$typo-weight-regular,
+        ),
+    ),
+);
+$fontWeight:(
+    regular:(font-weight:$typo-weight-regular),
+    medium:(font-weight:$typo-weight-medium),
+    bold:(font-weight:$typo-weight-bold),
+);
+
+//- * Typography */
+
+%heading-2xl-bold {@include dndCP($heading, (2xl, bold));}
+%heading-2xl-medium {@include dndCP($heading, (2xl, medium));}
+%heading-2xl-regular {@include dndCP($heading, (2xl, regular));}
+%heading-xl-bold {@include dndCP($heading, (xl, bold));}
+%heading-xl-medium {@include dndCP($heading, (xl, medium));}
+%heading-xl-regular {@include dndCP($heading, (xl, regular));}
+%heading-lg-bold {@include dndCP($heading, (lg, bold));}
+%heading-lg-medium {@include dndCP($heading, (lg, medium));}
+%heading-lg-regular {@include dndCP($heading, (lg, regular));}
+%heading-md-bold {@include dndCP($heading, (md, bold));}
+%heading-md-medium {@include dndCP($heading, (md, medium));}
+%heading-md-regular {@include dndCP($heading, (md, regular));}
+%heading-sm-bold {@include dndCP($heading, (sm, bold));}
+%heading-sm-medium {@include dndCP($heading, (sm, medium));}
+%heading-sm-regular {@include dndCP($heading, (sm, regular));}
+
+%body-lg-bold {@include dndCP($body, (lg, bold));}
+%body-lg-medium {@include dndCP($body, (lg, medium));}
+%body-lg-regular {@include dndCP($body, (lg, regular));}
+%body-md-bold {@include dndCP($body, (md, bold));}
+%body-md-medium {@include dndCP($body, (md, medium));}
+%body-md-regular {@include dndCP($body, (md, regular));}
+%body-sm-bold {@include dndCP($body, (sm, bold));}
+%body-sm-medium {@include dndCP($body, (sm, medium));}
+%body-sm-regular {@include dndCP($body, (sm, regular));}
+%body-xs-bold {@include dndCP($body, (xs, bold));}
+%body-xs-medium {@include dndCP($body, (xs, medium));}
+%body-xs-regular {@include dndCP($body, (xs, regular));}
+
+%weight-regular {@include dndCP($fontWeight, regular);}
+%weight-medium {@include dndCP($fontWeight, medium);}
+%weight-bold {@include dndCP($fontWeight, bold);}
+
+//- * Radius */
+$radius: (
+    0:(border-radius:$radius-0),
+    2:(border-radius:$radius-2),
+    4:(border-radius:$radius-4),
+    5:(border-radius:$radius-5),
+    6:(border-radius:$radius-6),
+    8:(border-radius:$radius-8),
+    10:(border-radius:$radius-10),
+    12:(border-radius:$radius-12),
+    16:(border-radius:$radius-16),
+    24:(border-radius:$radius-24),
+    round:(border-radius:$radius-round),
+    full:(border-radius:$radius-full),
+);
+%radius-0 {@include dndCP($radius, 0);}
+%radius-4 {@include dndCP($radius, 5);}
+%radius-5 {@include dndCP($radius, 5);}
+%radius-6 {@include dndCP($radius, 6);}
+%radius-8 {@include dndCP($radius, 8);}
+%radius-10 {@include dndCP($radius, 10);}
+%radius-12 {@include dndCP($radius, 12);}
+%radius-16 {@include dndCP($radius, 16);}
+%radius-24 {@include dndCP($radius, 24);}
+%radius-round {@include dndCP($radius, round);}
+%radius-full {@include dndCP($radius, full);}
+
+%disabled {opacity:.6;}
+
+$status: (
+    disabled:(
+        primary:(
+            background-color:$color-bg-info-subtitle,
+            color:$color-blue-400-50,
+        ),
+        secondary:(
+            background-color:$color-bg-disabled,
+            color:$color-text-disabled,
+        ),
+        tertiary:(
+            background-color:$color-bg-tertiary,
+            color:$color-text-disabled,
+            box-shadow: 0 0 0 .1rem $color-border-tertiary inset,
+        ),
+        form:(
+            background-color:$color-bg-disabled,
+            color:$color-text-disabled,
+            box-shadow: 0 0 0 .1rem $color-border-secondary inset,
+        ),
+    ),
+    readonly:(
+        form:(
+            background-color:$color-bg-readonly,
+            color:$color-text-secondary,
+            box-shadow: 0 0 0 .1rem $color-border-secondary inset,
+        ),
+    ),
+);
+%disabled-primary {@include dndCP($status, (disabled, primary));}
+%disabled-secondary {@include dndCP($status, (disabled, secondary));}
+%disabled-tertiary {@include dndCP($status, (disabled, tertiary));}
+%disabled-form {@include dndCP($status, (disabled, form));}
+
+%readonly-form {@include dndCP($status, (readonly, form));}
+
+$shadow: (
+    sm:(box-shadow:0 .1rem .2rem rgba(0, 0, 0, 0.05)),
+    md:(box-shadow:0 .4rem .6rem rgba(0, 0, 0, 0.1)),
+    lg:(box-shadow:0 1rem 1.5rem rgba(0, 0, 0, 0.15)),
+);
+
+%shadow-sm {@include dndCP($shadow, sm);}
+%shadow-md {@include dndCP($shadow, md);}
+%shadow-lg {@include dndCP($shadow, lg);}
+
+$dimmed:(
+    opacity-05:(background:$color-transparent-05),
+    opacity-50:(background:$color-transparent-50),
+    opacity-60:(background:$color-transparent-60),
+);
+
+%sdimmed-05 {@include dndCP($dimmed, opacity-05);}
+%sdimmed-50 {@include dndCP($dimmed, opacity-50);}
+%sdimmed-60 {@include dndCP($dimmed, opacity-60);}

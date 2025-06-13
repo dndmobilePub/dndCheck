@@ -1,0 +1,91 @@
+//--- *!
+//  * Publishing UI Components
+//  * © 2025 BLUEWEBD™. All rights reserved.
+//  * Licensed under the MIT License.
+//  * Attribution to BLUEWEBD™ is required for all copies and derivative works.
+//  * https://opensource.org/licenses/MIT
+
+//-- ** Text
+$tit:'.tit';
+$bodyTxt:'.desc';
+//--** TITLE
+#{$tit} {
+    &Wrap {
+        @include dflex($al-items:Center);
+        .tit{
+            margin-right:auto;
+        }
+        &.end{
+            align-items: end;
+        }
+        & + *{
+            margin-top: 1.6rem;
+            &.item-con{
+                margin-top: 0;
+            }
+            &.cont-box{
+                margin-top: 1.2rem;
+            }
+        }
+        &.name{
+            @include dflex($j-content: flex-start);
+            .tit{
+                margin-right: 0;
+                + .headtypo{
+                    margin-left: 0.4rem;
+                }
+            }
+            .headtypo{
+                @extend %body-sm-regular;
+                color: $color-text-tertiary;
+            }
+        }
+        &.start{
+            @include dflex($al-items:flex-start);
+        }
+        &.date-bt{
+            margin: .2rem 0 3.2rem;
+            .tit{
+                margin-right: 0;
+            }
+            .btn-date{
+                @include dflex($al-items:center, $gap:.8rem);
+                margin-right: auto;
+                .tit{
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+    &.dep {
+        &01 {@extend %heading-lg-bold;}
+        &02 {@extend %heading-sm-bold;}
+        &03 {@extend %heading-md-bold;}
+        &04 {@extend %body-lg-bold;}
+    }
+    &.sub {@extend %body-sm-regular;}
+    & > .headtypo, & + .headtypo {@extend %body-sm-regular;}
+    
+}
+#{$bodyTxt} {
+    @extend %body-lg-regular;
+    &.txt {
+        &-lg {@extend %body-lg-regular;}
+        &-sm {@extend %body-sm-regular;}
+        &-xs {@extend %body-xs-regular;}
+    }
+}
+.full {
+    flex-wrap: wrap;
+    #{$tit} {
+        & + .headtypo {
+        width:100%;
+    }
+    }
+}
+//직접색입력
+.color{
+    &.warning{
+        color: $color-text-danger;
+    }
+}

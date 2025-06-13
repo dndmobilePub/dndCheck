@@ -1,0 +1,107 @@
+@charset "utf-8";
+
+//--- *!
+//  * Publishing UI Components
+//  * © 2025 BLUEWEBD™. All rights reserved.
+//  * Licensed under the MIT License.
+//  * Attribution to BLUEWEBD™ is required for all copies and derivative works.
+//  * https://opensource.org/licenses/MIT
+
+//-- ** PART: RESET CSS
+* {
+    box-sizing: border-box;
+}
+html {font-size:62.5%;padding:0;margin:0;} /* rem default 10px */
+body{
+    width:100%; overflow-x: hidden;
+     /* 뷰표트 변환시 폰트크기 자동확대 방지. */
+    -webkit-text-size-adjust:none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+body,div,dl,dt,dd,ul,ol,li,hgroup,h1,h2,h3,h4,h5,h6,fieldset,
+legend,p,th,td{word-break:keep-all;}
+
+body,div,dl,dt,dd,ul,ol,li,hgroup,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,
+legend,textarea,p,blockquote,th,td,input,select,textarea,button{margin:0;padding:0;}
+fieldset,img{border:0;}
+img { max-width:100%; vertical-align:top; }
+dl,ul,ol,menu,li {list-style:none;}
+blockquote, q {quotes:none;}
+address,caption,cite,code,dfn,em,var,i,b {font-style:normal;}
+blockquote:before, blockquote:after,q:before, q:after {content:none;}
+input,select,textarea,button {font-size:100%; vertical-align: middle;}
+button {border:0; background-color:transparent; cursor:pointer;} /* 포커스 라인 비활성처리*/
+table {background-color:transparent; border-spacing:0; border-collapse:collapse;}
+
+input,
+textarea,
+select {background-color: transparent;}
+input[type='checkbox']:checked {
+    -webkit-appearance: checkbox;    
+    @extend %body-md-regular;
+    color:$color-text-primary;
+
+}
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type='text'],input[type='password'],input[type='submit'], input[type='date'],
+input[type='search'],input[type='tel'],input[type='email'] { -webkit-appearance:none; border-radius:0; }
+input[type='search']::-webkit-search-cancel-button {-webkit-appearance:none;}
+select::-ms-expand {display:none;} /* IE9 이상 select 화살표 삭제 */
+
+body,th,td,input,select,textarea,button {
+    @extend %body-md-regular;
+}
+input[type='text']:read-only, input[type='password']:read-only,
+input[type='text']:disabled, input[type='password']:disabled {
+    background: dnd(('colors', 'primitive', 'neutral', 100));
+}
+
+strong, b {font-weight: 600;}
+a {display:inline-block; color:$color-text-primary; text-decoration:none;/*outline:transparent;*/} 
+a:active, a:hover {text-decoration:none;}
+
+legend, caption{@include ir("hide");}
+hr {
+    display:none; visibility:hidden;
+    &.divider {
+        display:block; margin:0; padding:0;
+        @include line(border, none);
+        height:1.6rem;
+        &.xxl {height:4.8rem;}
+        &.xl {height:4rem;}
+        &.lg {height:3.2rem;}
+        &.m {height:2.4rem;}
+        &.s {height:1.2rem;}
+        &.xs {height:.8rem;}
+        &.m-xs {height: 0; margin-top: -0.8rem;}
+
+        
+        & + [class*="field"], & + [class*="Wrap"], & + * {margin-top:0;}
+    }
+}
+.side-gap {
+    padding: 0 .8rem;
+}
+.space {
+    margin-left:2.4rem !important;
+    margin-right:2.4rem !important;
+}
+
+*:focus, *:focus-visible {
+  outline: none;
+}
+
+.user-is-tabbing *:focus:not(textarea), .user-is-tabbing *:focus-visible:focus:not(textarea){
+  outline:.1rem solid #666;
+  outline-offset:.2rem;
+}
+
+//-- ** PART: BASIC CSS
+.hide {@include ir("hide");}
+.blind {@include ir("blind");}
+.screen {@include ir("screen");}
+.full {width:100% !important;}

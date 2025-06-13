@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>popup</title>
+    <link rel="stylesheet" href="../../assets/css/cp.style.css">
+    <script src="../../assets/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../assets/js/lib/lib.swiper.8.4.7.min.js"></script>
+    <script src="../../assets/js/lib/lib.jquery-ui-1.13.2.js"></script>
+</head>
+<body>
+    <button class="btn primary size-lg _modalBtn" data-modal="modal1">휴가내역 팝업</button>
+    <div class="modalPop _center" modal-target="modal1">
+        <div class="modalWrap" modal-size="md" modal-style="border">
+            <div class="modal-header">
+                <h1 class="mp-title">
+                    <span>홍길동 과장</span> 휴가내역
+                </h1>
+                <button class="btn-close-pop ico ico-pop-close">
+                    <span class="hide">창닫기</span>
+                </button>
+            </div>
+            <div class="modal-container">
+                <div class="titWrap date-bt">
+                    <div class="btn-date">
+                        <button class="btn ico date-l"><span class="blind">이전달</span></button>
+                        <h2 class="tit dep03">05.23(금)</h2>
+                        <button class="btn ico date-r"><span class="blind">다음달</span></button>
+                    </div>
+                </div>
+                <ul class="commute-list">
+                    <li class="item">
+                        <p class="tit">사용연차</p>
+                        <span class="txt">4.5</span>
+                    </li>
+                    <li class="item">
+                        <p class="tit">잔여연차</p>
+                        <span class="txt">10.5</span>
+                    </li>
+                    <li class="item">
+                        <p class="tit">총연차</p>
+                        <span class="txt">15</span>
+                    </li>
+                </ul>
+                <div class="field field-set">
+                    <label for="chk11-2" class="field-chkrdo">
+                        <input type="checkbox" name="chkGroup1" id="chk11-2" class="chk">
+                        <i class="field-icon" aria-hidden="hidden"></i>
+                        <span class="field-label">업무중</span>
+                    </label>
+                    <label for="chk11-3" class="field-chkrdo">
+                        <input type="checkbox" name="chkGroup1" id="chk11-3" class="chk">
+                        <i class="field-icon" aria-hidden="hidden"></i>
+                        <span class="field-label">정상근무</span>
+                    </label>
+                    <label for="chk11-4" class="field-chkrdo">
+                        <input type="checkbox" name="chkGroup1" id="chk11-4" class="chk">
+                        <i class="field-icon" aria-hidden="hidden"></i>
+                        <span class="field-label">지각</span>
+                    </label>
+                    <label for="chk11-5" class="field-chkrdo">
+                        <input type="checkbox" name="chkGroup1" id="chk11-5" class="chk">
+                        <i class="field-icon" aria-hidden="hidden"></i>
+                        <span class="field-label">조퇴</span>
+                    </label>
+                    <label for="chk11-6" class="field-chkrdo">
+                        <input type="checkbox" name="chkGroup1" id="chk11-6" class="chk">
+                        <i class="field-icon" aria-hidden="hidden"></i>
+                        <span class="field-label">야근</span>
+                    </label>
+                </div>
+                <div class="commute-details">
+                    <div class="current-group">
+                        <div class="current-box">
+                            <div class="item">
+                                <span class="badge info">신청중</span>
+                                <button class="btn tertiary size-xs">신청취소</button>
+                            </div>
+                            <div class="item day">
+                                <strong class="tit">2025.05.02(금) +5</strong>
+                                <span class="txt"><strong class="blue">6</strong>일</span>
+                            </div>
+                            <div class="item">
+                                <span class="txt">연차</span>
+                            </div>
+                        </div>
+                        <div class="current-box">
+                            <div class="item">
+                                <span class="badge disabled">승인완료</span>
+                                <button class="btn tertiary size-xs">신청취소</button>
+                            </div>
+                            <div class="item day">
+                                <strong class="tit">2025.05.02(금) +5</strong>
+                                <span class="txt"><strong class="blue">6</strong>일</span>
+                            </div>
+                            <div class="item">
+                                <span class="txt">연차</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="btnWrap _center">
+                    <button class="btn primary size-lg full">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../assets/js/ui.component.js"></script>
+    <script src="../../assets/js/pup.js"></script><!-- 퍼블 확인용 -->
+</body>
+</html>

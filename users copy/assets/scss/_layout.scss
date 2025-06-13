@@ -1,0 +1,854 @@
+/*!
+ * Publishing UI Components
+ * © 2025 BLUEWEBD™. All rights reserved.
+ * Licensed under the MIT License.
+ * Attribution to BLUEWEBD™ is required for all copies and derivative works.
+ * https://opensource.org/licenses/MIT
+ */
+
+body{
+    background-color: #f2f5f9;
+}
+.wrap{
+    /* nav 열고 닫기 */
+    &.is-active{
+        .nav-wrap{
+            width: 7.1rem;
+            transition: .3s width ease-in-out;
+        }
+        .header-wrap, .content-wrap{
+            padding-left: 9.1rem;
+            transition: .3s padding ease-in-out;
+        }
+        .nav{
+            &-link{
+                @include el-size(6.8rem, 9.4rem);            
+                & > .txt {
+                    @include ir(screen);
+                }
+            }
+            &-item{
+                @include el-size(6.8rem, 5.3rem);
+                & > .txt {@include ir(screen);}
+            }
+        }
+    }
+}
+
+// header
+.header{
+    &-wrap{
+        @include dflex($j-content: space-between);
+        padding:1.9rem 6rem 1.9rem 31.6rem;
+        min-width: 102.4rem;
+        background-color: $color-base-white;
+        transition: .3s padding-left ease-in-out;
+    }
+    &-left{
+        @include dflex($al-items: center, $gap: .6rem);
+        .head-date{
+            @include dflex($al-items: center, $gap: .6rem);
+            @extend %heading-sm-bold;
+            color: $color-text-primary;
+            @include el-content(before){
+                content: 'TODAY';
+                display: inline-block;
+                padding: .4rem 1.2rem;
+                background-color: $color-bg-tertiary;
+                @extend %body-xs-regular;
+                @extend %radius-round;
+                color: $color-text-info;
+            };
+        }
+    }
+    &-right{
+        @include dflex($j-content: flex-start, $gap: 2rem);
+        .login, .alarm{
+            position: relative;
+            &-btn{
+                @include dflex($al-items:center, $gap: 1.2rem);
+                @extend %body-md-medium;
+                color: $color-text-primary;
+                @include el-content(before){
+                    @extend %ico-login;
+                };
+            }
+        }
+        .alarm{
+            &-btn{
+                @include el-content(before){
+                    @extend %ico-alarm;
+                };
+                &.new{
+                    @include el-content(after){
+                        @include pos-offset($top: .1rem, $left: 2rem);
+                        @include el-size(.8rem, .8rem);
+                        @extend %radius-full;
+                        background-color: $color-icon-danger;
+                        @include line(border, .2rem solid $color-base-white);
+                    };
+                }
+            }
+            & + .name{
+                padding-left: 2rem;
+            }
+        }
+        .name{
+            position: relative;
+            @include dflex($al-items:center, $gap: .2rem);
+            @extend %body-md-medium;
+            color: $color-text-primary;
+            @include el-content(before){
+                @include pos-offset($top:50%, $left: 0,){
+                    transform: translateY(-50%)
+                };
+                @include el-size(.1rem, 1.8rem);
+                background-color: $color-border-secondary;
+            };
+        }
+    }
+}
+//nav
+.nav{
+    &-wrap{
+        @include pos-offset($pos: fixed, $top:0, $left:0);
+        // position: fixed;
+        // top: 0;
+        // left: 0;
+        @include el-size(26rem, 100vh);
+        transition: .3s width ease-in-out;
+        background-color: $color-bg-nav;
+    }
+    &-tit{
+        color: $color-base-white;
+    }
+    &-link{
+        position: relative;
+        @include dflex($al-items:center, $gap:.7rem);
+        @include el-size(100%, 9.4rem);
+        padding: 3.2rem 2rem;
+        overflow: hidden;
+        & > .txt {
+            @extend %heading-sm-medium;
+            transition: .3s font-size ease-in-out;
+            color: $color-base-white;
+        }
+        .ico{
+            display: block;
+            @include el-size(3.1rem, 3rem){min-width: 3.1rem};
+            &.img0{
+                @extend %ico-logo;
+            }
+        }
+    }
+    &-menu{
+        .nav-item{
+            @include dflex($al-items: center, $gap:1.2rem);
+            @include el-size(100%, 5.3rem);
+            padding: 1.6rem 2.4rem;
+            overflow: hidden;
+            & > .txt {
+                @extend %heading-sm-medium;
+                color: $color-base-white;
+                transition: .3s font-size ease-in-out;    
+            }
+            + .nav-item{
+                margin-top: 1.2rem;
+            }
+            .ico{
+                display: block;
+                @include el-size(2rem, 2rem){min-width: 2rem};
+                background-color: $color-icon-secondary;
+                mask-repeat:no-repeat;
+                mask-position:center;
+                mask-size:cover;
+                
+                @for $i from 1 through 6 {
+                    &.img#{$i} {
+                        @extend %ico-nav-img#{$i};
+                    }
+                }
+            }
+            &:hover, &._is-active{
+                background-color: $color-brand-primary-400;
+                color: $color-base-white;
+                & > .txt {
+                    color: $color-base-white;
+                }
+                .ico{
+                    @for $i from 1 through 6 {
+                        &.img#{$i} {
+                            @extend %ico-nav-hover-img#{$i};
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-button{
+        @include pos-offset($top: 50%, $right:-2.5rem,){transform: translateY(-50%)};
+        @include el-size(3rem, 5.6rem);
+        padding: 1rem .25rem;
+        border-radius: 0 .6rem .6rem 0;
+        background-color:$color-bg-nav;
+        z-index: -1;
+        @include el-content(after){
+            @include pos-offset($top:50%, $left:50%){transform: translate(-50%, -50%) rotate(90deg)};
+            @include el-size (2rem, 2rem);
+            @extend %ico-arrow-white-left-20;
+            transition: 0.3s transform ease-in-out;
+        };
+        &.open{
+            @include el-content(after){
+                transform: translate(-50%, -50%) rotate(-90deg);
+            }
+        }
+    }
+}
+
+.container-wrap{
+    width: 100%;
+    min-width: 113.5rem;
+}
+.content-wrap{
+    padding: 3.2rem 6rem 3.1rem 31.8rem;
+    transition: .3s padding-left ease-in-out;
+}
+
+//cont
+.cont{
+    &-box{
+        width: 100%;
+        padding: 3rem;
+        @extend %radius-12;
+        background-color: $color-base-white;
+        @extend %shadow-md;
+        + .cont-box{
+            margin-top: 3.2rem;
+        }
+    }
+    &-group{
+        + .cont-group{
+            margin-top: 6rem;
+        }
+        + .btnWrap{
+            margin-top: 4rem;
+        }
+    }
+}
+
+//tab-box
+.tab-box{
+    padding: 1.6rem 3rem 0 3rem;
+    background-color: $color-base-white;
+    border-radius: 1.2rem 1.2rem 0 0;
+    @extend %shadow-md;
+    @include line(border, 0.1rem solid $color-border-secondary, bottom);
+    + .cont-box{
+        border-radius: 0 0 1.2rem 1.2rem;
+    }
+    .tab-wrap{
+        position: relative;
+        .tab-list-wrap{
+            margin: 0;
+            @include line(border, none);
+        }
+        .btnWrap{
+            @include pos-offset($top:.8rem, $right:0);
+        }
+    }
+}
+
+.item{
+    &-group{
+        @include dflex($j-content: flex-start);
+        .item-box{
+            @include dflex($direction: column);
+            @extend %radius-12;
+            padding: 3.2rem;
+            background-color: $color-bg-secondary;
+            height: 100%;
+            &.blue{
+                @include bg-gradient(line, 94.51deg, #3493FF 1.11%, #0054DB 99.67%);
+            }
+            &.green{
+                @include bg-gradient(line, 92.09deg, #00B277 0.98%, #00B69E 98.86%);
+            }
+        }
+        &.attendance{
+            @include dflex($wrap: wrap, $j-content: space-between);
+            .item-box{
+                @include dflex($j-content: space-between);
+                .flex-wrap{
+                    @include dflex($al-items: center, $j-content: space-between);
+                    width: 100%;
+                    .item{
+                        position: relative;
+                        .tit{
+                            @extend %body-md-regular;
+                            color: $color-base-white;
+                            margin-bottom:.6rem;
+                        }
+                        .txt{
+                            @extend %heading-xl-bold;
+                            color: $color-base-white;
+                            &.blue{
+                                @extend %body-md-regular;
+                                color: $color-text-point-blue;
+                                b{
+                                    @extend %heading-2xl-bold;
+                                    margin-right: .2rem;
+                                }
+                                @include el-content(after){
+                                    content: '명';
+                                    display: inline-block;
+                                    color: $color-text-point-blue;
+                                    @extend %body-md-bold;
+                                };
+                            }
+                            &.green{
+                                @extend %body-md-regular;
+                                color: $color-text-point-green;
+                                b{
+                                    @extend %heading-2xl-bold;
+                                    margin-right: .2rem;
+                                }
+                                @include el-content(after){
+                                    content: '명';
+                                    display: inline-block;
+                                    color: $color-text-point-green;
+                                    @extend %body-md-bold;
+                                };
+                            }
+                        }
+                        &:first-child{
+                            margin-right: auto;
+                            .tit{
+                                margin-bottom: .8rem;
+                            }
+                            + .item{
+                                &::before{
+                                    content: none;
+                                }
+                            }
+                        }
+                        &:not(:first-child){
+                            @include dflex($direction:column, $al-items: center, $j-content: center);
+                            width: 9.2rem;
+                            @include el-content(before){
+                                @include pos-offset($top: 50%, $left: 0){transform: translateY(-50%)};
+                                @include el-size(.1rem, 6rem);
+                                background-color: $color-icon-inverse;
+                            };
+                        }
+                    }
+                    @include el-content(before){
+                        display: inline-block;
+                        @include el-size(7rem, 7rem){min-width: 7rem};
+                        margin-right: 2rem;
+                    };
+                    &.people{
+                        &::before{
+                            background: url(../img/common/img-people.png) no-repeat center / cover;
+                        }
+                    }
+                    &.vacation{
+                        &::before{
+                            background: url(../img/common/img-vacation.png) no-repeat center / cover;
+                        }
+                    }
+                }
+                &:first-child{
+                    width: 50%;
+                }
+                &:last-child{
+                    width: calc(50% - 1.6rem);
+                }
+            }
+            @media (max-width: 1800px) {
+                @include dflex($wrap: wrap, $gap:2rem);
+                .item-box{
+                    width: 100% !important;
+                    min-width: 68.5rem;
+                }
+            }
+        }
+        &.late{
+            position: relative;
+            display: block;
+            .swiper-slide {
+                flex-shrink: 0;
+            }
+        }
+    }
+    &-con{
+        &.time{
+            margin-top: 1.2rem;
+            text-align: left;
+            .tit{
+                position: relative;
+                margin-right: 0;
+                @extend %body-md-medium;
+                + .tit{
+                    margin-left: .8rem;
+                    padding-left: .8rem;
+                    @include el-content(before){
+                        @include pos-offset($top:50%, $left:0){transform: translateY(-50%)};
+                        @include el-size(.1rem, 1.2rem);
+                        background-color: $color-icon-secondary
+                    };
+                }
+            }
+            + .desc{
+                margin: .4rem 0 2.4rem;
+            }
+            &.column{
+                display: flex;
+                flex-direction: column;
+                .tit{
+                    +.tit{
+                        margin-left: 0;
+                        padding-left: 0;
+                        @include el-content(before){
+                            content: none;
+                        }
+                    }
+                }
+            }
+        }
+        &.desc{
+            text-align: left;
+            .tit{
+                @extend %body-md-regular;
+                color: $color-text-tertiary;
+                @include ellipsis($line:2);
+            }
+            + .btnWrap{
+                margin-top: auto;
+            }
+        }
+    }
+}
+
+//table
+.table{
+    width: 100%;
+    @include line(border, .1rem solid $color-border-primary, top);
+    border-collapse: collapse;
+    table-layout: fixed;
+    tr{
+        th{
+            background-color: $color-bg-tertiary;
+            @extend %body-md-medium;
+        }
+        td{
+            @extend %body-md-regular;
+        }
+        th, td{
+            padding: 1.2rem 2rem;
+            text-align: left;
+            @include line(border, .1rem solid $color-border-tertiary, bottom);
+            vertical-align: middle;
+        }
+        .field-chkrdo{
+            vertical-align: bottom;
+        }
+    }
+    &.row{
+        @include line(border, none, top);
+        tr{
+            th, td{
+                text-align: center;
+                vertical-align: middle;
+            }
+            th{
+                padding: 1.5rem 0;
+            }
+            td{
+                padding: 1.8rem 0;
+            }
+            input[type=checkbox]{
+                vertical-align: middle;
+            }
+        }
+    }
+    &-wrap{
+        + .table-wrap{
+            margin-top: 3.6rem;
+        }
+        + .flex-wrap.btween{
+            margin-top: 6rem;
+        }
+        + .btnWrap{
+            margin-top: 4rem;
+        }
+    }
+    + .pagination{
+        margin: 3.6rem;
+    }
+    &-info{
+        @extend %radius-12;
+        width: calc(100% / 3);
+        padding: 4rem 0;
+        text-align: center;
+        + .table-info{
+            margin-left: 2.4rem
+        }
+        .tit{
+            @extend %body-lg-regular;
+            color: $color-text-secondary;
+            + .txt{
+                margin-left: 2rem
+            }
+        }
+        .txt{
+            @extend %heading-lg-regular;
+        }
+        &-box{
+            @include dflex($j-content: space-between);
+            margin: 3.6rem 0;
+        }
+        &.vacation{
+            background-color: red;
+            .txt{
+                color: $color-bg-nav;
+            }
+        }
+        &.late{
+            background-color: red;
+            .txt{
+                color: $color-text-warning;
+            }
+        }
+        &.correction{
+            background-color: red;
+            .txt{
+                color: red;
+            }
+        }
+    }
+    .sub-txt{
+        display: block;
+        @extend %body-xs-regular;
+        color: $color-text-tertiary;
+    }
+}
+.pagination{
+    &-wrap{
+        @include dflex($j-content:center, $al-items:flex-start);
+    }
+    .page{
+        &-link{
+            display: inline-block;
+            @include el-size(2.4rem, 2.4rem);
+            @extend %body-sm-medium;
+            text-align: center;
+            &.active{
+                background-color: $color-bg-tertiary;
+                @extend %radius-full;
+            }
+            &.prev{
+                @extend %ico-pgn-pre;
+                &.first{
+                    @extend %ico-pgn-pre-f;
+                }
+            }
+            &.next{
+                @extend %ico-pgn-next;
+                &.last{
+                    @extend %ico-pgn-next-f;
+                }
+            }
+        }
+    }
+}
+
+//login
+.login{
+    &-wrap{
+        display: block;
+        @include pos-offset(fixed, $top: 50%, $left: 50%){transform: translate(-50%, -50%)};
+        @include el-size(48rem, 35rem);
+    }
+    &-title{
+        .tit{
+            text-align: center;
+            @extend %heading-xl-bold;
+        }
+        + .login-box{
+            margin-top: 3rem;
+        }
+    }
+    &-box{
+        background-color: $color-base-white;
+        padding: 4rem;
+        @extend %radius-12;
+    }
+    &-group{
+        .titWrap{
+            + .field{
+                margin-top: 1.3rem;
+            }
+        }
+        .field{
+            + .field{
+                margin-top: 1.2rem;
+            }
+        }
+        + .btnWrap{
+            margin-top: 3.2rem;
+        }
+    }
+}
+
+.flex{
+    &-wrap{
+        @include dflex($al-items:center);
+        &.date-ds{
+            .field-outline{
+                min-width: 20rem;
+            }
+            .date-dash{
+                margin: 0 .6rem;
+            }
+        }
+    }
+}
+
+/* 괄호 박스*/
+.parentheses{
+    @include dflex();
+    position: relative;
+    margin-left: 3.8rem;
+    @include el-content(before){
+        content: '(';
+        @include pos-offset($top:0, $left:-1.6rem);
+        color: $color-text-tertiary;
+        
+    };
+    @include el-content(after){
+        content: ')';
+        @include pos-offset($top:0, $right:-1.6rem);
+        color: $color-text-tertiary;
+    };
+}
+.option-group{
+    .field{
+        + .field{
+            margin-top: .8rem;
+        }
+        + .btnWrap{
+            margin-top: 1.2rem;
+        }
+    }
+    + .option-group{
+        margin-top: 2.4rem;
+        padding-top: 2.4rem;
+        @include line(border, .1rem solid $color-border-divider-01, top)
+    }
+}
+
+//첨부파일
+.attachment{
+    &-item{
+        .tit{
+            @extend %body-md-medium;
+            text-decoration: underline;
+            text-underline-position: under;
+        }
+        + .attachment-item{
+            margin-top: .5rem;
+        }
+    }
+    + .btnWrap{
+        margin-top: 1.2rem;
+    }
+}
+
+//라벨
+.label-tag{
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    background-color: $color-bg-interactive-secondary;
+    @extend %radius-10;
+}
+
+/* 리스트 목록 */
+.list{
+    .item{
+        position: relative;
+        padding-left: 1rem;
+        @include el-content(before){
+            @include pos-offset($top: 50%, $left:0){transform: translateY(-50%)};
+            @include el-size(0.3rem, 0.3rem);
+            @extend %radius-full;
+            background-color: $color-base-black;
+        };
+        .tit{
+            display: inline-block;
+            width: 4.5rem;
+        }
+    }
+    &.dot{
+        &.one{
+            position: relative;
+            padding-left: 1rem;
+            @extend %body-xs-regular;
+            @include el-content(before){
+                @include pos-offset($top: 50%, $left:0){transform: translateY(-50%)};
+                @include el-size(0.3rem, 0.3rem);
+                @extend %radius-full;
+                background-color: $color-base-black;
+            };
+        }
+    }
+}
+
+.commute{
+    &-list{
+        @include dflex($j-content: center);
+        padding: 0.4rem 0.8rem;
+        background-color: $color-bg-secondary;
+        @extend %radius-12;
+        .item{
+            @include dflex($direction:column, $al-items:center);
+            padding: 1.6rem 2.04rem;
+            text-align: left;
+            flex: 1;
+            .tit{
+                @extend %body-sm-regular;
+                color: $color-text-secondary;
+            }
+            .txt{
+                @extend %heading-sm-medium;
+            }
+        }
+        &.row{
+            @include dflex($direction: column);
+            padding: 2rem;
+            .item{
+                @include dflex($al-items:flex-start);
+                padding: 0;
+                .tit{
+                    @extend %body-md-regular;
+                    + .txt{
+                        display: block;
+                        margin-left: 1.6rem
+                    }
+                }
+                .txt{
+                    @extend %body-lg-medium;
+                }
+                + .item{
+                    margin-top: 1.6rem;
+                }
+            }
+        }
+        + .field-set{
+            margin: 2.4rem 0;
+        }
+    }
+    &-wrap{
+        .date-tit{
+            @include dflex($al-items: center);
+            .tit{
+                @extend %heading-sm-bold;
+                + .badge{
+                    margin-left: 0.8rem;
+                }
+            }
+            + .commute-list{
+                margin-top: 1.2rem;
+            }
+        }
+        .commute-list{
+            @include dflex($j-content: flex-start, $direction: column);
+            padding: 0;
+            background-color: $color-base-white;
+            .item{
+                @include dflex();
+                padding: 0;
+                width: calc(100% - 8.8rem);
+                .tit{
+                    display: inline-block;
+                    margin-right: 0.8rem;
+                    @extend %body-lg-regular;
+                    color: $color-text-tertiary;
+                }
+                .txt{
+                    @extend %body-lg-regular;
+                    word-wrap: break-word;
+                }
+                + .item{
+                    margin-top: 0.2rem;
+                }
+            }
+            
+        }
+        .item{
+            position: relative;
+            .btnWrap{
+                @include pos-offset($top:50%, $right: 0){transform: translateY(-50%)};
+            }
+        }
+        > .item + .item{
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 0.1rem solid $color-border-divider-02;
+        }
+        + .cont-group{
+            margin-top: 4.8rem;
+        }
+    }
+}
+
+.current{
+    &-box{
+        padding: 2rem;
+        border: 0.1rem solid $color-border-divider-01;
+        @extend %radius-12;
+        .item{
+            @include dflex($al-items: center, $j-content: space-between);
+            &.day{
+                margin: 1rem 0 0.4rem;
+                .tit{
+                    @extend %body-lg-bold;
+                }
+                .txt{
+                    @extend %body-lg-medium;
+                    color: $color-base-black;
+                    .blue{
+                        color: $color-text-info;
+                    }
+                }
+            }
+            .txt{
+                color: $color-text-secondary;
+            }
+            .btn{
+                @extend %radius-6;
+                color: $color-text-secondary;
+            }
+        }
+        + .current-box{
+            margin-top: 1.2rem;
+        }
+    }
+}
+
+.badge{
+    display: inline-block;
+    @include el-size(auto, 2.4rem);
+    padding: 0.3rem 1rem;
+    @extend %body-sm-medium;
+    @extend %radius-round;
+    vertical-align: middle;
+    &.info{
+        background-color: $color-bg-info-subtitle;
+        color: $color-text-info;
+    }
+    &.disabled{
+        background-color: $color-bg-disabled;
+        color: $color-text-secondary;
+    }
+}

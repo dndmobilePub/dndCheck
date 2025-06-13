@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>popup</title>
+    <link rel="stylesheet" href="../../assets/css/cp.style.css">
+    <script src="../../assets/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../assets/js/lib/lib.swiper.8.4.7.min.js"></script>
+    <script src="../../assets/js/lib/lib.jquery-ui-1.13.2.js"></script>
+</head>
+<body>
+    <button class="btn primary size-lg _modalBtn" data-modal="modal1">출퇴근현황 팝업</button>
+    <div class="modalPop _center" modal-target="modal1">
+        <div class="modalWrap" modal-size="sm" modal-style="border">
+            <div class="modal-header">
+                <h1 class="mp-title">
+                    <span>홍길동 과장</span> 출퇴근 현황
+                </h1>
+                <button class="btn-close-pop ico ico-pop-close">
+                    <span class="hide">창닫기</span>
+                </button>
+            </div>
+            <div class="modal-container">
+                <div class="titWrap date-bt">
+                    <div class="btn-date">
+                        <button class="btn ico date-l"><span class="blind">이전달</span></button>
+                        <h2 class="tit dep03">05.23(금)</h2>
+                        <button class="btn ico date-r"><span class="blind">다음달</span></button>
+                    </div>
+                </div>
+                <div class="cont-group">
+                    <ul class="commute-wrap">
+                        <li class="item">
+                            <ul class="commute-list">
+                                <li class="item">
+                                    <p class="tit">출근</p>
+                                    <span class="txt">09:14</span>
+                                </li>
+                                <li class="item">
+                                    <p class="tit">상태</p>
+                                    <span class="txt">지각</span>
+                                </li>
+                                <li class="item">
+                                    <p class="tit">장소</p>
+                                    <span class="txt">디앤디모바일 본사</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="item">
+                            <ul class="commute-list">
+                                <li class="item">
+                                    <p class="tit">퇴근</p>
+                                    <span class="txt">13:24</span>
+                                </li>
+                                <li class="item">
+                                    <p class="tit">장소</p>
+                                    <span class="txt">디앤디모바일 본사</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="item">
+                            <ul class="commute-list">
+                                <li class="item">
+                                    <p class="tit">출근</p>
+                                    <span class="txt">13:24</span>
+                                </li>
+                                <li class="item">
+                                    <p class="tit">상태</p>
+                                    <span class="txt">출근</span>
+                                </li>
+                                <li class="item">
+                                    <p class="tit">장소</p>
+                                    <span class="txt">SC제일은행 본사</span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <hr class="divider xxl" aria-hidden="true">
+                <div class="cont-group">
+                    <div class="titWrap end">
+                        <h2 class="tit dep02">보정내용</h2>
+                        <span class="list dot one">2025.03.10(월) 10:04 수정됨</span>
+                    </div>
+                    <ul class="commute-list row">
+                        <li class="item">
+                            <p class="tit">기존</p>
+                            <span class="txt">09:14~17:55</span>
+                        </li>
+                        <li class="item">
+                            <p class="tit">보정</p>
+                            <span class="txt">09:00~18:00</span>
+                        </li>
+                        <li class="item">
+                            <p class="tit">사유</p>
+                            <span class="txt">출근과 동시에 미팅이 잡혀 출근을 못찍었습니다. 이에 보정 요청드립니다.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="btnWrap _center">
+                    <button class="btn primary size-lg full">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../assets/js/ui.component.js"></script>
+    <script src="../../assets/js/pup.js"></script><!-- 퍼블 확인용 -->
+</body>
+</html>

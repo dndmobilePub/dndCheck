@@ -1,0 +1,452 @@
+//--- *!
+//  * Publishing UI Components
+//  * © 2025 BLUEWEBD™. All rights reserved.
+//  * Licensed under the MIT License.
+//  * Attribution to BLUEWEBD™ is required for all copies and derivative works.
+//  * https://opensource.org/licenses/MIT
+
+//-- ** MixIn
+//- * ir
+@mixin ir-reset($width, $height) {
+    position: absolute !important;
+    overflow: hidden !important;
+    height: $height !important;
+    width: $width !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 0 !important;
+    border: 0;
+}
+
+@mixin ir($ir) {
+    @if ($ir =="hide") {
+        @include ir-reset(1px, 1px);
+        clip: rect(1px 1px 1px 1px);
+    }
+
+    @else if($ir =="blind") {
+        @include ir-reset(0, 0);
+        display: block !important;
+        font-size: 1px !important;
+        z-index: -1;
+    }
+
+    @else if($ir =="screen") {
+        @include ir-reset(0, 0);
+        font-size: 1px;
+        text-indent: -9999px;
+    }
+}
+
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+        height: 0;
+    }
+}
+
+//- *gradient
+@mixin bg-gradient($type, $angle, $color1, $color2) {
+    @if $type == line {
+        background: linear-gradient($angle, $color1, $color2);
+    } @else if $type == circle {
+        background: radial-gradient(circle, $color1, $color2);
+    }
+    @content;
+}
+
+@mixin eff-direction($direction) {
+    @if $direction == left {
+        left: 0;
+    } @else if $direction == right {
+        right: 0;
+    } @else if $direction == center {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    @content;
+}
+
+
+@mixin line-effect($color, $el-type, $direction) {
+    backface-visibility: hidden;
+    position: relative;
+    text-decoration: none;
+    color: $color;
+
+    @include el-content($el-type) {
+        backface-visibility: hidden;
+        position: absolute;
+        @include eff-direction($direction);
+        @content;
+    }
+}
+
+@mixin fullHeight ($height: 100vh) {
+    height: 100%;
+    height: $height;
+    min-height: $height;
+}
+
+@mixin ellipsis($line: 1, $height: null) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -moz-binding: url(ellipsis.xml#ellipsis);
+    height: $height;
+
+    @if $line ==1 {
+        display: block;
+        white-space: nowrap;
+    }
+
+    @else {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: $line;
+        white-space: normal;
+        word-break: auto-phrase;
+        word-break: break-all;
+    }
+}
+
+@mixin el-size ($width, $height, $minW: null, $maxW: null, $minH: null, $maxH: null) {
+    width: $width;
+    min-width: $minW;
+    max-width: $maxW;
+    height: $height;
+    min-height: $minH;
+    max-height: $maxH;
+    @content;
+}
+
+@mixin el-content($el-type, $display: block) {
+    $pseudo-elements: (
+    );
+
+    @if $el-type =='before' {
+        $pseudo-elements: (
+            'before'
+        );
+    } @else if $el-type =='after' {
+        $pseudo-elements: (
+            'after'
+        );
+    } @else if $el-type =='both' {
+        $pseudo-elements: (
+            'before',
+            'after'
+        );
+    }
+
+    @each $pseudo in $pseudo-elements {
+        &::#{$pseudo} {
+            content: "";
+            display: $display;
+            @content;
+        }
+    }
+}
+
+//- * pos
+@mixin obj-offset-align($pos: absolute,
+    $direction: center,
+    $top: null,
+    $left: null,
+    $bottom: null,
+    $right: null) {
+    position: $pos;
+
+    @if $direction =='center' {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    @else if $direction =='all' {
+        top: $top;
+        left: $left;
+        transform: translate(-#{$left}, -#{$top});
+    }
+
+    @else if $direction =='vertical' {
+        top: $top;
+        left: $left;
+        bottom: $bottom;
+        right: $right;
+        transform: translateY(-#{$top});
+    }
+
+    @else if $direction =='horizontal' {
+        top: $top;
+        left: $left;
+        bottom: $bottom;
+        right: $right;
+        transform: translateX(-#{$left});
+    }
+
+    @content;
+}
+
+
+@mixin pos-offset($pos: absolute, $top: null, $left: null, $bottom: null, $right: null, $z-index: null) {
+    position: $pos;
+    top: $top;
+    left: $left;
+    bottom: $bottom;
+    right: $right;
+    z-index: $z-index;
+    @content;
+}
+
+@mixin dflex($display: flex, $direction: row, $wrap: null, $j-content: null, $al-items: null, $al-content: null, $gap: null) {
+    display: $display;
+    flex-direction: $direction; // row, row-reverse, column, column-reverse
+    flex-wrap: $wrap; // nowrap, wrap, wrap-reverse
+    justify-content: $j-content; // flex-start, flex-end, center, space-around, space-between, space-evenly
+    align-items: $al-items; // stretch, flex-start, flex-end, center
+    align-content: $al-content; // flex-start, flex-end, center, space-around, space-between, space-evenly
+    gap: $gap; // ios 14.1 이하로 대응안됨
+    @content;
+}
+
+@mixin transition($time, $el, $effect: ease-in-out) {
+    transition: $time $el $effect;
+    @content;
+}
+
+/** FONT **/
+/* clamp 기반 font-size
+// 최소 크기 $min, 기본 크기 $preferred, 최대 크기 $max 사이에서 뷰포트에 따라 자동으로 크기가 반응형으로 조정
+@mixin font-clamp($min: 0.9rem, $preferred: 1.6rem, $max: 4rem) {
+  font-size: clamp($min, $preferred + 1vw, $max);
+}
+// 사용예시
+.txt-desc {@include font-clamp(1.2rem, 1.6rem, 3.2rem);}
+.txt-small {@include font-clamp(0.9rem, 1.2rem, 1.6rem);}
+.txt-default {@include font-clamp(최소값, 선호값, 최대값);} // 최소값은 $min, 최대값은 $max를 벗어날수 없음
+ */
+
+// /* scale 기반 font-size */
+// @function fontSize($step, $step-size: 0.2rem, $base-size: 1.6rem, $min-size: 0.9rem, $max-size: 3.2rem) {
+//   $calculated-size: $base-size + ($step * $step-size);
+
+//     @if $calculated-size < $min-size {
+//         @return $min-size;
+//     } @else if $calculated-size > $max-size {
+//         @return $max-size;
+//     } @else {
+//         @return $calculated-size;
+//     }
+// }
+
+// $font-scale: (
+//     3xs: #{fontSize(-4)},
+//     2xs: #{fontSize(-3)},
+//     xs: #{fontSize(-2)},
+//     sm: #{fontSize(-1)},
+//     default: #{fontSize(0)},
+//     lg: #{fontSize(1)},
+//     xl: #{fontSize(2)},
+//     2xl: #{fontSize(3)},
+//     3xl: #{fontSize(4)}
+// );
+// // 폰트 크기만 처리
+// @mixin font-size($key, $fallback: 1.6rem) {
+//   $value: map-get($font-scale, $key);
+
+//   @if $value == null {
+//     font-size: $fallback;
+//   } @else {
+//     font-size: $value;
+//   }
+// }
+
+// @mixin font($key: base, $fontweight: 500, $color: null, $fontName: null, $lheight: null) {
+//   @include font-size($key);
+
+//   font: {
+//     family: if($fontName != null, $fontName, inherit);
+//     weight: $fontweight;
+//   }
+
+//   @if $lheight != null {
+//     line-height: $lheight;
+//   }
+
+//   @if $color != null {
+//     color: $color;
+//   }
+
+//   @content;
+// }
+
+//- * Typography Mixin
+// /* 문자열 % 포함 수치 변환 */
+@function str-to-number($string) {
+    @if type-of($string)=='string' and str-index($string, '%') !=null {
+        $num-str: str-slice($string, 1, str-index($string, '%') - 1);
+        @return $num-str * 1 / 100;
+    }
+
+    @else if type-of($string)=='number' {
+        @return $string;
+    }
+
+    @else {
+        @error "⚠️ [str-to-number] Unexpected value: #{$string}";
+    }
+}
+
+// /* 사이즈 토큰 + 숫자/퍼센트 안전 처리 함수 */
+@function safe-size($size-token, $fallback-token-map, $category) {
+    @if type-of($size-token)=='number' or (type-of($size-token)=='string' and str-index($size-token, '%') !=null) {
+        @return $size-token;
+    }
+
+    @else {
+        @return dndToken($fallback-token-map, $category, $size-token);
+    }
+}
+
+@mixin typography($font-family: default,
+    $weight: regular,
+    $size: 16,
+    $line-height-value: null,
+    $letter-spacing-value: null) {
+    // 폰트 패밀리와 웨이트는 항상 토큰 기반으로 처리
+    $font-family: dndToken($typography-primitive, font-family, $font-family);
+    $font-weight: dndToken($typography-primitive, weight, $weight);
+
+    // 사이즈 안전 처리
+    $font-size: safe-size($size, $typography-primitive, size);
+
+    // 라인하이트 안전 처리 (넘버, %, 토큰 모두 허용)
+    $line-height: if($line-height-value !=null,
+            safe-size($line-height-value, $typography-primitive, line-height),
+            safe-size(130, $typography-primitive, line-height));
+
+    // 레터 스페이싱 안전 처리 (넘버, %, 토큰 모두 허용)
+    $letter-spacing: if($letter-spacing-value !=null,
+            safe-size($letter-spacing-value, $typography-primitive, letter-spacing),
+            safe-size(normal, $typography-primitive, letter-spacing));
+
+    font-family: $font-family;
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $line-height;
+    letter-spacing: $letter-spacing;
+}
+
+@mixin overflow($offset, $overflow) {
+    @if $offset ==x {overflow-x: $overflow;}
+    @else if $offset ==y {overflow-y: $overflow;}
+    @else if $offset ==both or $offset ==all {
+        overflow: $overflow;
+    }
+}
+
+
+@mixin line($attribute, $args...) {
+    @if $attribute =="border" {
+        $argument: nth($args, 1);
+        $direction: if(length($args) >=2, nth($args, 2), all);
+        $radius: if(length($args) >=3, nth($args, 3), null);
+
+        @if $direction =="all" {
+            border: $argument;
+        }
+
+        @else if $direction =="top" {
+            border-top: $argument;
+        }
+
+        @else if $direction =="left" {
+            border-left: $argument;
+        }
+
+        @else if $direction =="bottom" {
+            border-bottom: $argument;
+        }
+
+        @else if $direction =="right" {
+            border-right: $argument;
+        }
+
+        @if $radius !=null {
+            border-radius: $radius;
+        }
+    }
+
+    @else if $attribute =="outline" {
+        $argument: nth($args, 1);
+        $direction: if(length($args) >=2, nth($args, 2), all);
+        $offset: if(length($args) >=3, nth($args, 3), null);
+
+        @if $direction =="all" {
+            outline: $argument;
+        }
+
+        @else if $direction =="top" {
+            outline-top: $argument;
+        }
+
+        @else if $direction =="left" {
+            outline-left: $argument;
+        }
+
+        @else if $direction =="bottom" {
+            outline-bottom: $argument;
+        }
+
+        @else if $direction =="right" {
+            outline-right: $argument;
+        }
+
+        @if $offset !=null {
+            outline-offset: $offset;
+        }
+    }
+
+    @else if $attribute =="inset" {
+        $color: if(length($args) >=1, nth($args, 1), black);
+        $thickness: if(length($args) >=2, nth($args, 2), .1rem);
+
+        box-shadow: 0 0 0 $thickness $color inset;
+    }
+
+    @else if $attribute =="none" {
+        box-shadow: none;
+    }
+
+    @content;
+}
+
+
+$svgIcoURL: '../img/';
+
+@mixin svgIcoMask($url: $svgIcoURL, $file: null, $color: $color-black, $size: null) {
+    mask-image: url("#{$svgIcoURL}#{$file}.svg");
+    background-color: $color;
+    width: $size;
+    height: $size;
+    mask-size: 100% auto;
+    @content;
+}
+
+$bgIcoURL: '../img/';
+
+@mixin bgIco($url: $bgIcoURL, $file: null, $color: null, $pos: 0 0, $repeat: no-repeat, $size: null) {
+    background: $color url($bgIcoURL + $file + '.png') $pos $repeat;
+    background-size: $size;
+    @content;
+}
+
+@mixin split($col, $space) {
+    width: calc(100%/$col - ($space * ($col - 1)));
+}
+
+%transition3s {@include transition(.3s, all, ease-in-out);}
+%transition5s {@include transition(.5s, all, ease-in-out);}

@@ -1,0 +1,578 @@
+@charset "UTF-8";
+/*!
+ * Publishing UI Components
+ * © 2025 BLUEWEBD™. All rights reserved.
+ * Licensed under the MIT License.
+ * Attribution to BLUEWEBD™ is required for all copies and derivative works.
+ * https://opensource.org/licenses/MIT
+ */
+body, th, td, input, select, textarea, button, input[type=checkbox]:checked {
+  font-family: 'Pretendard', 'sans-serif';
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  letter-spacing: -0.02rem;
+  font-weight: 400;
+}
+
+/** FONT **/
+/* clamp 기반 font-size
+// 최소 크기 $min, 기본 크기 $preferred, 최대 크기 $max 사이에서 뷰포트에 따라 자동으로 크기가 반응형으로 조정
+@mixin font-clamp($min: 0.9rem, $preferred: 1.6rem, $max: 4rem) {
+  font-size: clamp($min, $preferred + 1vw, $max);
+}
+// 사용예시
+.txt-desc {@include font-clamp(1.2rem, 1.6rem, 3.2rem);}
+.txt-small {@include font-clamp(0.9rem, 1.2rem, 1.6rem);}
+.txt-default {@include font-clamp(최소값, 선호값, 최대값);} // 최소값은 $min, 최대값은 $max를 벗어날수 없음
+ */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  padding: 0;
+  margin: 0;
+} /* rem default 10px */
+body {
+  width: 100%;
+  overflow-x: hidden;
+  /* 뷰표트 변환시 폰트크기 자동확대 방지. */
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body, div, dl, dt, dd, ul, ol, li, hgroup, h1, h2, h3, h4, h5, h6, fieldset,
+legend, p, th, td {
+  word-break: keep-all;
+}
+
+body, div, dl, dt, dd, ul, ol, li, hgroup, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset,
+legend, textarea, p, blockquote, th, td, input, select, textarea, button {
+  margin: 0;
+  padding: 0;
+}
+
+fieldset, img {
+  border: 0;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: top;
+}
+
+dl, ul, ol, menu, li {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+address, caption, cite, code, dfn, em, var, i, b {
+  font-style: normal;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: none;
+}
+
+input, select, textarea, button {
+  font-size: 100%;
+  vertical-align: middle;
+}
+
+button {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+} /* 포커스 라인 비활성처리*/
+table {
+  background-color: transparent;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+input,
+textarea,
+select {
+  background-color: transparent;
+}
+
+input[type=checkbox]:checked {
+  -webkit-appearance: checkbox;
+  color: #212529;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=text], input[type=password], input[type=submit], input[type=date],
+input[type=search], input[type=tel], input[type=email] {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+input[type=search]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+} /* IE9 이상 select 화살표 삭제 */
+input[type=text]:read-only, input[type=password]:read-only,
+input[type=text]:disabled, input[type=password]:disabled {
+  background: dnd("colors", "primitive", "neutral", 100);
+}
+
+strong, b {
+  font-weight: 600;
+}
+
+a {
+  display: inline-block;
+  color: #212529;
+  text-decoration: none; /*outline:transparent;*/
+}
+
+a:active, a:hover {
+  text-decoration: none;
+}
+
+legend, caption {
+  position: absolute !important;
+  overflow: hidden !important;
+  height: 1px !important;
+  width: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+}
+
+hr {
+  display: none;
+  visibility: hidden;
+}
+hr.divider {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  height: 1.6rem;
+}
+hr.divider.xxl {
+  height: 4.8rem;
+}
+hr.divider.xl {
+  height: 4rem;
+}
+hr.divider.lg {
+  height: 3.2rem;
+}
+hr.divider.m {
+  height: 2.4rem;
+}
+hr.divider.s {
+  height: 1.2rem;
+}
+hr.divider.xs {
+  height: 0.8rem;
+}
+hr.divider.m-xs {
+  height: 0;
+  margin-top: -0.8rem;
+}
+hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
+  margin-top: 0;
+}
+
+.side-gap {
+  padding: 0 0.8rem;
+}
+
+.space {
+  margin-left: 2.4rem !important;
+  margin-right: 2.4rem !important;
+}
+
+*:focus, *:focus-visible {
+  outline: none;
+}
+
+.user-is-tabbing *:focus:not(textarea), .user-is-tabbing *:focus-visible:focus:not(textarea) {
+  outline: 0.1rem solid #666;
+  outline-offset: 0.2rem;
+}
+
+.hide {
+  position: absolute !important;
+  overflow: hidden !important;
+  height: 1px !important;
+  width: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+}
+
+.blind {
+  position: absolute !important;
+  overflow: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+  border: 0;
+  display: block !important;
+  font-size: 1px !important;
+  z-index: -1;
+}
+
+.screen {
+  position: absolute !important;
+  overflow: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+  border: 0;
+  font-size: 1px;
+  text-indent: -9999px;
+}
+
+.full {
+  width: 100% !important;
+}
+
+/* WEB FONT */
+@font-face {
+  font-family: "iconFont";
+  font-style: normal;
+  font-weight: 900;
+  font-display: auto;
+  src: url("../font/iconfont/fontawesome/fa-solid-900.eot");
+  src: url("../font/iconfont/fontawesome/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("../font/iconfont/fontawesome/fa-solid-900.woff2") format("woff2"), url("../font/iconfont/fontawesome/fa-solid-900.woff") format("woff"), url("../font/iconfont/fontawesome/fa-solid-900.ttf") format("truetype"), url("../font/iconfont/fontawesome/fa-solid-900.svg#fontawesome") format("svg");
+}
+.fa,
+.fas {
+  font-family: "iconFont";
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: "iconFont";
+  font-display: block;
+  src: url("../font/iconfont/fontawesome/fa-solid-900.woff2") format("woff2"), url("../font/iconfont/fontawesome/fa-solid-900.ttf") format("truetype");
+}
+@font-face {
+  font-family: "roboto";
+  src: url("../font/webfonts/Roboto-Light.woff") format("woff");
+  src: url("../font/webfonts/Roboto-Light.woff2");
+  src: url("../font/webfonts/Roboto-Light.otf");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "roboto";
+  src: url("../font/webfonts/Roboto-Regular.woff") format("woff");
+  src: url("../font/webfonts/Roboto-Regular.woff2");
+  src: url("../font/webfonts/Roboto-Regular.otf");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "roboto";
+  src: url("../font/webfonts/Roboto-Medium.woff") format("woff");
+  src: url("../font/webfonts/Roboto-Medium.woff2");
+  src: url("../font/webfonts/Roboto-Medium.otf");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "roboto";
+  src: url("../font/webfonts/Roboto-Bold.woff") format("woff");
+  src: url("../font/webfonts/Roboto-Bold.woff2");
+  src: url("../font/webfonts/Roboto-Bold.otf");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "NotoSansKR";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../font/webfonts/NotoSansKR-Light.woff");
+  src: url("../font/webfonts/NotoSansKR-Light.otf");
+}
+@font-face {
+  font-family: "NotoSansKR";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../font/webfonts/NotoSansKR-Regular.eot");
+  src: url("../font/webfonts/NotoSansKR-Regular.woff");
+  src: url("../font/webfonts/NotoSansKR-Regular.otf");
+}
+@font-face {
+  font-family: "NotoSansKR";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../font/webfonts/NotoSansKR-Bold.woff");
+  src: url("../font/webfonts/NotoSansKR-Bold.otf");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 900;
+  font-display: swap;
+  src: local("Pretendard Bold"), url("../../../assets/fonts/webfonts/Pretendard-Bold.subset.woff2") format("woff2"), url("../../../assets/fonts/webfonts/Pretendard-Bold.subset.woff") format("woff"), url("../../../assets/fonts/webfonts/Pretendard-Bold.otf") format("opentype");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 800;
+  font-display: swap;
+  src: local("Pretendard Bold"), url("../../../assets/fonts/webfonts/Pretendard-Bold.subset.woff2") format("woff2"), url("../../../assets/fonts/webfonts/Pretendard-Bold.subset.woff") format("woff"), url("../../../assets/fonts/webfonts/Pretendard-Bold.otf") format("opentype");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-display: swap;
+  src: local("Pretendard SemiBold"), url("../../../assets/fonts/webfonts/Pretendard-SemiBold.subset.woff2") format("woff2"), url("../../../assets/fonts/webfonts/Pretendard-SemiBold.subset.woff") format("woff"), url("../../../assets/fonts/webfonts/Pretendard-SemiBold.otf") format("opentype");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-display: swap;
+  src: local("Pretendard SemiBold"), url("../../../assets/fonts/webfonts/Pretendard-SemiBold.subset.woff2") format("woff2"), url("../../../assets/fonts/webfonts/Pretendard-SemiBold.subset.woff") format("woff"), url("../../../assets/fonts/webfonts/Pretendard-SemiBold.otf") format("opentype");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 500;
+  font-display: swap;
+  src: local("Pretendard Medium"), url("../../../assets/fonts/webfonts/Pretendard-Medium.subset.woff2") format("woff2"), url("../../../assets/fonts/webfonts/Pretendard-Medium.subset.woff") format("woff"), url("../../../assets/fonts/webfonts/Pretendard-Medium.otf") format("opentype");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-display: swap;
+  src: local("Pretendard Regular"), url("../../../assets/fonts/webfonts/Pretendard-Regular.subset.woff2") format("woff2"), url("../../../assets/fonts/webfonts/Pretendard-Regular.subset.woff") format("woff"), url("../../../assets/fonts/webfonts/Pretendard-Regular.otf") format("opentype");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 300;
+  font-display: swap;
+  src: local("Pretendard Light"), url("../../../assets/fonts/webfonts/Pretendard-Light.subset.woff2") format("woff2"), url("../../../assets/fonts/webfonts/Pretendard-Light.subset.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 200;
+  font-display: swap;
+  src: local("Pretendard ExtraLight"), url("../../../assets/fonts/webfonts/Pretendard-ExtraLight.subset.woff2") format("woff2"), url("../../../assets/fonts/webfonts/Pretendard-ExtraLight.subset.woff") format("woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 100;
+  font-display: swap;
+  src: local("Pretendard Thin"), url("../../../assets/fonts/webfonts/Pretendard-Thin.subset.woff2") format("woff2"), url("../../../assets/fonts/webfonts/Pretendard-Thin.subset.woff") format("woff");
+}
+/****************************************/
+/*	PART: work sheet PAGE STYLE
+/****************************************/
+/* flag */
+:root {
+  --space-4xs: .4rem;
+  --space-3xs: .8rem;
+  --space-2xs: 1rem;
+  --space-xs: 1.1rem;
+  --space-sm: 1.2rem;
+  --space-ms: 1.4rem;
+  --space-md: 1.6rem;
+  --space-mx: 1.8rem;
+  --space-lg: 2.0rem;
+  --space-xl: 2.4rem;
+  --space-2xl: 3.2rem;
+  --space-3xl: 4.0rem;
+  --space-4xl: 4.8rem;
+}
+
+#pbWrap * {
+  font-family: "Pretendard", "Malgun Gothic", "Dotum", Arial, sans-serif, "Malgun Gothic", "Dotum", Arial, sans-serif;
+}
+
+.split {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#pg-wrap {
+  margin: 0;
+}
+#pg-headerWrap {
+  background: linear-gradient(180deg, #191B2A, #302CA4);
+  width: 100%;
+  padding: 2rem 1rem 0;
+}
+
+.wg-hgroup {
+  padding: 2.5rem 2rem 2rem;
+}
+.wg-hgroup .wgTit01 {
+  font-size: var(--space-mx);
+}
+.wg-hgroup .wgTit01::before {
+  content: "";
+  display: inline-block;
+  content: "\f550";
+  font-family: "iconFont";
+  color: #302CA4;
+  font-size: var(--space-ms);
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+.wg-fxWrap {
+  display: flex;
+  flex-direction: row;
+}
+.wg-fxWrap ~ .wg-fxWrap {
+  margin-top: 4rem;
+}
+.wg-rowWrap > .wg-fx {
+  flex: 1;
+  max-width: 50%;
+  justify-content: space-between;
+}
+.wg-rowWrap > .wg-colWrap {
+  max-width: 50%;
+}
+.wg-colWrap {
+  flex-direction: column;
+}
+.wg-colWrap-fx ~ .wg-fx {
+  margin-top: 4rem;
+}
+.wg-contBoxWrap {
+  display: flex;
+  flex-direction: row;
+  padding: 0 2rem;
+}
+.wg-contBody {
+  width: 100%;
+  background: #fff;
+  color: #222;
+  border: 1px solid #fff;
+  box-shadow: 0 0 13px 0 rgba(82, 63, 105, 0.1);
+}
+.wg-contBody > dt {
+  padding: 2rem;
+  font-size: 1.5rem;
+}
+.wg-contBody > dt + dd {
+  border-top: 1px solid #ebedf2;
+}
+.wg-contBody > dd {
+  padding: 2rem;
+}
+.wg-contBody > dd + dd {
+  padding-top: 0;
+}
+.wg-TxtTit {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  background: #E8E9FB;
+  color: #4d5cf2;
+  border-radius: 0.5rem;
+}
+.wg-lstBody {
+  padding: 0.5rem;
+}
+.wg-example {
+  margin-top: 1rem;
+}
+.wg-example + .wg-TxtTit {
+  margin-top: 2rem;
+}
+.wg-lst-bar > li, .wg-lst-bar .wg-ico {
+  text-indent: -0.5rem;
+  margin-left: 0.5rem;
+}
+.wg-lst-bar > li::before {
+  content: "";
+  display: block;
+  display: inline-block;
+  content: "-";
+  margin-right: 0.5rem;
+}
+.wg-lst-bar > li ~ li {
+  margin-top: 0.5rem;
+}
+.wg-ico::before {
+  content: "";
+  display: inline-block;
+  font-family: "iconFont";
+  content: "-";
+  margin-right: 0.5rem;
+}
+.wg-ico.wg-ico-bar::before {
+  content: "";
+  display: inline-block;
+  content: "-";
+}
+.wg-ico.wg-ico-info::before {
+  content: "";
+  display: inline-block;
+  content: "\f22d";
+  color: #FD397A;
+}
+.wg-ico.wg-ico-star::before {
+  content: "";
+  display: inline-block;
+  content: "*";
+  color: #BE4BDB;
+}
+.wg-splitWrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.wg-splitWrap.col2 > li {
+  display: inline-block;
+  flex-direction: column;
+  width: 48%;
+  padding: 0 0.5rem 0.5rem;
+}
+.wg-splitWrap.col2 > li:nth-child(even) {
+  margin-left: 1%;
+}
+.wg-splitWrap.col2 > li.wg-split-none {
+  flex-direction: row;
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+.wg-splitWrap.col2.wg-lst-bar > li ~ li {
+  margin-top: 0;
+}
+.wg-splitWrap.col2 > .colSec {
+  display: inline-block;
+  flex-direction: column;
+  width: 49%;
+  padding: 0 0.5rem 0.5rem;
+}
+.wg-splitWrap.col2 > .colSec:nth-child(even) {
+  margin-left: 2%;
+}
+.wg-splitWrap.col2 > .colSec.col-full {
+  width: 100%;
+}
+.wg-splitWrap .col-full {
+  float: none;
+  clear: both;
+}/*# sourceMappingURL=pg.document.css.map */
