@@ -12,7 +12,6 @@ $headerHtml += '<span class="bar"></span>';
 $headerHtml += '<ul>';
 $headerHtml += '  <li><a href="./workSheet.html" target="_blank">Worksheet</a></li>';
 $headerHtml += '  <li><a href="./component.html" target="_blank">Component</a></li>';
-$headerHtml += '  <li><a href="./document.html" target="_blank">Document</a></li>';
 $headerHtml += '</ul>';
 $headerHtml += '</div>';
 // $headerHtml += '<div class="pg_project">';

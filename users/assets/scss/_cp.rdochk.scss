@@ -101,7 +101,6 @@ $fieldLabel:'#{$field}-label';
                 & + #{$fieldIcon} {
                     border-color:$color-bg-interactive-primary;
                     @include el-content(before) {
-                        // transform:translate(calc(50% + .05rem), calc(50% + .05rem));
                         transform:translate(50%, 50%);
                         width:.8rem;
                         height:.8rem;
@@ -147,109 +146,6 @@ $fieldLabel:'#{$field}-label';
                 margin-left:1rem;
                 @extend %body-md-regular;
                 color:$color-text-tertiary;
-            }
-        }
-
-        // no-border
-        &.no-line{
-            .chk{
-                & ~ #{$fieldIcon} {
-                    border: none;
-                    @include el-content(before) {
-                        @include pos-offset($top:45%, $left:50%){
-                            transform:translate(-50%, -50%) rotate(45deg);
-                        }
-                        width: 0.5rem; height: 1rem;
-                        border: solid $color-icon-secondary;
-                        border-width: 0 2px 2px 0;
-                    }
-                }
-                &:checked {
-                    & + #{$fieldIcon} {
-                        background-color:transparent;
-                        border-color:transparent;
-                        @include el-content(before) {
-                            @include pos-offset($top:45%, $left:50%){
-                                transform:translate(-50%, -50%) rotate(45deg);
-                            }
-                            width: 0.5rem; height: 1rem;
-                            border: solid $color-icon-info;
-                            border-width: 0 2px 2px 0;
-                        }
-                    }
-                    &:disabled + #{$fieldIcon} {
-                        background-color: transparent;
-                        border-color: transparent;                        
-                        @include el-content(before) {
-                            border-color:$color-bg-info-subtitle;
-                        }
-                    }
-                }
-                &.readonly {
-                    border-color: transparent;
-                    pointer-events: none;
-                }
-                &:disabled:not(:checked) {
-                    & + #{$fieldIcon} {
-                        border-color: transparent;
-                        @include el-content(before) {
-                            border-color:$color-icon-disabled;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    // 스위치        
-    &-switch {
-        $switch-w:5rem; $switch-h:2rem;
-        
-        & ~ .field-switch {margin-left:1rem;}
-        @include pos-offset(relative); display:inline-block;
-        width:$switch-w; height:calc($switch-h + .4rem);
-        
-        .chk {
-            &:checked {
-            & ~  #{$fieldIcon} {
-                background:$color-bg-interactive-primary !important;
-                border-color:$color-bg-interactive-primary;
-                @include el-content(before) {
-                    background-color:$color-base-white; 
-                    @include pos-offset($top:50%, $left:calc(100% - 1.4rem)); transform: translate(0, -50%);
-                }
-                @include el-content(after) {
-                    content:'ON';
-                    color:$color-base-white;
-                    left:.6rem;
-                }
-            }
-            &:disabled ~  #{$fieldIcon},
-            &.disabled ~  #{$fieldIcon} {opacity:.8;}
-        }
-        &.readonly ~  #{$fieldIcon}, .readonly ~  #{$fieldIcon} {opacity:.8;}
-        }
-        
-        #{$fieldIcon} {
-            display:inline-block;
-            @include pos-offset($right:0, $bottom:0);
-            width:$switch-w; height:$switch-h; cursor: pointer;
-            background-color:$color-bg-readonly;
-            border-radius:$switch-h;
-            transition: .4s;
-
-            @include el-content(before) {
-                @include pos-offset($top:50%, $left:.4rem); transform: translate(0, -50%);
-                width:1rem; height:1rem;
-                background-color:$color-base-white;
-                @extend %radius-full;
-                transition: .4s;
-            }
-            @include el-content(after) {
-                content:'OFF';
-                color:$color-text-secondary; font-size:$typo-size-12;
-                @include pos-offset($top:45%, $right:.6rem); transform: translate(0, -50%);
-                transition: 1s;
             }
         }
     }
@@ -429,42 +325,6 @@ $fieldLabel:'#{$field}-label';
                         @extend %body-md-bold;
                         color:$color-text-info;                        
                         @include line(inset, $color-border-focusring, .2rem);
-                    }
-                }
-            }
-        }
-        &.nogap {
-            #{$field} {
-                &-chkrdo {
-                    width:100%;
-                    &:first-child {   
-                        #{$fieldLabel} {
-                            border-top-left-radius: $radius-8;
-                            border-bottom-left-radius: $radius-8;
-                        }
-                    }
-                    &:last-child {
-                        #{$fieldLabel} {
-                            border-top-right-radius: $radius-8;
-                            border-bottom-right-radius: $radius-8;
-                        }
-                    }
-                    & ~ #{$field}-chkrdo {
-                        margin-left:0;
-                        #{$fieldLabel} {margin-left: -.1rem;}
-                    }
-                }
-            }
-            .chk, .rdo {
-                & ~ #{$fieldLabel} {
-                    @include line(border, .1rem solid $color-border-tertiary);
-                }
-                &:checked {
-                    & ~ #{$fieldLabel} {
-                        color:$color-base-white;
-                        background-color:$color-bg-interactive-primary;
-                        border-color:$color-border-focusring;
-                        z-index:1;
                     }
                 }
             }

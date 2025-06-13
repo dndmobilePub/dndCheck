@@ -23,7 +23,6 @@ $modal: '.modal';
     height: 100%;
     @include pos-offset(fixed, $left: 0, $top: 0, $z-index: 9995);
     @extend %transition3s;
-    // transition-delay: .3s;
 
     &._is-active {
         visibility: visible;
@@ -108,30 +107,6 @@ $modal: '.modal';
         }
     }
 
-    // 상단
-    &._top {
-        width: 100%;
-        margin: auto;
-
-        &._is-active {
-            .modalWrap {
-                top: 0;
-            }
-        }
-
-        #{$modal} {
-            &Wrap {
-                top: -100%;
-            }
-
-            &-footer {
-                border-radius: 0 0 2.4rem 2.4rem;
-                overflow: hidden;
-            }
-        }
-
-    }
-
     // 센터
     &._center {
         #{$modal} {
@@ -181,42 +156,6 @@ $modal: '.modal';
                     opacity: 1;
                     @extend %transitionPop;
                 }
-            }
-        }
-    }
-
-    // 왼쪽
-    &._left {
-        width: 100%;
-        height: 100%;
-        margin: auto;
-        @include overflow(y, auto);
-        overflow-x: hidden;
-
-        &._is-active {
-            .modalWrap {
-                left: 0;
-            }
-        }
-
-        .modal {
-            &Wrap {
-                left: -100%;
-                height: 100%;
-                max-width: 80%;
-                @include dflex($direction: column);
-                background: $color-bg-primary;
-            }
-
-            &-container {
-                padding-bottom: 4.8rem;
-                max-height: calc(100% - 7.6rem - 5.6rem);
-                @include overflow(y, auto);
-            }
-
-            &-footer {
-                width: 80%;
-                @include pos-offset(fixed, $bottom: 0);
             }
         }
     }
@@ -294,50 +233,6 @@ $modal: '.modal';
         }
     }
 
-    // FULL
-    &._full {
-        #{$modal} {
-            &Wrap,
-            &-header,
-            &-container,
-            &-footer {
-                opacity: 0;
-                @extend %transitionPop;
-            }
-
-            &Wrap {
-                @include pos-offset($top: 0, $left: 0);
-                width: 100%;
-                height: 100%;
-                min-height: 100%;
-                background-color:$color-bg-primary;
-            }
-
-            &-container {
-                padding-bottom: 4.8rem;
-                max-height: calc(100% - 7.6rem - 5.6rem);
-                @include overflow(y, auto);
-            }
-
-            &-footer {
-                width:100%;
-                @include pos-offset(fixed, $bottom: 0);
-            }
-        }
-        &._is-active {
-            #{$modal} {
-
-                &Wrap,
-                &-header,
-                &-container,
-                &-footer {
-                    opacity: 1;
-                    @extend %transitionPop;
-                }
-            }
-        }
-    }
-
     // alert
     &._alert {
         .modal {
@@ -373,143 +268,4 @@ $modal: '.modal';
     width:100%; height:100%; @include overflow(both, hidden);
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(.5rem);
-}
-$toast:'.toast';
-#{$toast} {
-    &Wrap {
-        display:none;
-        @include pos-offset(fixed, $left:50%, $bottom:-10rem, $z-index:99999);
-        transform: translateX(-50%);
-        width:calc(100% - 4rem);
-        background-color: rgba(0, 0, 0, 0.5); border-radius:1rem;
-        transition:bottom .3s;
-        
-        &._is-active {
-            @include dflex($j-content:space-between, $al-items:center);   
-            bottom: 4rem;
-        }
-        &:focus {outline: none;}
-
-        & > a {
-            display:inline-block; flex-shrink:0; opacity:0;
-            @include el-content(before) {
-                width:.1rem; height:2.4rem;
-                background: svgIcoImage(24_close, fff);
-                //  background: svgIcon(ico_close, fff);
-            }
-            &._is-active {
-                opacity:1;
-                @include el-content(before) {
-                    width:2.4rem;
-                }
-            }
-        }
-    }
-
-    &-msg {
-        flex:1;
-        padding:1rem 5rem; color:$color-bg-primary; text-align:center;
-    }
-}
-
-$tooltip:'.tooltip';
-#{$tooltip} {
-    display:none; opacity:0;
-    @include pos-offset($z-index:1);
-    padding:1rem; background:$color-bg-primary;
-    @include line(border, .1rem solid $color-border-primary);
-    border-radius: .5rem;
-    transition: opacity .25s cubic-bezier(.86, 0, .07, 1);
-    word-break:break-all;
-    
-    &Wrap {
-        @include pos-offset(relative);
-        &.c {text-align: center !important;}
-        &.r {text-align: right !important;}
-        &.r .tooltip {text-align:left;}
-
-    }
-
-    &._right, &._left {max-width: 60%;}
-    &._top, &._bottom {max-width: calc(100% - 20px);}
-
-    &-content {
-        @include pos-offset(relative); margin-right:2rem;
-        @extend %body-sm-regular;
-        .ico-tooltip-close {
-            @extend %ico-tooltip_close-16;
-            @include pos-offset($top:0, $right:-2rem);
-        }
-        
-    }
-    &-message {word-break: break-all;}
-
-    
-    &._is-active {display:block; opacity:1;}
-}
-
-%ico_tipL {
-    @include el-content(before) {
-        top:.4rem;
-        left:auto;
-        right:-2rem;
-        transform: rotate(135deg);
-    }
-}
-%ico_tipR {
-    @include el-content(before) {
-        top:.4rem; left:-1.7rem; right:auto;
-        transform: rotate(315deg);
-    }
-}
-._inModal {
-    &.tooltip {z-index:9995;}
-    &.ico-tooltip {
-        &._is-active {
-            z-index:9996;
-            @include el-content(before) {z-index:9996;}
-        }
-    }
-}
-
-.ico-tooltip {
-    @include el-content(before) {opacity:0;}
-    @extend %ico-tooltip_default-16;
-    &._is-active {
-        @include pos-offset(relative);
-        @extend %ico-tooltip_active-16;
-        @include el-content(before) {
-            @include pos-offset($z-index:5);
-            width:1rem; height:1rem;
-            opacity:1;
-            background:$color-bg-primary;
-            box-shadow: 1px 1px 0 0 $color-border-primary;
-        }
-
-        &._default {@extend %ico_tipL;}
-        &._left {@extend %ico_tipR;}
-        
-        &._top {
-            @include el-content(before) {
-                top:-1.7rem; left:.4rem; right:auto;
-                transform: rotate(45deg);
-                transition: opacity .25s cubic-bezier(.86, 0, .07, 1);
-            }
-        }
-        &._bottom {
-            @include el-content(before) {
-                bottom:-2rem; left:.4rem; right:auto;
-                transform: rotate(225deg);
-            }
-        }
-    }
-}
-
-.reverse {
-    &.ico-tooltip {
-        &._is-active {
-            &._default {@extend %ico_tipR;}
-            &._left {@extend %ico_tipL;}
-        }
-    }
 }

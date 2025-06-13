@@ -302,7 +302,7 @@ body {
         .flex-wrap{
             @include dflex($al-items:center, $j-content:space-between);
             &.start{
-                justify-content: flex-start;
+                align-items: flex-start;
             }
         }
         .text-group{
@@ -950,26 +950,6 @@ body {
         }
     }
 }
-
-// .textarea{
-//     @include el-size(100%, 12rem);
-//     padding: 2rem;
-//     @extend %radius-8;
-//     border-color: $color-border-secondary;
-//     &::placeholder{
-//         color: $color-text-placeholder;
-//     }
-//     &-wrap{
-//         position: relative;
-//         .limit{
-//             position: absolute;
-//             bottom: 2rem;
-//             right: 2rem;
-//             @extend %body-md-regular;
-//             color: $color-text-placeholder;
-//         }
-//     }
-// }
 
 .notice{
     &-list{

@@ -29,54 +29,7 @@ $isActive:'._is-active';
 		@include line(border, 0.1rem solid $color-border-secondary);
 		border-width: 0 0 0.1rem 0;
 		white-space: nowrap;
-
-        &.expand-cont {
-            border-bottom:none;
-            & > .tab-list {
-                flex-wrap: wrap;
-                .tab {
-                    flex:initial !important;
-                    & ~ .tab {margin:0;}
-                }
-            }
-        }
 		&#{$tab} {
-			&-expand {
-				.tab-list {
-					width:100%;
-			
-					#{$tab} {
-						flex: 1;
-					}
-				}
-			}
-			
-			&-center {
-				.tab-list {
-					@include dflex($j-content:center);
-				}
-			}
-
-			&-right {
-				.tab-list {
-					@include dflex($j-content:right);
-				}
-			}
-
-			&-line-top {
-				border-width: 0.1rem 0 0 0;
-		
-				&::before {
-					bottom: auto; top: 0;
-				}
-		
-				#{$tab} {
-					& a::before {
-						top: 0;
-						bottom: auto;
-					}
-				}
-			}
 		}
 	}
 
@@ -119,50 +72,6 @@ $isActive:'._is-active';
 		@include pos-offset(relative);
 	
 		&#{$tab} {
-			&-vertical {
-				@include dflex($al-items: start);
-
-				#{$tab} {
-					&-list-wrap {
-						@include overflow (x, visible);
-						@include overflow (y, auto);
-						width:auto;
-						margin: 0;
-						border-width: 0 0.1rem 0.1rem 0;
-
-						@include el-content(before, none);
-					}
-
-					&-list {
-						@include dflex($direction: column);
-						min-width: 9rem; height:30rem;
-						margin-left: 0;
-		
-						#{$tab}~#{$tab} {
-							margin-left: 0;
-						}
-					}
-
-					&-contents-wrap {
-						flex: 1;
-						height:30rem;
-					}
-			
-					&-contents {
-						@include overflow (both, auto);
-						height:100%;
-					}
-				}
-			}
-
-			&-scroll,
-			&-scroll-height {
-				.tab-contents-wrap {
-					@include overflow (y, scroll);
-					@include pos-offset(relative);
-					height:20rem;
-				}
-			}
 
 			&-moving {
 				.tab-list-wrap {
@@ -193,7 +102,6 @@ $isActive:'._is-active';
                         #{$tab} {
                             flex: 1;
                             &-list {
-                                // justify-content: space-around;
                                 padding:.4rem;
                                 background:$color-bg-tertiary; @extend %radius-12;
                             }
@@ -224,24 +132,6 @@ $isActive:'._is-active';
                         }
                     }
                 }
-                &.bar {
-                    .tab-list-wrap {
-                        .highlight {
-                            @include pos-offset($left:0, $bottom:0);
-                            width:6.4rem; height:0.2rem;
-                            background-color:$color-brand-primary-400;
-                            @include transition(.2s, all, cubic-bezier(0.0, 0.0, 0.58, 1.0));
-                        }                        
-                    }
-                }
-				&.tab-vertical {
-					.highlight {
-						bottom: auto;
-						left: auto;
-						right: 0;
-						width:0.2rem; height:4rem;
-					}
-				}
 			}
 		}
 	
@@ -252,22 +142,6 @@ $isActive:'._is-active';
 				&#{$isActive} {
 					display:block;
 				}
-			}
-		}
-	}
-
-	&-contents {
-        &-wrap {}
-    }
-
-	&-sticky {
-		#{$tab} {
-			&-list-wrap {
-				@include pos-offset(sticky, $top:0, $z-index: 100);
-				background-color:$color-bg-primary;
-			}
-			&-contents {
-				padding: 8rem 5rem;
 			}
 		}
 	}

@@ -9,33 +9,22 @@
 // SVG ICON
 $svgIcon-map: (
     // 화살표
-    16_arrow_dn:"%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.8008 6L8.00078 10L3.20078 6' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A",
-    // color: 8C959F
     20_arrow_dn:"%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 7.5L10 12.5L4 7.5' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A",
     // color:212529
     24_arrow_dn:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19.1992 9L11.9992 15L4.79922 9' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A",
     // color:212529
 
     // close
-    16_close:"%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 3L13 13M13 3L3 13' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A",
     24_close:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.5 4.5L19.5 19.5M19.5 4.5L4.5 19.5' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A",
     // color:212529
 
     // 사이즈별
-    16_tooltip_default:"%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8 1C4.1 1 1 4.1 1 8C1 11.9 4.1 15 8 15C11.9 15 15 11.9 15 8C15 4.1 11.9 1 8 1Z' fill='white' stroke='{COLOR}'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7.78474 4.43243C7.78474 4.84965 8.12426 5.18919 8.5415 5.18919C8.95874 5.18919 9.29826 4.84965 9.29826 4.43243C9.29826 4.01522 8.95872 3.67568 8.5415 3.67568C8.12428 3.67568 7.78474 4.01522 7.78474 4.43243ZM8.10844 11.3865L8.85482 7.38027C8.89496 7.16022 8.82358 6.93662 8.65912 6.76684C8.49442 6.59724 8.25455 6.5 8.00096 6.5H7.03199C6.91247 6.5 6.81577 6.58497 6.81577 6.69C6.81577 6.79503 6.91247 6.88 7.03199 6.88C7.12955 6.88 7.22161 6.91768 7.28453 6.98335C7.34744 7.04884 7.37407 7.13495 7.35696 7.22159L6.61055 11.2278C6.57042 11.4479 6.6418 11.6715 6.80628 11.8412C6.97099 12.0108 7.21085 12.1081 7.46444 12.1081H8.43342C8.55293 12.1081 8.64963 12.0231 8.64963 11.9181C8.64963 11.8131 8.55293 11.7281 8.43342 11.7281C8.33585 11.7281 8.2438 11.6904 8.18088 11.6247C8.11796 11.5592 8.09134 11.4731 8.10844 11.3865Z' fill='{COLOR}'/%3E%3C/svg%3E%0A",
-    // 212121, 347EFF
 
     20_add_file:"%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 16.2857V4.28571M16 10.2857H4' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A",
     // 8C959F
 
     24_circle_x:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z' fill='{COLOR}'/%3E%3Cpath d='M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A",
     // 8C959F
-    24_calendar:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.83333 3.70831V6.20831M16.1667 3.70831V6.20831M4.59237 9.54165H19.4072M6.16667 19.5416H17.8333C18.7538 19.5416 19.5 18.7955 19.5 17.875V7.04165C19.5 6.12117 18.7538 5.37498 17.8333 5.37498H6.16667C5.24619 5.37498 4.5 6.12117 4.5 7.04165V17.875C4.5 18.7955 5.24619 19.5416 6.16667 19.5416Z' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E%0A",
-    // 212529
-    24_trash:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1646_17448)'%3E%3Cpath d='M14 11V17' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10 11V17' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M6 7V19C6 20.1046 6.89543 21 8 21H16C17.1046 21 18 20.1046 18 19V7' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M4 7H20' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M7 7L9 3H15L17 7' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1646_17448'%3E%3Crect width='24' height='24' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A",
-    // 212529
-    24_clip:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.81836 15.1811L15.1823 8.81717' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M13.5909 16.7729L10.9392 19.4245C10.0953 20.2682 8.95077 20.7421 7.75743 20.742C6.56409 20.7419 5.41965 20.2678 4.57583 19.424C3.73201 18.5801 3.25791 17.4357 3.25781 16.2424C3.25771 15.049 3.73161 13.9045 4.57529 13.0606L7.22694 10.4089' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M16.7741 13.5904L19.4258 10.9388C20.2694 10.0948 20.7433 8.95031 20.7432 7.75697C20.7431 6.56363 20.269 5.41919 19.4252 4.57537C18.5814 3.73156 17.437 3.25746 16.2436 3.25735C15.0503 3.25725 13.9058 3.73115 13.0618 4.57483L10.4102 7.22648' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A",
-    // 212529
     24_add_field:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='12' cy='12' r='10' fill='{COLOR}'/%3E%3Cpath d='M12 16.5V7.5M16.5 12H7.5' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A",
     // 212529
     24_del_field:"%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='12' cy='12' r='10' fill='{COLOR}'/%3E%3Cpath d='M7 12H17' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A",
@@ -50,7 +39,6 @@ $svgIcon-map: (
 
     // etc
     ic_check:"%3Csvg width='14' height='10' viewBox='0 0 14 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.375 5L5.125 8.75L12.625 1.25' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A",
-    ico_asterisk:"%3Csvg xmlns='http://www.w3.org/2000/svg' fill='{COLOR}' viewBox='0 0 16 16'%3E%3Cpath d='M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z'/%3E%3C/svg%3E",
     20_notice_list:"%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1648_490)'%3E%3Cpath d='M18.3337 13.4722H15.5911C14.421 13.4722 13.4724 14.4208 13.4724 15.5908V18.3334M13.4724 18.3334H5.20329C4.26552 18.3334 3.36589 17.9608 2.70275 17.2977C2.03961 16.6345 1.66699 15.7349 1.66699 14.7971V5.20305C1.66699 4.26528 2.03961 3.36564 2.70275 2.70251C3.36589 2.03937 4.26552 1.66675 5.20329 1.66675H14.7971C15.7349 1.66675 16.6345 2.03937 17.2976 2.70251C17.9608 3.36564 18.3334 4.26528 18.3334 5.20305V13.4724C18.3334 14.3617 17.9801 15.2148 17.3514 15.8435L15.8434 17.3514C15.2147 17.9801 14.3617 18.3334 13.4724 18.3334ZM5.83359 14.1668H10.0002M5.83359 5.83335H14.1671M5.83359 9.99995H14.1671' stroke='{COLOR}' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1648_490'%3E%3Crect width='20' height='20' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A", // 8C959F
 
 ) !default;
@@ -114,28 +102,6 @@ $ico: (
         24:(width:2.4rem, height:2.4rem),
         32:(width:3.2rem, height:3.2rem),
     ),
-    16:(
-        arrow-dn:(
-            width:1.6rem, height:1.6rem,
-            background:50% 50% no-repeat,
-            background-image: svgIcoImage(16_arrow_dn, 8C959F),
-        ),
-        tooltip_default:(
-            width:1.6rem, height:1.6rem,
-            background:50% 50% no-repeat,
-            background-image: svgIcoImage(16_tooltip_default, 212121),
-        ),
-        tooltip_active:(
-            width:1.6rem, height:1.6rem,
-            background:50% 50% no-repeat,
-            background-image: svgIcoImage(16_tooltip_default, 347EFF),
-        ),
-        tooltip_close:(
-            width:1.6rem, height:1.6rem,
-            background:50% 50% no-repeat,
-            background-image: svgIcoImage(16_close, 212121),
-        ),
-    ),
     20:(
         arrow-dn:(
             width:2rem, height:2rem,
@@ -174,16 +140,6 @@ $ico: (
             background:50% 50% no-repeat,
             background-image: svgIcoImage(24_del_field, A9B0B8),
         ),
-        calendar:(
-            width:2.4rem, height:2.4rem,
-            background:50% 50% no-repeat,
-            background-image: svgIcoImage(24_calendar, 212529),
-        ),
-        trash:(
-            width:2.4rem, height:2.4rem,
-            background:50% 50% no-repeat,
-            background-image: svgIcoImage(24_trash, 212529),
-        ),
         close:(
             width:2.4rem, height:2.4rem,
             background:50% 50% no-repeat,
@@ -193,11 +149,6 @@ $ico: (
             width:2.4rem, height:2.4rem,
             background:50% 50% no-repeat,
             background-image: svgIcoImage(24_close, fff),
-        ),
-        clip:(
-            width:2.4rem, height:2.4rem,
-            background:50% 50% no-repeat,
-            background-image: svgIcoImage(24_clip, 212529),
         ),
     ),
     32:(
@@ -222,65 +173,27 @@ $ico: (
         background:50% 50% no-repeat,
         background-image: svgIcoImage(ic_check, 2380ff),
     ),
-    bul:(
-        star:(
-            background:0 50% no-repeat,
-            background-image: svgIcoImage(ico_asterisk, 666),
-        )
-    ),
-    icon_notice_list:(
-        width: 2rem, height: 2rem,
-        background: center center no-repeat,
-        background-image: svgIcoImage(icon_notice_list, 8C959F)
-    ),
 );
 
 // 사이즈
-%ico-size-16 {@include dndCP($ico, (size, 16));}
 %ico-size-20 {@include dndCP($ico, (size, 20));}
 %ico-size-24 {@include dndCP($ico, (size, 24));}
 %ico-size-32 {@include dndCP($ico, (size, 32));}
 
-// 화살표 16
-%ico-arrow-up-16 {@include dndCP($ico, (16, arrow-dn)); transform: rotate(180deg);}
-%ico-arrow-dn-16 {@include dndCP($ico, (16, arrow-dn));}
-%ico-arrow-left-16 {@include dndCP($ico, (16, arrow-dn)); transform: rotate(-90deg);}
-%ico-arrow-right-16 {@include dndCP($ico, (16, arrow-dn)); transform: rotate(90deg);}
 // 화살표 20
-%ico-arrow-up-20 {@include dndCP($ico, (20, arrow-dn)); transform: rotate(180deg);}
-%ico-arrow-dn-20 {@include dndCP($ico, (20, arrow-dn));}
 %ico-arrow-left-20 {@include dndCP($ico, (20, arrow-dn)); transform: rotate(-90deg);}
-%ico-arrow-right-20 {@include dndCP($ico, (20, arrow-dn)); transform: rotate(90deg);}
 // 화살표 24
-%ico-arrow-up-24 {@include dndCP($ico, (24, arrow-dn)); transform: rotate(180deg);}
-%ico-arrow-dn-24 {@include dndCP($ico, (24, arrow-dn));}
-%ico-arrow-left-24 {@include dndCP($ico, (24, arrow-dn)); transform: rotate(-90deg);}
 %ico-arrow-right-24 {@include dndCP($ico, (24, arrow-dn)); transform: rotate(90deg);}
-// 화살표 32
-%ico-arrow-up-32 {@include dndCP($ico, (32, arrow-dn)); transform: rotate(180deg);}
-%ico-arrow-dn-32 {@include dndCP($ico, (32, arrow-dn));}
-%ico-arrow-left-32 {@include dndCP($ico, (32, arrow-dn)); transform: rotate(-90deg);}
-%ico-arrow-right-32 {@include dndCP($ico, (32, arrow-dn)); transform: rotate(90deg);}
-
-// 툴팁 16
-%ico-tooltip_default-16 {@include dndCP($ico, (16, tooltip_default));}
-%ico-tooltip_active-16 {@include dndCP($ico, (16, tooltip_active));}
-%ico-tooltip_close-16 {@include dndCP($ico, (16, tooltip_close));}
 
 // 유틸 ICO
 %ico-add-file-20 {@include dndCP($ico, (20, add-file));}
 %ico-circle-x-24,
 %input-clear {@include dndCP($ico, (24, circle-x));}
 %ico-close-24 {@include dndCP($ico, (24, close));}
-%ico-calendar-24 {@include dndCP($ico, (24, calendar));}
-%ico-trash-24 {@include dndCP($ico, (24, trash));}
 %ico-add-field-24 {@include dndCP($ico, (24, add-field));}
 %ico-del-field-24 {@include dndCP($ico, (24, del-field));}
-%ico-clip-24 {@include dndCP($ico, (24, clip));}
 %ico-his-prev {@include dndCP($ico, (24, arrow-dn)); transform: rotate(90deg);}
 %ico-check {@include dndCP($ico, item-check);}
-%ico-star {@include dndCP($ico, (bul, star));}
-%icon_notice_list {@include dndCP($ico, (20, notice_list));}
 
 // 헤더버튼
 %ico-his-back {@include dndCP($ico, (32, arrow-dn)); transform: rotate(90deg);}
@@ -294,34 +207,11 @@ $icon: '.ico';
 #{$icon} {
     display: inline-block;
     vertical-align: middle;
-    &-16 {
-        @extend %ico-size-16;
-        &#{$icon} {
-            &-arrow {
-                &-up {@include icoMix(before, "%ico-arrow-up-16");}
-                &-dn {@include icoMix(before, "%ico-arrow-dn-16");}
-                &-left {@include icoMix(before, "%ico-arrow-left-16");}
-                &-right {@include icoMix(before, "%ico-arrow-right-16");}
-            }
-
-            &-tooltip {
-                &-up {@include icoMix(before, "%ico-tooltip_default-16");}
-                &._is-active {@include icoMix(before, "%ico-tooltip_active-16");}
-                &-close {
-                    @include el-size(2rem, 2rem);
-                    @include icoMix(before, "%tooltip-ico-close");
-                }
-            }
-        }
-    }
     &-20 {
         @extend %ico-size-20;
         &#{$icon} {
             &-arrow {
-                &-up {@include icoMix(before, "%ico-arrow-up-20");}
-                &-dn {@include icoMix(before, "%ico-arrow-dn-20");}
                 &-left {@include icoMix(before, "%ico-arrow-left-20");}
-                &-right {@include icoMix(before, "%ico-arrow-right-20");}
             }
             &-add-file {@include icoMix(before, "%ico-add-file-20");}
         }
@@ -330,30 +220,18 @@ $icon: '.ico';
         @extend %ico-size-24;
         &#{$icon} {
             &-arrow {
-                &-up {@include icoMix(before, "%ico-arrow-up-24");}
-                &-dn {@include icoMix(before, "%ico-arrow-dn-24");}
-                &-left {@include icoMix(before, "%ico-arrow-left-24");}
                 &-right {@include icoMix(before, "%ico-arrow-right-24");}
             }
             &-add-field {@include icoMix(before, "%ico-add-field-24");}
             &-del-field {@include icoMix(before, "%ico-del-field-24");}
-            &-trash {@include icoMix(before, "%ico-trash-24");}
-            &-calendar {@include icoMix(before, "%ico-calendar-24");}
             &-clear {@include icoMix(before, "%ico-circle-x-24");}
             &-close {@include icoMix(before, "%ico-close-24");}
-            &-clip {@include icoMix(before, "%ico-clip-24");}
         }
     }
 
     &-32 {
         @extend %ico-size-32;
         &#{$icon} {
-            &-arrow {
-                &-up {@include icoMix(before, "%ico-arrow-up-32");}
-                &-dn {@include icoMix(before, "%ico-arrow-dn-32");}
-                &-left {@include icoMix(before, "%ico-arrow-left-32");}
-                &-right {@include icoMix(before, "%ico-arrow-right-32");}
-            }
             &-bell {@include icoMix(before, "%ico-bell-32");}
             &-menu {@include icoMix(before, "%ico-menu-32");}
         }
@@ -365,18 +243,6 @@ $icon: '.ico';
         }
     }
 }
-
-// 툴팁
-$tooltip: (
-    ico:(
-        default:(background-image: svgIcoImage(16_tooltip_default, 212121),),
-        active:(background-image:svgIcoImage(16_tooltip_default, 347EFF),),
-        close:(background-image:svgIcoImage(16_close, 38C959F),),
-    ),
-);
-%tooltip-ico-default {@include dndCP($tooltip, (ico, default));}
-%tooltip-ico-active {@include dndCP($tooltip, (ico, active));}
-%tooltip-ico-close {@include dndCP($tooltip, (ico, close));}
 
 #{$icon} {
     display: inline-block;
@@ -397,22 +263,6 @@ $tooltip: (
         }
     }
 
-    // 툴팁 아이콘
-    &-tooltip {
-        display: inline-block;
-        vertical-align: middle;
-        // @include el-size(2rem, 2rem);
-        // @extend %tooltip-ico-default;
-
-        // &._is-active {
-        //     @extend %tooltip-ico-active;
-        // }
-        // &-close {
-        //     @include el-size(2rem, 2rem);
-        //     @extend %tooltip-ico-close;
-        // }
-    }
-
     // 모달팝 아이콘
     &-his-prev {
         @include el-size(2.4rem, 2.4rem);
@@ -423,27 +273,6 @@ $tooltip: (
         &-close {
             @include el-size(2.4rem, 2.4rem);
             @extend %ico-close-24;
-            // @extend %ico-pop-close;
-        }
-    }
-}
-
-p.bul {
-    display: block;
-}
-
-.bul {
-    &#{$icon} {
-
-        // 블릿
-        &-star {
-            @include pos-offset(relative);
-            padding-left: 1.6rem;
-            @include icoMix(before, "%ico-star") {
-                @include pos-offset($top: 0, $left: 0);
-                @include el-size(1rem, 2rem);
-                vertical-align: middle;
-            }
         }
     }
 }
