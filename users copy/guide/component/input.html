@@ -134,36 +134,7 @@
 
                     <hr class="divider m" />
                     <div class="pbg-titWrap dep3">
-                        <h3>TEXT : 숫자, 가격, 비밀번호 CASE</h3>
-                    </div>
-
-                    <div class="field">
-                        <label class="field-label">INPUT TYPE : number</label>
-                        <div class="field-outline">
-                            <div class="field-input grow _input">
-                                <input type="tel" class="_format _number" placeholder="0">
-                                <button type="button" class="field-btn _input-clear"><span
-                                        class="hide">입력값삭제</span></button>
-                            </div>
-                        </div>
-                        <p class="field-msg">
-                            <span class="ico ico-info txt-r">오류메세지 출력</span>
-                        </p>
-                    </div>
-
-                    <div class="field">
-                        <label class="field-label">price</label>
-                        <div class="field-outline">
-                            <div class="field-input grow _input">
-                                <input type="tel" class="_format _price alR" placeholder="₩0">
-                            </div>
-                            <!-- <button type="button" class="field-btn _input-clear  ico ico-clear">
-                        <span class="hide">입력값삭제</span>
-                      </button> -->
-                        </div>
-                        <p class="field-msg">
-                            <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
-                        </p>
+                        <h3>TEXT : 비밀번호 CASE</h3>
                     </div>
 
                     <div class="field">
@@ -177,136 +148,25 @@
                             <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
                         </p>
                     </div>
-
-                    <div class="field">
-                        <label class="field-label" for="passType">특문 커스텀 : 입력제한 없음</label>
-                        <div class="field-outline pw-group">
-                            <div class="field-input grow _input">
-                                <div class="_secureTxt grow _input" secure-type="normal">
-                                    <input type="text" class="_format" placeholder="비밀번호">
-                                    <button type="button" class="field-btn _input-clear"><span class="hide">입력값삭제</span></button>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="field-msg">
-                            <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
-                        </p>
-                    </div>
-
-                    <div class="field">
-                        <label class="field-label" for="passType">특문 커스텀(보안키패드) : password 뒷자리 제한</label>
-                        <div class="field-outline pw-group">
-                            <div class="field-input grow _input">
-                                <div class="_secureTxt" data-length="4" data-secureLine="2">
-                                    <input type="password" class="_format _password" placeholder="">
-                                </div>
-                            </div>
-                        </div>
-                        <p class="field-msg">
-                            <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
-                        </p>
-                    </div>
-
-                    <div class="field">
-                        <label class="field-label" for="passType">특문 커스텀(보안키패드) : password 앞자리 제한</label>
-                        <div class="field-outline pw-group">
-                            <div class="field-input grow _input">
-                                <div class="_secureTxt" secure-type="prev" data-length="4" data-secureLine="2">
-                                    <input type="password" class="_format _password" placeholder="">
-                                </div>
-                            </div>
-                        </div>
-                        <p class="field-msg">
-                            <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
-                        </p>
-                    </div>
                 </article>
-            </section>
-
-            <section class="pbg-content">
-                <div class="pbg-titWrap dep2">
-                    <h2>PLACEHODER TYPE</h2>
-                </div>
-                <article class="pbg-component" temp-cp-gap>
-                    <div class="pbg-titWrap dep3">
-                        <h3>PLACEHODER event</h3>
-                    </div>
-
-                    <div class="field _label invalid">
-                        <div class="field-outline">
-                            <label class="field-label">기본INPUT</label>
-                            <div class="field-input grow _input">
-                                <input type="text" placeholder="기본동작 INPUT" id="label1" title="" data-target="label1">
-                                <button type="button" class="field-btn _input-clear"><span
-                                        class="hide">입력값삭제</span></button>
-                            </div>
-                        </div>
-                        <p class="field-msg">
-                            <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
-                        </p>
-                    </div>
-
-                    <div class="field _label">
-                        <div class="field-outline">
-                            <label class="field-label">휴대폰번호 입력</label>
-                            <div class="field-input grow _input">
-                                <input type="tel" class="_format _number" placeholder="휴대전화 앞자리" maxlength="3">
-                            </div>
-                            <span class="field-txt">-</span>
-                            <div class="field-input grow _input">
-                                <input type="tel" class="_format _number" placeholder="휴대전화 중간자리" maxlength="4">
-                            </div>
-                            <span class="field-txt">-</span>
-                            <div class="field-input grow _input">
-                                <input type="tel" class="_format _number" placeholder="휴대전화 뒷자리" maxlength="4">
-                            </div>
-                        </div>
-                        <p class="field-msg">
-                            <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
-                        </p>
-                    </div>
-                </article>
-
             </section>
             <section class="pbg-content">
                 <div class="pbg-titWrap dep2">
                     <h2>INPUT MIX</h2>
                 </div>
                 <article class="pbg-component" temp-cp-gap>
-                    <div class="field">
-                        <label class="field-label">휴대전화번호</label>
-                        <div class="field-outline">
-                            <div class="field-input grow _input">
-                                <input type="tel" class="_format _number" id="phoneNum1" placeholder="휴대전화 앞자리"
-                                    maxlength="3">
-                            </div>
-                            <span class="field-txt">-</span>
-                            <div class="field-input grow _input">
-                                <input type="tel" class="_format _number" id="phoneNum2" placeholder="휴대전화 중간자리"
-                                    maxlength="4">
-                            </div>
-                            <span class="field-txt">-</span>
-                            <div class="field-input grow _input">
-                                <input type="tel" class="_format _number" placeholder="휴대전화 뒷자리" maxlength="4">
-                            </div>
-                        </div>
-                        <p class="field-msg info">
-                            <span class="ico ico-info txt-r">안내성 메세지</span>
-                        </p>
-                    </div>
 
                     <div class="field _inbtn">
-                        <label class="field-label" for="auth_num">인증</label>
+                        <label class="field-label" for="auth_num">주소검색(나란히)</label>
                         <div class="field-outline">
                             <div class="field-input grow _input">
                                 <input type="tel" class="_format _number" id="auth_num" placeholder="인증번호" maxlength="6">
                                 <button type="button" class="field-btn _input-clear  ico ico-clear">
                                     <span class="hide">입력값삭제</span>
                                 </button>
-                                <span class="auth-time">03:00</span>
                             </div>
                         </div>
-                        <button class="btn primary size-md btn-infield">인증요청</button>
+                        <button class="btn primary size-md btn-infield">주소검색</button>
                         <p class="field-msg">
                             <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
                         </p>
@@ -316,56 +176,15 @@
                     </div>
 
                     <div class="field">
-                        <label class="field-label" for="auth_num2">인증요청-버튼적용</label>
+                        <label class="field-label" for="auth_num2">주소검색(안에)</label>
                         <div class="field-outline _inbtn">
                             <div class="field-input grow _input">
                                 <input type="tel" class="_format _number" id="auth_num2"  placeholder="인증번호" maxlength="6">
                                 <button type="button" class="field-btn _input-clear  ico ico-clear">
                                     <span class="hide">입력값삭제</span>
                                 </button>
-                                <span class="auth-time">03:00</span>
                             </div>
-                            <button class="btn primary size-sm btn-infield">인증요청</button>
-                        </div>
-                        <p class="field-msg">
-                            <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
-                        </p>
-                        <p class="field-msg info">
-                            <span class="ico ico-info txt-r">안내성 메세지</span>
-                        </p>
-                    </div>
-
-                    <div class="field">
-                        <label class="field-label" for="auth_num3">인증번호입력</label>
-                        <div class="field-outline auth">
-                            <div class="field-input grow _input">
-                                <input type="tel" class="_format _number" id="auth_num3" placeholder="인증번호" maxlength="6">
-                                <button type="button" class="field-btn _input-clear  ico ico-clear">
-                                    <span class="hide">입력값삭제</span>
-                                </button>
-                                <span class="auth-time">03:00</span>
-                            </div>
-                        </div>
-                        <p class="field-msg">
-                            <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
-                        </p>
-                        <p class="field-msg info">
-                            <span class="ico ico-info txt-r">안내성 메세지</span>
-                        </p>
-                    </div>
-
-                    <div class="field">
-                        <label class="field-label">주민등록번호</label>
-                        <div class="field-outline">
-                            <div class="field-input grow _input">
-                                <input type="text" class="_format _number" placeholder="생년월일 6자리" maxlength="6">
-                            </div>
-                            <span class="field-txt">-</span>
-                            <div class="field-input grow _input">
-                                <div class="_secureTxt _num" data-length="7" data-secureLine="1">
-                                    <input type="password" class="_format _password" placeholder="" maxlength="1">
-                                </div>
-                            </div>
+                            <button class="btn primary size-sm btn-infield">주소검색</button>
                         </div>
                         <p class="field-msg">
                             <span class="ico ico-error txt-r">오류체크 메세지 출력</span>
@@ -385,7 +204,7 @@
                             </div>
                         </div>
                         <button class="btn input-btn plus">
-                            <span class="blind">삭제</span>
+                            <span class="blind">추가</span>
                         </button>
                     </div>
 
@@ -403,83 +222,6 @@
                         </button>
                     </div>
                 </article>
-            </section>
-
-            <section class="pbg-content">
-                <div class="pbg-titWrap dep2">
-                    <h2>INPUT RANGE</h2>
-                </div>
-                <article class="pbg-component">
-                    <div class="pbg-titWrap dep3">
-                        <h3>single RANGE</h3>
-                    </div>
-                    <div class="field range-slider">
-                        <label class="field-label">range step 있을 때</label>
-                        <div class="field-input">
-                        <input type="range" min="0" max="100" value="50" step="10" class="_range" />
-                        <div class="range-info">
-                            <span class="_value"></span>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div class="field range-slider">
-                        <label class="field-label">range step 없을 때</label>
-                        <div class="field-input">
-                        <input type="range" min="0" max="100" value="50" step="any" class="_range" />
-                        <div class="range-info"><span class="_value"></span></div>
-                        </div>
-                    </div>
-
-                    <div class="field range-slider">
-                        <label class="field-label">메세지 출력</label>
-                        <div class="field-input">
-                        <input type="range" min="0" max="100" value="50" step="10" class="_range" arrow-min="10" arrow-max="90" />
-                        <div class="range-info"><span class="_value" range-value="메세지 출력" inner-value="true"></span></div>
-                        </div>
-                    </div>
-                    <hr class="divider m" />
-                    <div class="pbg-titWrap dep3">
-                        <h3>double RANGE</h3>
-                    </div>
-                    <div class="field range-slider double">
-                        <div class="double-input-container">
-                        <div class="double-input">
-                            <span>min value</span>
-                            <div class="field-outline">
-                            <div class="field-input">
-                                <input type="number" class="min-input" value="2500"> 
-                            </div>
-                            </div>
-                        </div>
-                        <div class="double-input">
-                            <span>max value</span>
-                            <div class="field-outline">
-                            <div class="field-input">
-                                <input type="number" class="max-input" value="8500"> 
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="slider-container"> 
-                        <div class="double-slider"></div> 
-                        </div>
-                        <div class="field-input">
-                        <input type="range" min="0" max="10000" value="2500" step="10" class="min-range" />
-                        <input type="range" min="0" max="10000" value="8500" step="10" class="max-range" />
-
-                        <!-- range-value="" 값이 있을 때 메세지 출력 -->
-                        <div class="doublerange-info min">
-                            <span class="_value-min" range-value="메세지출력" inner-value="true" arrow-min="1"></span>
-                        </div>
-                        <!-- <div class="doublerange-info min"><span class="_value-min"></span></div> -->
-                        <div class="doublerange-info max">
-                            <span class="_value-max" inner-value="true" arrow-max="99">메세지 출력</span>
-                        </div>
-                        </div>
-                    </div>
-                </article>
-
             </section>
         </div>
     </div>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>popup</title>
+    <link rel="stylesheet" href="../../assets/css/cp.style.css">
+    <script src="../../assets/js/lib/lib.jquery-3.6.3.min.js"></script>
+    <script src="../../assets/js/lib/lib.swiper.8.4.7.min.js"></script>
+    <script src="../../assets/js/lib/lib.jquery-ui-1.13.2.js"></script>
+</head>
+<body>
+    <button class="btn primary size-lg _modalBtn" data-modal="modal1">얼럿</button>
+    <div class="modalPop _alert _center" modal-target="modal1">
+        <div class="modalWrap" modal-size="alert">
+            <div class="modal-container">
+                <p class="alert-msg">
+                    게시글을 삭제하시겠습니까?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <div class="btnWrap grow">
+                    <button type="button" class="btn secondary size-md btn-close-pop">취소</button>
+                    <button type="button" class="btn primary size-md btn-close-pop">확인</button>
+                    <!-- 창닫기 .btn-close-pop 클래스 적용 -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../assets/js/ui.component.js"></script>
+    <script src="../../assets/js/pup.js"></script><!-- 퍼블 확인용 -->
+</body>
+</html>

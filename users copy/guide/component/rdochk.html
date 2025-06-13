@@ -156,85 +156,7 @@
 
                 <article class="pbg-component">
                     <div class="pbg-titWrap dep3">
-                        <h3>Switch</h3>
-                    </div>
-
-                    <div class="field">        
-                        <label for="chk-s1" class="field-switch">
-                            <input type="checkbox" name="switch" id="chk-s1" class="chk" title="Switch-기본">
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                        </label>
-                        <label for="chk-s2" class="field-switch">
-                            <input type="checkbox" name="switch" id="chk-s2" class="chk" title="Switch-checked" checked>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                        </label>
-                        <label for="chk-s3" class="field-switch">
-                            <input type="checkbox" name="switch" id="chk-s3" class="chk" title="Switch-disabled" disabled>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                        </label>
-                        <label for="chk-s4" class="field-switch">
-                            <input type="checkbox" name="switch" id="chk-s4" class="chk"  title="Switch-checked+disabled" checked disabled>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                        </label>
-                        <label for="chk-s5" class="field-switch">
-                            <input type="checkbox" name="switch" id="chk-s5" class="chk" title="Switch-readonly" readonly>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                        </label>
-                    </div>
-                </article>
-
-                <article class="pbg-component">
-                    <div class="pbg-titWrap dep3">
                         <h3>BOX</h3>
-                    </div>
-
-                    <div class="field box-opt gap">
-                        <label for="chk-b1" class="field-chkrdo">
-                            <input type="checkbox" name="box" id="chk-b1" class="chk">
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box<br>기본</span>
-                        </label>
-                        <label for="chk-b2" class="field-chkrdo">
-                            <input type="checkbox" name="box" id="chk-b2" class="chk" checked>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box<br>checked</span>
-                        </label>
-                        <label for="chk-b3" class="field-chkrdo">
-                            <input type="checkbox" name="box" id="chk-b3" class="chk" title="box-disabled" disabled>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box<br>checked</span>
-                        </label>
-                        <label for="chk-b4" class="field-chkrdo">
-                            <input type="checkbox" name="box" id="chk-b4" class="chk" checked disabled>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box<br>checked<br>+disabled</span>
-                        </label>
-                        <label for="chk-b5" class="field-chkrdo">
-                            <input type="checkbox" name="box" id="chk-b5" class="chk" readonly>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box<br>readonly</span>
-                        </label>
-                    </div>
-                    <hr class="divider m" />
-                    <div class="field box-opt full bar-fill">
-                        <label for="chk-fill1" class="field-chkrdo">
-                            <input type="checkbox" name="chkRdofill" id="chk-fill1" class="chk" readonly>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">
-                                1. 설문응답 - 복수선택
-                                <span>15명</span>
-                                <i class="fill-width" style="width:40%" aria-hidden="hidden"></i>
-                            </span>
-                        </label>
-                        <label for="chk-fill2" class="field-chkrdo">
-                            <input type="checkbox" name="chkRdofill" id="chk-fill2" class="chk" checked readonly>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">
-                                2. 설문응답 - 복수선택
-                                <span>15명</span>
-                                <i class="fill-width" style="width:100%" aria-hidden="hidden"></i>
-                            </span>
-                        </label>
                     </div>
                     <hr class="divider m" />
                     <div class="field box-opt full ico">
@@ -267,32 +189,54 @@
                     </div>
 
                     <hr class="divider m" />
+                    <div class="field box-opt full bar-fill">
+                        <label for="chk-fill1" class="field-chkrdo">
+                            <input type="checkbox" name="chkRdofill" id="chk-fill1" class="chk" readonly>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">
+                                1. 설문응답 - 복수선택
+                                <span>15명</span>
+                                <i class="fill-width" style="width:40%" aria-hidden="hidden"></i>
+                            </span>
+                        </label>
+                        <label for="chk-fill2" class="field-chkrdo">
+                            <input type="checkbox" name="chkRdofill" id="chk-fill2" class="chk" checked readonly>
+                            <i class="field-icon" aria-hidden="hidden"></i>
+                            <span class="field-label">
+                                2. 설문응답 - 복수선택
+                                <span>15명</span>
+                                <i class="fill-width" style="width:100%" aria-hidden="hidden"></i>
+                            </span>
+                        </label>
+                    </div>
+                </article>
 
-                    <div class="field box-opt ico nogap">        
-                        <label for="chkIco-b1" class="field-chkrdo">
-                            <input type="checkbox" name="rdoIco" id="chkIco-b1" class="chk">
+                <article class="pbg-component">
+                    <div class="pbg-titWrap dep3">
+                        <h3>all-check</h3>
+                    </div>
+
+                    <div class="field">        
+                        <label for="chk-51" class="field-chkrdo">
+                            <input type="checkbox" name="single5" id="chk-51" class="chk"  check-type="all" check-id="a">
                             <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box<br>기본</span>
+                            <span class="field-label">전체동의</span>
                         </label>
-                        <label for="chkIco-b2" class="field-chkrdo">
-                            <input type="checkbox" name="rdoIco" id="chkIco-b2" class="chk" checked>
+                        <label for="chk-52" class="field-chkrdo">
+                            <input type="checkbox" name="single5" id="chk-52" class="chk" check-type="item" check-id="a">
                             <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box<br>checked</span>
                         </label>
-                        <label for="chkIco-b3" class="field-chkrdo">
-                            <input type="checkbox" name="rdoIco-3" id="chkIco-b3" class="chk" disabled>
+                        <label for="chk-53" class="field-chkrdo">
+                            <input type="checkbox" name="single5" id="chk-53" class="chk" check-type="item" check-id="a">
                             <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box<br>checked</span>
                         </label>
-                        <label for="chkIco-b4" class="field-chkrdo">
-                            <input type="checkbox" name="rdoIco-4" id="chkIco-b4" class="chk" checked disabled>
+                        <label for="chk-54" class="field-chkrdo">
+                            <input type="checkbox" name="single5" id="chk-54" class="chk" check-type="item" check-id="a">
                             <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box<br>checked<br>+disabled</span>
                         </label>
-                        <label for="chkIco-b5" class="field-chkrdo">
-                            <input type="checkbox" name="rdoIco-5" id="chkIco-b5" class="chk" readonly>
+                        <label for="chk-55" class="field-chkrdo">
+                            <input type="checkbox" name="single5" id="chk-55" class="chk" check-type="item" check-id="a">
                             <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box<br>readonly</span>
                         </label>
                     </div>
                 </article>
@@ -397,63 +341,7 @@
                 <article class="pbg-component">
                     <div class="pbg-titWrap dep3">
                         <h3>BOX</h3>
-                    </div><div class="field box-opt gap">        
-                        <label for="rdo-b1" class="field-chkrdo">
-                            <input type="radio" name="boxRdo" id="rdo-b1" class="rdo">
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box 기본</span>
-                        </label>
-                        <label for="rdo-b2" class="field-chkrdo">
-                            <input type="radio" name="boxRdo" id="rdo-b2" class="rdo" checked>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box checked</span>
-                        </label>
-                        <label for="rdo-b3" class="field-chkrdo">
-                            <input type="radio" name="boxRdo-3" id="rdo-b3" class="rdo" title="box-disabled" disabled>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box disabled</span>
-                        </label>
-                        <label for="rdo-b4" class="field-chkrdo">
-                            <input type="radio" name="boxRdo-4" id="rdo-b4" class="rdo" checked disabled>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box checked+disabled</span>
-                        </label>
-                        <label for="rdo-b5" class="field-chkrdo">
-                            <input type="radio" name="boxRdo-5" id="rdo-b5" class="rdo" readonly>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box readonly</span>
-                        </label>
-                        <label for="rdo-b6" class="field-chkrdo">
-                            <input type="radio" name="boxRdo-6" id="rdo-b6" class="rdo" checked readonly>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box checked+readonly</span>
-                        </label>
                     </div>
-                    
-                    <hr class="divider m" />
-                    <div class="field box-opt full bar-fill">
-                        <label for="rdo-fill1" class="field-chkrdo">
-                            <input type="radio" name="Rdofill" id="rdo-fill1" class="rdo" readonly>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">
-                                1. 설문응답 - 복수선택
-                                <span>15명</span>
-                                <i class="fill-width" style="width:80%" aria-hidden="hidden"></i>
-                            </span>
-                        </label>
-                        <label for="rdo-fill2" class="field-chkrdo">
-                            <input type="checkbox" name="Rdofill" id="rdo-fill2" class="rdo" checked readonly>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">
-                                2. 설문응답 - 복수선택
-                                <span>15명</span>
-                                <i class="fill-width" style="width:50%" aria-hidden="hidden"></i>
-                            </span>
-                        </label>
-                    </div>
-
-                    <hr class="divider m" />
-
                     <div class="field box-opt full ico">        
                         <label for="rdo-fullicob1" class="field-chkrdo">
                             <input type="radio" name="fullicobBoxRdo" id="rdo-fullicob1" class="rdo">
@@ -489,61 +377,24 @@
 
                     <hr class="divider m" />
 
-                    <div class="field box-opt gap full">        
-                        <label for="rdo-bf1" class="field-chkrdo">
-                            <input type="radio" name="boxRdofull" id="rdo-bf1" class="rdo">
+                    <div class="field box-opt full bar-fill">
+                        <label for="rdo-fill1" class="field-chkrdo">
+                            <input type="radio" name="Rdofill" id="rdo-fill1" class="rdo" readonly>
                             <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box<br>기본</span>
+                            <span class="field-label">
+                                1. 설문응답 - 복수선택
+                                <span>15명</span>
+                                <i class="fill-width" style="width:80%" aria-hidden="hidden"></i>
+                            </span>
                         </label>
-                        <label for="rdo-bf2" class="field-chkrdo">
-                            <input type="radio" name="boxRdofull" id="rdo-bf2" class="rdo" checked>
+                        <label for="rdo-fill2" class="field-chkrdo">
+                            <input type="checkbox" name="Rdofill" id="rdo-fill2" class="rdo" checked readonly>
                             <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box<br>checked</span>
-                        </label>
-                        <label for="rdo-bf3" class="field-chkrdo">
-                            <input type="radio" name="boxRdofull-3" id="rdo-bf3" class="rdo" title="box-disabled" disabled>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box<br>checked</span>
-                        </label>
-                        <label for="rdo-bf4" class="field-chkrdo">
-                            <input type="radio" name="boxRdofull-4" id="rdo-bf4" class="rdo" checked disabled>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box<br>checked<br>+disabled</span>
-                        </label>
-                        <label for="rdo-bf5" class="field-chkrdo">
-                            <input type="radio" name="boxRdofull-5" id="rdo-bf5" class="rdo" readonly>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box<br>readonly</span>
-                        </label>
-                    </div>
-
-                    <hr class="divider m" />
-
-                    <div class="field box-opt ico nogap">        
-                        <label for="rdoIco-b1" class="field-chkrdo">
-                            <input type="radio" name="rdoIco" id="rdoIco-b1" class="rdo">
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box<br>기본</span>
-                        </label>
-                        <label for="rdoIco-b2" class="field-chkrdo">
-                            <input type="radio" name="rdoIco" id="rdoIco-b2" class="rdo" checked>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box<br>checked</span>
-                        </label>
-                        <label for="rdoIco-b3" class="field-chkrdo">
-                            <input type="radio" name="rdoIco-3" id="rdoIco-b3" class="rdo" title="box-disabled" disabled>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box<br>checked</span>
-                        </label>
-                        <label for="rdoIco-b4" class="field-chkrdo">
-                            <input type="radio" name="rdoIco-4" id="rdoIco-b4" class="rdo" checked disabled>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box<br>checked<br>+disabled</span>
-                        </label>
-                        <label for="rdoIco-b5" class="field-chkrdo">
-                            <input type="radio" name="rdoIco-5" id="rdoIco-b5" class="rdo" readonly>
-                            <i class="field-icon" aria-hidden="hidden"></i>
-                            <span class="field-label">box<br>readonly</span>
+                            <span class="field-label">
+                                2. 설문응답 - 복수선택
+                                <span>15명</span>
+                                <i class="fill-width" style="width:50%" aria-hidden="hidden"></i>
+                            </span>
                         </label>
                     </div>
                 </article>

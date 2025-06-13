@@ -17,7 +17,7 @@ body{
             transition: .3s width ease-in-out;
         }
         .header-wrap, .content-wrap{
-            padding-left: 9.1rem;
+            padding-left: 12.1rem;
             transition: .3s padding ease-in-out;
         }
         .nav{
@@ -112,9 +112,6 @@ body{
 .nav{
     &-wrap{
         @include pos-offset($pos: fixed, $top:0, $left:0);
-        // position: fixed;
-        // top: 0;
-        // left: 0;
         @include el-size(26rem, 100vh);
         transition: .3s width ease-in-out;
         background-color: $color-bg-nav;
@@ -445,10 +442,11 @@ body{
             @extend %body-md-regular;
         }
         th, td{
-            padding: 1.2rem 2rem;
+            padding: 1.15rem 2rem;
             text-align: left;
             @include line(border, .1rem solid $color-border-tertiary, bottom);
             vertical-align: middle;
+            height: 7.2rem;
         }
         .field-chkrdo{
             vertical-align: bottom;
@@ -460,9 +458,13 @@ body{
             th, td{
                 text-align: center;
                 vertical-align: middle;
+                height: auto;
             }
             th{
                 padding: 1.5rem 0;
+                &.bg{
+                    background-color: $color-bg-interactive-secondary-hover;
+                }
             }
             td{
                 padding: 1.8rem 0;
@@ -568,7 +570,6 @@ body{
     &-wrap{
         display: block;
         @include pos-offset(fixed, $top: 50%, $left: 50%){transform: translate(-50%, -50%)};
-        @include el-size(48rem, 35rem);
     }
     &-title{
         .tit{
@@ -580,6 +581,7 @@ body{
         }
     }
     &-box{
+        @include el-size(48rem, 35rem);
         background-color: $color-base-white;
         padding: 4rem;
         @extend %radius-12;

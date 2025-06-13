@@ -13,7 +13,9 @@
     .field-outline ~ .field-outline {margin-top:1rem;}
     .field ~ .field, .titWrap ~ .titWrap {margin-top:2rem;}
 }
-// body[pb-component] {}
+body[pb-component] {
+    background-color: #fff;
+}
 .pbg {
     &Wrap{padding:2rem 2rem 10rem;}
     &Container {}

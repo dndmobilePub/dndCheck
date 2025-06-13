@@ -41,39 +41,9 @@
                 </div>
 
                 <div class="btnWrap">
-                    <a href="javascript:void(0);" class="btn tertiary size-lg _modalBtn" data-modal="modal1">Top
-                        Modal</a>
-                    <a href="javascript:void(0);" class="btn tertiary size-lg _modalBtn" data-modal="modal2">Center
-                        Modal</a>
-                    <a href="javascript:void(0);" class="btn tertiary 
-                    size-lg _modalBtn" data-modal="modal3">Right Modal</a>
-                    <a href="javascript:void(0);" class="btn tertiary 
-                    size-lg _modalBtn" data-modal="modal4">Bottom Modal</a>
-                    <a href="javascript:void(0);" class="btn tertiary 
-                    size-lg _modalBtn" data-modal="modal5">Full Modal</a>
+                    <a href="javascript:void(0);" class="btn tertiary size-lg _modalBtn" data-modal="modal2">Center Modal</a>
                     <a href="javascript:void(0);" class="btn tertiary size-lg _modalBtn"
                         data-modal="networkError">알럿</a>
-                </div>
-
-                <!-- Top Modal -->
-                <div class="modalPop _top" modal-target="modal1">
-                    <div class="modalWrap">
-                        <div class="modal-header">
-                            <a href="#" class="ico ico-his-prev" role="button"><span class="hide">이전페이지</span></a>
-                            <a href="javascript:void(0);" class="btn-close-pop ico ico-pop-close" role="button"><span
-                                    class="hide">창닫기</span></a>
-                            <h1 class="mp-title dep01">Top Modal</h1>
-                        </div>
-                        <div class="modal-container">
-                            <p>Top Modal Content</p>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="btnWrap grow full">
-                                <button type="button" class="btn secondary size-lg btn-close-pop">취소</button>
-                                <button type="button" class="btn primary size-lg btn-close-pop">확인</button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Center Modal -->
@@ -132,74 +102,9 @@
                     </div> -->
                 </div>
 
-                <!-- Right Modal -->
-                <div class="modalPop _right" modal-target="modal3">
-                    <div class="modalWrap">
-                        <div class="modal-header">
-                            <a href="#" class="ico ico-his-prev" role="button"><span class="hide">이전페이지</span></a>
-                            <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span
-                                    class="hide">창닫기</span></a>
-                            <h1 class="mp-title dep01">Right Modal</h1>
-                        </div>
-                        <div class="modal-container">
-                            <p>Right Modal Content</p>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="btnWrap grow full">
-                                <button type="button" class="btn secondary size-lg btn-close-pop">취소</button>
-                                <button type="button" class="btn primary size-lg btn-close-pop">확인</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bottom Modal -->
-                <div class="modalPop _bottom" modal-target="modal4">
-                    <div class="modalWrap">
-                        <div class="modal-header">
-                            <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span
-                                    class="hide">창닫기</span></a>
-                            <h1 class="mp-title dep01">Bottom Modal</h1>
-                        </div>
-                        <div class="modal-container">
-                            <div style="height:1000px; background:yellow">
-                                <p>Bottom Modal Content</p>
-                                <button class="btn tertiary size-lg _modalBtn" data-modal="networkError">networkError</button>
-                                <!-- <a href="javascript:void(0);" onclick="COMPONENT_UI.modalPop.showModal($('[data-modal=networkError]'));" class="btn tertiary size-lg _modalBtn">알럿</a> -->
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="btnWrap grow full">
-                                <button type="button" class="btn secondary size-lg btn-close-pop">취소</button>
-                                <button type="button" class="btn primary size-lg btn-close-pop">확인</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FULL Modal -->
-                <div class="modalPop _full" modal-target="modal5">
-                    <div class="modalWrap">
-                        <div class="modal-header">
-                            <a href="#" class="btn-close-pop ico ico-pop-close" role="button"><span
-                                    class="hide">창닫기</span></a>
-                            <h1 class="mp-title dep01">Bottom Modal</h1>
-                        </div>
-                        <div class="modal-container">
-                            <p>FULL Modal Content</p>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="btnWrap grow full">
-                                <button type="button" class="btn secondary size-lg btn-close-pop">취소</button>
-                                <button type="button" class="btn primary size-lg btn-close-pop">확인</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- [S] AlertPop : 네트워크 오류 -->
                 <div class="modalPop _alert _center" modal-target="networkError">
-                    <div class="modalWrap">
+                    <div class="modalWrap" modal-size="xs">
                         <!-- <div class="modal-header">
                             <a href="javascript:void(0);" class="btn-close-pop ico ico-close" role="button"><span class="hide">창닫기</span></a>                        
                             <h1 class="mp-title">AlertPopTitle</h1>
@@ -222,142 +127,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            <section class="pbg-content">
-                <div class="pbg-titWrap dep2">
-                    <h2>토스트 팝업</h2>
-                </div>
-                <div class="btnWrap">
-                    <a href="javascript:void(0);" class="btn tertiary size-lg _toastBtn"
-                        data-toast="토스트 팝업메세지를 출력">토스트팝업</a>
-                </div>
-                <!--[S] 토스트 팝업 출력 : WAH 고려하는 프로젝트일 경우 토스트팝업 메세지는 항상 문서 최상단에 존재해야 함 -->
-                <div class="toastWrap" role="alert" aria-hidden="true">
-                    <div class="toast-msg">토스트 팝업메세지를 출력</div>
-                    <a class="btn ico-close" href="#" aria-label="Close" aria-hidden="true"><span
-                            class="hide">토스트팝업닫기</span></a>
-                </div>
-                <!--// [E] 토스트 팝업 출력-->
-            </section>
-
-            <section class="pbg-content">
-                <div class="pbg-titWrap dep2">
-                    <h2>TOOLTIP</h2>
-                </div>
-                <div class="tooltipWrap">
-                    기본형
-                    <a href="javascript:;" class="ico ico-tooltip" aria-role="button" data-focus="false"
-                        data-direction="default" tip-maxWidth="200"
-                        data-message="ToolTip Default :<br><br> 일이삼사오육칠팔구십일이삼사오<br>ToolTip message"
-                        data-toggle="tooltip">
-                        <span class="hide">툴팁</span>
-                    </a>
-                </div>
-                <div class="tooltipWrap">
-                    기본형 가운데 가운데가운데가운데
-                    <a href="javascript:;" class="ico ico-tooltip" aria-role="button" data-focus="false"
-                        data-direction="default" tip-maxWidth="160"
-                        data-message="ToolTip message : Default <br> ToolTip message <br> ToolTip message"
-                        data-toggle="tooltip">
-                        <span class="hide">툴팁</span>
-                    </a>
-                </div>
-                <div class="tooltipWrap">
-                    기본형 텍스트 길다 기본형 텍스트 길다 기본형 텍스트 길다
-                    <a href="javascript:;" class="ico ico-tooltip" aria-role="button" data-focus="false"
-                        data-direction="default"
-                        data-message="ToolTip message : Default <br> ToolTip message <br> ToolTip message"
-                        data-toggle="tooltip">
-                        <span class="hide">툴팁</span>
-                    </a>
-                </div>
-                <hr class="divider md" />
-                <div class="tooltipWrap r">
-                    <a href="javascript:;" class="ico ico-tooltip" aria-role="button" data-focus="false"
-                        data-direction="left"
-                        data-message="ToolTip message : LEFT <br> ToolTip message <br> ToolTip message"
-                        data-toggle="tooltip">
-                        <span class="hide">툴팁</span>
-                    </a>
-                    왼쪽형
-                </div>
-                <div class="tooltipWrap c">
-                    <a href="javascript:;" class="ico ico-tooltip" aria-role="button" data-focus="false"
-                        data-direction="left"
-                        data-message="ToolTip message : LEFT <br> ToolTip message <br> ToolTip message"
-                        data-toggle="tooltip">
-                        <span class="hide">툴팁</span>
-                    </a>
-                    센터센터
-                </div>
-                <div class="tooltipWrap r">
-                    <a href="javascript:;" class="ico ico-tooltip" aria-role="button" data-focus="false"
-                        data-direction="left"
-                        data-message="ToolTip message : LEFT <br> ToolTip message <br> ToolTip message"
-                        data-toggle="tooltip">
-                        <span class="hide">툴팁</span>
-                    </a>
-                    아이콘 왼쪽, 텍스트가 매우매우매우매우매우매우매우매우매우매우매우 길 경우
-                </div>
-                <hr class="divider md" />
-                <div class="tooltipWrap">
-                    위로
-                    <a href="javascript:;" class="ico ico-tooltip" aria-role="button" data-focus="false"
-                        data-direction="top"
-                        data-message="ToolTip message : TOP <br> ToolTip message <br> ToolTip message"
-                        data-toggle="tooltip">
-                        <span class="hide">툴팁</span>
-                    </a>
-                </div>
-                <div class="tooltipWrap c">
-                    위로 c
-                    <a href="javascript:;" class="ico ico-tooltip" aria-role="button" data-focus="false"
-                        data-direction="top"
-                        data-message="ToolTip message : TOP <br> ToolTip message <br> ToolTip message"
-                        data-toggle="tooltip">
-                        <span class="hide">툴팁</span>
-                    </a>
-                </div>
-                <div class="tooltipWrap r">
-                    <a href="javascript:;" class="ico ico-tooltip" aria-role="button" data-focus="false"
-                        data-direction="top"
-                        data-message="ToolTip message : TOP <br> ToolTip message <br> ToolTip message"
-                        data-toggle="tooltip">
-                        <span class="hide">툴팁</span>
-                    </a>
-                    위로 r
-                </div>
-                <hr class="divider md" />
-                <div class="tooltipWrap">
-                    아래로
-                    <a href="javascript:;" class="ico ico-tooltip" aria-role="button" data-focus="false"
-                        data-direction="bottom"
-                        data-message="ToolTip message : BOTTOM <br> ToolTip message <br> ToolTip message"
-                        data-toggle="tooltip">
-                        <span class="hide">툴팁</span>
-                    </a>
-                </div>
-
-                <div class="tooltipWrap c">
-                    아래로 c
-                    <a href="javascript:;" class="ico ico-tooltip" aria-role="button" data-focus="false"
-                        data-direction="bottom"
-                        data-message="ToolTip message : BOTTOM <br> ToolTip message <br> ToolTip message"
-                        data-toggle="tooltip">
-                        <span class="hide">툴팁</span>
-                    </a>
-                </div>
-
-                <div class="tooltipWrap r">
-                    <a href="javascript:;" class="ico ico-tooltip" aria-role="button" data-focus="false"
-                        data-direction="bottom"
-                        data-message="ToolTip message : BOTTOM <br> ToolTip message <br> ToolTip message"
-                        data-toggle="tooltip">
-                        <span class="hide">툴팁</span>
-                    </a>
-                    아래로 r
                 </div>
             </section>
         </div>

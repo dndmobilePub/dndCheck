@@ -25,11 +25,6 @@ $tertiary:'.tertiary';
         }
     }
 
-    &.full > #{$btn} {
-        width:100%; margin:0; margin-bottom:0 !important;
-        & ~ .btn {margin-bottom:0 !important; margin-top:1rem;}
-    }
-
     &.grow {
         @include dflex;
         flex-wrap: wrap;
@@ -37,15 +32,6 @@ $tertiary:'.tertiary';
 
         & > * {flex:1 0 0; display:block;}
         & > .full {flex:none; margin-top:1rem;}
-        &.full > #{$btn} {
-            margin:0;
-            & ~ .btn {margin:0;}
-            &:first-child { border-radius:$radius-8 0 0 $radius-8;}
-            & + & {border-radius: 0;}
-            &:last-child { border-radius:0 $radius-8 $radius-8 0;}
-
-            &:focus {z-index:-1;} // shadow 효과가 있을때만 적용
-        }
         &.size{
             &-lg{
                 @include dflex($j-content:center);
@@ -136,89 +122,6 @@ $tertiary:'.tertiary';
         }
     }
 
-    //---* 상태동작
-    &.loading {
-        @include pos-offset(relative);
-        color:transparent !important;
-    
-        &>.loadingData {
-            @include obj-offset-align($direction: all, $top: 50%, $left: 48%);
-            width:auto; height: 100%;
-    
-            & > i {
-                display: inline-block; opacity: 0;
-                @include pos-offset($top: 50%);
-                width:.6rem; height:.6rem;
-                border-radius: 100%;
-                background:$color-base-white;
-                animation: btnLoading2 1.4s infinite;
-
-                &:first-child {
-                    left: -1.2rem;
-                    animation: btnLoading1 1.4s infinite;
-                }
-
-                &:last-child {
-                    right: -1.8rem;
-                    animation: btnLoading3 1.4s infinite;
-                }
-            }
-        }
-        $lodingTop1: 27%;
-        $lodingTop2: 55%;
-
-        @keyframes btnLoading1 {
-            10% {
-            top: $lodingTop1;
-            opacity: 0;
-            }
-            40% {
-            top: $lodingTop2;
-            opacity: 1;
-            }
-            100% {
-            top: $lodingTop1;
-            opacity: 0;
-            }
-        }
-        
-        @keyframes btnLoading2 {
-            30% {
-            top: $lodingTop1;
-            opacity: 0;
-            }
-        
-            60% {
-            top: $lodingTop2;
-            opacity: 1;
-            }
-        
-            100% {
-            top: $lodingTop1;
-            opacity: 0;
-            }
-        }
-        
-        @keyframes btnLoading3 {
-            40% {
-            top: $lodingTop1;
-            opacity: 0;
-            }
-        
-            80% {
-            top: $lodingTop2;
-            opacity: 1;
-            }
-        
-            100% {
-            top: $lodingTop1;
-            opacity: 0;
-            }
-        }
-    }
-
-    //---* MIX
-
     //---* 텍스트 링크
     &.txt {
         & ~ & {margin-top:0;}
@@ -234,14 +137,6 @@ $tertiary:'.tertiary';
 
         &:hover {                
             color: $color-text-info;
-            // @include line-effect($color-green-600, after, center) {
-            //     @include transition(0.3s, all, ease);
-            //     height:.7rem;
-            //     width:100%;
-            //     background:$color-green-300;
-            //     opacity:.7;
-            //     z-index:-1;
-            // };
         }
 
 
@@ -309,28 +204,7 @@ $tertiary:'.tertiary';
                 }
             }
         }
-        &.add{
-            &-file {
-                @include dflex(inline-flex, $j-content:center, $al-items:center);
-                @include icoMix(before, "%ico-add-file-20") {margin-right:.5rem;}
-            }
-            &-field {
-                @include dflex(inline-flex, $j-content:space-between, $al-items:center);
-                @include icoMix(after, "%ico-add-field-24"){margin-left:.5rem;}
-                @extend %body-lg-regular;
-            }
-        }
         &.del{
-            &-file {
-                @include dflex(inline-flex, $j-content:center, $al-items:center);
-                @include icoMix(before, "%ico-del-field-24") {margin-right:.5rem;}
-                &-r {
-                    @include dflex(inline-flex, $j-content:space-between, $al-items:center);
-                    @include el-content(before, none);
-                    @include icoMix(after, "%ico-del-field-24") {margin-left:.5rem;}
-                    @extend %body-lg-regular;
-                }
-            }
             &-field {
                 @include dflex(inline-flex, $j-content:center, $al-items:center);
                 @include icoMix(before, "%ico-trash-20") {margin-right:.5rem;}

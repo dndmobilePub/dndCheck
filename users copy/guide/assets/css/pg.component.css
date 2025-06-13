@@ -446,6 +446,10 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   margin-top: 2rem;
 }
 
+body[pb-component] {
+  background-color: #fff;
+}
+
 .pbgWrap {
   padding: 2rem 2rem 10rem;
 }

@@ -527,4 +527,26 @@
         "state": "done",
         "etc": ["완료"]
     }
+    ,{
+        "path":"main",
+        "id": "common_pop_alert",
+        "type": "팝업", 
+        "depth1": "",
+        "depth2": "",
+        "depth3": "",
+        "depth4": "alert",
+        "name": "alert",
+        "worker": "",
+        "schedule": [
+            {
+              "schedule_s": "",
+              "schedule_e": ""
+            }
+        ],
+        "workdate": "",
+        "change": "",
+        "complete": "",
+        "state": "done",
+        "etc": ["완료"]
+    }
 ]
