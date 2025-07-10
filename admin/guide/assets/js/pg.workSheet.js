@@ -120,7 +120,7 @@ var makeBoard = function () {
     var $data = data;
     var tbodyHtml = '';
     var idx = 1;
-    var urlLink = '/users copy/html';
+    var urlLink = '/admin/html';
     var createTr = function (obj) {
       var trHtml = '';
       if (obj.directory !== undefined && obj.directory !== '') {
