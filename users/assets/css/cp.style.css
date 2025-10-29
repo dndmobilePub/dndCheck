@@ -94,6 +94,14 @@
   font-weight: 500;
 }
 
+.field-input input:not([type=checkbox]):not([type=radio])::-moz-placeholder {
+  font-family: 'Pretendard', 'sans-serif';
+  font-size: 1.4rem;
+  line-height: 2rem;
+  letter-spacing: -0.02rem;
+  font-weight: 400;
+}
+
 .alert-txt, .survey-list .info-txt, .notice-title .txt, .list .item, .commute-list.row .item .tit, .cont-box .text-group.ico .txt, .cont-box .text-group .txt, .cont-box.file .item .bite, .modalPop._center .modal-container .alert-msg, .modalPop .modal-container, .field-input input:not([type=checkbox]):not([type=radio])::placeholder, .field-input textarea + .byte-check, .field-input textarea, .field-input input:not([type=checkbox]):not([type=radio]), .field.box-opt.gap .field-chkrdo .field-label, .field.box-opt.full .field-chkrdo .field-label, .field-chkrdo .field-label, .btn.ico-md, .btn.size-xs, .btn.size-sm, body, th, td, input, select, textarea, button, input[type=checkbox]:checked {
   font-family: 'Pretendard', 'sans-serif';
   font-size: 1.4rem;
@@ -379,6 +387,9 @@ input[type=search]::-webkit-search-cancel-button {
 select::-ms-expand {
   display: none;
 } /* IE9 이상 select 화살표 삭제 */
+input[type=text]:-moz-read-only, input[type=password]:-moz-read-only {
+  background: dnd("colors", "primitive", "neutral", 100);
+}
 input[type=text]:read-only, input[type=password]:read-only,
 input[type=text]:disabled, input[type=password]:disabled {
   background: dnd("colors", "primitive", "neutral", 100);
@@ -1273,6 +1284,9 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 .field-input input:not([type=checkbox]):not([type=radio]):focus {
   outline: none;
 }
+.field-input input:not([type=checkbox]):not([type=radio])::-moz-placeholder {
+  color: #A9B0B8;
+}
 .field-input input:not([type=checkbox]):not([type=radio])::placeholder {
   color: #A9B0B8;
 }
@@ -1286,6 +1300,9 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   position: relative;
   max-width: 1.1rem;
   padding-right: 0;
+}
+.field-input.mid_num input::-moz-placeholder {
+  font-size: 0.4rem;
 }
 .field-input.mid_num input::placeholder {
   font-size: 0.4rem;
@@ -1371,6 +1388,9 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 .field.invalid .field-outline:focus-within {
   box-shadow: 0 0 0 0.2rem #C9252D inset;
 }
+.field.invalid .field-outline:focus-within input::-moz-placeholder {
+  color: #C2410C;
+}
 .field.invalid .field-outline:focus-within input::placeholder {
   color: #C2410C;
 }
@@ -1393,7 +1413,8 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
 
 .field input[type=range] {
   -webkit-appearance: none;
-  appearance: none;
+  -moz-appearance: none;
+       appearance: none;
   width: 100%;
   height: 0.6rem !important;
   padding: 0 !important;
@@ -1452,7 +1473,8 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   opacity: 1;
 }
 .modalPop._is-active:not(._full) {
-  backdrop-filter: blur(0.5rem);
+  -webkit-backdrop-filter: blur(0.5rem);
+          backdrop-filter: blur(0.5rem);
 }
 .modalPop .modalWrap {
   position: absolute;
@@ -1615,7 +1637,8 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   height: 100%;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(0.5rem);
+  -webkit-backdrop-filter: blur(0.5rem);
+          backdrop-filter: blur(0.5rem);
 }
 
 .tab-wrap[expand-type=true] {
@@ -1640,6 +1663,7 @@ hr.divider + [class*=field], hr.divider + [class*=Wrap], hr.divider + * {
   display: flex;
   flex-direction: row;
   position: relative;
+  min-width: -moz-fit-content;
   min-width: fit-content;
 }
 .tab-list .tab {
@@ -2104,6 +2128,7 @@ body .headerWrap {
   content: "";
   display: inline-flex;
   content: "출근 전";
+  width: -moz-fit-content;
   width: fit-content;
   order: 2;
   color: #515961;
@@ -2183,6 +2208,7 @@ body .headerWrap {
   content: "";
   display: block;
   content: "업무 중";
+  width: -moz-fit-content;
   width: fit-content;
   color: #347EFF;
 }
@@ -2667,4 +2693,48 @@ body .headerWrap {
 }
 .titWrap + .box-opt {
   margin-top: 1.2rem;
+}
+
+.common-nodata {
+  position: relative;
+  margin: 13rem 0 5rem;
+  padding-top: 18.3rem;
+  text-align: center;
+  color: #6e7780;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.common-nodata::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+  width: 20rem;
+  height: 15.8rem;
+  background: url(../img/common/ico_nodata.png) no-repeat center;
+  background-size: 100% 100%;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -3rem 0 0 -3rem;
+  height: 6rem;
+  width: 6rem;
+  border: 0.6rem solid #fff;
+  border-right-color: #347EFF;
+  border-top-color: #347EFF;
+  border-radius: 100%;
+  animation: spin 800ms infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }/*# sourceMappingURL=cp.style.css.map */

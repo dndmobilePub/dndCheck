@@ -1107,3 +1107,53 @@ body {
         margin-top: 1.2rem;
     }
 }
+
+.common-nodata {
+  position: relative;
+  margin: 13rem 0 5rem;
+  padding-top: 18.3rem;
+  text-align: center;
+  color: #6e7780;
+  font-size: 1.6rem;
+  font-weight: 500;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    width: 20rem;
+    height: 15.8rem;
+    background: url(../img/common/ico_nodata.png) no-repeat center;
+    background-size: 100% 100%;
+    }
+}
+
+// variables
+$size: 6rem !default;
+$thickness: 0.6rem !default;
+$base-color: $color-bg-interactive-tertiary !default;
+$wheel-color: $color-bg-interactive-primary !default;
+$speed: 800ms !default;
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -3rem 0 0 -3rem;
+    height: $size;
+    width: $size;
+    border: $thickness solid $base-color;
+    border: {
+        right-color: $wheel-color;
+        top-color: $wheel-color;
+        radius: 100%;
+    }
+    animation: spin $speed infinite linear;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(359deg); }
+}
