@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # dndCheck
 - [CHECK CHECK] dndmobile 출결앱
 - 관리자와 사용자 폴더로 구분하며, 각각의 서비스로 진행됨
@@ -105,4 +104,3 @@ For open source projects, say how it is licensed.
 
 ## Project status
 If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
->>>>>>> 0deff947e6ce316a4c5f03295486b57f420da9a4
